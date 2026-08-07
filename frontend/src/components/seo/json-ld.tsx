@@ -7,7 +7,7 @@ export function LocalBusinessSchema() {
     name: 'Arteparquet',
     alternateName: 'Arteparquet.pro',
     description:
-      'Specialisti in posa, restauro e manutenzione di parquet, SPC, PVC e laminati. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia dal 1996.',
+      'Specialisti in posa, restauro e manutenzione di parquet, SPC, PVC e laminati. Carriera nel parquet dal 1996. Nel 2004 parte del team per il Teatro alla Scala di Milano. Operiamo in Lombardia e tutta Italia.',
     url: 'https://arteparquet.pro',
     telephone: '+393892407827',
     email: 'info@arteparquet.pro',

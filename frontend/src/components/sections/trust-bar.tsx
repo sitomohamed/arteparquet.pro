@@ -19,7 +19,7 @@ const STATS = [
     value: null,
     suffix: '',
     label: 'Teatro alla Scala',
-    description: 'Milano, 1996',
+    description: 'Milano, 2004 — in team',
     isNumber: false,
     text: 'Teatro alla Scala',
   },

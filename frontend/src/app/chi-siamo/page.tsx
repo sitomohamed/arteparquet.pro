@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: "L'Atelier | Chi Siamo — Ex Team Teatro alla Scala",
+  title: "L'Atelier | Chi Siamo — Dal 1996, Team Scala 2004",
   description:
-    'La storia di Arteparquet: dal Teatro alla Scala di Milano al tuo pavimento. 20+ anni di eccellenza nella posa e restauro parquet in Italia.',
+    'La storia di Arteparquet: carriera nel parquet dal 1996. Nel 2004 fa parte del team per il Teatro alla Scala di Milano. 30+ anni di eccellenza nella posa e restauro parquet.',
 }
 
 const VALUES = [
@@ -60,23 +60,24 @@ export default function ChiSiamoPage() {
               <h2 className="font-serif font-semibold text-legno-bruciato mb-6 text-balance"
                 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
               >
-                Nel 1996, Teatro alla Scala di Milano.
+                Dal 1996 al cuore del legno.
               </h2>
               <div className="space-y-5 mb-8">
                 <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  Arabi Mohamed viene selezionato per il team incaricato della{' '}
-                  <strong className="text-legno-bruciato">posa, del restauro e della manutenzione
-                  del parquet nel tempio mondiale dell'opera</strong> — il Teatro alla Scala di Milano.
+                  La carriera di Arabi Mohamed inizia nel <strong className="text-legno-bruciato">1996</strong>.
+                  Anno dopo anno, cantiere dopo cantiere, costruisce una competenza profonda sul legno:
+                  le sue essenze, i suoi movimenti, i suoi segreti.
                 </p>
                 <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  In quei corridoi storici, tra legni antichi e palchi dorati, si affina una filosofia:
-                  il legno non si posa. Si <em>interpreta</em>. Ogni essenza ha la sua voce, ogni spazio
-                  la sua acustica visiva.
+                  Nel <strong className="text-legno-bruciato">2004</strong> arriva il momento più importante:
+                  fa parte del{' '}
+                  <strong className="text-legno-bruciato">team selezionato per la posa e il restauro
+                  del parquet al Teatro alla Scala di Milano</strong> — il palcoscenico più celebre al mondo.
+                  In quei corridoi storici si affina una filosofia: il legno non si posa, si <em>interpreta</em>.
                 </p>
                 <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  Quella stessa dedizione maniacale all'eccellenza, quella stessa cura per ogni dettaglio
-                  invisibile, oggi è al servizio del tuo progetto — villa privata, hotel boutique o
-                  semplice appartamento che vuoi rendere straordinario.
+                  Quella stessa dedizione all'eccellenza, oggi è al servizio del tuo progetto — villa privata,
+                  hotel boutique o appartamento che vuoi rendere straordinario.
                 </p>
               </div>
               <blockquote className="pl-5 border-l-2 border-rovere">
@@ -103,7 +104,8 @@ export default function ChiSiamoPage() {
                   </div>
                   <div className="space-y-4">
                     {[
-                      { year: '1996', event: 'Teatro alla Scala, Milano', detail: 'Posa, restauro e manutenzione del parquet storico' },
+                      { year: '1996', event: 'Inizio carriera nel parquet', detail: 'Bergamo e Lombardia — primi cantieri' },
+                      { year: '2004', event: 'Teatro alla Scala, Milano', detail: 'Team posa e restauro parquet storico' },
                       { year: '2026', event: '10.000+ Progetti Realizzati', detail: 'Ville, hotel, appartamenti, ristoranti' },
                     ].map((item) => (
                       <div key={item.event} className="flex gap-4">

@@ -44,14 +44,18 @@ export function ScalaStory() {
             <FadeIn direction="left" delay={0.2}>
               <div className="space-y-5 mb-10">
                 <p className="font-sans text-[16px] text-white/75 leading-relaxed">
-                  Nel 1996, Arabi Mohamed venne selezionato per il team incaricato
-                  della <strong className="text-white font-semibold">posa, del restauro e della manutenzione
-                  del parquet nel Teatro alla Scala di Milano</strong> — il tempio mondiale
-                  dell'opera e dell'eccellenza italiana.
+                  La carriera di Arabi Mohamed nel parquet inizia nel <strong className="text-white font-semibold">1996</strong>.
+                  Otto anni di cantieri, di studio del legno, di tecnica affinata
+                  metro dopo metro.
                 </p>
                 <p className="font-sans text-[16px] text-white/75 leading-relaxed">
-                  Quella stessa dedizione maniacale all'eccellenza, quella stessa
-                  cura per ogni dettaglio invisibile, oggi è al servizio del tuo progetto.
+                  Nel <strong className="text-white font-semibold">2004</strong> arriva il riconoscimento più importante:
+                  fa parte del <strong className="text-white font-semibold">team selezionato per la posa e il restauro
+                  del parquet al Teatro alla Scala di Milano</strong> — il palcoscenico più famoso al mondo.
+                </p>
+                <p className="font-sans text-[16px] text-white/75 leading-relaxed">
+                  Quella stessa cura per ogni dettaglio, quella stessa dedizione
+                  all'eccellenza, oggi è al servizio del tuo progetto.
                 </p>
               </div>
             </FadeIn>
@@ -114,7 +118,8 @@ export function ScalaStory() {
 
                 <div className="space-y-4">
                   {[
-                    { year: '1996', event: 'Teatro alla Scala, Milano', detail: 'Posa, restauro e manutenzione parquet' },
+                    { year: '1996', event: 'Inizio carriera nel parquet', detail: 'Bergamo e provincia — primi cantieri' },
+                    { year: '2004', event: 'Teatro alla Scala, Milano', detail: 'Team posa e restauro parquet' },
                     { year: '2026', event: '10.000+ progetti completati', detail: 'Ville, hotel, ristoranti, residenze' },
                   ].map((item) => (
                     <div key={item.year} className="flex gap-4 items-start">
@@ -133,7 +138,7 @@ export function ScalaStory() {
               {/* Trust signals row */}
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: '20+', label: 'Anni' },
+                  { value: '30+', label: 'Anni' },
                   { value: '10.000+', label: 'Progetti' },
                   { value: '98%', label: 'Soddisfatti' },
                 ].map((s) => (

@@ -104,7 +104,7 @@ export function HeroSection() {
             {[
               '✓ Sopralluogo gratuito',
               '✓ Preventivo senza impegno',
-              '✓ 20+ anni di esperienza',
+              '✓ 30+ anni di esperienza',
             ].map((item) => (
               <span
                 key={item}
