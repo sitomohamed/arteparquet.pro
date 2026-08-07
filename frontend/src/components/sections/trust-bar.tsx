@@ -8,10 +8,10 @@ import { CountUp } from '@/components/animations/count-up'
 const STATS = [
   {
     icon: Award,
-    value: 20,
+    value: 30,
     suffix: '+',
     label: 'Anni di esperienza',
-    description: 'Dal 2004 al tuo servizio',
+    description: 'Dal 1996 al tuo servizio',
     isNumber: true,
   },
   {
@@ -19,7 +19,7 @@ const STATS = [
     value: null,
     suffix: '',
     label: 'Teatro alla Scala',
-    description: 'Milano, 2004',
+    description: 'Milano, 1996',
     isNumber: false,
     text: 'Teatro alla Scala',
   },

@@ -115,7 +115,7 @@ export function Footer() {
               </span>
               <span>
                 <span className="block font-serif font-semibold text-[18px] text-white leading-tight">Arteparquet.pro</span>
-                <span className="block font-sans text-[11px] text-white/50 tracking-wide leading-tight">Maestri del Parquet dal 2004</span>
+                <span className="block font-sans text-[11px] text-white/50 tracking-wide leading-tight">Maestri del Parquet dal 1996</span>
               </span>
             </Link>
 

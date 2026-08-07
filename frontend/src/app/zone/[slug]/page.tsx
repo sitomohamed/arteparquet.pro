@@ -13,15 +13,11 @@ const CITIES: Record<string, { display: string; region: string; province: string
   como:    { display: 'Como',    region: 'Lombardia', province: 'CO', lat: '45.8085', lng: '9.0851' },
   monza:   { display: 'Monza',   region: 'Lombardia', province: 'MB', lat: '45.5845', lng: '9.2744' },
   varese:  { display: 'Varese',  region: 'Lombardia', province: 'VA', lat: '45.8205', lng: '8.8257' },
-  torino:  { display: 'Torino',  region: 'Piemonte',  province: 'TO', lat: '45.0703', lng: '7.6869' },
-  genova:  { display: 'Genova',  region: 'Liguria',   province: 'GE', lat: '44.4056', lng: '8.9463' },
-  bologna: { display: 'Bologna', region: 'Emilia-Romagna', province: 'BO', lat: '44.4949', lng: '11.3426' },
-  firenze: { display: 'Firenze', region: 'Toscana',   province: 'FI', lat: '43.7696', lng: '11.2558' },
-  roma:    { display: 'Roma',    region: 'Lazio',     province: 'RM', lat: '41.9028', lng: '12.4964' },
-  napoli:  { display: 'Napoli',  region: 'Campania',  province: 'NA', lat: '40.8518', lng: '14.2681' },
-  venezia: { display: 'Venezia', region: 'Veneto',    province: 'VE', lat: '45.4408', lng: '12.3155' },
-  padova:  { display: 'Padova',  region: 'Veneto',    province: 'PD', lat: '45.4064', lng: '11.8768' },
-  verona:  { display: 'Verona',  region: 'Veneto',    province: 'VR', lat: '45.4384', lng: '10.9916' },
+  lecco:   { display: 'Lecco',   region: 'Lombardia', province: 'LC', lat: '45.8566', lng: '9.3976' },
+  lodi:    { display: 'Lodi',    region: 'Lombardia', province: 'LO', lat: '45.3129', lng: '9.5042' },
+  pavia:   { display: 'Pavia',   region: 'Lombardia', province: 'PV', lat: '45.1844', lng: '9.1582' },
+  cremona: { display: 'Cremona', region: 'Lombardia', province: 'CR', lat: '45.1332', lng: '10.0253' },
+  mantova: { display: 'Mantova', region: 'Lombardia', province: 'MN', lat: '45.1564', lng: '10.7914' },
 }
 
 // Normalizza slug: "parquet-milano" → "milano"  |  "posa-parquet-milano" → "milano"
@@ -131,7 +127,7 @@ export default async function ZonePage({
               {h1}
             </h1>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-8">
-              Dal 2004 portiamo l'eccellenza del parquet nella tua casa a {c.display}.
+              Dal 1996 portiamo l'eccellenza del parquet nella tua casa a {c.display}.
               Sopralluogo e preventivo gratuiti. Ex team Teatro alla Scala di Milano.
             </p>
           </FadeIn>
@@ -211,7 +207,7 @@ export default async function ZonePage({
                     {
                       icon: CheckCircle,
                       title: '20+ anni di esperienza',
-                      desc: `Dal 2004 posiamo parquet in tutta Italia, inclusa ${c.display} e la ${c.region}.`,
+                      desc: `Dal 1996 posiamo parquet in tutta Italia, inclusa ${c.display} e la ${c.region}.`,
                     },
                     {
                       icon: Clock,

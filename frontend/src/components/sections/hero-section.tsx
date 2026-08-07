@@ -40,7 +40,7 @@ export function HeroSection() {
           >
             <span className="h-px w-8 bg-rovere" aria-hidden="true" />
             <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere">
-              Teatro alla Scala, Milano — 2004
+              Maestri del Parquet dal 1996
             </span>
           </motion.div>
 

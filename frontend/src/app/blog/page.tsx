@@ -56,7 +56,7 @@ export default function BlogPage() {
             <p className="font-sans text-white/65 max-w-lg leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)' }}
             >
-              Conoscenza gratuita da 20 anni di esperienza nel parquet.
+              Conoscenza gratuita da 30 anni di esperienza nel parquet.
             </p>
           </FadeIn>
         </div>

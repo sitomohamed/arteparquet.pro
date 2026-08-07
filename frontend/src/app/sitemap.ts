@@ -3,9 +3,8 @@ import type { MetadataRoute } from 'next'
 const BASE = 'https://arteparquet.pro'
 
 const CITIES = [
-  'milano', 'roma', 'torino', 'firenze', 'bergamo',
-  'bologna', 'venezia', 'napoli', 'brescia', 'como',
-  'monza', 'varese', 'verona', 'padova', 'genova',
+  'milano', 'bergamo', 'brescia', 'como', 'monza',
+  'varese', 'lecco', 'lodi', 'pavia', 'cremona', 'mantova'
 ]
 
 const SERVICES = [

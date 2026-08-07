@@ -11,9 +11,9 @@ import { CtaSection } from '@/components/sections/cta-section'
 import { FaqSection } from '@/components/sections/faq-section'
 
 export const metadata: Metadata = {
-  title: 'Arteparquet | Posa e Restauro Parquet in Italia — Dal 2004',
+  title: 'Arteparquet | Posa e Restauro Parquet in Italia — Dal 1996',
   description:
-    'Specialisti in posa, restauro e levigatura parquet dal 2004. SPC, PVC, laminati. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia. Sopralluogo e preventivo gratuiti. ☎ 389 240 7827',
+    'Specialisti in posa, restauro e levigatura parquet dal 1996. SPC, PVC, laminati. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia. Sopralluogo e preventivo gratuiti. ☎ 389 240 7827',
   keywords: [
     'posa parquet',
     'restauro parquet',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://arteparquet.pro', languages: { 'it-IT': 'https://arteparquet.pro' } },
   openGraph: {
     title: 'Arteparquet | Maestri del Parquet — Ex Team Teatro alla Scala',
-    description: 'Posa, restauro e parquet premium in tutta Italia. Dal 2004. Preventivo gratuito.',
+    description: 'Posa, restauro e parquet premium in tutta Italia. Dal 1996. Preventivo gratuito.',
     url: 'https://arteparquet.pro',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'it_IT',
@@ -45,13 +45,10 @@ const ZONE_CITIES = [
   { city: 'Brescia', slug: 'parquet-brescia' },
   { city: 'Como',    slug: 'parquet-como' },
   { city: 'Monza',   slug: 'parquet-monza' },
-  { city: 'Torino',  slug: 'parquet-torino' },
-  { city: 'Firenze', slug: 'parquet-firenze' },
-  { city: 'Roma',    slug: 'posa-parquet-roma' },
-  { city: 'Venezia', slug: 'parquet-venezia' },
-  { city: 'Bologna', slug: 'parquet-bologna' },
-  { city: 'Napoli',  slug: 'parquet-napoli' },
-  { city: 'Verona',  slug: 'parquet-verona' },
+  { city: 'Varese',  slug: 'parquet-varese' },
+  { city: 'Lecco',   slug: 'parquet-lecco' },
+  { city: 'Lodi',    slug: 'parquet-lodi' },
+  { city: 'Pavia',   slug: 'parquet-pavia' },
 ]
 
 export default function HomePage() {
@@ -71,10 +68,10 @@ export default function HomePage() {
       <section className="bg-neutral-50 border-t border-neutral-200 py-12">
         <div className="container-wide">
           <h2 className="font-serif text-2xl font-bold text-center mb-2">
-            Posa Parquet in Tutta Italia
+            Posa Parquet in Lombardia
           </h2>
           <p className="text-center text-neutral-500 text-sm mb-8">
-            Operiamo nelle principali città italiane. Sopralluogo gratuito ovunque.
+            Sopralluogo e preventivo gratuito in tutta la regione.
           </p>
           <nav aria-label="Città servite" className="flex flex-wrap justify-center gap-2">
             {ZONE_CITIES.map(({ city, slug }) => (

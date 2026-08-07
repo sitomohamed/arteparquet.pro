@@ -43,7 +43,7 @@ export default function ChiSiamoPage() {
               style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
             >
               Dal palcoscenico del Teatro alla Scala di Milano alla tua casa.
-              Maestri posatori con oltre 20 anni di storia.
+              Maestri posatori con oltre 30 anni di storia.
             </p>
           </FadeIn>
         </div>
@@ -60,7 +60,7 @@ export default function ChiSiamoPage() {
               <h2 className="font-serif font-semibold text-legno-bruciato mb-6 text-balance"
                 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
               >
-                Nel 2004, Teatro alla Scala di Milano.
+                Nel 1996, Teatro alla Scala di Milano.
               </h2>
               <div className="space-y-5 mb-8">
                 <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
@@ -103,7 +103,7 @@ export default function ChiSiamoPage() {
                   </div>
                   <div className="space-y-4">
                     {[
-                      { year: '2004', event: 'Teatro alla Scala, Milano', detail: 'Posa, restauro e manutenzione del parquet storico' },
+                      { year: '1996', event: 'Teatro alla Scala, Milano', detail: 'Posa, restauro e manutenzione del parquet storico' },
                       { year: '2026', event: '10.000+ Progetti Realizzati', detail: 'Ville, hotel, appartamenti, ristoranti' },
                     ].map((item) => (
                       <div key={item.event} className="flex gap-4">
