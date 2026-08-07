@@ -86,7 +86,7 @@ const CATEGORIES = [
         title: 'Posa',
         href: '/servizi/posa',
         desc: 'Posa professionale di ogni tipo di pavimento. Incollato, flottante o chiodato — scegliamo la tecnica giusta per il tuo specifico caso.',
-        badge: 'Dal 2004',
+        badge: 'Dal 1996',
       },
       {
         title: 'Levigatura',
