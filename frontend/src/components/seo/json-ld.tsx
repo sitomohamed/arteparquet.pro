@@ -117,18 +117,26 @@ export function FaqSchema() {
       },
       {
         '@type': 'Question',
-        name: 'Operate in tutta Italia?',
+        name: 'Ogni quanto si leviga il parquet?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Sì, operiamo in tutta Italia. Siamo basati a Bergamo ma eseguiamo interventi dalla Lombardia alla Sicilia, incluse le isole.',
+          text: 'In media ogni 10–15 anni per ambienti residenziali. Il parquet massello si può levigare 4–6 volte nel corso della vita. Prima si interviene, meno materiale si perde.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Che garanzia offrite sulla posa?',
+        name: 'Operate in tutta la Lombardia?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Offriamo garanzia scritta sulla manodopera della posa. In caso di difetti imputabili alla nostra esecuzione, interveniamo gratuitamente.',
+          text: 'Sì, operiamo in tutta la Lombardia: Bergamo, Milano, Brescia, Como, Monza, Varese, Lecco, Lodi, Pavia, Cremona e Mantova. Sopralluogo e preventivo gratuiti ovunque in regione.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Che garanzia offrite sulla posa del parquet?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Offriamo garanzia scritta sulla manodopera della posa. In caso di difetti imputabili alla nostra esecuzione, interveniamo gratuitamente. Per i materiali, la garanzia segue quella del produttore.',
         },
       },
       {
@@ -137,6 +145,22 @@ export function FaqSchema() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Contattateci e concordiamo il giorno. Veniamo da voi, misuriamo lo spazio e ascoltiamo le esigenze. Entro 24 ore dal sopralluogo ricevete il preventivo. Tutto gratuito e senza impegno.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Parquet massello o prefinito: quale è meglio?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Il massello dura tutta la vita (50–100 anni) e si leviga 4–6 volte. Il prefinito è più stabile e si installa più velocemente. Per il massimo del pregio e del valore immobiliare, il massello non ha rivali. Per un ottimo risultato con un approccio più pratico, il prefinito è eccellente.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Il parquet si può installare sul riscaldamento a pavimento?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sì. Il prefinito è la scelta più indicata. Il massello richiede un sistema a bassa temperatura (max 29°C in superficie). Lo SPC è compatibile fino a 28°C. Verifichiamo sempre la compatibilità durante il sopralluogo gratuito.',
         },
       },
     ],

@@ -22,21 +22,39 @@ const FAQS = [
   },
   {
     id: 'q3',
+    question: 'Ogni quanto si leviga il parquet?',
+    answer:
+      'In media ogni 10–15 anni per ambienti residenziali normali. Prima se il pavimento ha molto traffico, animali domestici o graffi profondi. Il parquet massello si può levigare 4–6 volte nel corso della vita, quindi non aver paura di farlo quando è necessario: è la manutenzione più importante che puoi fare per il tuo pavimento.',
+  },
+  {
+    id: 'q4',
     question: 'Che garanzia offrite sulla posa?',
     answer:
       'Offriamo garanzia scritta sulla manodopera della posa. In caso di difetti imputabili alla nostra esecuzione, interveniamo gratuitamente. Per i materiali, la garanzia segue quella del produttore (generalmente 5–25 anni a seconda del prodotto). Utilizziamo solo materiali di prima scelta da fornitori certificati.',
   },
   {
-    id: 'q4',
-    question: 'Operate in tutta Italia?',
+    id: 'q5',
+    question: 'Operate anche fuori dalla Lombardia?',
     answer:
-      'Sì, operiamo in tutta Italia. Siamo basati a Bergamo ma eseguiamo interventi dalla Lombardia alla Sicilia, incluse isole. Per cantieri fuori dalla nostra zona standard, contattaci per un preventivo che includa eventuali costi di trasferta. Molti dei nostri progetti più importanti sono stati realizzati in location da sogno in tutta la penisola.',
+      'Sì, siamo basati a Bergamo ma operiamo in tutta Italia. Molti dei nostri progetti si trovano a Milano, Como, Brescia, Monza, Lecco e nelle province lombarde. Per cantieri fuori regione, contattaci per un preventivo che includa eventuali costi di trasferta.',
   },
   {
-    id: 'q5',
+    id: 'q6',
     question: 'Come funziona il sopralluogo gratuito?',
     answer:
       'Basta contattarci via telefono, WhatsApp o compilando il form. Concordiamo giorno e ora più comodi per te, veniamo a casa tua, misuriamo lo spazio e ascoltiamo le tue esigenze. Entro 24 ore dal sopralluogo ricevi il preventivo dettagliato. Tutto completamente gratuito e senza alcun impegno.',
+  },
+  {
+    id: 'q7',
+    question: 'Il parquet si può installare sul riscaldamento a pavimento?',
+    answer:
+      'Sì, ma dipende dal tipo di parquet e dal sistema di riscaldamento. Il prefinito multistrato è in genere la scelta più indicata per il riscaldamento a pavimento. Il massello richiede un sistema a bassa temperatura (max 29°C in superficie). Lo SPC è compatibile fino a 28°C. Verifichiamo sempre la compatibilità durante il sopralluogo gratuito.',
+  },
+  {
+    id: 'q8',
+    question: 'Parquet massello o prefinito: quale scegliere?',
+    answer:
+      'Il massello dura tutta la vita (50–100 anni), si leviga 4–6 volte, aumenta il valore dell\'immobile. Il prefinito è più stabile agli sbalzi di umidità, si installa più velocemente e costa meno. Se hai un budget flessibile e vuoi il massimo, scegli il massello. Se vuoi un ottimo risultato con un approccio più pratico, il prefinito è una scelta eccellente.',
   },
 ]
 

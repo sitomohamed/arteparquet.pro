@@ -5,20 +5,23 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Blog | Guide e Consigli sul Parquet',
+  title: 'Blog Parquet | Guide e Consigli per il Tuo Pavimento | Arteparquet',
   description:
-    'Articoli, guide e consigli di esperti sul parquet, il restauro, la scelta dei materiali e la cura del pavimento in legno.',
+    'Guide complete sul parquet: come sceglierlo, levigarlo, restaurarlo. Consigli da 30 anni di esperienza nella posa parquet in Lombardia. Aggiornato 2026.',
+  keywords: ['guida parquet', 'consigli parquet', 'blog parquet', 'come scegliere parquet', 'levigatura parquet guida'],
+  alternates: { canonical: 'https://arteparquet.pro/blog' },
 }
 
 const ARTICLES = [
   {
     slug: 'come-scegliere-parquet',
     title: 'Come Scegliere il Parquet Perfetto per la Tua Casa',
-    excerpt: 'Massello, prefinito o multistrato? Rovere, noce o frassino? Una guida completa per orientarsi nel mondo del parquet e scegliere con consapevolezza.',
+    excerpt: 'Massello, prefinito o SPC? Rovere, noce o frassino? Una guida completa per orientarsi nel mondo del parquet e scegliere con consapevolezza.',
     category: 'Guida',
     readTime: '8 min',
     date: 'Luglio 2026',
     image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    featured: true,
   },
   {
     slug: 'restauro-parquet-quando-conviene',
@@ -28,15 +31,47 @@ const ARTICLES = [
     readTime: '6 min',
     date: 'Giugno 2026',
     image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=600&q=80',
+    featured: false,
   },
   {
     slug: 'spc-vs-parquet',
-    title: 'SPC vs Parquet Tradizionale: Quale Scegliere?',
-    excerpt: 'SPC, PVC e laminato stanno conquistando sempre più spazio nelle case italiane. Ma vale davvero la pena sceglierli rispetto al parquet? Confronto onesto.',
+    title: 'SPC vs Parquet Tradizionale: Confronto Onesto 2026',
+    excerpt: 'SPC, PVC e laminato stanno conquistando sempre più spazio. Ma vale davvero la pena rispetto al parquet in legno? Confronto completo e senza filtri.',
     category: 'Confronto',
     readTime: '5 min',
     date: 'Maggio 2026',
     image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80',
+    featured: false,
+  },
+  {
+    slug: 'posa-parquet-spina-di-pesce',
+    title: 'Parquet a Spina di Pesce: Guida Completa alla Posa',
+    excerpt: 'Il pattern più elegante del momento. Cos\'è la spina di pesce, come si differenzia dal chevron, e perché sta conquistando gli interni italiani di design.',
+    category: 'Posa',
+    readTime: '7 min',
+    date: 'Aprile 2026',
+    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    featured: false,
+  },
+  {
+    slug: 'levigatura-parquet-guida',
+    title: 'Levigatura Parquet: La Guida Completa per Rinnovarlo',
+    excerpt: 'Come funziona la levigatura del parquet, quando farla, quale finitura scegliere tra olio e vernice. Tutto quello che devi sapere prima di chiamare un esperto.',
+    category: 'Restauro',
+    readTime: '6 min',
+    date: 'Marzo 2026',
+    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=600&q=80',
+    featured: false,
+  },
+  {
+    slug: 'parquet-massello-guida',
+    title: 'Parquet Massello: Tutto Quello che Devi Sapere',
+    excerpt: 'Il pavimento in legno più pregiato e duraturo. Caratteristiche, essenze, manutenzione e posa spiegati da chi ne posa da 30 anni.',
+    category: 'Materiali',
+    readTime: '7 min',
+    date: 'Febbraio 2026',
+    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    featured: false,
   },
 ]
 

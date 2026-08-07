@@ -13,6 +13,15 @@ const SERVICES = [
   'levigatura', 'restauro', 'riparazioni',
 ]
 
+const BLOG_SLUGS = [
+  'come-scegliere-parquet',
+  'restauro-parquet-quando-conviene',
+  'spc-vs-parquet',
+  'posa-parquet-spina-di-pesce',
+  'levigatura-parquet-guida',
+  'parquet-massello-guida',
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
@@ -52,5 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ])
 
-  return [...staticPages, ...servicePages, ...localPages]
+  // Blog articles
+  const blogPages: MetadataRoute.Sitemap = BLOG_SLUGS.map((slug) => ({
+    url: `${BASE}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
+
+  return [...staticPages, ...servicePages, ...localPages, ...blogPages]
 }
