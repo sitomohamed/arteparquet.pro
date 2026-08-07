@@ -10,9 +10,9 @@ import { cn } from '@/lib/utils'
 const FAQS = [
   {
     id: 'q1',
-    question: 'Quanto costa posare il parquet?',
+    question: 'Quale parquet è più adatto alla mia casa?',
     answer:
-      'Il costo dipende dal tipo di parquet, dalla superficie e dalla complessità della posa. Indicativamente, la posa di parquet massello parte da €35–60/mq, il prefinito da €20–40/mq, e le soluzioni SPC/PVC da €15–30/mq. Includiamo sempre sopralluogo e preventivo gratuiti, così ricevi un prezzo esatto e trasparente per il tuo progetto specifico.',
+      'Dipende dall\'utilizzo, dall\'umidità dell\'ambiente e dal tuo gusto estetico. Il massello è il più duraturo e pregiato, ideale per chi cerca il meglio e vuole un pavimento che duri tutta la vita. Il prefinito è più stabile e si installa rapidamente. Per cucine, bagni o ambienti umidi, SPC o PVC sono impermeabili al 100%. Durante il sopralluogo gratuito valutiamo insieme la soluzione perfetta per il tuo spazio.',
   },
   {
     id: 'q2',

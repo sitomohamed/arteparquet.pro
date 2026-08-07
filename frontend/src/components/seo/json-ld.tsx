@@ -7,11 +7,11 @@ export function LocalBusinessSchema() {
     name: 'Arteparquet',
     alternateName: 'Arteparquet.pro',
     description:
-      'Specialisti in posa, restauro e manutenzione di parquet, SPC, PVC e laminati. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia dal 2004.',
+      'Specialisti in posa, restauro e manutenzione di parquet, SPC, PVC e laminati. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia dal 1996.',
     url: 'https://arteparquet.pro',
     telephone: '+393892407827',
     email: 'info@arteparquet.pro',
-    foundingDate: '2004',
+    foundingDate: '1996',
     priceRange: '€€€',
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
@@ -101,10 +101,10 @@ export function FaqSchema() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Quanto costa posare il parquet?',
+        name: 'Quale parquet è più adatto alla mia casa?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Il costo dipende dal tipo di parquet e dalla superficie. Il parquet massello parte da €35–60/mq di posa, il prefinito da €20–40/mq, le soluzioni SPC/PVC da €15–30/mq. Offriamo sopralluogo e preventivo gratuiti.',
+          text: 'Dipende dall\'utilizzo e dall\'ambiente. Il massello è il più duraturo e pregiato. Il prefinito è stabile e si installa rapidamente. Per ambienti umidi come cucine e bagni, SPC o PVC sono impermeabili al 100%. Durante il sopralluogo gratuito valutiamo insieme la soluzione perfetta.',
         },
       },
       {
