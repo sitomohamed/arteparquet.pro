@@ -17,10 +17,10 @@ const FOOTER_SECTIONS = [
   {
     heading: 'Servizi',
     links: [
-      { label: 'Posa Parquet',          href: '/servizi/posa-parquet' },
-      { label: 'Restauro & Levigatura', href: '/servizi/restauro-levigatura' },
-      { label: 'SPC, PVC & Laminati',   href: '/servizi/spc-pvc-laminati' },
-      { label: 'Scale & Battiscopa',    href: '/servizi/scale-battiscopa' },
+      { label: 'Posa Parquet',          href: '/servizi/posa' },
+      { label: 'Restauro & Levigatura', href: '/servizi/restauro' },
+      { label: 'SPC, PVC & Laminati',   href: '/servizi/spc' },
+      { label: 'Scale & Battiscopa',    href: '/servizi/parquet-tradizionale' },
       { label: 'Sopralluogo Gratuito',  href: '/contatti' },
     ],
   },

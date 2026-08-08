@@ -9,7 +9,7 @@ const SERVICES = [
     title: 'Posa Parquet',
     description:
       'Il pavimento perfetto, posato con precisione millimetrica. Dal massello tradizionale al prefinito: ogni essenza, ogni schema, ogni sogno.',
-    href: '/servizi/posa-parquet',
+    href: '/servizi/posa',
     features: ['Parquet massello', 'Parquet prefinito', 'Scale in legno', 'Battiscopa'],
     accent: 'from-wood-100 to-wood-200',
   },
@@ -18,7 +18,7 @@ const SERVICES = [
     title: 'Restauro & Levigatura',
     description:
       'Il tuo parquet antico merita le mani giuste. Tecniche professionali che restituiscono vita, colore e lucentezza al legno di una volta.',
-    href: '/servizi/restauro-levigatura',
+    href: '/servizi/restauro',
     features: ['Levigatura senza polvere', 'Verniciatura', 'Riparazione listelli', 'Trattamenti'],
     accent: 'from-neutral-50 to-wood-100',
   },
@@ -27,7 +27,7 @@ const SERVICES = [
     title: 'SPC, PVC & Laminati',
     description:
       'Un pavimento pronto da vivere in pochi giorni. Soluzioni moderne, resistenti all\'acqua e all\'usura, con l\'estetica del legno naturale.',
-    href: '/servizi/spc-pvc-laminati',
+    href: '/servizi/spc',
     features: ['SPC impermeabile', 'PVC click', 'Laminato premium', 'Pavimenti flottanti'],
     accent: 'from-wood-100 to-neutral-50',
   },

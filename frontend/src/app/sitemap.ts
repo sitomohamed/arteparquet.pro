@@ -8,9 +8,8 @@ const CITIES = [
 ]
 
 const SERVICES = [
-  'posa-parquet', 'restauro-levigatura', 'spc-pvc-laminati',
-  'scale-battiscopa', 'parquet-massello', 'parquet-prefinito',
-  'levigatura', 'restauro', 'riparazioni',
+  'posa', 'restauro', 'levigatura', 'spc', 'laminato', 'pvc', 'vinilico',
+  'parquet-massello', 'parquet-prefinito', 'parquet-tradizionale', 'riparazioni',
 ]
 
 const BLOG_SLUGS = [
