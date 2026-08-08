@@ -62,6 +62,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'VXC4qkDDPbSXDo2jFxqIWGakDT6muXBAmwprE-wmzLs',
+    other: {
+      'msvalidate.01': '85FD296AB7B9AEA1D22F1006DD8FC4E6',
+    },
   },
   category: 'construction',
 }
