@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/sections/hero-section'
 import { TrustBar } from '@/components/sections/trust-bar'
 import { ServicesSection } from '@/components/sections/services-section'
 import { PortfolioPreview } from '@/components/sections/portfolio-preview'
-import { ScalaStory } from '@/components/sections/scala-story'
+import { HeritageSection } from '@/components/sections/heritage-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { ProcessSection } from '@/components/sections/process-section'
 import { CtaSection } from '@/components/sections/cta-section'
@@ -58,7 +58,7 @@ export default function HomePage() {
       <TrustBar />
       <ServicesSection />
       <PortfolioPreview />
-      <ScalaStory />
+      <HeritageSection />
       <TestimonialsSection />
       <ProcessSection />
       <CtaSection />

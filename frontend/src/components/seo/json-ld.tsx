@@ -17,6 +17,7 @@ export function LocalBusinessSchema() {
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Via Vittorio Alfieri 7',
       addressLocality: 'Bergamo',
       addressRegion: 'Lombardia',
       postalCode: '24100',

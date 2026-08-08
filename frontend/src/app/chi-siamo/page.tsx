@@ -1,20 +1,22 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight, Award, Heart, Shield, Zap } from 'lucide-react'
+import { Award, Heart, Shield, Zap } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
+import { HeritageSection } from '@/components/sections/heritage-section'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: "L'Atelier | Chi Siamo — Dal 1996, Team Scala 2004",
+  title: "Chi Siamo | Artigiani del Parquet dal 1996 — Arteparquet Bergamo",
   description:
-    'La storia di Arteparquet: carriera nel parquet dal 1996. Nel 2004 fa parte del team per il Teatro alla Scala di Milano. 30+ anni di eccellenza nella posa e restauro parquet.',
+    'La storia di Arteparquet: Mohamed Arabi, maestro posatore dal 1996. Nel 2004 parte del team Teatro alla Scala di Milano. Posa, restauro e levigatura parquet in Lombardia.',
+  keywords: ['parquettista Bergamo', 'esperto parquet', 'posatore parquet Bergamo', 'storia Arteparquet'],
+  alternates: { canonical: 'https://arteparquet.pro/chi-siamo' },
 }
 
 const VALUES = [
-  { icon: Award, title: 'Eccellenza', description: 'Solo il meglio, sempre. Ogni progetto riceve la stessa cura del Teatro alla Scala.' },
-  { icon: Shield, title: 'Trasparenza', description: 'Preventivi chiari e dettagliati. Nessuna sorpresa in corso d\'opera. Mai.' },
-  { icon: Heart, title: 'Passione', description: 'Amiamo il legno. È artigianato, non mestiere. Si sente in ogni listello posato.' },
-  { icon: Zap, title: 'Rispetto', description: 'Per il legno, per lo spazio, per te. Pulizia totale del cantiere garantita.' },
+  { icon: Award, title: 'Eccellenza', description: 'Ogni progetto riceve la stessa cura riservata alle opere d\'arte. Non scendi a compromessi sul legno.' },
+  { icon: Shield, title: 'Trasparenza', description: 'Preventivi chiari e dettagliati. Il prezzo concordato è quello finale. Nessuna sorpresa.' },
+  { icon: Heart, title: 'Passione', description: 'Il legno è una vocazione, non un mestiere. Si sente in ogni listello posato con cura.' },
+  { icon: Zap, title: 'Rispetto', description: 'Per il legno, per il tuo spazio, per la tua casa. Cantiere in ordine, sempre.' },
 ]
 
 export default function ChiSiamoPage() {
@@ -31,112 +33,28 @@ export default function ChiSiamoPage() {
         <div className="relative z-10 container-wide">
           <FadeIn direction="up">
             <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere mb-4">
-              L'Atelier
+              Chi Siamo
             </span>
             <h1
-              className="font-serif font-semibold text-white mb-5 text-balance"
+              className="font-serif font-semibold text-white mb-5 text-balance max-w-2xl"
               style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
             >
-              L'Arte del Legno.
+              Una storia artigianale<br />
+              <em className="not-italic text-rovere">costruita dal 1996.</em>
             </h1>
-            <p className="font-sans text-white/65 max-w-xl leading-relaxed"
-              style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
+            <p className="font-sans text-white/60 max-w-xl leading-[1.8]"
+              style={{ fontSize: 'clamp(0.9375rem, 1.4vw, 1.0625rem)' }}
             >
-              Dal palcoscenico del Teatro alla Scala di Milano alla tua casa.
-              Maestri posatori con oltre 30 anni di storia.
+              Mohamed Arabi è un maestro posatore di parquet con quasi trent&apos;anni
+              di esperienza sul campo. Nel 2004 fa parte del team coinvolto nei lavori
+              al Teatro alla Scala di Milano. Oggi è al tuo servizio in Lombardia.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* La Scala story */}
-      <section className="bg-travertino">
-        <div className="container-wide py-24 md:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <FadeIn direction="left">
-              <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere mb-5">
-                La Nostra Storia
-              </span>
-              <h2 className="font-serif font-semibold text-legno-bruciato mb-6 text-balance"
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
-              >
-                Dal 1996 al cuore del legno.
-              </h2>
-              <div className="space-y-5 mb-8">
-                <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  La carriera di Arabi Mohamed inizia nel <strong className="text-legno-bruciato">1996</strong>.
-                  Anno dopo anno, cantiere dopo cantiere, costruisce una competenza profonda sul legno:
-                  le sue essenze, i suoi movimenti, i suoi segreti.
-                </p>
-                <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  Nel <strong className="text-legno-bruciato">2004</strong> arriva il momento più importante:
-                  fa parte del{' '}
-                  <strong className="text-legno-bruciato">team selezionato per la posa e il restauro
-                  del parquet al Teatro alla Scala di Milano</strong> — il palcoscenico più celebre al mondo.
-                  In quei corridoi storici si affina una filosofia: il legno non si posa, si <em>interpreta</em>.
-                </p>
-                <p className="font-sans text-[16px] text-neutral-600 leading-relaxed">
-                  Quella stessa dedizione all'eccellenza, oggi è al servizio del tuo progetto — villa privata,
-                  hotel boutique o appartamento che vuoi rendere straordinario.
-                </p>
-              </div>
-              <blockquote className="pl-5 border-l-2 border-rovere">
-                <p className="font-serif italic text-[18px] text-legno-bruciato leading-relaxed mb-2">
-                  "Ogni listello di legno racconta una storia. Il nostro compito è orchestrare queste
-                  storie in una sinfonia perfetta sotto i tuoi piedi."
-                </p>
-                <footer className="font-sans text-[13px] text-neutral-500">— Arabi Mohamed, Fondatore</footer>
-              </blockquote>
-            </FadeIn>
-
-            <FadeIn direction="right" delay={0.15}>
-              <div className="space-y-4">
-                {/* Credential card */}
-                <div className="rounded-2xl bg-nero-marquina p-8 text-white">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-rovere/20 border border-rovere/40 flex items-center justify-center">
-                      <span className="font-serif font-bold text-rovere text-xl">A</span>
-                    </div>
-                    <div>
-                      <p className="font-sans font-semibold text-white">Arabi Mohamed</p>
-                      <p className="font-sans text-[12px] text-white/50">Maestro Posatore • Fondatore</p>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      { year: '1996', event: 'Inizio carriera nel parquet', detail: 'Bergamo e Lombardia — primi cantieri' },
-                      { year: '2004', event: 'Teatro alla Scala, Milano', detail: 'Team posa e restauro parquet storico' },
-                      { year: '2026', event: '10.000+ Progetti Realizzati', detail: 'Ville, hotel, appartamenti, ristoranti' },
-                    ].map((item) => (
-                      <div key={item.event} className="flex gap-4">
-                        <span className="font-sans text-[12px] font-semibold text-rovere w-10 flex-shrink-0 mt-0.5">{item.year}</span>
-                        <div>
-                          <p className="font-sans text-[14px] font-medium text-white">{item.event}</p>
-                          <p className="font-sans text-[12px] text-white/50">{item.detail}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { value: '20+', label: 'Anni' },
-                    { value: '10.000+', label: 'Progetti' },
-                    { value: '98%', label: 'Soddisfatti' },
-                  ].map((s) => (
-                    <div key={s.label} className="rounded-xl bg-white border border-neutral-200 p-4 text-center">
-                      <p className="font-serif font-semibold text-rovere text-[1.5rem]">{s.value}</p>
-                      <p className="font-sans text-[11px] text-neutral-500">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      {/* Heritage timeline — same premium component as homepage */}
+      <HeritageSection />
 
       {/* Values */}
       <section className="bg-white">
@@ -166,7 +84,6 @@ export default function ChiSiamoPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <CtaSection />
     </>
   )

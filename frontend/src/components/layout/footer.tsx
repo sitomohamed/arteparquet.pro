@@ -141,7 +141,7 @@ export function Footer() {
               <li>
                 <span className="flex items-start gap-2.5 text-[13px] text-white/55">
                   <MapPin size={14} className="text-rovere flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  Bergamo — Operiamo in tutta Italia
+                  Via Vittorio Alfieri 7, Bergamo
                 </span>
               </li>
             </ul>
