@@ -67,57 +67,59 @@ interface ProjectCardProps {
 function ProjectCard({ title, category, location, image, large, index }: ProjectCardProps) {
   return (
     <FadeIn delay={index * 0.08} direction="up" className={large ? 'md:row-span-2' : ''}>
-      <motion.div
-        className="group relative overflow-hidden rounded-2xl cursor-pointer"
-        style={{ height: large ? '100%' : '240px', minHeight: large ? '480px' : '240px' }}
-        whileHover="hover"
-      >
-        {/* Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-          style={{ backgroundImage: `url(${image})` }}
-          role="img"
-          aria-label={title}
-        />
+      <Link href="/portfolio" aria-label={`Vedi progetto: ${title}`} className="block h-full">
+        <motion.div
+          className="group relative overflow-hidden rounded-2xl cursor-pointer h-full"
+          style={{ height: large ? '100%' : '240px', minHeight: large ? '480px' : '240px' }}
+          whileHover="hover"
+        >
+          {/* Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+            style={{ backgroundImage: `url(${image})` }}
+            role="img"
+            aria-label={title}
+          />
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/90 via-nero-marquina/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/90 via-nero-marquina/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
 
-        {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6">
-          <motion.div
-            variants={{
-              hover: { y: 0, opacity: 1 },
-            }}
-            initial={{ y: 0, opacity: 1 }}
-          >
-            <span className="inline-block font-sans text-[11px] font-semibold uppercase tracking-widest text-rovere mb-2">
-              {category}
-            </span>
-            <h3 className="font-serif font-semibold text-white mb-1 leading-tight"
-              style={{ fontSize: large ? '1.5rem' : '1.125rem' }}
+          {/* Content */}
+          <div className="absolute inset-0 flex flex-col justify-end p-6">
+            <motion.div
+              variants={{
+                hover: { y: 0, opacity: 1 },
+              }}
+              initial={{ y: 0, opacity: 1 }}
             >
-              {title}
-            </h3>
-            <div className="flex items-center gap-1 text-white/60">
-              <MapPin size={12} aria-hidden="true" />
-              <span className="font-sans text-[12px]">{location}</span>
-            </div>
-          </motion.div>
+              <span className="inline-block font-sans text-[11px] font-semibold uppercase tracking-widest text-rovere mb-2">
+                {category}
+              </span>
+              <h3 className="font-serif font-semibold text-white mb-1 leading-tight"
+                style={{ fontSize: large ? '1.5rem' : '1.125rem' }}
+              >
+                {title}
+              </h3>
+              <div className="flex items-center gap-1 text-white/60">
+                <MapPin size={12} aria-hidden="true" />
+                <span className="font-sans text-[12px]">{location}</span>
+              </div>
+            </motion.div>
 
-          {/* Hover CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            variants={{ hover: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.2 }}
-            className="mt-4"
-          >
-            <span className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-white/90 hover:text-white">
-              Vedi progetto <ArrowRight size={14} aria-hidden="true" />
-            </span>
-          </motion.div>
-        </div>
-      </motion.div>
+            {/* Hover CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              variants={{ hover: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.2 }}
+              className="mt-4"
+            >
+              <span className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-white/90 group-hover:text-white transition-colors">
+                Vedi progetto <ArrowRight size={14} aria-hidden="true" />
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
+      </Link>
     </FadeIn>
   )
 }

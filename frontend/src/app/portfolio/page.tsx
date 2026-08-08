@@ -48,40 +48,42 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {PROJECTS.map((project, i) => (
               <FadeIn key={project.id} delay={i * 0.06} direction="up" className={project.large ? 'sm:col-span-2 lg:col-span-1' : ''}>
-                <div className="group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100" style={{ aspectRatio: project.large ? '4/3' : '4/3' }}>
-                  {/* Image */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                    role="img"
-                    aria-label={project.title}
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/95 via-nero-marquina/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
-                    <span className="inline-block font-sans text-[10px] font-semibold uppercase tracking-widest text-rovere mb-1.5">
-                      {project.category} • {project.year}
-                    </span>
-                    <h2 className="font-serif font-semibold text-white text-[1.125rem] leading-tight mb-1">
-                      {project.title}
-                    </h2>
-                    <div className="flex items-center gap-1 text-white/50 mb-3">
-                      <MapPin size={11} aria-hidden="true" />
-                      <span className="font-sans text-[11px]">{project.location} — {project.surface}</span>
+                <Link
+                  href="/contatti"
+                  aria-label={`Richiedi un progetto simile a ${project.title}`}
+                  className="block"
+                >
+                  <div className="group relative overflow-hidden rounded-2xl cursor-pointer bg-neutral-100" style={{ aspectRatio: '4/3' }}>
+                    {/* Image */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                      role="img"
+                      aria-label={project.title}
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/95 via-nero-marquina/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Content */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+                      <span className="inline-block font-sans text-[10px] font-semibold uppercase tracking-widest text-rovere mb-1.5">
+                        {project.category} • {project.year}
+                      </span>
+                      <h2 className="font-serif font-semibold text-white text-[1.125rem] leading-tight mb-1">
+                        {project.title}
+                      </h2>
+                      <div className="flex items-center gap-1 text-white/50 mb-3">
+                        <MapPin size={11} aria-hidden="true" />
+                        <span className="font-sans text-[11px]">{project.location} — {project.surface}</span>
+                      </div>
+                      <p className="font-sans text-[12px] text-white/60 mb-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        {project.material}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 group-hover:text-rovere">
+                        Vuoi un risultato simile? <ArrowRight size={13} aria-hidden="true" />
+                      </span>
                     </div>
-                    <p className="font-sans text-[12px] text-white/60 mb-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                      {project.material}
-                    </p>
-                    <Link
-                      href="/contatti"
-                      className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-white opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:text-rovere"
-                      aria-label={`Richiedi un progetto simile a ${project.title}`}
-                    >
-                      Vuoi un risultato simile? <ArrowRight size={13} aria-hidden="true" />
-                    </Link>
                   </div>
-                </div>
+                </Link>
               </FadeIn>
             ))}
           </div>
