@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { playfair, inter } from '@/styles/fonts'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { MobileBottomBar } from '@/components/layout/mobile-bottom-bar'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { LocalBusinessSchema } from '@/components/seo/json-ld'
@@ -79,8 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
+        <MobileBottomBar />
         <WhatsAppButton />
         <CookieConsent />
       </body>

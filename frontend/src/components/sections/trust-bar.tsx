@@ -8,38 +8,31 @@ import { CountUp } from '@/components/animations/count-up'
 const STATS = [
   {
     icon: Award,
+    type: 'number' as const,
     value: 30,
     suffix: '+',
     label: 'Anni di esperienza',
-    description: 'Dal 1996 al tuo servizio',
-    isNumber: true,
+    description: 'Nel settore parquet dal 1996',
   },
   {
     icon: Building2,
-    value: null,
-    suffix: '',
-    label: 'Teatro alla Scala',
-    description: 'Milano, 2004 — in team',
-    isNumber: false,
+    type: 'text' as const,
     text: 'Teatro alla Scala',
+    label: 'Progetto di riferimento',
+    description: 'Milano, 2004 — collaborazione in team',
   },
   {
     icon: MapPin,
-    value: null,
-    suffix: '',
-    label: 'Tutta Italia',
-    description: 'Nord, Centro e Sud',
-    isNumber: false,
-    text: 'Tutta Italia',
+    type: 'text' as const,
+    text: 'Lombardia',
+    label: 'Zona principale',
+    description: 'Bergamo, Milano e province',
   },
   {
     icon: Star,
-    value: 49,
-    suffix: '/5',
+    type: 'rating' as const,
     label: 'Recensioni Google',
-    description: '100+ clienti soddisfatti',
-    isNumber: true,
-    decimal: true,
+    description: 'Clienti soddisfatti',
   },
 ]
 
@@ -47,7 +40,7 @@ export function TrustBar() {
   return (
     <section
       className="bg-white border-b border-neutral-100"
-      aria-label="Numeri e credenziali"
+      aria-label="Credenziali e numeri"
     >
       <div className="container-wide py-12 md:py-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
@@ -68,19 +61,21 @@ export function TrustBar() {
                     />
                   </div>
 
-                  <div className="font-serif font-semibold text-legno-bruciato leading-tight mb-1"
+                  <div
+                    className="font-serif font-semibold text-legno-bruciato leading-tight mb-1"
                     style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
                   >
-                    {stat.isNumber ? (
-                      stat.decimal ? (
-                        <span>
-                          <CountUp value={stat.value!} /> /5
-                        </span>
-                      ) : (
-                        <CountUp value={stat.value!} suffix={stat.suffix} />
-                      )
-                    ) : (
-                      <span className="text-[1.25rem] md:text-[1.5rem]">{stat.text}</span>
+                    {stat.type === 'number' && (
+                      <CountUp value={stat.value} suffix={stat.suffix} />
+                    )}
+                    {stat.type === 'text' && (
+                      <span className="text-[1.15rem] md:text-[1.35rem]">{stat.text}</span>
+                    )}
+                    {stat.type === 'rating' && (
+                      <span className="flex items-center justify-center gap-1">
+                        <span>4,9</span>
+                        <span className="text-[1rem] text-neutral-400 font-sans font-normal">/5</span>
+                      </span>
                     )}
                   </div>
 
