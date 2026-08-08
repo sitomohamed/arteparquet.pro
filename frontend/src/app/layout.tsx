@@ -40,7 +40,6 @@ export const metadata: Metadata = {
   creator: 'Arteparquet di Arabi Mohamed',
   publisher: 'Arteparquet',
   metadataBase: new URL('https://arteparquet.pro'),
-  alternates: { canonical: 'https://arteparquet.pro', languages: { 'it-IT': 'https://arteparquet.pro' } },
   openGraph: {
     title: 'Arteparquet | Maestri del Parquet in Italia dal 1996',
     description: 'Posa, restauro e soluzioni parquet premium in tutta Italia. Ex team Teatro alla Scala. Preventivo gratuito.',

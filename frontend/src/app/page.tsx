@@ -1,17 +1,21 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { HeroSection } from '@/components/sections/hero-section'
+import { WhatsAppStrip } from '@/components/sections/whatsapp-strip'
 import { TrustBar } from '@/components/sections/trust-bar'
 import { ServicesSection } from '@/components/sections/services-section'
 import { PortfolioPreview } from '@/components/sections/portfolio-preview'
 import { HeritageSection } from '@/components/sections/heritage-section'
+import { WhyUsSection } from '@/components/sections/why-us-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { ProcessSection } from '@/components/sections/process-section'
 import { CtaSection } from '@/components/sections/cta-section'
 import { FaqSection } from '@/components/sections/faq-section'
 
 export const metadata: Metadata = {
-  title: 'Parquettista Bergamo e Milano | Posa Restauro Levigatura Parquet dal 1996 — Arteparquet',
+  title: {
+    absolute: 'Parquettista Bergamo e Milano | Posa Restauro Levigatura Parquet dal 1996 | Arteparquet',
+  },
   description:
     'Parquettista a Bergamo, Milano e in tutta la Lombardia dal 1996. Posa, restauro e levigatura parquet. Sopralluogo gratuito. Preventivo senza impegno. ☎ 389 240 7827 — risposta in 5 minuti.',
   keywords: [
@@ -32,9 +36,9 @@ export const metadata: Metadata = {
     'riparazione parquet rovinato',
     'parquet spina di pesce Bergamo',
   ],
-  alternates: { canonical: 'https://arteparquet.pro', languages: { 'it-IT': 'https://arteparquet.pro' } },
+  alternates: { canonical: 'https://arteparquet.pro' },
   openGraph: {
-    title: 'Parquettista Bergamo e Milano — Arteparquet dal 1996',
+    title: 'Parquettista Bergamo e Milano | Arteparquet dal 1996',
     description: 'Posa, restauro e levigatura parquet a Bergamo, Milano e Lombardia. 30 anni di esperienza. Sopralluogo gratuito.',
     url: 'https://arteparquet.pro',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
@@ -59,10 +63,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <WhatsAppStrip />
       <TrustBar />
       <ServicesSection />
       <PortfolioPreview />
       <HeritageSection />
+      <WhyUsSection />
       <TestimonialsSection />
       <ProcessSection />
       <CtaSection />

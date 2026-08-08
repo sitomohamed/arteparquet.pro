@@ -5,9 +5,10 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { FaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'FAQ | Domande Frequenti sul Parquet',
+  title: 'FAQ | Domande Frequenti su Posa e Restauro Parquet',
   description:
-    'Risposte alle domande più comuni: costi, tempi, garanzie, zone di intervento, restauro parquet. Tutto quello che devi sapere su Arteparquet.',
+    'Risposte alle domande più comuni su posa, levigatura e restauro parquet: costi, tempi, garanzie, zone di intervento. Arteparquet Bergamo, risponde Mohamed Arabi.',
+  alternates: { canonical: 'https://arteparquet.pro/faq' },
 }
 
 export default function FaqPage() {

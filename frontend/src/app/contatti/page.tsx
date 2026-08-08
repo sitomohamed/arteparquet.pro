@@ -4,9 +4,10 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Contatti | Richiedi Preventivo Gratuito',
+  title: 'Contatti | Sopralluogo e Preventivo Gratuito Parquet',
   description:
-    'Richiedi un sopralluogo e preventivo gratuiti. Specialisti in posa e restauro parquet in tutta Italia. Rispondiamo entro 24 ore.',
+    'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Rispondiamo entro 5 minuti su WhatsApp. ☎ +39 389 240 7827.',
+  alternates: { canonical: 'https://arteparquet.pro/contatti' },
 }
 
 const PHONE = '+39 389 240 7827'

@@ -5,9 +5,11 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Blog Parquet | Guide e Consigli per il Tuo Pavimento | Arteparquet',
+  title: {
+    absolute: 'Blog Parquet | Guide e Consigli di Mohamed Arabi | Arteparquet',
+  },
   description:
-    'Guide complete sul parquet: come sceglierlo, levigarlo, restaurarlo. Consigli da 30 anni di esperienza nella posa parquet in Lombardia. Aggiornato 2026.',
+    'Guide complete sul parquet firmate da Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. 30 anni di esperienza nella posa parquet in Lombardia. Aggiornato 2026.',
   keywords: ['guida parquet', 'consigli parquet', 'blog parquet', 'come scegliere parquet', 'levigatura parquet guida'],
   alternates: { canonical: 'https://arteparquet.pro/blog' },
 }

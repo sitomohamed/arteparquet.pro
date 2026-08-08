@@ -5,9 +5,10 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Portfolio | I Nostri Lavori — Ville, Hotel, Residenze',
+  title: 'Portfolio Lavori Parquet | Posa e Restauro a Bergamo e Milano',
   description:
-    'Galleria dei nostri progetti: ville private, hotel di lusso, appartamenti, ristoranti. Posa e restauro parquet in tutta Italia. Scopri le nostre realizzazioni.',
+    'Galleria dei lavori Arteparquet: posa spina di pesce, levigatura, intarsi, restauro parquet a Bergamo e in Lombardia. Fotografie autentiche di cantieri reali.',
+  alternates: { canonical: 'https://arteparquet.pro/portfolio' },
 }
 
 const PROJECTS = [
