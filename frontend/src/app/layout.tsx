@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   verification: {
-    google: 'GOOGLE_SEARCH_CONSOLE_CODE',   // sostituisci con il tuo codice
+    google: 'VXC4qkDDPbSXDo2jFxqIWGakDT6muXBAmwprE-wmzLs',
   },
   category: 'construction',
 }
