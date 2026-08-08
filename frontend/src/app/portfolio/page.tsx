@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 }
 
 const PROJECTS = [
-  { id: 1, title: 'Parquet a Spina di Pesce — Rovere', category: 'Posa Parquet', location: 'Bergamo', surface: '85 mq', material: 'Parquet massello rovere — posa a spina di pesce', year: '2026', image: '/portfolio/parquet-spina-pesce-01.jpg', large: true },
-  { id: 2, title: 'Levigatura e Verniciatura', category: 'Restauro & Levigatura', location: 'Lombardia', surface: '60 mq', material: 'Levigatura e rifinitura parquet esistente', year: '2026', image: '/portfolio/levigatura-parquet-01.jpg', large: false },
-  { id: 3, title: 'Posa Parquet Camera da Letto', category: 'Posa Parquet', location: 'Bergamo', surface: '30 mq', material: 'Parquet prefinito rovere naturale', year: '2026', image: '/portfolio/posa-parquet-camera-01.jpg', large: false },
-  { id: 4, title: 'Parquet Merbau — Finitura Lucida', category: 'Posa Parquet', location: 'Lombardia', surface: '110 mq', material: 'Parquet merbau con finitura lucida a olio — salone', year: '2025', image: '/portfolio/parquet-rovere-01.jpg', large: false },
-  { id: 5, title: 'Intarsio a Stella — Lavoro Artigianale', category: 'Lavorazione Speciale', location: 'Bergamo', surface: 'Decorazione', material: 'Intarsio geometrico a stella su parquet massello', year: '2025', image: '/portfolio/intarsio-stella-01.jpg', large: false },
-  { id: 6, title: 'Posa Parquet Mansarda', category: 'Posa Parquet', location: 'Bergamo', surface: '40 mq', material: 'Posa e levigatura parquet rovere chiaro in mansarda', year: '2025', image: '/portfolio/spina-pesce-camino-01.jpg', large: false },
+  { id: 1, title: 'Parquet a Spina di Pesce — Rovere', category: 'Posa Parquet', location: 'Bergamo', surface: '85 mq', material: 'Parquet massello rovere — posa a spina di pesce con finitura lucida', year: '2026', image: '/portfolio/parquet-spina-pesce-01.jpg', large: true },
+  { id: 2, title: 'Levigatura Professionale — Parquet Esistente', category: 'Restauro & Levigatura', location: 'Lombardia', surface: '60 mq', material: 'Levigatura, carteggiatura e rifinitura su parquet esistente', year: '2026', image: '/portfolio/levigatura-parquet-01.jpg', large: false },
+  { id: 3, title: 'Posa Parquet Iroko — Camera da Letto', category: 'Posa Parquet', location: 'Bergamo', surface: '30 mq', material: 'Parquet iroko posa dritta — camera da letto residenziale', year: '2026', image: '/portfolio/posa-parquet-camera-01.jpg', large: false },
+  { id: 4, title: 'Parquet Merbau — Finitura Lucida', category: 'Posa Parquet', location: 'Lombardia', surface: '110 mq', material: 'Parquet merbau con finitura lucida a olio — salone principale', year: '2025', image: '/portfolio/parquet-rovere-01.jpg', large: false },
+  { id: 5, title: 'Intarsio a Stella — Lavoro Artigianale', category: 'Lavorazione Speciale', location: 'Bergamo', surface: 'Decorazione', material: 'Intarsio geometrico a stella su parquet massello scuro', year: '2025', image: '/portfolio/intarsio-stella-01.jpg', large: false },
+  { id: 6, title: 'Posa Parquet Mansarda — Rovere Naturale', category: 'Posa Parquet', location: 'Bergamo', surface: '40 mq', material: 'Parquet prefinito rovere naturale — posa dritta in mansarda', year: '2025', image: '/portfolio/spina-pesce-camino-01.jpg', large: false },
 ]
 
 export default function PortfolioPage() {
