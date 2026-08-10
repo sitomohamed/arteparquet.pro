@@ -6,56 +6,35 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
 import { cn } from '@/lib/utils'
 
+const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo'
+
 const TESTIMONIALS = [
   {
     id: 1,
     quote:
-      'Lavoro impeccabile, hanno superato ogni mia aspettativa. Il parquet in rovere massello è bellissimo, posato con una cura maniacale per i dettagli. Arabi è un vero maestro del suo mestiere.',
-    author: 'Marco B.',
-    role: 'Architetto',
-    location: 'Milano',
+      'Arabi Mohamed ha rimesso a nuovo dei parquet disastrati. È stato veloce, molto disponibile, puntuale e professionale. Siamo entusiasti!',
+    author: 'Maria Goisis',
+    source: 'Recensione Google',
+    when: '3 anni fa',
     rating: 5,
-    project: 'Villa privata — 280 mq',
   },
   {
     id: 2,
     quote:
-      'Ho scelto Arteparquet per il restauro del mio parquet di fine \'800. Il risultato è straordinario: sembra nuovo ma ha mantenuto tutta la sua anima. Consigliatissimi.',
-    author: 'Giulia R.',
-    role: 'Proprietaria',
-    location: 'Bergamo',
+      'La postura del laminato è stata eccellente. Artigiano puntuale, preciso, abile ed affidabile. Sicuramente invito chi ne abbia bisogno a contattarlo.',
+    author: 'Silvia Ricci',
+    source: 'Recensione Google',
+    when: '3 anni fa',
     rating: 5,
-    project: 'Restauro parquet storico',
   },
   {
     id: 3,
     quote:
-      'Professionalità e puntualità eccezionali. Hanno gestito un intervento complesso su 400 mq del nostro hotel con zero problemi. Il risultato è di livello altissimo.',
-    author: 'Francesco M.',
-    role: 'General Manager',
-    location: 'Bergamo Alta',
+      'Siamo estremamente soddisfatti sia per la qualità del lavoro che per la totale disponibilità a venire incontro ai nostri imprevisti. Consigliatissimo',
+    author: 'Laura Bellentani',
+    source: 'Recensione Google',
+    when: '2 anni fa',
     rating: 5,
-    project: 'Hotel Boutique — 400 mq',
-  },
-  {
-    id: 4,
-    quote:
-      'Preventivo trasparente, rispetto dei tempi, pulizia del cantiere e risultato finale da sogno. Cosa si può chiedere di più? Non esitate a contattarli.',
-    author: 'Laura e Andrea T.',
-    role: 'Famiglia',
-    location: 'Brescia',
-    rating: 5,
-    project: 'Appartamento nuovo — 150 mq',
-  },
-  {
-    id: 5,
-    quote:
-      'Ho lavorato con molti posatori negli anni come interior designer. Arteparquet è in un\'altra categoria: la qualità dell\'esecuzione è paragonabile ai migliori artigiani europei.',
-    author: 'Sofia C.',
-    role: 'Interior Designer',
-    location: 'Como',
-    rating: 5,
-    project: 'Villa design — 320 mq',
   },
 ]
 
@@ -104,18 +83,17 @@ export function TestimonialsSection() {
       <div className="container-wide py-24 md:py-32">
         <FadeIn direction="up" className="text-center mb-16">
           <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere mb-4">
-            Dicono di Noi
+            Recensioni Google
           </span>
           <h2
             id="testimonials-heading"
             className="font-serif font-semibold text-legno-bruciato"
             style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            La soddisfazione dei nostri clienti.
+            Cosa dicono i clienti.
           </h2>
         </FadeIn>
 
-        {/* Carousel */}
         <div className="max-w-3xl mx-auto">
           <div className="relative">
             <AnimatePresence mode="wait">
@@ -127,7 +105,6 @@ export function TestimonialsSection() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-100"
               >
-                {/* Quote icon */}
                 <Quote
                   size={32}
                   className="text-rovere/30 mb-6"
@@ -137,10 +114,11 @@ export function TestimonialsSection() {
                 <StarRating rating={t.rating} />
 
                 <blockquote className="mt-5 mb-8">
-                  <p className="font-serif italic text-legno-bruciato leading-relaxed"
+                  <p
+                    className="font-serif italic text-legno-bruciato leading-relaxed"
                     style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)' }}
                   >
-                    "{t.quote}"
+                    &ldquo;{t.quote}&rdquo;
                   </p>
                 </blockquote>
 
@@ -156,36 +134,39 @@ export function TestimonialsSection() {
                         {t.author}
                       </p>
                       <p className="font-sans text-[12px] text-neutral-500">
-                        {t.role} • {t.location}
+                        {t.source} · {t.when}
                       </p>
                     </div>
                   </div>
-                  <span className="font-sans text-[12px] text-neutral-400 bg-neutral-50 px-3 py-1 rounded-full">
-                    {t.project}
-                  </span>
+                  <a
+                    href={GOOGLE_REVIEWS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-[12px] text-rovere hover:text-wood-600 underline underline-offset-2 transition-colors"
+                  >
+                    Vedi su Google
+                  </a>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation arrows */}
             <div className="flex items-center justify-between mt-8">
               <button
                 onClick={prev}
-                aria-label="Testimonianza precedente"
+                aria-label="Recensione precedente"
                 className="w-11 h-11 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-rovere hover:text-rovere hover:bg-wood-50 transition-all duration-200 flex items-center justify-center"
               >
                 <ChevronLeft size={20} aria-hidden="true" />
               </button>
 
-              {/* Dots */}
-              <div className="flex gap-2" role="tablist" aria-label="Testimonianze">
+              <div className="flex gap-2" role="tablist" aria-label="Recensioni">
                 {TESTIMONIALS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
                     role="tab"
                     aria-selected={i === current}
-                    aria-label={`Testimonianza ${i + 1}`}
+                    aria-label={`Recensione ${i + 1}`}
                     className={cn(
                       'h-2 rounded-full transition-all duration-300',
                       i === current
@@ -198,7 +179,7 @@ export function TestimonialsSection() {
 
               <button
                 onClick={next}
-                aria-label="Testimonianza successiva"
+                aria-label="Recensione successiva"
                 className="w-11 h-11 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:border-rovere hover:text-rovere hover:bg-wood-50 transition-all duration-200 flex items-center justify-center"
               >
                 <ChevronRight size={20} aria-hidden="true" />
@@ -206,17 +187,23 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Google rating badge */}
           <FadeIn direction="up" delay={0.2} className="text-center mt-10">
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-neutral-100 shadow-sm">
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-neutral-100 shadow-sm hover:border-rovere/40 transition-colors"
+            >
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={14} className="fill-[#FBBC05] text-[#FBBC05]" aria-hidden="true" />
                 ))}
               </div>
-              <span className="font-sans text-[13px] font-semibold text-legno-bruciato">4.9/5</span>
-              <span className="font-sans text-[12px] text-neutral-400">su Google Reviews</span>
-            </div>
+              <span className="font-sans text-[13px] font-semibold text-legno-bruciato">
+                Recensioni Google
+              </span>
+              <span className="font-sans text-[12px] text-neutral-400">verificabili</span>
+            </a>
           </FadeIn>
         </div>
       </div>
