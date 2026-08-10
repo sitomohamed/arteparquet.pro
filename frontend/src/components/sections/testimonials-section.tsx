@@ -15,7 +15,6 @@ const TESTIMONIALS = [
       'Arabi Mohamed ha rimesso a nuovo dei parquet disastrati. È stato veloce, molto disponibile, puntuale e professionale. Siamo entusiasti!',
     author: 'Maria Goisis',
     source: 'Recensione Google',
-    when: '3 anni fa',
     rating: 5,
   },
   {
@@ -24,7 +23,6 @@ const TESTIMONIALS = [
       'La postura del laminato è stata eccellente. Artigiano puntuale, preciso, abile ed affidabile. Sicuramente invito chi ne abbia bisogno a contattarlo.',
     author: 'Silvia Ricci',
     source: 'Recensione Google',
-    when: '3 anni fa',
     rating: 5,
   },
   {
@@ -33,7 +31,6 @@ const TESTIMONIALS = [
       'Siamo estremamente soddisfatti sia per la qualità del lavoro che per la totale disponibilità a venire incontro ai nostri imprevisti. Consigliatissimo',
     author: 'Laura Bellentani',
     source: 'Recensione Google',
-    when: '2 anni fa',
     rating: 5,
   },
 ]
@@ -134,7 +131,7 @@ export function TestimonialsSection() {
                         {t.author}
                       </p>
                       <p className="font-sans text-[12px] text-neutral-500">
-                        {t.source} · {t.when}
+                        {t.source}
                       </p>
                     </div>
                   </div>
