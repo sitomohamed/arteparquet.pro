@@ -100,11 +100,11 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-neutral-100"
+                className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_8px_40px_rgba(0,0,0,0.07)] border border-neutral-100/80"
               >
                 <Quote
-                  size={32}
-                  className="text-rovere/30 mb-6"
+                  size={28}
+                  className="text-rovere/25 mb-6"
                   aria-hidden="true"
                 />
 
@@ -165,10 +165,10 @@ export function TestimonialsSection() {
                     aria-selected={i === current}
                     aria-label={`Recensione ${i + 1}`}
                     className={cn(
-                      'h-2 rounded-full transition-all duration-300',
+                      'rounded-full transition-all duration-300',
                       i === current
-                        ? 'w-6 bg-rovere'
-                        : 'w-2 bg-neutral-300 hover:bg-neutral-400'
+                        ? 'w-6 h-2 bg-rovere'
+                        : 'w-2 h-2 bg-neutral-200 hover:bg-neutral-400'
                     )}
                   />
                 ))}
@@ -189,7 +189,7 @@ export function TestimonialsSection() {
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-neutral-100 shadow-sm hover:border-rovere/40 transition-colors"
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white border border-neutral-100 shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:border-rovere/40 hover:shadow-[0_4px_20px_rgba(0,0,0,0.10)] transition-all duration-300"
             >
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (

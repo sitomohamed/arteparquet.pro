@@ -391,7 +391,7 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
 
             {/* Right: CTA card */}
             <FadeIn direction="up" delay={0.15}>
-              <div className="bg-nero-marquina rounded-2xl p-8 md:p-10 text-white">
+              <div className="bg-nero-marquina rounded-2xl p-8 md:p-10 text-white shadow-[0_24px_60px_rgba(0,0,0,0.15)]">
                 <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere mb-4">
                   Arteparquet dal 1996
                 </span>
@@ -447,11 +447,11 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
           <div className="max-w-3xl mx-auto space-y-5">
             {service.faq.map((item, i) => (
               <FadeIn key={i} direction="up" delay={i * 0.08}>
-                <div className="rounded-2xl border border-neutral-100 bg-travertino/50 p-6 md:p-7">
-                  <h3 className="font-sans font-semibold text-legno-bruciato text-[15px] mb-3">
+                <div className="rounded-2xl border border-neutral-100 bg-white p-6 md:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-shadow duration-300">
+                  <h3 className="font-sans font-semibold text-legno-bruciato text-[15px] mb-3 leading-snug">
                     {item.q}
                   </h3>
-                  <p className="font-sans text-[14px] text-neutral-600 leading-relaxed">
+                  <p className="font-sans text-[14px] text-neutral-500 leading-[1.75]">
                     {item.a}
                   </p>
                 </div>

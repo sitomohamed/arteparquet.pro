@@ -81,15 +81,15 @@ export function WhyUsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {REASONS.map(({ icon: Icon, title, body }, i) => (
             <FadeIn key={title} direction="up" delay={i * 0.07}>
-              <div className="bg-white rounded-2xl border border-neutral-200 p-7 h-full flex flex-col gap-4 hover:border-rovere/30 hover:shadow-sm transition-all duration-300">
-                <div className="w-10 h-10 rounded-xl bg-wood-100 flex items-center justify-center flex-shrink-0">
-                  <Icon size={20} className="text-rovere" aria-hidden="true" />
+              <div className="bg-white rounded-2xl border border-neutral-150 p-7 h-full flex flex-col gap-4 hover:border-rovere/25 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] transition-all duration-400 hover:-translate-y-0.5">
+                <div className="w-10 h-10 rounded-2xl bg-wood-50 ring-1 ring-wood-100 flex items-center justify-center flex-shrink-0">
+                  <Icon size={18} className="text-rovere" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-sans font-semibold text-legno-bruciato text-[15px] mb-2">
+                  <h3 className="font-sans font-semibold text-legno-bruciato text-[14.5px] mb-2 leading-snug">
                     {title}
                   </h3>
-                  <p className="font-sans text-[13.5px] text-neutral-600 leading-relaxed">
+                  <p className="font-sans text-[13px] text-neutral-500 leading-[1.7]">
                     {body}
                   </p>
                 </div>

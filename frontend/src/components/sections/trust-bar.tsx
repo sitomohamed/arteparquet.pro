@@ -53,9 +53,9 @@ export function TrustBar() {
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="mb-4 w-12 h-12 rounded-xl bg-wood-100 flex items-center justify-center group-hover:bg-rovere transition-colors duration-300">
+                  <div className="mb-4 w-12 h-12 rounded-2xl bg-wood-50 ring-1 ring-wood-200/70 flex items-center justify-center group-hover:bg-rovere group-hover:ring-rovere/20 transition-all duration-300">
                     <Icon
-                      size={22}
+                      size={20}
                       className="text-rovere group-hover:text-white transition-colors duration-300"
                       aria-hidden="true"
                     />

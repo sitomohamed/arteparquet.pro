@@ -71,8 +71,10 @@ function FaqItem({ id, question, answer, isOpen, onToggle, index }: FaqItemProps
   return (
     <FadeIn delay={index * 0.07} direction="up">
       <div className={cn(
-        'border rounded-xl overflow-hidden transition-all duration-200',
-        isOpen ? 'border-rovere/40 bg-white shadow-sm' : 'border-neutral-200 bg-white hover:border-neutral-300'
+        'border rounded-xl overflow-hidden transition-all duration-300',
+        isOpen
+          ? 'border-rovere/35 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
+          : 'border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-[0_2px_12px_rgba(0,0,0,0.04)]'
       )}>
         <button
           id={`faq-btn-${id}`}
@@ -81,13 +83,13 @@ function FaqItem({ id, question, answer, isOpen, onToggle, index }: FaqItemProps
           onClick={onToggle}
           className="w-full flex items-center justify-between gap-4 p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rovere focus-visible:ring-inset"
         >
-          <span className="font-sans text-[15px] md:text-[16px] font-semibold text-legno-bruciato leading-snug">
+          <span className="font-sans text-[15px] md:text-[15.5px] font-semibold text-legno-bruciato leading-snug">
             {question}
           </span>
           <span
             className={cn(
-              'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200',
-              isOpen ? 'bg-rovere text-white' : 'bg-neutral-100 text-neutral-600'
+              'flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300',
+              isOpen ? 'bg-rovere text-white shadow-sm shadow-rovere/30' : 'bg-neutral-100 text-neutral-500'
             )}
             aria-hidden="true"
           >
@@ -109,7 +111,7 @@ function FaqItem({ id, question, answer, isOpen, onToggle, index }: FaqItemProps
             >
               <div className="px-6 pb-6">
                 <div className="h-px bg-neutral-100 mb-5" aria-hidden="true" />
-                <p className="font-sans text-[14px] md:text-[15px] text-neutral-600 leading-relaxed">
+                <p className="font-sans text-[14px] md:text-[14.5px] text-neutral-600 leading-[1.75]">
                   {answer}
                 </p>
               </div>

@@ -60,8 +60,8 @@ export default function ContattiPage() {
                     className="flex items-start gap-4 group"
                     aria-label={`Chiama ${PHONE}`}
                   >
-                    <div className="w-11 h-11 rounded-xl bg-wood-100 group-hover:bg-rovere flex items-center justify-center transition-colors flex-shrink-0">
-                      <Phone size={18} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-2xl bg-wood-50 ring-1 ring-wood-100 group-hover:bg-rovere group-hover:ring-rovere/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                      <Phone size={17} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Telefono</p>
@@ -75,8 +75,8 @@ export default function ContattiPage() {
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 group"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-[#25D366]/10 group-hover:bg-[#25D366] flex items-center justify-center transition-colors flex-shrink-0">
-                      <MessageCircle size={18} className="text-[#25D366] group-hover:text-white transition-colors" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-2xl bg-[#25D366]/10 ring-1 ring-[#25D366]/20 group-hover:bg-[#25D366] group-hover:ring-[#25D366]/30 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                      <MessageCircle size={17} className="text-[#25D366] group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">WhatsApp</p>
@@ -88,8 +88,8 @@ export default function ContattiPage() {
                     href={`mailto:${EMAIL}`}
                     className="flex items-start gap-4 group"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-wood-100 group-hover:bg-rovere flex items-center justify-center transition-colors flex-shrink-0">
-                      <Mail size={18} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-2xl bg-wood-50 ring-1 ring-wood-100 group-hover:bg-rovere group-hover:ring-rovere/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                      <Mail size={17} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Email</p>
@@ -104,8 +104,8 @@ export default function ContattiPage() {
                     className="flex items-start gap-4 group"
                     aria-label="Apri su Google Maps"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-wood-100 group-hover:bg-rovere flex items-center justify-center transition-colors flex-shrink-0">
-                      <MapPin size={18} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-2xl bg-wood-50 ring-1 ring-wood-100 group-hover:bg-rovere group-hover:ring-rovere/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                      <MapPin size={17} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Sede</p>
@@ -116,7 +116,7 @@ export default function ContattiPage() {
                 </div>
 
                 {/* Hours */}
-                <div className="rounded-2xl bg-white border border-neutral-200 p-6 mb-8">
+                <div className="rounded-2xl bg-white border border-neutral-100 shadow-[0_2px_12px_rgba(0,0,0,0.05)] p-6 mb-8">
                   <div className="flex items-center gap-2 mb-4">
                     <Clock size={16} className="text-rovere" aria-hidden="true" />
                     <span className="font-sans text-[13px] font-semibold uppercase tracking-wider text-neutral-500">Orari</span>
@@ -162,7 +162,7 @@ export default function ContattiPage() {
             {/* Right — form */}
             <div className="lg:col-span-3">
               <FadeIn direction="right">
-                <div className="bg-white rounded-3xl border border-neutral-200 p-8 md:p-10 shadow-sm">
+                <div className="bg-white rounded-3xl border border-neutral-100 p-8 md:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.07)]">
                   <h2 className="font-serif font-semibold text-legno-bruciato text-[1.5rem] mb-2">
                     Richiedi Preventivo Gratuito
                   </h2>

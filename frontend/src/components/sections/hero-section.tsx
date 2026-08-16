@@ -33,8 +33,8 @@ export function HeroSection() {
       />
 
       {/* Gradient overlay: sinistra più scura per leggibilità testo */}
-      <div className="absolute inset-0 bg-gradient-to-r from-nero-marquina/95 via-nero-marquina/85 to-nero-marquina/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-nero-marquina/97 via-nero-marquina/85 to-nero-marquina/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/70 via-transparent to-nero-marquina/20" />
 
       {/* ── Contenuto principale ── */}
       <div className="relative z-10 container-wide py-28 md:py-44">
@@ -116,11 +116,11 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.52, ease: EASE }}
-            className="flex flex-wrap gap-x-5 gap-y-2"
+            className="flex flex-wrap gap-x-6 gap-y-2.5"
           >
             {TRUST_ITEMS.map(({ icon: Icon, text, color }) => (
-              <span key={text} className="flex items-center gap-1.5 font-sans text-[12px] text-white/65">
-                <Icon size={12} className={color} aria-hidden="true" />
+              <span key={text} className="flex items-center gap-2 font-sans text-[12.5px] text-white/70 tracking-wide">
+                <Icon size={13} className={color} aria-hidden="true" />
                 {text}
               </span>
             ))}
@@ -134,7 +134,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.4 }}
-        className="absolute bottom-8 right-6 z-10 hidden md:flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white font-sans text-[13px] font-semibold hover:bg-white/20 transition-all"
+        className="absolute bottom-8 right-6 z-10 hidden md:flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.08] border border-white/20 backdrop-blur-md text-white font-sans text-[13px] font-semibold hover:bg-white/[0.16] hover:border-white/35 transition-all duration-300"
         aria-label="Chiama Arteparquet"
       >
         <Phone size={14} aria-hidden="true" />

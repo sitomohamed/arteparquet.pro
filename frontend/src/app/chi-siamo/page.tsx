@@ -75,12 +75,12 @@ export default function ChiSiamoPage() {
               const Icon = v.icon
               return (
                 <FadeIn key={v.title} delay={i * 0.1} direction="up">
-                  <div className="p-6 rounded-2xl border border-neutral-100 hover:border-wood-300 hover:shadow-md transition-all duration-300 h-full">
-                    <div className="w-12 h-12 rounded-xl bg-wood-100 flex items-center justify-center mb-4">
-                      <Icon size={22} className="text-rovere" aria-hidden="true" />
+                  <div className="p-6 rounded-2xl border border-neutral-100 hover:border-wood-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.07)] transition-all duration-300 hover:-translate-y-0.5 h-full">
+                    <div className="w-12 h-12 rounded-2xl bg-wood-50 ring-1 ring-wood-100 flex items-center justify-center mb-4">
+                      <Icon size={20} className="text-rovere" aria-hidden="true" />
                     </div>
                     <h3 className="font-serif font-semibold text-legno-bruciato text-[1.125rem] mb-2">{v.title}</h3>
-                    <p className="font-sans text-[14px] text-neutral-600 leading-relaxed">{v.description}</p>
+                    <p className="font-sans text-[13.5px] text-neutral-500 leading-[1.7]">{v.description}</p>
                   </div>
                 </FadeIn>
               )

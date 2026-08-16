@@ -56,7 +56,7 @@ export function ProcessSection() {
         <div className="relative">
           {/* Connector line (desktop) */}
           <div
-            className="hidden lg:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent"
+            className="hidden lg:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-wood-200 to-transparent opacity-60"
             aria-hidden="true"
           />
 
@@ -66,9 +66,9 @@ export function ProcessSection() {
                 <div className="flex flex-col items-center lg:items-center text-center group">
                   {/* Number circle */}
                   <div className="relative mb-6">
-                    <div className="w-[104px] h-[104px] rounded-full border-2 border-neutral-200 group-hover:border-rovere bg-white flex items-center justify-center transition-colors duration-300 shadow-sm group-hover:shadow-md">
-                      <span className="font-serif font-semibold text-neutral-300 group-hover:text-rovere transition-colors duration-300"
-                        style={{ fontSize: '2rem' }}
+                    <div className="w-[104px] h-[104px] rounded-full border border-neutral-200 group-hover:border-rovere/60 bg-white flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_30px_rgba(200,155,123,0.18)]">
+                      <span className="font-serif font-semibold text-neutral-250 group-hover:text-rovere transition-colors duration-300"
+                        style={{ fontSize: '2rem', color: 'inherit' }}
                       >
                         {step.number}
                       </span>
@@ -80,10 +80,10 @@ export function ProcessSection() {
                   <h3 className="font-serif font-semibold text-legno-bruciato text-[1.2rem] mb-3">
                     {step.title}
                   </h3>
-                  <p className="font-sans text-[14px] text-neutral-600 leading-relaxed mb-4 max-w-[200px]">
+                  <p className="font-sans text-[14px] text-neutral-500 leading-relaxed mb-4 max-w-[200px]">
                     {step.description}
                   </p>
-                  <span className="inline-flex items-center font-sans text-[12px] font-semibold text-rovere bg-wood-50 px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center font-sans text-[11.5px] font-semibold text-rovere bg-wood-50 ring-1 ring-wood-100 px-3 py-1.5 rounded-full">
                     {step.detail}
                   </span>
                 </div>
