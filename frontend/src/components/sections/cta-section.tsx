@@ -14,8 +14,9 @@ export function CtaSection() {
       className="relative bg-nero-marquina overflow-hidden"
       aria-labelledby="cta-heading"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-wood-900/40 via-transparent to-transparent" aria-hidden="true" />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rovere to-transparent" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-br from-wood-900/35 via-transparent to-nero-marquina/20" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/40 via-transparent to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rovere/60 to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 container-wide py-24 md:py-32">
         <div className="max-w-3xl mx-auto text-center">
@@ -83,7 +84,7 @@ export function CtaSection() {
                 '✓ Preventivo dettagliato senza impegno',
                 '✓ Risposta in 5 minuti su WhatsApp',
               ].map((item) => (
-                <span key={item} className="font-sans text-[13px] text-white/50">
+                <span key={item} className="font-sans text-[12.5px] text-white/45 tracking-wide">
                   {item}
                 </span>
               ))}

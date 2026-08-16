@@ -139,7 +139,7 @@ export function Header() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.98 }}
                       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[640px] bg-white rounded-2xl shadow-xl border border-neutral-100 p-6 z-50"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[640px] bg-white rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.12)] border border-neutral-100/80 p-6 z-50"
                       role="menu"
                     >
                       <div className="grid grid-cols-3 gap-6">
@@ -218,7 +218,7 @@ export function Header() {
               {/* CTA */}
               <Link
                 href="/contatti"
-                className="inline-flex items-center px-6 py-2.5 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 active:scale-[0.98] transition-all duration-200 shadow-sm"
+                className="inline-flex items-center px-6 py-2.5 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 active:scale-[0.98] transition-all duration-200 shadow-[0_2px_8px_rgba(200,155,123,0.3)]"
               >
                 Preventivo Gratuito
               </Link>
@@ -256,7 +256,7 @@ export function Header() {
               key="panel"
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[min(340px,92vw)] bg-travertino flex flex-col shadow-xl"
+              className="fixed top-0 right-0 bottom-0 z-50 w-[min(340px,92vw)] bg-travertino flex flex-col shadow-[−24px_0_60px_rgba(0,0,0,0.15)]"
               role="dialog" aria-modal="true" aria-label="Menu di navigazione"
             >
               {/* Header */}

@@ -311,7 +311,7 @@ export default async function ZonePage({
 
             <FadeIn delay={0.15} direction="left">
               {/* Card perché sceglierci */}
-              <div className="bg-white rounded-3xl border border-neutral-200 p-8 shadow-sm">
+              <div className="bg-white rounded-3xl border border-neutral-100 p-8 shadow-[0_8px_40px_rgba(0,0,0,0.07)]">
                 <h3 className="font-serif text-2xl font-bold mb-6">
                   Perché Scegliere Arteparquet a {c.display}
                 </h3>

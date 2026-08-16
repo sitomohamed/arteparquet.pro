@@ -114,7 +114,7 @@ export function Footer() {
               <Logo variant="onDark" size={40} showTagline />
             </Link>
 
-            <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6 max-w-[240px]">
+            <p className="font-sans text-[13.5px] text-white/50 leading-relaxed mb-6 max-w-[240px]">
               Dal Teatro alla Scala alla tua casa. Eccellenza artigianale in ogni listello di legno.
             </p>
 
@@ -196,15 +196,15 @@ export function Footer() {
               ))}
             </ul>
 
-            <div className="rounded-xl border border-white/10 bg-white/5 p-5 hidden md:block">
-              <p className="font-serif text-[15px] text-white mb-1 leading-snug">
+            <div className="rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm p-5 hidden md:block">
+              <p className="font-serif text-[15px] text-white/90 mb-1 leading-snug">
                 Sopralluogo gratuito,<br />senza impegno.
               </p>
-              <p className="font-sans text-[12px] text-white/45 mb-4">
+              <p className="font-sans text-[12px] text-white/40 mb-4">
                 Risposta entro 5 min in orario lavorativo.
               </p>
               <Link href="/contatti"
-                className="inline-flex items-center px-4 py-2 rounded-lg bg-rovere text-white font-sans text-[13px] font-semibold hover:bg-wood-500 transition-colors">
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-rovere text-white font-sans text-[13px] font-semibold hover:bg-wood-500 transition-colors shadow-sm">
                 Richiedi Preventivo
               </Link>
             </div>

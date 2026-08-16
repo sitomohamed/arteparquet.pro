@@ -104,18 +104,19 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {ARTICLES.map((article, i) => (
               <FadeIn key={article.slug} delay={i * 0.1} direction="up">
-                <article className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-wood-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                  <div className="relative overflow-hidden aspect-video">
+                <article className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-wood-200 hover:shadow-[0_20px_60px_rgba(0,0,0,0.09)] transition-all duration-400 hover:-translate-y-1.5 h-full flex flex-col">
+                  <div className="relative overflow-hidden aspect-video bg-wood-50">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
                       style={{ backgroundImage: `url(${article.image})` }}
                       role="img"
                       aria-label={article.title}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                   </div>
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="font-sans text-[11px] font-semibold uppercase tracking-wider text-rovere bg-wood-50 px-2.5 py-1 rounded-full">
+                      <span className="font-sans text-[10.5px] font-semibold uppercase tracking-wider text-rovere bg-wood-50 ring-1 ring-wood-100 px-2.5 py-1 rounded-full">
                         {article.category}
                       </span>
                       <span className="font-sans text-[11px] text-neutral-400">{article.readTime} di lettura</span>
@@ -123,11 +124,11 @@ export default function BlogPage() {
                     <h2 className="font-serif font-semibold text-legno-bruciato text-[1.1rem] leading-snug mb-3 flex-1">
                       {article.title}
                     </h2>
-                    <p className="font-sans text-[13px] text-neutral-500 leading-relaxed mb-5 line-clamp-3">
+                    <p className="font-sans text-[13px] text-neutral-500 leading-[1.7] mb-5 line-clamp-3">
                       {article.excerpt}
                     </p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="font-sans text-[12px] text-neutral-400">{article.date}</span>
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-neutral-50">
+                      <span className="font-sans text-[11.5px] text-neutral-400">{article.date}</span>
                       <Link
                         href={`/blog/${article.slug}`}
                         className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-rovere hover:text-wood-600 transition-colors group/link"

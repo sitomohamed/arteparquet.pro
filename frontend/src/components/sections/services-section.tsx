@@ -46,15 +46,15 @@ interface ServiceCardProps {
 function ServiceCard({ icon: Icon, title, description, href, features, accent, index }: ServiceCardProps) {
   return (
     <FadeIn delay={index * 0.12} direction="up">
-      <div className="group relative bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-wood-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+      <div className="group relative bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-wood-200 hover:shadow-[0_24px_64px_rgba(0,0,0,0.09)] transition-all duration-500 hover:-translate-y-1.5 h-full flex flex-col">
         {/* Card top accent */}
-        <div className={cn('h-1.5 w-full bg-gradient-to-r', accent)} />
+        <div className={cn('h-1 w-full bg-gradient-to-r', accent)} />
 
         <div className="p-8 flex flex-col flex-1">
           {/* Icon */}
-          <div className="mb-6 w-14 h-14 rounded-xl bg-wood-100 flex items-center justify-center group-hover:bg-rovere transition-colors duration-300">
+          <div className="mb-6 w-14 h-14 rounded-2xl bg-wood-50 ring-1 ring-wood-200/60 flex items-center justify-center group-hover:bg-rovere group-hover:ring-rovere/20 transition-all duration-300">
             <Icon
-              size={26}
+              size={24}
               className="text-rovere group-hover:text-white transition-colors duration-300"
               aria-hidden="true"
             />

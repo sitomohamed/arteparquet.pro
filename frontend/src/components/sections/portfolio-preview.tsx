@@ -75,14 +75,14 @@ function ProjectCard({ title, category, location, image, large, index }: Project
         >
           {/* Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 bg-wood-100 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out group-hover:scale-[1.06]"
             style={{ backgroundImage: `url(${image})` }}
             role="img"
             aria-label={title}
           />
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina/90 via-nero-marquina/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina via-nero-marquina/25 to-transparent opacity-75 group-hover:opacity-95 transition-opacity duration-400" />
 
           {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-end p-6">

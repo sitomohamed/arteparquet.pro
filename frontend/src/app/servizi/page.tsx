@@ -174,16 +174,16 @@ export default function ServiziPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {cat.types.map((type, i) => (
                 <FadeIn key={type.title} delay={i * 0.08} direction="up">
-                  <div className="group bg-white rounded-2xl border border-neutral-100 hover:border-wood-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full flex flex-col overflow-hidden">
+                  <div className="group bg-white rounded-2xl border border-neutral-100 hover:border-wood-200 hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] transition-all duration-400 hover:-translate-y-1.5 h-full flex flex-col overflow-hidden">
                     {/* Badge */}
                     <div className="px-5 pt-5">
-                      <span className="inline-block font-sans text-[10px] font-semibold uppercase tracking-wider text-rovere bg-wood-50 px-2.5 py-1 rounded-full mb-3">
+                      <span className="inline-block font-sans text-[10px] font-semibold uppercase tracking-wider text-rovere bg-wood-50 ring-1 ring-wood-100 px-2.5 py-1 rounded-full mb-3">
                         {type.badge}
                       </span>
                       <h2 className="font-serif font-semibold text-legno-bruciato text-[1.25rem] mb-2">
                         {type.title}
                       </h2>
-                      <p className="font-sans text-[13px] text-neutral-600 leading-relaxed flex-1 pb-5">
+                      <p className="font-sans text-[13px] text-neutral-500 leading-[1.7] flex-1 pb-5">
                         {type.desc}
                       </p>
                     </div>

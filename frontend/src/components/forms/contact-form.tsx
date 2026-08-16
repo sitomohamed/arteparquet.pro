@@ -138,17 +138,21 @@ export function ContactForm() {
           {STEPS.map((label, i) => (
             <div key={label} className="flex items-center gap-2">
               <div className={cn(
-                'w-7 h-7 rounded-full flex items-center justify-center font-sans text-[12px] font-semibold transition-all',
-                i < step ? 'bg-rovere text-white' : i === step ? 'bg-legno-bruciato text-white' : 'bg-neutral-100 text-neutral-400'
+                'flex items-center justify-center font-sans text-[11.5px] font-semibold transition-all duration-300',
+                i < step
+                  ? 'w-7 h-7 rounded-full bg-rovere text-white shadow-sm shadow-rovere/30'
+                  : i === step
+                    ? 'w-7 h-7 rounded-full bg-legno-bruciato text-white ring-2 ring-legno-bruciato/20 ring-offset-1'
+                    : 'w-7 h-7 rounded-full bg-neutral-100 text-neutral-400'
               )}>
                 {i < step ? '✓' : i + 1}
               </div>
               <span className={cn(
-                'font-sans text-[12px] hidden sm:block',
-                i === step ? 'text-legno-bruciato font-semibold' : 'text-neutral-400'
+                'font-sans text-[12px] hidden sm:block transition-colors duration-200',
+                i === step ? 'text-legno-bruciato font-semibold' : i < step ? 'text-rovere' : 'text-neutral-400'
               )}>{label}</span>
               {i < STEPS.length - 1 && (
-                <div className={cn('h-px w-6 sm:w-12 mx-1', i < step ? 'bg-rovere' : 'bg-neutral-200')} aria-hidden="true" />
+                <div className={cn('h-px w-6 sm:w-12 mx-1 transition-colors duration-500', i < step ? 'bg-rovere' : 'bg-neutral-200')} aria-hidden="true" />
               )}
             </div>
           ))}
@@ -169,10 +173,10 @@ export function ContactForm() {
                   type="button"
                   onClick={() => setValue('projectType', type.value)}
                   className={cn(
-                    'p-4 rounded-xl border-2 text-left transition-all duration-200',
+                    'p-4 rounded-xl border-2 text-left transition-all duration-200 hover:-translate-y-0.5',
                     projectType === type.value
-                      ? 'border-rovere bg-wood-50'
-                      : 'border-neutral-200 hover:border-neutral-300'
+                      ? 'border-rovere bg-wood-50 shadow-sm shadow-rovere/10'
+                      : 'border-neutral-200 hover:border-neutral-300 hover:shadow-sm'
                   )}
                 >
                   <span className="text-xl mb-2 block">{type.icon}</span>
@@ -199,10 +203,10 @@ export function ContactForm() {
                   type="button"
                   onClick={() => setValue('clientType', type.value)}
                   className={cn(
-                    'p-4 rounded-xl border-2 text-left transition-all duration-200',
+                    'p-4 rounded-xl border-2 text-left transition-all duration-200 hover:-translate-y-0.5',
                     clientType === type.value
-                      ? 'border-rovere bg-wood-50'
-                      : 'border-neutral-200 hover:border-neutral-300'
+                      ? 'border-rovere bg-wood-50 shadow-sm shadow-rovere/10'
+                      : 'border-neutral-200 hover:border-neutral-300 hover:shadow-sm'
                   )}
                 >
                   <span className="text-xl mb-2 block">{type.icon}</span>
@@ -361,10 +365,11 @@ export function ContactForm() {
 
 function inputClass(hasError: boolean) {
   return cn(
-    'w-full h-12 px-4 rounded-lg border font-sans text-[15px] text-legno-bruciato bg-white',
-    'placeholder:text-neutral-400 outline-none transition-all duration-200',
-    'focus:ring-2 focus:ring-rovere/20 focus:border-rovere',
-    hasError ? 'border-error' : 'border-neutral-300 hover:border-neutral-400'
+    'w-full h-12 px-4 rounded-lg border font-sans text-[15px] text-legno-bruciato',
+    'bg-neutral-50 focus:bg-white',
+    'placeholder:text-neutral-380 outline-none transition-all duration-200',
+    'focus:ring-2 focus:ring-rovere/15 focus:border-rovere focus:shadow-[0_0_0_3px_rgba(200,155,123,0.08)]',
+    hasError ? 'border-error bg-red-50/30' : 'border-neutral-200 hover:border-neutral-300'
   )
 }
 
