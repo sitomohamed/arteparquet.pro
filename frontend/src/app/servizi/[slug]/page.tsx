@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { CheckCircle, ArrowRight, Phone } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
+import { BreadcrumbSchema } from '@/components/seo/json-ld'
 
 // ── Service data ───────────────────────────────────────────────────────────
 const SERVICES: Record<string, {
@@ -283,7 +284,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = SERVICES[slug]
   if (!service) return {}
   return {
-    title: service.metaTitle,
+    title: { absolute: service.metaTitle },
     description: service.metaDescription,
     alternates: { canonical: `https://arteparquet.pro/servizi/${slug}` },
   }
@@ -297,20 +298,41 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://arteparquet.pro' },
+          { name: 'Servizi', url: 'https://arteparquet.pro/servizi' },
+          { name: service.title, url: `https://arteparquet.pro/servizi/${slug}` },
+        ]}
+      />
+
       {/* Hero */}
       <section className="bg-nero-marquina pt-32 pb-20 md:pt-44 md:pb-28">
         <div className="container-wide">
           <FadeIn direction="up">
-            <div className="flex items-center gap-2 mb-4">
-              <Link href="/servizi" className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere hover:text-wood-400 transition-colors">
-                Servizi
-              </Link>
-              <span className="text-white/30 text-[11px]">/</span>
-              <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-                {service.title}
-              </span>
-            </div>
-            <span className="inline-block font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-rovere bg-rovere/10 border border-rovere/20 px-3 py-1 rounded-full mb-5">
+            {/* Breadcrumb visibile */}
+            <nav aria-label="Breadcrumb" className="mb-5">
+              <ol className="flex items-center gap-1.5 flex-wrap">
+                <li>
+                  <Link href="/" className="font-sans text-[12px] text-white/40 hover:text-rovere transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden="true" className="font-sans text-[12px] text-white/25">/</li>
+                <li>
+                  <Link href="/servizi" className="font-sans text-[12px] text-rovere hover:text-wood-400 transition-colors font-semibold uppercase tracking-wider">
+                    Servizi
+                  </Link>
+                </li>
+                <li aria-hidden="true" className="font-sans text-[12px] text-white/25">/</li>
+                <li>
+                  <span className="font-sans text-[12px] text-white/50 font-semibold uppercase tracking-wider" aria-current="page">
+                    {service.title}
+                  </span>
+                </li>
+              </ol>
+            </nav>
+            <span className="inline-block font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-rovere bg-rovere/10 border border-rovere/20 px-3 py-1 rounded-full mb-5 mt-2">
               {service.badge}
             </span>
             <h1

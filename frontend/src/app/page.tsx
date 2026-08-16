@@ -41,7 +41,6 @@ export const metadata: Metadata = {
     title: 'Parquettista Bergamo e Milano | Arteparquet dal 1996',
     description: 'Posa, restauro e levigatura parquet a Bergamo, Milano e Lombardia. 30 anni di esperienza. Sopralluogo gratuito.',
     url: 'https://arteparquet.pro',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     locale: 'it_IT',
     type: 'website',
   },
@@ -57,6 +56,8 @@ const ZONE_CITIES = [
   { city: 'Lecco',   slug: 'parquet-lecco' },
   { city: 'Lodi',    slug: 'parquet-lodi' },
   { city: 'Pavia',   slug: 'parquet-pavia' },
+  { city: 'Cremona', slug: 'parquet-cremona' },
+  { city: 'Mantova', slug: 'parquet-mantova' },
 ]
 
 export default function HomePage() {

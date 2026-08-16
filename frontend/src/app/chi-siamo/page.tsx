@@ -3,6 +3,7 @@ import { Award, Heart, Shield, Zap } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
 import { HeritageSection } from '@/components/sections/heritage-section'
 import { CtaSection } from '@/components/sections/cta-section'
+import { PersonSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: {
@@ -24,6 +25,8 @@ const VALUES = [
 export default function ChiSiamoPage() {
   return (
     <>
+      <PersonSchema />
+
       {/* Hero */}
       <section className="relative bg-nero-marquina overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
         <div
@@ -83,6 +86,21 @@ export default function ChiSiamoPage() {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Google Reviews */}
+      <section className="bg-travertino border-t border-neutral-100">
+        <div className="container-wide py-10 text-center">
+          <a
+            href="https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 font-sans text-[14px] text-rovere hover:text-wood-600 transition-colors font-semibold"
+          >
+            <span>★★★★★</span>
+            <span>Leggi le recensioni su Google →</span>
+          </a>
         </div>
       </section>
 

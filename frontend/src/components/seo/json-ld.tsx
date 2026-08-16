@@ -88,6 +88,42 @@ export function LocalBusinessSchema() {
   )
 }
 
+// ── Person schema for Mohamed Arabi ──────────────────────────────────────
+export function PersonSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://arteparquet.pro/#founder',
+    name: 'Mohamed Arabi',
+    jobTitle: 'Maestro Parquettista',
+    worksFor: {
+      '@type': 'Organization',
+      '@id': 'https://arteparquet.pro/#business',
+      name: 'Arteparquet',
+    },
+    knowsAbout: [
+      'Posa Parquet',
+      'Restauro Parquet',
+      'Levigatura Parquet',
+      'Parquet Massello',
+      'Parquet Prefinito',
+      'Posa a Spina di Pesce',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Bergamo',
+      addressRegion: 'Lombardia',
+      addressCountry: 'IT',
+    },
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 // ── FAQ schema for FAQ page ──────────────────────────────────────────────
 export function FaqSchema() {
   const schema = {

@@ -482,7 +482,7 @@ export async function generateMetadata(
   const article = ARTICLES[slug]
   if (!article) return {}
   return {
-    title: article.metaTitle,
+    title: { absolute: article.metaTitle },
     description: article.metaDescription,
     keywords: article.keywords,
     alternates: { canonical: `https://arteparquet.pro/blog/${slug}` },

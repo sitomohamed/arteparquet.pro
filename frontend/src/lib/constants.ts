@@ -1,0 +1,28 @@
+export const BUSINESS = {
+  name: 'Arteparquet',
+  fullName: 'Arteparquet di Arabi Mohamed',
+  founder: 'Mohamed Arabi',
+  phone: '+39 389 240 7827',
+  phoneRaw: '+393892407827',
+  whatsapp: '393892407827',
+  email: 'info@arteparquet.pro',
+  address: {
+    street: 'Via Vittorio Alfieri 7',
+    city: 'Bergamo',
+    province: 'BG',
+    postalCode: '24100',
+    region: 'Lombardia',
+    country: 'IT',
+    full: 'Via Vittorio Alfieri 7, 24100 Bergamo BG',
+  },
+  geo: { lat: 45.6983, lng: 9.6773 },
+  piva: '03326410168',
+  founded: 1996,
+  experienceYears: 30,
+  hours: {
+    weekdays: '08:00–18:00',
+    saturday: '09:00–13:00',
+  },
+  googleMapsUrl: 'https://maps.google.com/?q=Via+Vittorio+Alfieri+7+Bergamo+24100',
+  googleReviewsUrl: 'https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo',
+} as const

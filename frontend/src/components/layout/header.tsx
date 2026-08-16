@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/components/brand/logo'
 
 // ── Mega-menu data ────────────────────────────────────────────────────────
 const SERVIZI_MENU = [
@@ -39,6 +40,7 @@ const SERVIZI_MENU = [
 const NAV_LINKS = [
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contatti', href: '/contatti' },
 ]
 
@@ -77,6 +79,15 @@ export function Header() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  useEffect(() => {
+    if (!mobileOpen) return
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [mobileOpen])
+
   const textColor = scrolled ? 'text-legno-bruciato' : 'text-white'
   const hoverColor = 'hover:text-rovere'
 
@@ -91,15 +102,12 @@ export function Header() {
           <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-3 group" aria-label="Arteparquet — Homepage">
-              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-rovere flex items-center justify-center" aria-hidden="true">
-                <span className="font-serif font-semibold text-white text-lg leading-none select-none">A</span>
-              </span>
-              <span className="hidden sm:block font-serif font-semibold text-[20px] leading-tight transition-colors duration-300"
-                style={{ color: scrolled ? '#1A1A1A' : 'white' }}
-              >
-                Arteparquet.pro
-              </span>
+            <Link href="/" className="group" aria-label="Arteparquet — Homepage">
+              <Logo
+                variant={scrolled ? 'onLight' : 'onDark'}
+                size={40}
+                wordmarkClassName="hidden sm:flex"
+              />
             </Link>
 
             {/* ── Desktop nav ── */}
@@ -253,11 +261,8 @@ export function Header() {
             >
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200">
-                <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-full bg-rovere flex items-center justify-center">
-                    <span className="font-serif font-semibold text-white text-base leading-none">A</span>
-                  </span>
-                  <span className="font-serif font-semibold text-legno-bruciato text-[17px]">Arteparquet</span>
+                <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Arteparquet — Homepage">
+                  <Logo variant="onLight" size={32} />
                 </Link>
                 <button onClick={() => setMobileOpen(false)} className="p-2 rounded-md text-legno-bruciato hover:bg-neutral-100" aria-label="Chiudi menu">
                   <X size={22} aria-hidden="true" />

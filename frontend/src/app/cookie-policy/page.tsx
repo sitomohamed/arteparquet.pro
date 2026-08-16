@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { FadeIn } from '@/components/animations/fade-in'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Arteparquet',
+  title: 'Cookie Policy',
   description: 'Informativa sull\'uso dei cookie sul sito Arteparquet.',
 }
 

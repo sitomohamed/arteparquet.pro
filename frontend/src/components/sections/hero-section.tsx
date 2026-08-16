@@ -27,7 +27,7 @@ export function HeroSection() {
       {/* Background: foto autentica di un lavoro Arteparquet */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/portfolio/parquet-spina-pesce-01.jpg)' }}
+        style={{ backgroundImage: 'url(/portfolio/google-spina-pesce-lucida-01.jpg)' }}
         role="img"
         aria-label="Parquet a spina di pesce rovere — lavoro Arteparquet Bergamo"
       />
@@ -61,8 +61,8 @@ export function HeroSection() {
             className="font-serif font-semibold text-white leading-[1.08] tracking-tight mb-6 text-balance"
             style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4rem)' }}
           >
-            Posa, Restauro e<br />
-            Levigatura Parquet<br />
+            Posa, Restauro e Levigatura<br />
+            Parquet a Bergamo<br />
             <span className="text-rovere">dal 1996</span>
           </motion.h1>
 

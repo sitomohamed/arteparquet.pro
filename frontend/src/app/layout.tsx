@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     description: 'Posa, restauro e soluzioni parquet premium in tutta Italia. Ex team Teatro alla Scala. Preventivo gratuito.',
     url: 'https://arteparquet.pro',
     siteName: 'Arteparquet',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Arteparquet — Maestri del Parquet' }],
     locale: 'it_IT',
     type: 'website',
   },
@@ -53,7 +52,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Arteparquet | Maestri del Parquet in Italia dal 1996',
     description: 'Posa e restauro parquet premium. Ex team Teatro alla Scala. Preventivo gratuito.',
-    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -73,16 +71,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
       <head>
-        {/* Preconnect to speed up Google Fonts / external resources */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preconnect for Unsplash images used in chi-siamo */}
         <link rel="preconnect" href="https://images.unsplash.com" />
         {/* Global JSON-LD — appears on every page */}
         <LocalBusinessSchema />
       </head>
       <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-legno-bruciato px-4 py-2 z-[9999] rounded shadow font-sans text-sm font-semibold"
+        >
+          Vai al contenuto principale
+        </a>
         <Header />
-        <main className="flex-1 pb-14 md:pb-0">{children}</main>
+        <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
         <MobileBottomBar />
         <WhatsAppButton />

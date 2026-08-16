@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Phone, Mail, MapPin, MessageCircle, ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/components/brand/logo'
 
 const PHONE = '+39 389 240 7827'
 const PHONE_CLEAN = '+393892407827'
@@ -109,14 +110,8 @@ export function Footer() {
 
           {/* ── Col 1 — Brand (always visible) ── */}
           <div className="pb-8 md:pb-0 border-b border-white/10 md:border-none mb-2 md:mb-0">
-            <Link href="/" className="inline-flex items-center gap-3 mb-5" aria-label="Arteparquet — Homepage">
-              <span className="w-10 h-10 rounded-full bg-rovere flex items-center justify-center flex-shrink-0">
-                <span className="font-serif font-semibold text-white text-lg leading-none select-none">A</span>
-              </span>
-              <span>
-                <span className="block font-serif font-semibold text-[18px] text-white leading-tight">Arteparquet.pro</span>
-                <span className="block font-sans text-[11px] text-white/50 tracking-wide leading-tight">Maestri del Parquet dal 1996</span>
-              </span>
+            <Link href="/" className="inline-flex mb-5" aria-label="Arteparquet — Homepage">
+              <Logo variant="onDark" size={40} showTagline />
             </Link>
 
             <p className="font-sans text-[14px] text-white/55 leading-relaxed mb-6 max-w-[240px]">

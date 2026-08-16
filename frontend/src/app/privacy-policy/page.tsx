@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { FadeIn } from '@/components/animations/fade-in'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Arteparquet',
+  title: 'Privacy Policy',
   description: 'Informativa sulla privacy e il trattamento dei dati personali di Arteparquet.',
 }
 

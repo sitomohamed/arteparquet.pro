@@ -12,7 +12,7 @@ const PROJECTS = [
     category: 'Posa Parquet',
     location: 'Bergamo',
     material: 'Parquet massello rovere — posa a spina di pesce',
-    image: '/portfolio/parquet-spina-pesce-01.jpg',
+    image: '/portfolio/google-spina-pesce-finitura-01.jpg',
     large: true,
   },
   {
@@ -39,7 +39,7 @@ const PROJECTS = [
     category: 'Lavorazione Speciale',
     location: 'Bergamo',
     material: 'Intarsio geometrico a stella su parquet massello',
-    image: '/portfolio/intarsio-stella-01.jpg',
+    image: '/portfolio/google-parquet-bordo-intarsio-01.jpg',
     large: false,
   },
   {

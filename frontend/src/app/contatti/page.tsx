@@ -97,16 +97,22 @@ export default function ContattiPage() {
                     </div>
                   </a>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-wood-100 flex items-center justify-center flex-shrink-0">
-                      <MapPin size={18} className="text-rovere" aria-hidden="true" />
+                  <a
+                    href="https://maps.google.com/?q=Via+Vittorio+Alfieri+7+Bergamo+24100"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 group"
+                    aria-label="Apri su Google Maps"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-wood-100 group-hover:bg-rovere flex items-center justify-center transition-colors flex-shrink-0">
+                      <MapPin size={18} className="text-rovere group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Sede</p>
-                      <p className="font-sans text-[16px] font-semibold text-legno-bruciato">Bergamo, Italia</p>
-                      <p className="font-sans text-[13px] text-neutral-500">Operiamo in tutta Italia</p>
+                      <p className="font-sans text-[16px] font-semibold text-legno-bruciato group-hover:text-rovere transition-colors">Via Vittorio Alfieri 7, Bergamo</p>
+                      <p className="font-sans text-[13px] text-rovere font-medium mt-0.5">Apri su Google Maps →</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Hours */}
@@ -130,7 +136,7 @@ export default function ContattiPage() {
                 </div>
 
                 {/* Trust */}
-                <div className="space-y-2">
+                <div className="space-y-2 mb-6">
                   {[
                     '✓ Sopralluogo gratuito senza impegno',
                     '✓ Preventivo dettagliato entro 24h',
@@ -140,6 +146,16 @@ export default function ContattiPage() {
                     <p key={item} className="font-sans text-[13px] text-neutral-600">{item}</p>
                   ))}
                 </div>
+
+                {/* Google Reviews */}
+                <a
+                  href="https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-sans text-[13px] text-rovere hover:text-wood-600 transition-colors font-semibold"
+                >
+                  ★ 4.9/5 — Leggi le recensioni Google →
+                </a>
               </FadeIn>
             </div>
 

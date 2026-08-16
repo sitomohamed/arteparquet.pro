@@ -20,6 +20,124 @@ const CITIES: Record<string, { display: string; region: string; province: string
   mantova: { display: 'Mantova', region: 'Lombardia', province: 'MN', lat: '45.1564', lng: '10.7914' },
 }
 
+// ── Contenuto unico per città (prevenzione thin content) ─────────────────
+const CITY_CONTENT: Record<string, {
+  intro: string
+  highlights: string[]
+  zones?: string[]
+}> = {
+  bergamo: {
+    intro: `Bergamo è la nostra sede principale. Operiamo quotidianamente nella città e in tutta la provincia, dalla Città Alta alle zone residenziali di pianura. Conosciamo le caratteristiche costruttive degli edifici bergamaschi — dagli appartamenti in Città Alta ai condomini moderni di Loreto e Boccaleone — e sappiamo adattare ogni intervento alle specificità locali. La nostra sede è in Via Vittorio Alfieri 7, a Bergamo città.`,
+    highlights: [
+      'Sopralluogo entro 24 ore in città e provincia',
+      'Sede operativa a Bergamo — Via Vittorio Alfieri 7',
+      'Conoscenza approfondita del territorio bergamasco',
+      'Interventi sia in Città Alta che in pianura',
+    ],
+    zones: ['Città Alta', 'Longuelo', 'Loreto', 'Boccaleone', 'Dalmine', 'Seriate', 'Azzano San Paolo', 'Stezzano', 'Lallio', 'Curno'],
+  },
+  milano: {
+    intro: `Milano è il nostro secondo mercato principale. Operiamo regolarmente nelle zone residenziali di pregio e nei cantieri privati della città. La nostra partecipazione al progetto del Teatro alla Scala di Milano nel 2004 testimonia la capacità di operare ai massimi livelli. Raggiungiamo Milano e hinterland con sopralluogo gratuito incluso nel preventivo.`,
+    highlights: [
+      'Esperienza diretta Teatro alla Scala (2004)',
+      'Zone di pregio: Brera, Navigli, Porta Romana',
+      'Preventivo gratuito entro 24 ore',
+      'Interventi residenziali e commerciali',
+    ],
+    zones: ['Brera', 'Navigli', 'Porta Romana', 'Isola', 'City Life', 'Prati', 'Sempione', 'Porta Venezia'],
+  },
+  brescia: {
+    intro: `Operiamo regolarmente a Brescia e in tutta la provincia per posa, restauro e levigatura parquet. La nostra squadra raggiunge Brescia con sopralluogo gratuito incluso nel preventivo. Serviamo sia residenze private che immobili commerciali, con la stessa cura e professionalità che mettiamo in ogni cantiere.`,
+    highlights: [
+      'Sopralluogo gratuito a Brescia e provincia',
+      'Preventivo dettagliato in 24 ore',
+      'Posa, restauro e levigatura parquet',
+      'Garanzia scritta sulla manodopera',
+    ],
+    zones: ['Brescia centro', 'Rezzato', 'Roncadelle', 'Castegnato', 'Palazzolo sull\'Oglio'],
+  },
+  como: {
+    intro: `Como e il suo territorio lacuale richiedono attenzione particolare all'umidità e alle escursioni termiche stagionali. La nostra esperienza ci permette di scegliere i materiali e le tecniche di posa più adatti agli ambienti lacuali, dove l'umidità può compromettere un parquet mal installato. Utilizziamo barriere al vapore specifiche e collanti certificati per ambienti umidi.`,
+    highlights: [
+      'Esperienza specifica ambienti lacuali e umidi',
+      'Materiali e collanti certificati per alta umidità',
+      'Sopralluogo gratuito a Como e provincia',
+      'Garanzia scritta sulla posa',
+    ],
+    zones: ['Como centro', 'Cernobbio', 'Brunate', 'Erba', 'Cantù', 'Mariano Comense'],
+  },
+  monza: {
+    intro: `Monza e la Brianza sono zone ad alta richiesta per parquet di qualità. Serviamo Monza e tutti i comuni limitrofi della Brianza con sopralluogo gratuito e preventivo dettagliato entro 24 ore. La vicinanza a Milano e la presenza di immobili di pregio rendono la Brianza un territorio dove la qualità del parquet è particolarmente apprezzata.`,
+    highlights: [
+      'Copertura completa Monza e Brianza',
+      'Sopralluogo gratuito in tutta la provincia',
+      'Preventivo in 24 ore senza impegno',
+      'Interventi residenziali e ville private',
+    ],
+    zones: ['Monza', 'Desio', 'Seregno', 'Lissone', 'Cesano Maderno', 'Carate Brianza', 'Vimercate'],
+  },
+  varese: {
+    intro: `Operiamo a Varese e provincia per tutti i servizi parquet: posa di parquet massello e prefinito, levigatura e restauro di parquet esistenti, installazione di SPC, PVC e laminato. Raggiungiamo la zona lacuale varesina con sopralluogo gratuito incluso nel preventivo. Risposta garantita entro 24 ore dalla richiesta.`,
+    highlights: [
+      'Copertura Varese e provincia',
+      'Sopralluogo gratuito incluso',
+      'Preventivo in 24 ore',
+      'Garanzia scritta sulla manodopera',
+    ],
+    zones: ['Varese', 'Busto Arsizio', 'Gallarate', 'Saronno', 'Luino', 'Laveno-Mombello'],
+  },
+  lecco: {
+    intro: `Lecco e il territorio lariano richiedono, come Como, competenza specifica per ambienti in quota e vicini al lago. L'umidità del Lago di Como e le escursioni termiche invernali impongono una scelta accurata di materiali e barriere al vapore. Operiamo a Lecco e in tutta la provincia con sopralluogo gratuito e preventivo dettagliato.`,
+    highlights: [
+      'Esperienza ambienti lacuali e montagna',
+      'Materiali certificati per alta umidità',
+      'Sopralluogo gratuito a Lecco e provincia',
+      'Preventivo senza impegno in 24 ore',
+    ],
+    zones: ['Lecco', 'Merate', 'Calolziocorte', 'Mandello del Lario', 'Bellano'],
+  },
+  lodi: {
+    intro: `Operiamo a Lodi e nel lodigiano per posa, restauro e levigatura parquet. La pianura lodigiana ospita numerosi immobili storici e ville padronali dove il parquet massello originale richiede attenzione e competenza specializzata. Offriamo sopralluogo gratuito e preventivo dettagliato entro 24 ore dalla richiesta.`,
+    highlights: [
+      'Esperienza parquet storico e massello',
+      'Sopralluogo gratuito a Lodi e provincia',
+      'Preventivo in 24 ore',
+      'Garanzia scritta sulla posa',
+    ],
+    zones: ['Lodi', 'Codogno', 'Casalpusterlengo', 'Sant\'Angelo Lodigiano', 'Lodi Vecchio'],
+  },
+  pavia: {
+    intro: `Serviamo Pavia e la zona del pavese per tutti i servizi parquet. Pavia è una città universitaria con un vasto patrimonio di edifici storici — appartamenti e palazzi dove il parquet vecchio necessita di restauro o levigatura professionale. Raggiungiamo Pavia con sopralluogo gratuito incluso nel preventivo, con risposta entro 24 ore.`,
+    highlights: [
+      'Esperienza parquet storico e restauro',
+      'Sopralluogo gratuito a Pavia e provincia',
+      'Preventivo in 24 ore senza impegno',
+      'Garanzia scritta sulla manodopera',
+    ],
+    zones: ['Pavia', 'Vigevano', 'Voghera', 'Mortara', 'Stradella', 'Certosa di Pavia'],
+  },
+  cremona: {
+    intro: `Operiamo a Cremona e provincia per posa, restauro e levigatura parquet in ambienti residenziali e storici. Cremona, città della liuteria e del violino, è ricca di edifici storici e palazzi dove il parquet tradizionale in legno è parte integrante del valore immobiliare. La nostra esperienza con il legno massello di qualità si sposa perfettamente con le esigenze di questa città.`,
+    highlights: [
+      'Esperienza parquet in edifici storici e vincolati',
+      'Sopralluogo gratuito a Cremona e provincia',
+      'Preventivo dettagliato in 24 ore',
+      'Garanzia scritta sulla posa',
+    ],
+    zones: ['Cremona', 'Crema', 'Casalmaggiore', 'Soresina', 'Pizzighettone'],
+  },
+  mantova: {
+    intro: `Mantova e il mantovano sono raggiunti dal nostro team per qualsiasi intervento parquet. Mantova, patrimonio UNESCO, è una città di grande valore storico dove gli edifici antichi richiedono artigiani esperti con rispetto per i materiali originali. Operiamo con sopralluogo gratuito e preventivo dettagliato senza impegno, garantendo la massima cura per ogni ambiente.`,
+    highlights: [
+      'Esperienza interventi in contesti storici UNESCO',
+      'Sopralluogo gratuito a Mantova e provincia',
+      'Preventivo senza impegno in 24 ore',
+      'Garanzia scritta sulla manodopera',
+    ],
+    zones: ['Mantova', 'Suzzara', 'Guidizzolo', 'Viadana', 'Asola', 'Castiglione delle Stiviere'],
+  },
+}
+
 // Normalizza slug: "parquet-milano" → "milano"  |  "posa-parquet-milano" → "milano"
 function extractCity(slug: string) {
   const parts = slug.split('-')
@@ -47,13 +165,14 @@ export async function generateMetadata({
 
   const c = CITIES[cityKey]
   const isPosa = slug.startsWith('posa')
+  // Do NOT append "| Arteparquet" — layout template already adds it
   const title = isPosa
-    ? `Posa Parquet ${c.display} | Posatori Professionisti | Arteparquet`
-    : `Parquet ${c.display} | Posa e Restauro | Arteparquet`
-  const description = `${isPosa ? 'Posa' : 'Posa, restauro e levigatura'} parquet professionale a ${c.display} e provincia. Ex team Teatro alla Scala. 20+ anni di esperienza. Sopralluogo e preventivo gratuiti. ☎ 389 240 7827`
+    ? `Posa Parquet ${c.display} | Posatori Professionisti`
+    : `Parquet ${c.display} | Posa e Restauro`
+  const description = `${isPosa ? 'Posa' : 'Posa, restauro e levigatura'} parquet professionale a ${c.display} e provincia. Ex team Teatro alla Scala. 30 anni di esperienza dal 1996. Sopralluogo e preventivo gratuiti. ☎ 389 240 7827`
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `parquet ${c.display}`,
@@ -206,7 +325,7 @@ export default async function ZonePage({
                     },
                     {
                       icon: CheckCircle,
-                      title: '20+ anni di esperienza',
+                      title: '30 anni di esperienza',
                       desc: `Dal 1996 posiamo parquet in tutta Italia, inclusa ${c.display} e la ${c.region}.`,
                     },
                     {
@@ -245,6 +364,52 @@ export default async function ZonePage({
           </div>
         </div>
       </section>
+
+      {/* Contenuto unico per città */}
+      {CITY_CONTENT[cityKey] && (
+        <section className="bg-white py-14 md:py-20 border-t border-neutral-100">
+          <div className="container-wide">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <FadeIn>
+                <h2 className="font-serif text-2xl md:text-3xl font-bold mb-5">
+                  Arteparquet a {c.display}
+                </h2>
+                <p className="text-neutral-600 leading-relaxed mb-6">
+                  {CITY_CONTENT[cityKey]!.intro}
+                </p>
+                {CITY_CONTENT[cityKey]!.zones && (
+                  <div>
+                    <p className="font-semibold text-legno-bruciato mb-3 text-sm uppercase tracking-wide">
+                      Zone coperte a {c.display}:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {CITY_CONTENT[cityKey]!.zones!.map((zone) => (
+                        <span
+                          key={zone}
+                          className="px-3 py-1 bg-wood-100 text-rovere text-sm rounded-full font-medium"
+                        >
+                          {zone}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </FadeIn>
+
+              <FadeIn delay={0.1} direction="left">
+                <ul className="space-y-3">
+                  {CITY_CONTENT[cityKey]!.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-neutral-700">
+                      <CheckCircle size={18} className="text-rovere flex-shrink-0 mt-0.5" />
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Zone coperte */}
       <section className="bg-neutral-50 py-12 md:py-16 border-t border-neutral-200">
