@@ -1,5 +1,4 @@
 import crypto from 'crypto'
-import { NextRequest } from 'next/server'
 
 // Server-side security functions that use Node.js crypto
 // These run in Node.js runtime, not Edge runtime

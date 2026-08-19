@@ -5,7 +5,7 @@ import {
   checkRateLimit, 
   validateCSRFToken,
   detectHoneypot,
-  getSecurityHeaders
+  getApiSecurityHeaders
 } from '@/lib/security'
 import {
   sanitizeInputServer,
@@ -58,7 +58,7 @@ function createTransporter() {
 // ── POST handler ──────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   // Add security headers to response
-  const securityHeaders = getSecurityHeaders()
+  const securityHeaders = getApiSecurityHeaders()
   
   try {
     // 1. Rate limiting check
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     })
     
     // 3. Honeypot detection
-    if (detectHoneypot(request, body)) {
+    if (detectHoneypot(request, body as Record<string, unknown>)) {
       // Silently reject bots without revealing detection
       return NextResponse.json({ success: true }, { 
         status: 200, 

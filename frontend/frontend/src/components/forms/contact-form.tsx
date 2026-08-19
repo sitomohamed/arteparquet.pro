@@ -81,7 +81,7 @@ export function ContactForm() {
         }
       })
       .catch(err => console.error('Failed to load CSRF token:', err))
-  }, [])
+  }, [setValue])
 
   const projectType = watch('projectType')
   const clientType = watch('clientType')

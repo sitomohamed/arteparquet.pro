@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { notifyIndexNow } from '@/lib/indexnow'
-import { checkRateLimit, getSecurityHeaders, getClientIP } from '@/lib/security'
+import { checkRateLimit, getApiSecurityHeaders } from '@/lib/security'
 
 /**
  * API route to notify IndexNow about updated URLs
@@ -8,7 +8,7 @@ import { checkRateLimit, getSecurityHeaders, getClientIP } from '@/lib/security'
  * Body: { urls: string[] }
  */
 export async function POST(request: NextRequest) {
-  const securityHeaders = getSecurityHeaders()
+  const securityHeaders = getApiSecurityHeaders()
   
   try {
     // Rate limiting to prevent abuse
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
  * POST /api/indexnow?all=true
  */
 export async function GET(request: NextRequest) {
-  const securityHeaders = getSecurityHeaders()
+  const securityHeaders = getApiSecurityHeaders()
   const notifyAll = request.nextUrl.searchParams.get('all') === 'true'
 
   // Rate limiting for GET requests too

@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSecurityHeaders, checkRateLimit } from '@/lib/security'
+import { getApiSecurityHeaders, checkRateLimit } from '@/lib/security'
 import { generateCSRFTokenServer } from '@/lib/security-server'
 
 export async function GET(request: NextRequest) {
-  const securityHeaders = getSecurityHeaders()
+  const securityHeaders = getApiSecurityHeaders()
   
   try {
     // Rate limiting for CSRF token requests (prevent token farming)
