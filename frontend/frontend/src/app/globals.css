@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* ─── Arteparquet Design System ─── */
+@theme {
+  /* Brand colors */
+  --color-travertino: #F9F8F6;
+  --color-legno-bruciato: #1A1A1A;
+  --color-rovere: #C89B7B;
+  --color-nero-marquina: #0A0A0A;
+
+  /* Wood scale */
+  --color-wood-100: #F5EDE6;
+  --color-wood-200: #E8D5C4;
+  --color-wood-300: #D4B896;
+  --color-wood-400: #C89B7B;
+  --color-wood-500: #B8845F;
+  --color-wood-600: #9A6B47;
+  --color-wood-700: #7A5236;
+  --color-wood-800: #5C3D28;
+  --color-wood-900: #3D281A;
+
+  /* Neutral scale */
+  --color-neutral-50:  #FAFAF9;
+  --color-neutral-100: #F5F5F4;
+  --color-neutral-200: #E7E5E4;
+  --color-neutral-300: #D6D3D1;
+  --color-neutral-400: #A8A29E;
+  --color-neutral-500: #78716C;
+  --color-neutral-600: #57534E;
+  --color-neutral-700: #44403C;
+  --color-neutral-800: #292524;
+  --color-neutral-900: #1C1917;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error:   #EF4444;
+  --color-info:    #3B82F6;
+
+  /* Font families */
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans:  var(--font-inter), Inter, system-ui, sans-serif;
+
+  /* Custom text sizes */
+  --text-display-2xl: 4.5rem;
+  --text-display-xl:  3.75rem;
+  --text-display-lg:  3rem;
+  --text-display-md:  2.25rem;
+  --text-display-sm:  1.875rem;
+  --text-heading-xl:  1.5rem;
+  --text-heading-lg:  1.25rem;
+  --text-heading-md:  1.125rem;
+  --text-body-xl:     1.25rem;
+  --text-body-lg:     1.125rem;
+  --text-body-md:     1rem;
+  --text-body-sm:     0.875rem;
+  --text-caption:     0.75rem;
+  --text-overline:    0.75rem;
+
+  /* Shadows */
+  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── CSS Variables (runtime) ─── */
+:root {
+  --color-background: #F9F8F6;
+  --color-foreground: #1A1A1A;
+  --color-primary:    #C89B7B;
+  --color-secondary:  #0A0A0A;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* ─── Base styles ─── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: #F9F8F6;
+  color: #1A1A1A;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+/* Tighter tracking & better rendering on serif headings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* Smoother interactive states */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Baseline image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: #C89B7B;
+  color: #ffffff;
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid #C89B7B;
+  outline-offset: 2px;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6D3D1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C89B7B;
+}
+
+/* ─── Utility helpers ─── */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ─── Prose refinement ─── */
+.prose-arteparquet {
+  --tw-prose-body: #44403C;
+  --tw-prose-headings: #1A1A1A;
+  --tw-prose-lead: #57534E;
+  line-height: 1.8;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px)  { .container-wide { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .container-wide { padding-inline: 3rem;   } }
+@media (min-width: 1280px) { .container-wide { padding-inline: 4rem;   } }
