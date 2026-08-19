@@ -12,7 +12,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY frontend/frontend/ .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV TURBOPACK=0
-ARG NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_GA_ID=G-CXJX669QNK
 ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
 RUN npm run build
 

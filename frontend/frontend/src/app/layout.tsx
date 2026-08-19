@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { playfair, inter } from '@/styles/fonts'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { MobileBottomBar } from '@/components/layout/mobile-bottom-bar'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CookieConsent } from '@/components/ui/cookie-consent'
-import { GoogleAnalytics } from '@/components/analytics/google-analytics'
+import { GoogleAnalyticsConsent } from '@/components/analytics/google-analytics'
 import { LocalBusinessSchema } from '@/components/seo/json-ld'
+import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -76,6 +78,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://images.unsplash.com" />
         {/* Global JSON-LD — appears on every page */}
         <LocalBusinessSchema />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="beforeInteractive"
+        />
+        <Script id="google-analytics" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied'
+            });
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans">
         <a
@@ -90,7 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MobileBottomBar />
         <WhatsAppButton />
         <CookieConsent />
-        <GoogleAnalytics />
+        <GoogleAnalyticsConsent />
       </body>
     </html>
   )
