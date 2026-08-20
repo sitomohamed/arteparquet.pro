@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState, useRef } from 'react'
-import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/brand/logo'
@@ -55,11 +55,12 @@ export function Header() {
   const serviziRef = useRef<HTMLDivElement>(null)
 
   const { scrollY } = useScroll()
-  const headerBg = useTransform(scrollY, [0, 80], ['rgba(249,248,246,0)', 'rgba(249,248,246,1)'])
-  const headerShadow = useTransform(scrollY, [0, 80], ['0 0 0 rgba(0,0,0,0)', '0 1px 20px rgba(0,0,0,0.07)'])
+  const headerBg = useTransform(scrollY, [0, 100], ['rgba(249,248,246,0)', 'rgba(249,248,246,0.98)'])
+  const headerShadow = useTransform(scrollY, [0, 100], ['0 0 0 rgba(0,0,0,0)', '0 1px 24px rgba(0,0,0,0.08)'])
+  const headerBlur = useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(12px)'])
 
   useEffect(() => {
-    const unsub = scrollY.on('change', (v) => setScrolled(v > 40))
+    const unsub = scrollY.on('change', (v) => setScrolled(v > 50))
     return unsub
   }, [scrollY])
 
@@ -89,45 +90,57 @@ export function Header() {
   }, [mobileOpen])
 
   const textColor = scrolled ? 'text-legno-bruciato' : 'text-white'
-  const hoverColor = 'hover:text-rovere'
+  const hoverColor = 'hover:text-rovere transition-colors duration-300'
 
   return (
     <>
       <motion.header
         style={{ backgroundColor: headerBg, boxShadow: headerShadow }}
-        className="fixed top-0 left-0 right-0 z-30"
+        className={cn(
+          "fixed top-0 left-0 right-0 z-30 transition-all duration-400",
+          scrolled && "backdrop-blur-xl border-b border-neutral-100/50"
+        )}
         role="banner"
       >
         <div className="container-wide">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-18 md:h-22">
 
-            {/* ── Logo ── */}
-            <Link href="/" className="group" aria-label="Arteparquet — Homepage">
-              <Logo
-                variant={scrolled ? 'onLight' : 'onDark'}
-                size={40}
-                wordmarkClassName="hidden sm:flex"
-              />
+            {/* ── Logo con premium animation ── */}
+            <Link href="/" className="group relative" aria-label="Arteparquet — Homepage">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Logo
+                  variant={scrolled ? 'onLight' : 'onDark'}
+                  size={42}
+                  wordmarkClassName="hidden sm:flex"
+                />
+              </motion.div>
             </Link>
 
-            {/* ── Desktop nav ── */}
-            <nav className="hidden lg:flex items-center gap-7" aria-label="Navigazione principale">
+            {/* ── Desktop nav con refined spacing ── */}
+            <nav className="hidden lg:flex items-center gap-8" aria-label="Navigazione principale">
 
-              {/* Servizi dropdown */}
+              {/* Servizi dropdown con premium styling */}
               <div ref={serviziRef} className="relative">
                 <button
                   onClick={() => setServiziOpen((v) => !v)}
                   className={cn(
-                    'flex items-center gap-1 font-sans text-[14px] font-medium transition-colors duration-200',
+                    'flex items-center gap-1.5 font-sans text-[14.5px] font-medium transition-all duration-300 relative group',
                     textColor, hoverColor
                   )}
                   aria-expanded={serviziOpen}
                   aria-haspopup="true"
                 >
-                  Servizi
+                  <span className="relative">
+                    Servizi
+                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
+                  </span>
                   <ChevronDown
                     size={15}
-                    className={cn('transition-transform duration-200', serviziOpen && 'rotate-180')}
+                    className={cn('transition-transform duration-300', serviziOpen && 'rotate-180')}
                     aria-hidden="true"
                   />
                 </button>
@@ -135,32 +148,32 @@ export function Header() {
                 <AnimatePresence>
                   {serviziOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      initial={{ opacity: 0, y: 12, scale: 0.97 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[640px] bg-white rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.12)] border border-neutral-100/80 p-6 z-50"
+                      exit={{ opacity: 0, y: 12, scale: 0.97 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[680px] bg-white/98 backdrop-blur-xl rounded-2xl shadow-[0_24px_64px_rgba(0,0,0,0.14)] border border-neutral-100/80 p-7 z-50"
                       role="menu"
                     >
-                      <div className="grid grid-cols-3 gap-6">
+                      <div className="grid grid-cols-3 gap-7">
                         {SERVIZI_MENU.map((col) => (
                           <div key={col.heading}>
-                            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-rovere mb-3 pb-2 border-b border-neutral-100">
+                            <p className="font-sans text-[10.5px] font-semibold uppercase tracking-[0.16em] text-rovere mb-4 pb-2.5 border-b border-neutral-100">
                               {col.heading}
                             </p>
-                            <ul className="space-y-1" role="none">
+                            <ul className="space-y-1.5" role="none">
                               {col.items.map((item) => (
                                 <li key={item.href} role="none">
                                   <Link
                                     href={item.href}
                                     role="menuitem"
                                     onClick={() => setServiziOpen(false)}
-                                    className="group flex flex-col px-3 py-2 rounded-lg hover:bg-wood-50 transition-colors duration-150"
+                                    className="group/item flex flex-col px-3.5 py-2.5 rounded-xl hover:bg-wood-50 transition-all duration-200"
                                   >
-                                    <span className="font-sans text-[14px] font-semibold text-legno-bruciato group-hover:text-rovere transition-colors">
+                                    <span className="font-sans text-[14.5px] font-semibold text-legno-bruciato group-hover/item:text-rovere transition-colors duration-200">
                                       {item.label}
                                     </span>
-                                    <span className="font-sans text-[11px] text-neutral-400 mt-0.5">
+                                    <span className="font-sans text-[11.5px] text-neutral-400 mt-0.5">
                                       {item.desc}
                                     </span>
                                   </Link>
@@ -171,19 +184,20 @@ export function Header() {
                         ))}
                       </div>
 
-                      {/* Bottom row */}
-                      <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                      {/* Premium bottom row */}
+                      <div className="mt-6 pt-5 border-t border-neutral-100 flex items-center justify-between">
                         <Link
                           href="/servizi"
                           onClick={() => setServiziOpen(false)}
-                          className="font-sans text-[13px] font-semibold text-rovere hover:text-wood-600 transition-colors"
+                          className="font-sans text-[13.5px] font-semibold text-rovere hover:text-wood-600 transition-colors duration-200 inline-flex items-center gap-1.5 group/all"
                         >
-                          Vedi tutti i servizi →
+                          Vedi tutti i servizi 
+                          <ArrowRight size={14} className="transition-transform duration-200 group-hover/all:translate-x-1" />
                         </Link>
                         <Link
                           href="/contatti"
                           onClick={() => setServiziOpen(false)}
-                          className="inline-flex items-center px-4 py-2 rounded-lg bg-rovere text-white font-sans text-[13px] font-semibold hover:bg-wood-500 transition-colors"
+                          className="inline-flex items-center px-5 py-2.5 rounded-xl bg-rovere text-white font-sans text-[13.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.3)] active:scale-[0.97] transition-all duration-200"
                         >
                           Preventivo Gratuito
                         </Link>
@@ -193,48 +207,56 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
-              {/* Other nav links */}
+              {/* Other nav links con premium underline */}
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={cn('font-sans text-[14px] font-medium transition-colors duration-200', textColor, hoverColor)}
+                  className={cn('font-sans text-[14.5px] font-medium transition-all duration-300 relative group', textColor, hoverColor)}
                 >
-                  {link.label}
+                  <span className="relative">
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
+                  </span>
                 </Link>
               ))}
 
-              {/* Phone */}
+              {/* Premium Phone badge */}
               <a
                 href={`tel:${PHONE_CLEAN}`}
-                className={cn('hidden xl:flex items-center gap-1.5 font-sans text-[13px] transition-colors duration-200 hover:text-rovere',
-                  scrolled ? 'text-neutral-600' : 'text-white/80'
+                className={cn('hidden xl:flex items-center gap-2 font-sans text-[13.5px] transition-all duration-300 hover:text-rovere group',
+                  scrolled ? 'text-neutral-600' : 'text-white/85'
                 )}
               >
-                <Phone size={14} aria-hidden="true" />
-                {PHONE}
+                <div className="w-7 h-7 rounded-full bg-rovere/15 group-hover:bg-rovere/25 flex items-center justify-center transition-all duration-300">
+                  <Phone size={13} className="text-rovere" aria-hidden="true" />
+                </div>
+                <span>{PHONE}</span>
               </a>
 
-              {/* CTA */}
+              {/* Premium CTA button */}
               <Link
                 href="/contatti"
-                className="inline-flex items-center px-6 py-2.5 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 active:scale-[0.98] transition-all duration-200 shadow-[0_2px_8px_rgba(200,155,123,0.3)]"
+                className="relative inline-flex items-center px-7 py-3 rounded-xl bg-rovere text-white font-sans text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group"
               >
-                Preventivo Gratuito
+                <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Preventivo Gratuito</span>
               </Link>
             </nav>
 
-            {/* ── Mobile hamburger ── */}
-            <button
+            {/* ── Mobile hamburger con premium interaction ── */}
+            <motion.button
               onClick={() => setMobileOpen(true)}
-              className={cn('lg:hidden p-2 rounded-md transition-colors duration-200',
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={cn('lg:hidden p-2.5 rounded-xl transition-all duration-300',
                 scrolled ? 'text-legno-bruciato hover:bg-neutral-100' : 'text-white hover:bg-white/10'
               )}
               aria-label="Apri menu"
               aria-expanded={mobileOpen}
             >
               <Menu size={24} aria-hidden="true" />
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.header>
