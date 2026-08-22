@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description:
     'Galleria dei lavori Arteparquet: posa spina di pesce, levigatura, intarsi, restauro parquet a Bergamo e in Lombardia. Fotografie autentiche di cantieri reali.',
   alternates: { canonical: 'https://arteparquet.pro/portfolio' },
+  openGraph: {
+    title: 'Portfolio Lavori Parquet | Posa e Restauro a Bergamo e Milano',
+    description: 'Galleria dei lavori Arteparquet: posa spina di pesce, levigatura, intarsi, restauro parquet a Bergamo e in Lombardia. Fotografie autentiche di cantieri reali.',
+    url: 'https://arteparquet.pro/portfolio',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 const PROJECTS = [

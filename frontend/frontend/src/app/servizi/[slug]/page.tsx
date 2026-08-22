@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { CheckCircle, ArrowRight, Phone } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
-import { BreadcrumbSchema } from '@/components/seo/json-ld'
+import { RelatedLinks } from '@/components/ui/related-links'
+import { BreadcrumbSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 // ── Service data ───────────────────────────────────────────────────────────
 const SERVICES: Record<string, {
@@ -136,7 +137,7 @@ const SERVICES: Record<string, {
   'pvc': {
     title: 'Pavimento PVC',
     subtitle: 'Ideale per ambienti umidi',
-    description: 'Il pavimento in PVC vinilico click offre il massimo del comfort acustico e termico: morbido sotto i piedi, silenzioso, e completamente impermeabile. Si installa sopra qualsiasi pavimento esistente senza demolire nulla.',
+    description: 'Il pavimento in PVC click (LVT) è pensato per la casa: morbido sotto i piedi, silenzioso e completamente impermeabile. Si installa sopra il pavimento esistente senza demolire, ideale per ristrutturazioni veloci in cucine, corridoi e camere.',
     category: 'Pavimenti Moderni',
     badge: 'Comfort massimo',
     features: [
@@ -159,7 +160,7 @@ const SERVICES: Record<string, {
   'vinilico': {
     title: 'Pavimento Vinilico',
     subtitle: 'Comfort e silenzio acustico',
-    description: 'Il vinilico in lastre o listoni è la scelta di chi vuole estetica sofisticata, silenzio acustico e facilità di manutenzione. Disponibile in infinite varianti di colore e texture, si adatta a qualsiasi stile d\'interior design.',
+    description: 'Il vinilico in lastre incollate (LVT glue-down) è la scelta contract: uffici, negozi e strutture ricettive dove servono estetica, silenzio e manutenzione minima. A differenza del PVC click residenziale, si fissa al sottofondo e sopporta traffico intenso.',
     category: 'Pavimenti Moderni',
     badge: 'Bassa manutenzione',
     features: [
@@ -305,6 +306,7 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
           { name: service.title, url: `https://arteparquet.pro/servizi/${slug}` },
         ]}
       />
+      <ServiceFaqSchema items={service.faq} />
 
       {/* Hero */}
       <section className="bg-nero-marquina pt-32 pb-20 md:pt-44 md:pb-28">
@@ -472,6 +474,20 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
           </FadeIn>
         </div>
       </section>
+
+      <RelatedLinks
+        title="Altri servizi"
+        links={Object.entries(SERVICES)
+          .filter(([s]) => s !== slug)
+          .filter(([, svc]) => svc.category === service.category)
+          .slice(0, 4)
+          .map(([s, svc]) => ({
+            title: svc.title,
+            href: `/servizi/${s}`,
+            description: svc.subtitle,
+          }))}
+        columns={4}
+      />
 
       <CtaSection />
     </>

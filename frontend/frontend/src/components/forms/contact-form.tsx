@@ -187,6 +187,7 @@ export function ContactForm() {
         style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
       <input
         {...register('url')}
@@ -194,6 +195,7 @@ export function ContactForm() {
         style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
       <input {...register('csrfToken')} type="hidden" />
       <input {...register('timestamp')} type="hidden" />
@@ -432,7 +434,7 @@ function inputClass(hasError: boolean) {
   return cn(
     'w-full h-12 px-4 rounded-lg border font-sans text-[15px] text-legno-bruciato',
     'bg-neutral-50 focus:bg-white',
-    'placeholder:text-neutral-380 outline-none transition-all duration-200',
+    'placeholder:text-neutral-400 outline-none transition-all duration-200',
     'focus:ring-2 focus:ring-rovere/15 focus:border-rovere focus:shadow-[0_0_0_3px_rgba(200,155,123,0.08)]',
     hasError ? 'border-error bg-red-50/30' : 'border-neutral-200 hover:border-neutral-300'
   )

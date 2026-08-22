@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 }
 
 const ZONE_CITIES = [
-  { city: 'Milano',  slug: 'posa-parquet-milano' },
+  { city: 'Milano',  slug: 'parquet-milano' },
   { city: 'Bergamo', slug: 'parquet-bergamo' },
   { city: 'Brescia', slug: 'parquet-brescia' },
   { city: 'Como',    slug: 'parquet-como' },

@@ -12,6 +12,13 @@ export const metadata: Metadata = {
     'Guide complete sul parquet firmate da Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. 30 anni di esperienza nella posa parquet in Lombardia. Aggiornato 2026.',
   keywords: ['guida parquet', 'consigli parquet', 'blog parquet', 'come scegliere parquet', 'levigatura parquet guida'],
   alternates: { canonical: 'https://arteparquet.pro/blog' },
+  openGraph: {
+    title: 'Blog Parquet | Guide e Consigli di Mohamed Arabi | Arteparquet',
+    description: 'Guide complete sul parquet firmate da Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. 30 anni di esperienza nella posa parquet in Lombardia.',
+    url: 'https://arteparquet.pro/blog',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 const ARTICLES = [

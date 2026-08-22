@@ -330,7 +330,7 @@ function clientEmailHtml(data: z.infer<typeof schema>) {
   <!-- Footer -->
   <div style="background:#F5F5F4;padding:16px 32px;text-align:center;border-top:1px solid #E7E5E4;">
     <p style="margin:0 0 4px;font-size:13px;font-weight:600;color:#44403C;">
-      Arteparquet — Maestri del Parquet dal 2004
+      Arteparquet — Posa e Restauro Parquet dal 1996
     </p>
     <p style="margin:0;font-size:11px;color:#A8A29E;">
       +39 389 240 7827 · info@arteparquet.pro · arteparquet.pro

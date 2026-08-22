@@ -8,7 +8,15 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/admin/', '/api/'],
       },
+      // Explicitly allow major AI search crawlers
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'Anthropic-AI', allow: '/' },
     ],
     sitemap: 'https://arteparquet.pro/sitemap.xml',
+    host: 'https://arteparquet.pro',
   }
 }

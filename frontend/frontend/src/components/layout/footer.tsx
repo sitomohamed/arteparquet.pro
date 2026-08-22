@@ -19,10 +19,11 @@ const FOOTER_SECTIONS = [
     heading: 'Servizi',
     links: [
       { label: 'Posa Parquet',          href: '/servizi/posa' },
+      { label: 'Parquet Massello',      href: '/servizi/parquet-massello' },
+      { label: 'Parquet Prefinito',     href: '/servizi/parquet-prefinito' },
       { label: 'Levigatura Parquet',    href: '/servizi/levigatura' },
       { label: 'Restauro Parquet',      href: '/servizi/restauro' },
       { label: 'SPC, PVC & Laminati',   href: '/servizi/spc' },
-      { label: 'Sopralluogo Gratuito',  href: '/contatti' },
     ],
   },
   {
@@ -222,6 +223,29 @@ export function Footer() {
               </Link>
             </div>
           </CollapsibleSection>
+        </div>
+      </div>
+
+      {/* Zone — crawl paths for local landing pages */}
+      <div className="border-t border-white/[0.08]">
+        <div className="container-wide py-6">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-widest text-white/35 mb-3 text-center md:text-left">
+            Posa parquet in Lombardia
+          </p>
+          <nav aria-label="Città servite" className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2">
+            {[
+              'bergamo', 'milano', 'brescia', 'monza', 'como',
+              'varese', 'lecco', 'lodi', 'pavia', 'cremona', 'mantova',
+            ].map((city) => (
+              <Link
+                key={city}
+                href={`/zone/parquet-${city}`}
+                className="font-sans text-[12.5px] text-white/45 hover:text-rovere capitalize transition-colors duration-300"
+              >
+                Parquet {city}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
 

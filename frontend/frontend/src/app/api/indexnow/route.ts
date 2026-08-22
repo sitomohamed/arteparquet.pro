@@ -88,32 +88,18 @@ export async function POST(request: NextRequest) {
 
 /**
  * Notify all main pages (useful for initial setup)
- * POST /api/indexnow?all=true
+ * GET /api/indexnow?all=true&secret=<INDEXNOW_SECRET>
  */
 export async function GET(request: NextRequest) {
   const securityHeaders = getApiSecurityHeaders()
-  const notifyAll = request.nextUrl.searchParams.get('all') === 'true'
 
-  // Rate limiting for GET requests too
-  const rateLimit = checkRateLimit(request, {
-    maxRequests: 2,
-    windowMs: 3600000, // 1 hour
-  })
-  
-  if (!rateLimit.allowed) {
+  // Simple secret check — prevents public abuse
+  const secret = request.nextUrl.searchParams.get('secret')
+  const expectedSecret = process.env.INDEXNOW_SECRET
+  if (!expectedSecret || secret !== expectedSecret) {
     return NextResponse.json(
-      { error: 'Too many requests' },
-      { 
-        status: 429,
-        headers: securityHeaders
-      }
-    )
-  }
-
-  if (!notifyAll) {
-    return NextResponse.json(
-      { message: 'Use POST method to notify specific URLs' },
-      { status: 200, headers: securityHeaders }
+      { error: 'Unauthorized' },
+      { status: 401, headers: securityHeaders }
     )
   }
 

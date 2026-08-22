@@ -1,3 +1,35 @@
+// ── WebSite schema with SearchAction ────────────────────────────────────
+export function WebSiteSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://arteparquet.pro/#website',
+    url: 'https://arteparquet.pro',
+    name: 'Arteparquet',
+    description: 'Posa, restauro e levigatura parquet in Lombardia dal 1996.',
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://arteparquet.pro/#business',
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://arteparquet.pro/blog?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    inLanguage: 'it-IT',
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 // ── Global LocalBusiness schema ─────────────────────────────────────────
 export function LocalBusinessSchema() {
   const schema = {
@@ -11,7 +43,6 @@ export function LocalBusinessSchema() {
     url: 'https://arteparquet.pro',
     telephone: '+393892407827',
     email: 'info@arteparquet.pro',
-    priceRange: '€€',
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
     address: {
@@ -217,6 +248,29 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
       position: i + 1,
       name: item.name,
       item: item.url,
+    })),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+// ── FAQ schema for service pages ─────────────────────────────────────────
+export function ServiceFaqSchema({ items }: { items: { q: string; a: string }[] }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
     })),
   }
 

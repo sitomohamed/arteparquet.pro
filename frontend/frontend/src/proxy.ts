@@ -1,19 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSecurityHeaders } from '@/lib/security'
 
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
+function withSecurityHeaders(response: NextResponse) {
   const securityHeaders = getSecurityHeaders()
-
   Object.entries(securityHeaders).forEach(([key, value]) => {
     response.headers.set(key, value)
   })
+  return response
+}
+
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  const host = request.headers.get('host') ?? ''
+
+  if (host.startsWith('www.')) {
+    const url = request.nextUrl.clone()
+    url.host = host.slice(4)
+    url.protocol = 'https:'
+    return withSecurityHeaders(NextResponse.redirect(url, 308))
+  }
+
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    const url = request.nextUrl.clone()
+    url.pathname = pathname.slice(0, -1)
+    return withSecurityHeaders(NextResponse.redirect(url, 308))
+  }
+
+  const response = withSecurityHeaders(NextResponse.next())
 
   if (request.nextUrl.pathname.startsWith('/api/')) {
     if (request.nextUrl.pathname === '/api/contact' && request.method !== 'POST') {
       return new NextResponse('Method not allowed', {
         status: 405,
-        headers: securityHeaders,
+        headers: getSecurityHeaders(),
       })
     }
 
@@ -22,7 +41,7 @@ export function middleware(request: NextRequest) {
       if (!contentType || !contentType.includes('application/json')) {
         return new NextResponse('Invalid content type', {
           status: 400,
-          headers: securityHeaders,
+          headers: getSecurityHeaders(),
         })
       }
     }

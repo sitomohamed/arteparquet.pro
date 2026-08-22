@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description:
     'Risposte alle domande più comuni su posa, levigatura e restauro parquet: costi, tempi, garanzie, zone di intervento. Arteparquet Bergamo, risponde Mohamed Arabi.',
   alternates: { canonical: 'https://arteparquet.pro/faq' },
+  openGraph: {
+    title: 'FAQ | Domande Frequenti su Posa e Restauro Parquet',
+    description: 'Risposte alle domande più comuni su posa, levigatura e restauro parquet: costi, tempi, garanzie, zone di intervento. Arteparquet Bergamo.',
+    url: 'https://arteparquet.pro/faq',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 export default function FaqPage() {

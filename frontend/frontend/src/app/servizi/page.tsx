@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
   description:
     'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
+  alternates: { canonical: 'https://arteparquet.pro/servizi' },
+  openGraph: {
+    title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
+    description: 'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
+    url: 'https://arteparquet.pro/servizi',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 // ── Data ──────────────────────────────────────────────────────────────────

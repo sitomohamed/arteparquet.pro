@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description:
     'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Rispondiamo entro 5 minuti su WhatsApp. ☎ +39 389 240 7827.',
   alternates: { canonical: 'https://arteparquet.pro/contatti' },
+  openGraph: {
+    title: 'Contatti | Sopralluogo e Preventivo Gratuito Parquet',
+    description: 'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Rispondiamo entro 5 minuti su WhatsApp. ☎ +39 389 240 7827.',
+    url: 'https://arteparquet.pro/contatti',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 const PHONE = '+39 389 240 7827'

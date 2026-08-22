@@ -6,7 +6,7 @@ import { MobileBottomBar } from '@/components/layout/mobile-bottom-bar'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { GoogleAnalyticsConsent } from '@/components/analytics/google-analytics'
-import { LocalBusinessSchema } from '@/components/seo/json-ld'
+import { LocalBusinessSchema, WebSiteSchema } from '@/components/seo/json-ld'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import './globals.css'
 
@@ -54,6 +54,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Arteparquet | Maestri del Parquet in Italia dal 1996',
     description: 'Posa e restauro parquet premium. Ex team Teatro alla Scala. Preventivo gratuito.',
+    creator: '@arteparquet',
+    site: '@arteparquet',
   },
   robots: {
     index: true,
@@ -73,10 +75,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
       <head>
-        {/* Preconnect for Unsplash images used in chi-siamo */}
-        <link rel="preconnect" href="https://images.unsplash.com" />
+        {/* Preconnect + dns-prefetch for Unsplash images used in chi-siamo and blog */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        {/* Preload hero LCP background image for faster FCP/LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/portfolio/google-spina-pesce-lucida-01.jpg"
+          fetchPriority="high"
+        />
         {/* Global JSON-LD — appears on every page */}
         <LocalBusinessSchema />
+        <WebSiteSchema />
         {/* Native tags so Google's installer can see G-CXJX669QNK in the HTML source. */}
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <script

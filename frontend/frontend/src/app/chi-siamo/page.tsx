@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     'La storia di Arteparquet: Mohamed Arabi, maestro posatore dal 1996. Nel 2004 parte del team Teatro alla Scala di Milano. Posa, restauro e levigatura parquet in Lombardia.',
   keywords: ['parquettista Bergamo', 'esperto parquet', 'posatore parquet Bergamo', 'storia Arteparquet', 'Mohamed Arabi parquet'],
   alternates: { canonical: 'https://arteparquet.pro/chi-siamo' },
+  openGraph: {
+    title: 'Chi Siamo | Mohamed Arabi, Parquettista dal 1996 | Arteparquet',
+    description: 'La storia di Arteparquet: Mohamed Arabi, maestro posatore dal 1996. Nel 2004 parte del team Teatro alla Scala di Milano. Posa, restauro e levigatura parquet in Lombardia.',
+    url: 'https://arteparquet.pro/chi-siamo',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 const VALUES = [

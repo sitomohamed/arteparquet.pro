@@ -4,6 +4,14 @@ import { FadeIn } from '@/components/animations/fade-in'
 export const metadata: Metadata = {
   title: 'Cookie Policy',
   description: 'Informativa sull\'uso dei cookie sul sito Arteparquet.',
+  alternates: { canonical: 'https://arteparquet.pro/cookie-policy' },
+  robots: { index: false, follow: true },
+  openGraph: {
+    title: 'Cookie Policy | Arteparquet',
+    description: 'Informativa sull\'uso dei cookie sul sito Arteparquet.',
+    url: 'https://arteparquet.pro/cookie-policy',
+    locale: 'it_IT',
+  },
 }
 
 export default function CookiePolicyPage() {

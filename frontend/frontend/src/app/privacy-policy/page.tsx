@@ -4,6 +4,15 @@ import { FadeIn } from '@/components/animations/fade-in'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Informativa sulla privacy e il trattamento dei dati personali di Arteparquet.',
+  alternates: { canonical: 'https://arteparquet.pro/privacy-policy' },
+  robots: { index: false, follow: true },
+  openGraph: {
+    title: 'Privacy Policy | Arteparquet',
+    description: 'Informativa sulla privacy e il trattamento dei dati personali di Arteparquet.',
+    url: 'https://arteparquet.pro/privacy-policy',
+    locale: 'it_IT',
+    type: 'website',
+  },
 }
 
 export default function PrivacyPolicyPage() {
