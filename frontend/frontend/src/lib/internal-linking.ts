@@ -102,7 +102,7 @@ export function getRelatedServices(currentServiceSlug: string): InternalLink[] {
       intent: 'service' as const,
       priority: 8 - index, // First related service is highest priority
     }))
-    .filter((link) => link.title !== slug) // Exclude current page
+    .filter((link) => link.href !== `/servizi/${currentServiceSlug}`)
 }
 
 /**

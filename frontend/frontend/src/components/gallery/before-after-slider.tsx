@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { gsap } from '@/lib/gsap'
-import { MoveHorizontal, ZoomIn } from 'lucide-react'
+import { MoveHorizontal } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { trackBeforeAfterInteraction } from '@/lib/analytics'
 
