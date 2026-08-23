@@ -6,6 +6,7 @@ import { Menu, X, Phone, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/brand/logo'
+import { getLenis } from '@/components/animations/smooth-scroll'
 
 // ── Mega-menu data ────────────────────────────────────────────────────────
 const SERVIZI_MENU = [
@@ -76,8 +77,18 @@ export function Header() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    const scroller = getLenis()
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+      scroller?.stop()
+    } else {
+      document.body.style.overflow = ''
+      scroller?.start()
+    }
+    return () => {
+      document.body.style.overflow = ''
+      scroller?.start()
+    }
   }, [mobileOpen])
 
   useEffect(() => {
@@ -280,6 +291,7 @@ export function Header() {
               transition={{ type: 'tween', duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="fixed top-0 right-0 bottom-0 z-50 w-[min(340px,92vw)] bg-travertino flex flex-col shadow-[−24px_0_60px_rgba(0,0,0,0.15)]"
               role="dialog" aria-modal="true" aria-label="Menu di navigazione"
+              data-lenis-prevent
             >
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-200">
@@ -292,7 +304,7 @@ export function Header() {
               </div>
 
               {/* Links */}
-              <div className="flex-1 overflow-y-auto px-4 py-6">
+              <div className="flex-1 overflow-y-auto px-4 py-6" data-lenis-prevent>
                 <ul className="space-y-1">
                   {/* Servizi accordion */}
                   <li>

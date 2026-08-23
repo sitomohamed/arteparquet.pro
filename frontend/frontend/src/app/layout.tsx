@@ -7,6 +7,8 @@ import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { GoogleAnalyticsConsent } from '@/components/analytics/google-analytics'
 import { LocalBusinessSchema, WebSiteSchema } from '@/components/seo/json-ld'
+import { SmoothScroll } from '@/components/animations/smooth-scroll'
+import { CustomCursor } from '@/components/ui/custom-cursor'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import './globals.css'
 
@@ -107,7 +109,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans">
+      <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans custom-cursor-enabled">
+        <SmoothScroll />
+        <CustomCursor />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-legno-bruciato px-4 py-2 z-[9999] rounded shadow font-sans text-sm font-semibold"

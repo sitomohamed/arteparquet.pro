@@ -114,6 +114,11 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* Lenis interpolates scroll; native CSS smooth would double-ease it */
+html.lenis {
+  scroll-behavior: auto;
+}
+
 body {
   background-color: #F9F8F6;
   color: #1A1A1A;

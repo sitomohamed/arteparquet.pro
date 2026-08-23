@@ -1,5 +1,42 @@
 import type { NextConfig } from 'next'
 
+const isDev = process.env.NODE_ENV !== 'production'
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  [
+    "script-src 'self' 'unsafe-inline'",
+    // React requires eval() in development for debugging; never in production.
+    isDev ? "'unsafe-eval'" : null,
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+  ]
+    .filter(Boolean)
+    .join(' '),
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self' data:",
+  "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
+  [
+    "connect-src 'self'",
+    'https://www.google-analytics.com',
+    'https://analytics.google.com',
+    'https://stats.g.doubleclick.net',
+    'https://region1.google-analytics.com',
+    'https://www.googletagmanager.com',
+    'https://www.google.com',
+    'https://api.indexnow.org',
+    isDev ? 'ws: wss:' : null,
+  ]
+    .filter(Boolean)
+    .join(' '),
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  isDev ? null : 'upgrade-insecure-requests',
+]
+  .filter(Boolean)
+  .join('; ')
+
 const nextConfig: NextConfig = {
   output: 'standalone',
 
@@ -28,18 +65,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-              "style-src 'self' 'unsafe-inline'",
-              "font-src 'self' data:",
-              "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://api.indexnow.org",
-              "frame-ancestors 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              'upgrade-insecure-requests',
-            ].join('; '),
+            value: contentSecurityPolicy,
           },
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },

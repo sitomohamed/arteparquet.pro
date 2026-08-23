@@ -1,18 +1,10 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { gsap, ScrollTrigger, EASE, DURATION, getReducedMotion } from '@/lib/gsap'
 
-const EASE = [0.16, 1, 0.3, 1] as const
-
-// ─── Timeline milestones ───────────────────────────────────────────────────────
 const MILESTONES = [
   {
     year: '1996',
@@ -37,7 +29,6 @@ const MILESTONES = [
   },
 ]
 
-// ─── Single milestone block ────────────────────────────────────────────────────
 function Milestone({
   milestone,
   index,
@@ -47,21 +38,90 @@ function Milestone({
   index: number
   isLast: boolean
 }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const rowRef = useRef<HTMLDivElement>(null)
+  const yearRef = useRef<HTMLDivElement>(null)
+  const lineTopRef = useRef<HTMLDivElement>(null)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const lineBottomRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const badgeRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!rowRef.current) return
+    
+    if (getReducedMotion()) return
+
+    const ctx = gsap.context(() => {
+      gsap.set(yearRef.current, { opacity: 0, x: -40 })
+      gsap.set(contentRef.current, { opacity: 0, x: 40 })
+      gsap.set(lineTopRef.current, { scaleY: 0, transformOrigin: 'top' })
+      gsap.set(dotRef.current, { scale: 0, opacity: 0 })
+      gsap.set(lineBottomRef.current, { scaleY: 0, transformOrigin: 'top' })
+      if (badgeRef.current) {
+        gsap.set(badgeRef.current, { opacity: 0, y: 20 })
+      }
+
+      ScrollTrigger.create({
+        trigger: rowRef.current,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline({ defaults: { ease: EASE.expo } })
+
+          tl.to(lineTopRef.current, {
+            scaleY: 1,
+            duration: DURATION.base,
+          }, 0)
+
+          tl.to(yearRef.current, {
+            opacity: 1,
+            x: 0,
+            duration: DURATION.slow,
+          }, 0.1)
+
+          tl.to(dotRef.current, {
+            scale: 1,
+            opacity: 1,
+            duration: DURATION.fast,
+            ease: EASE.bounce,
+          }, 0.3)
+
+          tl.to(contentRef.current, {
+            opacity: 1,
+            x: 0,
+            duration: DURATION.slow,
+          }, 0.2)
+
+          if (!isLast) {
+            tl.to(lineBottomRef.current, {
+              scaleY: 1,
+              duration: DURATION.slow,
+            }, 0.4)
+          }
+
+          if (badgeRef.current) {
+            tl.to(badgeRef.current, {
+              opacity: 1,
+              y: 0,
+              duration: DURATION.base,
+            }, 0.5)
+          }
+        },
+      })
+    }, rowRef)
+
+    return () => ctx.revert()
+  }, [isLast])
 
   return (
-    <div ref={ref} className="relative grid grid-cols-1 lg:grid-cols-[1fr_2px_1fr] gap-0">
+    <div ref={rowRef} className="relative grid grid-cols-1 lg:grid-cols-[1fr_2px_1fr] gap-0">
 
-      {/* Year column — left on desktop, hidden label on mobile */}
-      <motion.div
-        initial={{ opacity: 0, x: -32 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+      <div
+        ref={yearRef}
         className="flex lg:justify-end lg:pr-16 mb-6 lg:mb-0 lg:pb-20"
+        style={{ opacity: 0 }}
       >
         <div className="lg:text-right">
-          {/* Large decorative year */}
           <div
             className="font-serif font-semibold leading-none select-none"
             style={{
@@ -75,7 +135,6 @@ function Milestone({
             {milestone.year}
           </div>
 
-          {/* Label */}
           <div className="mt-3 lg:mt-4">
             <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.25em] text-rovere/70">
               {milestone.label}
@@ -85,45 +144,32 @@ function Milestone({
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Centre line + dot */}
       <div className="hidden lg:flex flex-col items-center">
-        {/* Top line segment */}
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={inView ? { scaleY: 1 } : {}}
-          transition={{ duration: 0.6, ease: EASE }}
-          style={{ transformOrigin: 'top' }}
+        <div
+          ref={lineTopRef}
           className="w-px bg-gradient-to-b from-rovere/50 to-rovere/10 flex-1"
+          style={{ transformOrigin: 'top' }}
         />
-        {/* Node dot */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.3, ease: EASE }}
+        <div
+          ref={dotRef}
           className="w-3 h-3 rounded-full bg-rovere ring-4 ring-rovere/20 flex-shrink-0 my-2"
         />
-        {/* Bottom line segment */}
         {!isLast && (
-          <motion.div
-            initial={{ scaleY: 0 }}
-            animate={inView ? { scaleY: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-            style={{ transformOrigin: 'top' }}
+          <div
+            ref={lineBottomRef}
             className="w-px bg-gradient-to-b from-rovere/10 to-rovere/50 flex-1"
+            style={{ transformOrigin: 'top' }}
           />
         )}
       </div>
 
-      {/* Content column — right on desktop */}
-      <motion.div
-        initial={{ opacity: 0, x: 32 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+      <div
+        ref={contentRef}
         className="lg:pl-16 pb-20 lg:pb-24"
+        style={{ opacity: 0 }}
       >
-        {/* Mobile: year badge */}
         <div className="lg:hidden inline-flex items-center gap-2 mb-5">
           <span className="font-serif font-semibold text-rovere text-[1.75rem] leading-none">
             {milestone.year}
@@ -134,7 +180,6 @@ function Milestone({
           </span>
         </div>
 
-        {/* Heading */}
         <h3
           className="font-serif font-semibold text-white leading-[1.1] mb-6 whitespace-pre-line"
           style={{ fontSize: 'clamp(1.625rem, 3.5vw, 2.625rem)' }}
@@ -142,45 +187,111 @@ function Milestone({
           {milestone.heading}
         </h3>
 
-        {/* Body text */}
         <p className="font-sans text-[15px] md:text-[16px] text-white/60 leading-[1.75] max-w-lg">
           {milestone.body}
         </p>
 
-        {/* Scala special badge */}
         {index === 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+          <div
+            ref={badgeRef}
             className="mt-8 inline-flex items-center gap-3 border border-rovere/30 rounded-xl px-5 py-3 bg-rovere/5 backdrop-blur-sm"
+            style={{ opacity: 0 }}
           >
             <div className="w-1.5 h-1.5 rounded-full bg-rovere flex-shrink-0" />
             <span className="font-sans text-[12px] font-medium text-white/70 tracking-wide">
               Teatro alla Scala di Milano — 2004
             </span>
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </div>
   )
 }
 
-// ─── Main component ────────────────────────────────────────────────────────────
 export function HeritageSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '8%'])
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.04, 0.06, 0.04])
-
+  const bgRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
-  const headerInView = useInView(headerRef, { once: true, margin: '-80px' })
-
   const credRef = useRef<HTMLDivElement>(null)
-  const credInView = useInView(credRef, { once: true, margin: '-80px' })
+  const ctaRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!sectionRef.current) return
+    
+    if (getReducedMotion()) return
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+        onUpdate: (self) => {
+          if (bgRef.current) {
+            const y = self.progress * 8
+            const opacity = 0.04 + Math.sin(self.progress * Math.PI) * 0.02
+            gsap.set(bgRef.current, { yPercent: y, opacity })
+          }
+        },
+      })
+
+      gsap.set(headerRef.current, { opacity: 0, y: 60 })
+      
+      ScrollTrigger.create({
+        trigger: headerRef.current,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          gsap.to(headerRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: DURATION.slow,
+            ease: EASE.expo,
+          })
+        },
+      })
+
+      if (credRef.current) {
+        const items = credRef.current.querySelectorAll('[data-cred-item]')
+        gsap.set(items, { opacity: 0, y: 20 })
+        
+        ScrollTrigger.create({
+          trigger: credRef.current,
+          start: 'top 85%',
+          once: true,
+          onEnter: () => {
+            gsap.to(items, {
+              opacity: 1,
+              y: 0,
+              duration: DURATION.base,
+              stagger: 0.1,
+              ease: EASE.expo,
+            })
+          },
+        })
+      }
+
+      if (ctaRef.current) {
+        gsap.set(ctaRef.current, { opacity: 0, y: 30 })
+        
+        ScrollTrigger.create({
+          trigger: ctaRef.current,
+          start: 'top 90%',
+          once: true,
+          onEnter: () => {
+            gsap.to(ctaRef.current, {
+              opacity: 1,
+              y: 0,
+              duration: DURATION.base,
+              ease: EASE.expo,
+            })
+          },
+        })
+      }
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section
@@ -188,13 +299,11 @@ export function HeritageSection() {
       className="relative bg-nero-marquina overflow-hidden"
       aria-labelledby="heritage-heading"
     >
-      {/* Premium parallax background with enhanced depth */}
-      <motion.div
-        style={{ y: bgY, opacity: bgOpacity }}
+      <div
+        ref={bgRef}
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
       >
-        {/* Enhanced grain texture */}
         <div
           className="absolute inset-0 opacity-[0.06] mix-blend-overlay"
           style={{
@@ -203,51 +312,36 @@ export function HeritageSection() {
             backgroundSize: '128px',
           }}
         />
-        {/* Premium radial gradients */}
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-rovere/[0.06] blur-[120px]" />
         <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-rovere/[0.05] blur-[140px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-rovere/[0.03] blur-[160px]" />
-      </motion.div>
+      </div>
 
       <div className="relative z-10 container-wide pt-28 pb-0 md:pt-36">
-
-        {/* ── Section header ───────────────────────────────────────── */}
-        <div ref={headerRef} className="max-w-3xl mb-24 md:mb-32">
-          <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, ease: EASE }}
-            className="block font-sans text-[10px] font-semibold uppercase tracking-[0.28em] text-rovere mb-7"
-          >
+        <div ref={headerRef} className="max-w-3xl mb-24 md:mb-32" style={{ opacity: 0 }}>
+          <span className="block font-sans text-[10px] font-semibold uppercase tracking-[0.28em] text-rovere mb-7">
             La nostra storia — Dal 1996
-          </motion.span>
+          </span>
 
-          <motion.h2
+          <h2
             id="heritage-heading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.08, ease: EASE }}
             className="font-serif font-semibold text-white leading-[1.05] mb-8 text-balance"
             style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4rem)' }}
           >
             Dal 1996, il legno<br />
             <em className="not-italic text-rovere">è il nostro mestiere.</em>
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.18, ease: EASE }}
+          <p
             className="font-sans text-white/55 leading-[1.8] max-w-xl"
             style={{ fontSize: 'clamp(0.9375rem, 1.4vw, 1.0625rem)' }}
           >
             Una storia costruita nel tempo, tra esperienza artigianale, precisione
             e passione per il legno. Dal 1996 Mohamed Arabi lavora nel mondo del
             parquet, trasformando ogni pavimento in un progetto fatto per durare.
-          </motion.p>
+          </p>
         </div>
 
-        {/* ── Timeline ─────────────────────────────────────────────── */}
         <div role="list" aria-label="Storia di Arteparquet">
           {MILESTONES.map((m, i) => (
             <div key={m.year} role="listitem">
@@ -257,7 +351,6 @@ export function HeritageSection() {
         </div>
       </div>
 
-      {/* ── Credential strip ─────────────────────────────────────── */}
       <div
         ref={credRef}
         className="relative z-10 border-t border-white/8 mt-4"
@@ -269,12 +362,10 @@ export function HeritageSection() {
               { label: 'Teatro alla Scala', value: '2004' },
               { label: 'Anni di esperienza', value: '30+' },
               { label: 'Sede', value: 'Bergamo, IT' },
-            ].map((c, i) => (
-              <motion.div
+            ].map((c) => (
+              <div
                 key={c.label}
-                initial={{ opacity: 0, y: 16 }}
-                animate={credInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.09, ease: EASE }}
+                data-cred-item
                 className="md:px-10 first:pl-0 last:pr-0 text-center md:text-left"
               >
                 <p
@@ -286,14 +377,13 @@ export function HeritageSection() {
                 <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-white/35">
                   {c.label}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ── Bottom CTA bar ──────────────────────────────────────── */}
-      <div className="relative z-10 border-t border-white/8">
+      <div ref={ctaRef} className="relative z-10 border-t border-white/8" style={{ opacity: 0 }}>
         <div className="container-wide py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="font-serif italic text-[1.0625rem] text-white/50 text-center sm:text-left max-w-md leading-relaxed">
             &ldquo;Ogni listello di legno racconta una storia. Il nostro compito

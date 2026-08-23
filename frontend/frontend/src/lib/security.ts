@@ -109,23 +109,51 @@ export function detectHoneypot(request: NextRequest, formData: Record<string, un
   return false
 }
 
-export const CONTENT_SECURITY_POLICY = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-  "style-src 'self' 'unsafe-inline'",
-  "font-src 'self' data:",
-  "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
-  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://api.indexnow.org",
-  "frame-ancestors 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  'upgrade-insecure-requests',
-].join('; ')
+const IS_DEV = process.env.NODE_ENV !== 'production'
+
+export function getContentSecurityPolicy(): string {
+  const scriptSrc = [
+    "'self'",
+    "'unsafe-inline'",
+    // React/Next.js use eval() in development for call-stack reconstruction.
+    // Never included in production.
+    ...(IS_DEV ? ["'unsafe-eval'"] : []),
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+  ].join(' ')
+
+  const connectSrc = [
+    "'self'",
+    'https://www.google-analytics.com',
+    'https://analytics.google.com',
+    'https://stats.g.doubleclick.net',
+    'https://region1.google-analytics.com',
+    'https://www.googletagmanager.com',
+    'https://www.google.com',
+    'https://api.indexnow.org',
+    ...(IS_DEV ? ['ws:', 'wss:'] : []),
+  ].join(' ')
+
+  return [
+    "default-src 'self'",
+    `script-src ${scriptSrc}`,
+    "style-src 'self' 'unsafe-inline'",
+    "font-src 'self' data:",
+    "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
+    `connect-src ${connectSrc}`,
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    ...(IS_DEV ? [] : ['upgrade-insecure-requests']),
+  ].join('; ')
+}
+
+export const CONTENT_SECURITY_POLICY = getContentSecurityPolicy()
 
 export function getSecurityHeaders(): Record<string, string> {
   return {
     'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
-    'Content-Security-Policy': CONTENT_SECURITY_POLICY,
+    'Content-Security-Policy': getContentSecurityPolicy(),
     'X-Frame-Options': 'DENY',
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
