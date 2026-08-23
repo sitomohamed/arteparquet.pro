@@ -5,6 +5,7 @@ import { MapPin, Phone, MessageCircle, CheckCircle, Star, Clock } from 'lucide-r
 import { FadeIn } from '@/components/animations/fade-in'
 import { RelatedLinks } from '@/components/ui/related-links'
 import { BreadcrumbSchema, LocalServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
+import { ZoneViewTracker } from '@/components/analytics/page-view-tracker'
 
 // ── Città supportate ─────────────────────────────────────────────────────
 const CITIES: Record<string, { display: string; region: string; province: string; lat: string; lng: string }> = {
@@ -270,6 +271,7 @@ export default async function ZonePage({
 
   return (
     <>
+      <ZoneViewTracker cityName={c.display} />
       {/* Structured data */}
       <LocalServiceSchema
         city={c.display}

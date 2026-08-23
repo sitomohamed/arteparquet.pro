@@ -8,6 +8,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { 
+  trackFormStart, 
+  trackFormStep, 
+  trackFormComplete, 
+  trackFormError,
+  trackCtaClick
+} from '@/lib/analytics'
 
 const schema = z.object({
   projectType: z.string().min(1, 'Seleziona un tipo di progetto'),
@@ -49,6 +56,7 @@ export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [csrfToken, setCsrfToken] = useState('')
   const [formStartTime] = useState(Date.now())
+  const [formStarted, setFormStarted] = useState(false)
 
   const {
     register,
@@ -95,6 +103,7 @@ export function ContactForm() {
     // Security checks before submission
     if (!csrfToken) {
       setSubmitError('Errore di sicurezza. Ricarica la pagina.')
+      trackFormError(step, 'csrf_token')
       return
     }
     
@@ -119,8 +128,17 @@ export function ContactForm() {
       })
       if (!res.ok) {
         const json = await res.json().catch(() => ({}))
+        trackFormError(step, json.error || 'submission_error')
         throw new Error(json.error ?? 'Errore invio')
       }
+      
+      // Track successful form completion
+      trackFormComplete({
+        projectType: data.projectType,
+        clientType: data.clientType,
+        city: data.city,
+      })
+      
       setSubmitted(true)
     } catch (err) {
       setSubmitError(
@@ -132,6 +150,12 @@ export function ContactForm() {
   }
 
   async function nextStep() {
+    // Track form start on first interaction
+    if (!formStarted) {
+      trackFormStart()
+      setFormStarted(true)
+    }
+
     const fields: (keyof FormData)[][] = [
       ['projectType'],
       ['clientType'],
@@ -139,7 +163,18 @@ export function ContactForm() {
       ['name', 'phone', 'email', 'privacy'],
     ]
     const valid = await trigger(fields[step])
-    if (valid) setStep((s) => s + 1)
+    
+    if (valid) {
+      // Track step completion
+      trackFormStep(step + 1, STEPS[step])
+      setStep((s) => s + 1)
+    } else {
+      // Track validation error
+      const firstError = Object.keys(errors)[0]
+      if (firstError) {
+        trackFormError(step, firstError)
+      }
+    }
   }
 
   if (submitted) {
@@ -161,6 +196,7 @@ export function ContactForm() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/portfolio"
+            onClick={() => trackCtaClick('service_cta', 'form_success_portfolio')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 transition-colors"
           >
             Esplora i nostri lavori
@@ -169,6 +205,7 @@ export function ContactForm() {
             href={`https://wa.me/393892407827?text=${encodeURIComponent('Ciao! Ho appena inviato il modulo di contatto.')}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackCtaClick('whatsapp', 'form_success')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-neutral-200 text-legno-bruciato font-sans text-[14px] font-medium hover:border-rovere transition-colors"
           >
             Scrivici su WhatsApp

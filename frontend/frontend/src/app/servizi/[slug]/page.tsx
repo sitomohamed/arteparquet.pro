@@ -6,6 +6,8 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 import { RelatedLinks } from '@/components/ui/related-links'
 import { BreadcrumbSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
+import { ServiceViewTracker } from '@/components/analytics/page-view-tracker'
+import { TrackedCta } from '@/components/analytics/tracked-cta'
 
 // ── Service data ───────────────────────────────────────────────────────────
 const SERVICES: Record<string, {
@@ -299,6 +301,7 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <ServiceViewTracker serviceSlug={slug} />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: 'https://arteparquet.pro' },
@@ -349,18 +352,22 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
               {service.description}
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link
+              <TrackedCta
                 href="/contatti"
+                type="quote_request"
+                location={`service_hero_${slug}`}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 active:scale-[0.98] transition-all"
               >
                 Preventivo Gratuito <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-              <a
+              </TrackedCta>
+              <TrackedCta
                 href="tel:+393892407827"
+                type="phone"
+                location={`service_hero_${slug}`}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg border border-white/20 text-white font-sans text-[14px] font-medium hover:bg-white/10 transition-all"
               >
                 <Phone size={15} aria-hidden="true" /> +39 389 240 7827
-              </a>
+              </TrackedCta>
             </div>
           </FadeIn>
         </div>
@@ -405,18 +412,22 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
                   Nessun costo nascosto, nessuna sorpresa.
                 </p>
                 <div className="space-y-3">
-                  <Link
+                  <TrackedCta
                     href="/contatti"
+                    type="quote_request"
+                    location={`service_sidebar_${slug}`}
                     className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 transition-colors"
                   >
                     Richiedi preventivo gratuito <ArrowRight size={15} aria-hidden="true" />
-                  </Link>
-                  <a
+                  </TrackedCta>
+                  <TrackedCta
                     href="tel:+393892407827"
+                    type="phone"
+                    location={`service_sidebar_${slug}`}
                     className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-white/15 text-white/80 font-sans text-[14px] hover:bg-white/5 transition-colors"
                   >
                     <Phone size={15} aria-hidden="true" /> +39 389 240 7827
-                  </a>
+                  </TrackedCta>
                 </div>
                 <ul className="mt-6 space-y-2">
                   {['Sopralluogo gratuito', 'Preventivo entro 24h', 'Nessun costo nascosto', 'Garanzia scritta sulla posa'].map((item) => (
@@ -465,12 +476,14 @@ export default async function ServizioPage({ params }: { params: Promise<{ slug:
             <p className="font-sans text-[14px] text-neutral-500 mb-4">
               Hai altre domande? Scrivici o chiamaci.
             </p>
-            <Link
+            <TrackedCta
               href="/contatti"
+              type="contact_form"
+              location={`service_faq_${slug}`}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 transition-all"
             >
               Contattaci <ArrowRight size={15} aria-hidden="true" />
-            </Link>
+            </TrackedCta>
           </FadeIn>
         </div>
       </section>

@@ -6,6 +6,7 @@ import { MobileBottomBar } from '@/components/layout/mobile-bottom-bar'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { GoogleAnalyticsConsent } from '@/components/analytics/google-analytics'
+import { ScrollTracker } from '@/components/analytics/scroll-tracker'
 import { LocalBusinessSchema, WebSiteSchema } from '@/components/seo/json-ld'
 import { SmoothScroll } from '@/components/animations/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         <CookieConsent />
         <GoogleAnalyticsConsent />
+        <ScrollTracker />
       </body>
     </html>
   )

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Phone, MessageCircle, ClipboardList } from 'lucide-react'
+import { trackPhoneClick, trackWhatsAppClick, trackCtaClick } from '@/lib/analytics'
 
 const PHONE_CLEAN = '+393892407827'
 const WHATSAPP_URL = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(
@@ -19,6 +20,7 @@ export function MobileBottomBar() {
         {/* Chiama */}
         <a
           href={`tel:${PHONE_CLEAN}`}
+          onClick={() => trackPhoneClick('mobile_bottom_bar')}
           className="flex-1 flex flex-col items-center justify-center gap-0.5 text-white/80 hover:text-white hover:bg-white/8 active:bg-white/12 transition-colors"
           aria-label="Chiama Arteparquet al +39 389 240 7827"
         >
@@ -33,6 +35,7 @@ export function MobileBottomBar() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('mobile_bottom_bar', 'Ciao! Vorrei una prima valutazione del mio parquet. Vi invio alcune foto.')}
           className="flex-1 flex flex-col items-center justify-center gap-0.5 text-[#25D366] hover:bg-white/8 active:bg-white/12 transition-colors"
           aria-label="Scrivi su WhatsApp e invia le foto del parquet"
         >
@@ -45,6 +48,7 @@ export function MobileBottomBar() {
         {/* Preventivo */}
         <Link
           href="/contatti"
+          onClick={() => trackCtaClick('quote_request', 'mobile_bottom_bar')}
           className="flex-1 flex flex-col items-center justify-center gap-0.5 bg-rovere text-white hover:bg-wood-500 active:bg-wood-600 transition-colors"
           aria-label="Richiedi preventivo gratuito"
         >

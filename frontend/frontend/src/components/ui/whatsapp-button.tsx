@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
+import { trackWhatsAppClick } from '@/lib/analytics'
 
 const PHONE_NUMBER = '393892407827'
 const DEFAULT_MESSAGE = encodeURIComponent(
@@ -16,6 +17,7 @@ export function WhatsAppButton() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick('floating_button', DEFAULT_MESSAGE)}
       aria-label="Contattaci su WhatsApp — risposta entro 5 minuti"
       className="fixed bottom-6 right-6 z-50 hidden md:flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 transition-colors duration-200"
       style={{ width: 56, height: 56 }}

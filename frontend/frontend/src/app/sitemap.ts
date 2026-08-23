@@ -50,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/chi-siamo`, lastModified: D.chiSiamo,  changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/faq`,       lastModified: D.faq,       changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/blog`,      lastModified: D.blog,      changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${BASE}/costo-levigatura-parquet`, lastModified: '2026-08-23', changeFrequency: 'monthly', priority: 0.8 },
   ]
 
   const servicePages: MetadataRoute.Sitemap = SERVICE_SLUGS.map((s) => ({

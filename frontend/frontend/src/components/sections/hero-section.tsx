@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { MessageCircle, Phone, ArrowRight, ChevronDown } from 'lucide-react'
 import { gsap, ScrollTrigger, EASE, DURATION } from '@/lib/gsap'
 import { cn } from '@/lib/utils'
+import { trackWhatsAppClick, trackPhoneClick, trackCtaClick } from '@/lib/analytics'
 
 const PHONE_CLEAN = '+393892407827'
 const WHATSAPP_TEXT = encodeURIComponent(
@@ -239,6 +240,7 @@ export function HeroSection() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('hero', WHATSAPP_TEXT)}
               className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-4.5 rounded-xl bg-[#25D366] text-white font-sans text-[15px] font-semibold hover:bg-[#20b858] hover:shadow-[0_12px_32px_rgba(37,211,102,0.35)] active:scale-[0.97] transition-all duration-300 shadow-[0_8px_24px_rgba(37,211,102,0.25)] overflow-hidden"
               aria-label="Invia le foto del tuo parquet su WhatsApp per una valutazione gratuita"
             >
@@ -249,6 +251,7 @@ export function HeroSection() {
 
             <Link
               href="/contatti"
+              onClick={() => trackCtaClick('quote_request', 'hero')}
               className="group relative inline-flex items-center justify-center gap-2 px-8 py-4.5 rounded-xl border-[1.5px] border-white/30 text-white font-sans text-[15px] font-medium hover:border-white/60 hover:bg-white/12 hover:shadow-[0_8px_24px_rgba(255,255,255,0.1)] active:scale-[0.97] transition-all duration-300 backdrop-blur-md overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -293,6 +296,7 @@ export function HeroSection() {
       <a
         ref={phoneRef}
         href={`tel:${PHONE_CLEAN}`}
+        onClick={() => trackPhoneClick('hero')}
         className="absolute bottom-10 right-8 z-10 hidden md:flex items-center gap-2.5 px-5 py-3.5 rounded-2xl bg-white/[0.09] border border-white/25 backdrop-blur-xl text-white font-sans text-[13.5px] font-semibold hover:bg-white/[0.15] hover:border-white/40 hover:shadow-[0_8px_32px_rgba(255,255,255,0.12)] active:scale-[0.97] transition-all duration-400 group"
         aria-label="Chiama Arteparquet"
         style={{ opacity: 0 }}
