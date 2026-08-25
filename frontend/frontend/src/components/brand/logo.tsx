@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-/** Geometric “A” in the oak circle — thick crossbar so it never reads as a triangle. */
+/** Brand mark — same square used as the favicon. */
 export function LogoMark({
   size = 40,
   className,
@@ -9,22 +9,16 @@ export function LogoMark({
   className?: string
 }) {
   return (
-    <svg
+    // Favicon asset from app/icon.png, served at /icon.png
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/icon.png"
+      alt=""
       width={size}
       height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       className={cn('flex-shrink-0', className)}
       aria-hidden="true"
-    >
-      <circle cx="20" cy="20" r="20" fill="#C89B7B" />
-      <path
-        fill="#FFFFFF"
-        fillRule="evenodd"
-        d="M20 9 30.6 31.2h-4.5l-2.15-5.1H15.05l-2.15 5.1H8.4L20 9Zm0 6.2-2.2 5.15h4.4L20 15.2Z"
-      />
-    </svg>
+    />
   )
 }
 
