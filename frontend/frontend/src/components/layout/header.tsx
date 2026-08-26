@@ -125,6 +125,7 @@ export function Header() {
               >
                 <Logo
                   variant={scrolled ? 'onLight' : 'onDark'}
+                  markVariant="onLight"
                   size={42}
                   wordmarkClassName="hidden sm:flex"
                 />

@@ -1,31 +1,35 @@
 import { cn } from '@/lib/utils'
 
-/** Brand mark — same square used as the favicon. */
+type LogoVariant = 'onLight' | 'onDark'
+
+/** Dark tile = favicon. Light tile = header on travertino. */
 export function LogoMark({
   size = 40,
+  variant = 'onLight',
   className,
 }: {
   size?: number
+  variant?: LogoVariant
   className?: string
 }) {
+  const src = variant === 'onDark' ? '/icon.png' : '/icon-light.png'
+
   return (
-    // Favicon asset from app/icon.png, served at /icon.png
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/icon.png"
+      src={src}
       alt=""
       width={size}
       height={size}
-      className={cn('flex-shrink-0', className)}
+      className={cn('flex-shrink-0 rounded-[22%]', className)}
       aria-hidden="true"
     />
   )
 }
 
-type LogoVariant = 'onLight' | 'onDark'
-
 export function Logo({
   variant = 'onLight',
+  markVariant,
   size = 40,
   showWordmark = true,
   showTagline = false,
@@ -33,6 +37,7 @@ export function Logo({
   wordmarkClassName,
 }: {
   variant?: LogoVariant
+  markVariant?: LogoVariant
   size?: number
   showWordmark?: boolean
   showTagline?: boolean
@@ -44,7 +49,7 @@ export function Logo({
 
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
-      <LogoMark size={size} />
+      <LogoMark size={size} variant={markVariant ?? variant} />
       {showWordmark && (
         <span className={cn('flex flex-col min-w-0', wordmarkClassName)}>
           <span className={cn('font-serif font-semibold leading-tight tracking-tight transition-colors duration-300', nameColor)}
