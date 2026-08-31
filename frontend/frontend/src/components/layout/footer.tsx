@@ -18,20 +18,21 @@ const FOOTER_SECTIONS = [
   {
     heading: 'Servizi',
     links: [
-      { label: 'Posa Parquet',          href: '/servizi/posa' },
-      { label: 'Parquet Massello',      href: '/servizi/parquet-massello' },
-      { label: 'Parquet Prefinito',     href: '/servizi/parquet-prefinito' },
-      { label: 'Levigatura Parquet',    href: '/servizi/levigatura' },
-      { label: 'Restauro Parquet',      href: '/servizi/restauro' },
-      { label: 'SPC, PVC & Laminati',   href: '/servizi/spc' },
+      { label: 'Guida Parquet',         href: '/parquet' },
+      { label: 'Levigatura Parquet',    href: '/levigatura-parquet' },
+      { label: 'Restauro Parquet',      href: '/restauro-parquet' },
+      { label: 'Riparazione Parquet',   href: '/riparazione-parquet' },
+      { label: 'Pavimenti SPC',         href: '/pavimenti-spc' },
+      { label: 'Preventivo Gratuito',   href: '/preventivo' },
     ],
   },
   {
     heading: 'Azienda',
     links: [
       { label: "L'Atelier", href: '/chi-siamo' },
+      { label: 'Bergamo e Provincia', href: '/bergamo-e-provincia' },
       { label: 'Portfolio',  href: '/portfolio' },
-      { label: 'Blog',       href: '/blog' },
+      { label: 'Guide',      href: '/parquet' },
       { label: 'FAQ',        href: '/faq' },
       { label: 'Contatti',   href: '/contatti' },
     ],

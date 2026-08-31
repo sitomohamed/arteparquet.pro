@@ -95,7 +95,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/home', destination: '/', permanent: true },
       { source: '/index', destination: '/', permanent: true },
-      // Duplicate local landing pages: keep one URL per city
+      { source: '/sopralluogo-preventivo', destination: '/preventivo', permanent: true },
       { source: '/zone/posa-parquet-:city', destination: '/zone/parquet-:city', permanent: true },
     ]
   },

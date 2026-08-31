@@ -13,6 +13,7 @@ const SERVIZI_MENU = [
   {
     heading: 'Parquet',
     items: [
+      { label: 'Guida Parquet', href: '/parquet', desc: 'Scelta, posa e manutenzione' },
       { label: 'Massello', href: '/servizi/parquet-massello', desc: 'Legno pieno, tradizione pura' },
       { label: 'Prefinito', href: '/servizi/parquet-prefinito', desc: 'Pronto in pochi giorni' },
       { label: 'Tradizionale', href: '/servizi/parquet-tradizionale', desc: 'Posa classica a listone' },
@@ -22,7 +23,7 @@ const SERVIZI_MENU = [
   {
     heading: 'Pavimenti Moderni',
     items: [
-      { label: 'SPC', href: '/servizi/spc', desc: 'Impermeabile al 100%' },
+      { label: 'SPC', href: '/pavimenti-spc', desc: 'Impermeabile al 100%' },
       { label: 'PVC', href: '/servizi/pvc', desc: 'Ideale per ambienti umidi' },
       { label: 'Vinilico', href: '/servizi/vinilico', desc: 'Comfort e silenzio acustico' },
     ],
@@ -31,17 +32,19 @@ const SERVIZI_MENU = [
     heading: 'Servizi',
     items: [
       { label: 'Posa', href: '/servizi/posa', desc: 'Posa professionale certificata' },
-      { label: 'Levigatura', href: '/servizi/levigatura', desc: 'Senza polvere, risultato impeccabile' },
-      { label: 'Restauro', href: '/servizi/restauro', desc: 'Nuova vita al parquet antico' },
-      { label: 'Riparazioni', href: '/servizi/riparazioni', desc: 'Interventi puntuali e rapidi' },
+      { label: 'Levigatura', href: '/levigatura-parquet', desc: 'Senza polvere, risultato impeccabile' },
+      { label: 'Restauro', href: '/restauro-parquet', desc: 'Nuova vita al parquet antico' },
+      { label: 'Riparazioni', href: '/riparazione-parquet', desc: 'Interventi puntuali e rapidi' },
     ],
   },
 ]
 
 const NAV_LINKS = [
+  { label: 'Guide', href: '/parquet' },
+  { label: 'Bergamo', href: '/bergamo-e-provincia' },
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Preventivo', href: '/preventivo' },
   { label: 'Contatti', href: '/contatti' },
 ]
 
