@@ -6,15 +6,15 @@ import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Blog Parquet | Guide e Consigli di Mohamed Arabi | Arteparquet',
+    absolute: 'Blog Parquet | Guide di Mohamed Arabi | Arteparquet',
   },
   description:
-    'Guide complete sul parquet firmate da Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. 30 anni di esperienza nella posa parquet in Lombardia. Aggiornato 2026.',
+    'Guide parquet di Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. Esperienza dal 1996 in Lombardia. Aggiornato 2026.',
   keywords: ['guida parquet', 'consigli parquet', 'blog parquet', 'come scegliere parquet', 'levigatura parquet guida'],
   alternates: { canonical: 'https://arteparquet.pro/blog' },
   openGraph: {
-    title: 'Blog Parquet | Guide e Consigli di Mohamed Arabi | Arteparquet',
-    description: 'Guide complete sul parquet firmate da Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. 30 anni di esperienza nella posa parquet in Lombardia.',
+    title: 'Blog Parquet | Guide di Mohamed Arabi | Arteparquet',
+    description: 'Guide parquet di Mohamed Arabi: come sceglierlo, levigarlo, restaurarlo. Esperienza dal 1996 in Lombardia.',
     url: 'https://arteparquet.pro/blog',
     locale: 'it_IT',
     type: 'website',

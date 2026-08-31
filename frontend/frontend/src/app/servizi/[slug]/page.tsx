@@ -41,7 +41,7 @@ const SERVICES: Record<string, {
       { q: 'Posso posarlo sopra il riscaldamento a pavimento?', a: 'Sì, ma occorre scegliere essenze stabili (es. rovere) e garantire che la temperatura superficiale non superi i 27°C. Vi guidiamo nella scelta corretta.' },
       { q: 'Quanto tempo richiede la posa?', a: 'Per 80 mq circa 2–3 giorni di posa, poi 24h di presa della colla. Con finitura a olio si può calpestare dopo 24h, con vernice dopo 12h.' },
     ],
-    metaTitle: 'Posa Parquet Massello Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Parquet Massello Bergamo',
     metaDescription: 'Posa parquet massello in rovere, noce, frassino. Artigiani con 30 anni di esperienza a Bergamo e in tutta la Lombardia. Preventivo gratuito.',
   },
   'parquet-prefinito': {
@@ -64,7 +64,7 @@ const SERVICES: Record<string, {
       { q: 'Qual è la differenza rispetto al massello?', a: 'Il massello è legno pieno (più levigature, più duraturo) ma meno stabile alle variazioni di umidità. Il prefinito è più stabile e si installa prima, ma con meno possibilità di levigatura.' },
       { q: 'Quanto ci vuole per la posa?', a: 'Per 80 mq circa 1–2 giorni. Si può calpestare già il giorno dopo.' },
     ],
-    metaTitle: 'Posa Parquet Prefinito Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Parquet Prefinito Bergamo',
     metaDescription: 'Posa parquet prefinito a Bergamo e in Lombardia. Installazione rapida, compatibile con riscaldamento a pavimento. Preventivo gratuito.',
   },
   'parquet-tradizionale': {
@@ -87,7 +87,7 @@ const SERVICES: Record<string, {
       { q: 'Posso scegliere un intarsio personalizzato?', a: 'Assolutamente sì. Realizziamo intarsi su misura: stelle, riquadri, fasce decorative, loghi aziendali. Tutto artigianale.' },
       { q: 'Avete lavorato con schemi complessi?', a: 'Sì, abbiamo realizzato parquet complessi anche per teatri e palazzi storici. Non esistono schemi troppo difficili per noi.' },
     ],
-    metaTitle: 'Posa Parquet Tradizionale — Spina di Pesce, Versailles | Arteparquet',
+    metaTitle: 'Posa Parquet Tradizionale e Spina di Pesce',
     metaDescription: 'Posa parquet tradizionale: spina di pesce, listone classico, Versailles, intarsi su misura. 30 anni di esperienza a Bergamo e Lombardia.',
   },
   'laminato': {
@@ -110,7 +110,7 @@ const SERVICES: Record<string, {
       { q: 'Si può levigare?', a: 'No, il laminato non è levigabile. In caso di danni importanti si sostituisce il listello danneggiato.' },
       { q: 'Si sente il rumore di calpestio?', a: 'Utilizziamo sempre un sottofondo fonoassorbente specifico che riduce drasticamente il rumore di calpestio.' },
     ],
-    metaTitle: 'Posa Pavimento Laminato Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Pavimento Laminato Bergamo',
     metaDescription: 'Posa pavimento laminato AC4 e AC5 a Bergamo e in Lombardia. Installazione rapida, alta resistenza. Preventivo gratuito.',
   },
   'spc': {
@@ -133,7 +133,7 @@ const SERVICES: Record<string, {
       { q: 'Quanto è spesso?', a: 'Generalmente da 4 a 8 mm. Vi consigliamo sempre la versione con strato antirumore integrato (5 mm totali).' },
       { q: 'Sembra davvero legno?', a: 'Le versioni di qualità superiore hanno una texture in rilievo che replica fedelmente le venature del legno. Vi mostriamo i campioni prima di scegliere.' },
     ],
-    metaTitle: 'Posa Pavimento SPC Impermeabile Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Pavimento SPC Impermeabile',
     metaDescription: 'Posa pavimento SPC impermeabile a Bergamo e in Lombardia. Ideale per bagni e cucine. Aspetto legno, resistenza totale. Preventivo gratuito.',
   },
   'pvc': {
@@ -156,7 +156,7 @@ const SERVICES: Record<string, {
       { q: 'Si può posare sopra le piastrelle esistenti?', a: 'Sì, nella maggior parte dei casi si installa direttamente sopra il pavimento esistente, purché livellato e stabile. Nessuna demolizione, nessuna polvere.' },
       { q: 'Quanto dura il PVC?', a: 'Con normale utilizzo residenziale, 15–25 anni. Per ambienti commerciali consigliamo lo spessore di usura da 0,55 mm.' },
     ],
-    metaTitle: 'Posa Pavimento PVC Vinilico Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Pavimento PVC Vinilico',
     metaDescription: 'Posa pavimento PVC vinilico a Bergamo e in Lombardia. Silenzioso, impermeabile, senza demolire. Preventivo gratuito.',
   },
   'vinilico': {
@@ -179,7 +179,7 @@ const SERVICES: Record<string, {
       { q: 'Resiste ai graffi?', a: 'Lo strato di usura protegge dai graffi normali. Per ambienti con animali domestici o alto traffico consigliamo versioni con strato di usura da 0,5 mm o superiore.' },
       { q: 'Posso usarlo in un negozio o in un ufficio?', a: 'Assolutamente sì. Il vinilico contract è appositamente studiato per ambienti commerciali e sopporta migliaia di passaggi al giorno.' },
     ],
-    metaTitle: 'Posa Pavimento Vinilico Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Pavimento Vinilico Bergamo',
     metaDescription: 'Posa pavimento vinilico in lastre e listoni a Bergamo e in Lombardia. Estetica sofisticata, bassa manutenzione. Preventivo gratuito.',
   },
   'posa': {
@@ -202,7 +202,7 @@ const SERVICES: Record<string, {
       { q: 'Quanto tempo dura la posa di 100 mq?', a: 'In media 2–3 giorni lavorativi per la posa, più 24–48h di asciugatura della colla prima di calpestare.' },
       { q: 'Rimuovete il vecchio pavimento?', a: 'Su richiesta, sì. Gestiamo la demolizione e lo smaltimento del vecchio pavimento prima di posare quello nuovo.' },
     ],
-    metaTitle: 'Posa Parquet Professionale Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Posa Parquet Professionale Bergamo',
     metaDescription: 'Posa parquet professionale a Bergamo e in tutta la Lombardia. Incollato, flottante o chiodato. Dal 1996. Preventivo gratuito.',
   },
   'levigatura': {
@@ -225,7 +225,7 @@ const SERVICES: Record<string, {
       { q: 'Quanto dura il lavoro di levigatura per 80 mq?', a: 'In genere 2 giorni: il primo per levigare, il secondo per applicare la finitura. Il pavimento è calpestabile dopo 12–24h.' },
       { q: 'Devo sgomberare tutto?', a: 'Sì, la stanza deve essere vuota di mobili. Per il resto, le nostre macchine con aspirazione integrata lasciano l\'ambiente quasi pulito.' },
     ],
-    metaTitle: 'Levigatura Parquet Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Levigatura Parquet Bergamo',
     metaDescription: 'Levigatura parquet professionale senza polvere a Bergamo e in Lombardia. Macchine con aspirazione integrata. Risultato impeccabile. Preventivo gratuito.',
   },
   'restauro': {
@@ -248,7 +248,7 @@ const SERVICES: Record<string, {
       { q: 'Come capite se un listello va sostituito?', a: 'Durante il sopralluogo valutiamo ogni listello: spessore residuo, attacchi di umidità, tarme del legno, fessurazioni strutturali. Vi diciamo esattamente cosa si può salvare.' },
       { q: 'Il risultato finale sarà diverso dall\'originale?', a: 'Il restauro mira a valorizzare il parquet mantenendo la sua identità. Il colore finale dipende dalla finitura scelta: possiamo rispettare il tono originale o aggiornarlo a un look moderno.' },
     ],
-    metaTitle: 'Restauro Parquet Antico Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Restauro Parquet Antico Bergamo',
     metaDescription: 'Restauro parquet antico e storico a Bergamo e in Lombardia. Recupero parquet del Novecento, palazzi storici. Dal 1996. Preventivo gratuito.',
   },
   'riparazioni': {
@@ -271,7 +271,7 @@ const SERVICES: Record<string, {
       { q: 'Ho rotto alcuni listelli: si vede la riparazione?', a: 'Con la sostituzione dei listelli e la stuccatura a colore, la riparazione diventa quasi invisibile. Per un risultato perfetto può servire una mini-levigatura locale.' },
       { q: 'Intervenite anche su piccole superfici?', a: 'Sì, siamo disponibili anche per interventi su pochi metri quadri o su singoli listelli. Nessun lavoro è troppo piccolo per noi.' },
     ],
-    metaTitle: 'Riparazione Parquet Bergamo e Lombardia | Arteparquet',
+    metaTitle: 'Riparazione Parquet Bergamo',
     metaDescription: 'Riparazione parquet a Bergamo e in Lombardia: scricchiolii, listelli rotti, rigonfiamenti. Intervento rapido e preciso. Preventivo gratuito.',
   },
 }
@@ -287,8 +287,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = SERVICES[slug]
   if (!service) return {}
   return {
-    title: { absolute: service.metaTitle },
-    description: service.metaDescription,
+    title: service.metaTitle,
+    description:
+      service.metaDescription.length <= 155
+        ? service.metaDescription
+        : `${service.metaDescription.slice(0, 154).replace(/\s+\S*$/, '')}.`,
     alternates: { canonical: `https://arteparquet.pro/servizi/${slug}` },
   }
 }

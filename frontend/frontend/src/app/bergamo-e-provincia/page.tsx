@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Parquet Bergamo e Provincia | Posa, Levigatura, Restauro',
+  title: 'Parquet Bergamo e Provincia',
   description:
-    'Arteparquet opera a Bergamo e in tutta la provincia: Seriate, Dalmine, Treviglio, Albino, Zanica e altri 15 comuni. Sopralluogo gratuito. Sede in Via Vittorio Alfieri 7.',
+    'Posa, levigatura e restauro parquet a Bergamo e provincia: Seriate, Dalmine, Treviglio e altri 15 comuni. Sopralluogo gratuito.',
   alternates: { canonical: 'https://arteparquet.pro/bergamo-e-provincia' },
 }
 

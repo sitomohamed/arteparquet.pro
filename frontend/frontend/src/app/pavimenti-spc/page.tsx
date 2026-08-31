@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Pavimenti SPC Impermeabili | Posa su Piastrelle',
+  title: 'Pavimenti SPC Impermeabili',
   description:
-    'Posa pavimenti SPC impermeabili a Bergamo e Lombardia. Ideali per bagni e cucine. Installazione su piastrelle senza demolire. Effetto legno realistico.',
+    'Posa SPC impermeabile a Bergamo e Lombardia. Ideale per bagni e cucine, anche sopra piastrelle. Preventivo gratuito.',
   alternates: { canonical: 'https://arteparquet.pro/pavimenti-spc' },
 }
 

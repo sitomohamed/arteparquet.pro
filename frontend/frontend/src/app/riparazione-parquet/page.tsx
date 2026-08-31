@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Riparazione Parquet | Scricchiolii, Danni Acqua, Rigonfiamenti',
+  title: 'Riparazione Parquet: Danni e Difetti',
   description:
-    'Riparazione parquet professionale a Bergamo e Lombardia. Risolviamo scricchiolii, danni da acqua, listelli gonfiati, graffi profondi. Intervento rapido.',
+    'Riparazione parquet a Bergamo e Lombardia: scricchiolii, danni da acqua, graffi e listelli gonfiati. Intervento rapido.',
   alternates: { canonical: 'https://arteparquet.pro/riparazione-parquet' },
 }
 

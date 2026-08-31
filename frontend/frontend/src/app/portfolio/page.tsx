@@ -5,13 +5,13 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Portfolio Lavori Parquet | Posa e Restauro a Bergamo e Milano',
+  title: 'Portfolio Lavori Parquet Bergamo',
   description:
-    'Galleria dei lavori Arteparquet: posa spina di pesce, levigatura, intarsi, restauro parquet a Bergamo e in Lombardia. Fotografie autentiche di cantieri reali.',
+    'Galleria lavori Arteparquet: posa a spina di pesce, levigatura e restauro parquet a Bergamo e in Lombardia. Fotografie reali di cantieri.',
   alternates: { canonical: 'https://arteparquet.pro/portfolio' },
   openGraph: {
-    title: 'Portfolio Lavori Parquet | Posa e Restauro a Bergamo e Milano',
-    description: 'Galleria dei lavori Arteparquet: posa spina di pesce, levigatura, intarsi, restauro parquet a Bergamo e in Lombardia. Fotografie autentiche di cantieri reali.',
+    title: 'Portfolio Lavori Parquet | Arteparquet',
+    description: 'Posa a spina di pesce, levigatura e restauro parquet. Fotografie reali di cantieri a Bergamo e in Lombardia.',
     url: 'https://arteparquet.pro/portfolio',
     locale: 'it_IT',
     type: 'website',

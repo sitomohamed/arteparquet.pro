@@ -6,13 +6,13 @@ import { CtaSection } from '@/components/sections/cta-section'
 import { RelatedLinks } from '@/components/ui/related-links'
 
 export const metadata: Metadata = {
-  title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
+  title: 'Servizi Parquet: Posa, Levigatura, Restauro',
   description:
-    'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
+    'Posa massello e prefinito, levigatura, restauro, SPC e PVC. Preventivo gratuito a Bergamo e in Lombardia.',
   alternates: { canonical: 'https://arteparquet.pro/servizi' },
   openGraph: {
-    title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
-    description: 'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
+    title: 'Servizi Parquet | Arteparquet',
+    description: 'Posa, levigatura, restauro, SPC e PVC. Preventivo gratuito in Lombardia.',
     url: 'https://arteparquet.pro/servizi',
     locale: 'it_IT',
     type: 'website',

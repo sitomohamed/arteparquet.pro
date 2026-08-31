@@ -5,13 +5,13 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Levigatura Parquet Senza Polvere | Bergamo e Lombardia',
+  title: 'Levigatura Parquet Senza Polvere',
   description:
-    'Levigatura parquet professionale senza polvere a Bergamo e Lombardia. Macchinari con aspirazione integrata. Risultato impeccabile in 2 giorni. Preventivo gratuito.',
+    'Levigatura parquet senza polvere a Bergamo e Lombardia. Aspirazione integrata, risultato in 2 giorni. Preventivo gratuito.',
   alternates: { canonical: 'https://arteparquet.pro/levigatura-parquet' },
   openGraph: {
     title: 'Levigatura Parquet Senza Polvere | Arteparquet',
-    description: 'Levigatura professionale con aspirazione integrata. Zero polvere, risultato perfetto.',
+    description: 'Levigatura professionale con aspirazione integrata. Zero polvere, risultato in 2 giorni.',
     url: 'https://arteparquet.pro/levigatura-parquet',
   },
 }

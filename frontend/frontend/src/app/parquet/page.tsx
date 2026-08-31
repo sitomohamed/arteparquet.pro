@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Parquet: Guida Completa | Scelta, Posa, Manutenzione',
+  title: 'Guida Parquet: Scelta, Posa, Manutenzione',
   description:
-    'Guida completa al parquet: come scegliere tra massello e prefinito, essenze, finiture, posa e manutenzione. Consigli esperti da 30 anni di esperienza.',
+    'Come scegliere il parquet: massello o prefinito, essenze, finiture, posa e manutenzione. Consigli da 30 anni di esperienza.',
   alternates: { canonical: 'https://arteparquet.pro/parquet' },
 }
 

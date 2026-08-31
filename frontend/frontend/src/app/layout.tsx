@@ -21,11 +21,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Arteparquet | Posa e Restauro Parquet in Italia — Dal 1996',
+    default: 'Posa e Restauro Parquet in Italia | Arteparquet',
     template: '%s | Arteparquet',
   },
   description:
-    'Specialisti in posa, restauro e levigatura parquet dal 1996. SPC, PVC, laminato. Ex team Teatro alla Scala di Milano. Operiamo in tutta Italia. Sopralluogo e preventivo gratuiti.',
+    'Posa, restauro e levigatura parquet dal 1996. Ex team Teatro alla Scala. Sopralluogo gratuito a Bergamo, Milano e in Lombardia.',
   keywords: [
     'posa parquet',
     'restauro parquet',
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   publisher: 'Arteparquet',
   metadataBase: new URL('https://arteparquet.pro'),
   openGraph: {
-    title: 'Arteparquet | Maestri del Parquet in Italia dal 1996',
-    description: 'Posa, restauro e soluzioni parquet premium in tutta Italia. Ex team Teatro alla Scala. Preventivo gratuito.',
+    title: 'Posa e Restauro Parquet in Italia | Arteparquet',
+    description: 'Posa, restauro e levigatura parquet dal 1996. Sopralluogo gratuito in Lombardia.',
     url: 'https://arteparquet.pro',
     siteName: 'Arteparquet',
     locale: 'it_IT',
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arteparquet | Maestri del Parquet in Italia dal 1996',
-    description: 'Posa e restauro parquet premium. Ex team Teatro alla Scala. Preventivo gratuito.',
+    title: 'Posa e Restauro Parquet in Italia | Arteparquet',
+    description: 'Posa, restauro e levigatura parquet dal 1996. Sopralluogo gratuito in Lombardia.',
     creator: '@arteparquet',
     site: '@arteparquet',
   },

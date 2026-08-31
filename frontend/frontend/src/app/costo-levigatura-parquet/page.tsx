@@ -5,8 +5,8 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Costo Levigatura Parquet 2026 | Prezzi, Fattori e Preventivo Gratuito',
-  description: 'Quanto costa levigare il parquet? Scopri i fattori che influenzano il prezzo, i costi medi al mq e richiedi un preventivo gratuito personalizzato per Bergamo e Milano.',
+  title: 'Costo Levigatura Parquet 2026',
+  description: 'Quanto costa levigare il parquet? Fattori di prezzo e preventivo gratuito personalizzato per Bergamo e Milano.',
   keywords: [
     'costo levigatura parquet',
     'prezzo levigatura parquet',

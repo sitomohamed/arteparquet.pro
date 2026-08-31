@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Preventivo Parquet Gratuito | Sopralluogo Bergamo e Lombardia',
+  title: 'Preventivo Parquet Gratuito',
   description:
-    'Richiedi un preventivo parquet gratuito in 2 minuti. Sopralluogo senza impegno a Bergamo e in Lombardia. Valutazione anche via WhatsApp con foto.',
+    'Preventivo parquet gratuito in 2 minuti. Sopralluogo senza impegno a Bergamo e in Lombardia. Valutazione anche via WhatsApp.',
   alternates: { canonical: 'https://arteparquet.pro/preventivo' },
 }
 

@@ -18,11 +18,10 @@ export function LogoMark({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
-      alt=""
+      alt="Arteparquet"
       width={size}
       height={size}
       className={cn('flex-shrink-0 rounded-[22%]', className)}
-      aria-hidden="true"
     />
   )
 }

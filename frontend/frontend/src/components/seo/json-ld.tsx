@@ -10,6 +10,9 @@ export function WebSiteSchema() {
     publisher: {
       '@type': 'Organization',
       '@id': 'https://arteparquet.pro/#business',
+      name: 'Arteparquet',
+      url: 'https://arteparquet.pro',
+      logo: 'https://arteparquet.pro/icon.png',
     },
     potentialAction: {
       '@type': 'SearchAction',
@@ -65,16 +68,25 @@ export function LocalBusinessSchema() {
       { '@type': 'City', name: 'Como', addressCountry: 'IT' },
       { '@type': 'State', name: 'Lombardia', addressCountry: 'IT' },
     ],
+    logo: 'https://arteparquet.pro/icon.png',
+    image: 'https://arteparquet.pro/opengraph-image',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+393892407827',
+      contactType: 'customer service',
+      areaServed: 'IT',
+      availableLanguage: ['Italian'],
+    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Servizi Parquet',
       itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Posa Parquet' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Restauro Parquet' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Levigatura Parquet' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Lamatura Parquet' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Posa SPC e PVC' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Posa Laminato' } },
+        { '@type': 'Service', name: 'Posa Parquet', url: 'https://arteparquet.pro/servizi/posa' },
+        { '@type': 'Service', name: 'Restauro Parquet', url: 'https://arteparquet.pro/restauro-parquet' },
+        { '@type': 'Service', name: 'Levigatura Parquet', url: 'https://arteparquet.pro/levigatura-parquet' },
+        { '@type': 'Service', name: 'Riparazione Parquet', url: 'https://arteparquet.pro/riparazione-parquet' },
+        { '@type': 'Service', name: 'Posa SPC e PVC', url: 'https://arteparquet.pro/pavimenti-spc' },
+        { '@type': 'Service', name: 'Posa Laminato', url: 'https://arteparquet.pro/servizi/laminato' },
       ],
     },
     openingHoursSpecification: [
@@ -395,15 +407,6 @@ export function LocalServiceSchema({
       '@type': 'City',
       name: city,
       addressCountry: 'IT',
-    },
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        priceCurrency: 'EUR',
-        description: 'Preventivo gratuito su misura',
-      },
     },
   }
 

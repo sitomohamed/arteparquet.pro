@@ -5,9 +5,9 @@ import { FadeIn } from '@/components/animations/fade-in'
 import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
-  title: 'Restauro Parquet Antico | Recupero Pavimenti Storici',
+  title: 'Restauro Parquet Antico e Storico',
   description:
-    'Restauro professionale di parquet antico e storico a Bergamo e Lombardia. Recupero listelli, stuccatura, verniciatura conservativa. 30 anni di esperienza.',
+    'Restauro parquet antico a Bergamo e Lombardia. Recupero listelli, stuccatura e finiture conservative. Preventivo gratuito.',
   alternates: { canonical: 'https://arteparquet.pro/restauro-parquet' },
 }
 

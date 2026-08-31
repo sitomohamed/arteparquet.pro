@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Pagina non trovata | Arteparquet',
+  title: { absolute: 'Pagina non trovata | Arteparquet' },
   description: 'La pagina che cerchi non esiste. Torna alla homepage di Arteparquet o contattaci per posa e restauro parquet a Bergamo e Milano.',
   robots: { index: false, follow: false },
 }

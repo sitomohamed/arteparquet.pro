@@ -194,7 +194,7 @@ const ARTICLES: Record<string, {
     date: 'Maggio 2026',
     dateISO: '2026-05-20',
     image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
-    metaTitle: 'SPC vs Parquet: Quale Scegliere? Confronto 2026 | Arteparquet',
+    metaTitle: 'SPC vs Parquet: Quale Scegliere? 2026 | Arteparquet',
     metaDescription: 'Confronto completo SPC vs parquet tradizionale. Prezzi, durata, aspetto, posa. Quale scegliere nel 2026? La guida degli esperti Arteparquet.',
     keywords: ['SPC vs parquet', 'pavimento SPC', 'PVC vs parquet', 'laminato o parquet'],
     sections: [
@@ -332,7 +332,7 @@ const ARTICLES: Record<string, {
     date: 'Marzo 2026',
     dateISO: '2026-03-15',
     image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=1200&q=80',
-    metaTitle: 'Levigatura Parquet: Guida Completa 2026 | Arteparquet Bergamo',
+    metaTitle: 'Levigatura Parquet: Guida Completa 2026 | Arteparquet',
     metaDescription: 'Levigatura parquet: come funziona, quando farla, quale finitura scegliere. Guida completa da esperti con 30 anni di esperienza in Lombardia.',
     keywords: ['levigatura parquet', 'levigare parquet', 'parquet levigato', 'rinnovare parquet'],
     sections: [
