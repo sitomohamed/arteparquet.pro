@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, Phone, MessageCircle, Sparkles, Shield, Clock, Wrench } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { BreadcrumbSchema, ServiceSchema, FaqSchema } from '@/components/seo/json-ld'
+import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: 'Levigatura Parquet Senza Polvere | Bergamo e Lombardia',
@@ -80,7 +80,7 @@ export default function LevigaturaPillarPage() {
         description="Servizio professionale di levigatura parquet con macchinari ad aspirazione integrata. Zero polvere, risultato impeccabile."
         url="https://arteparquet.pro/levigatura-parquet"
       />
-      <FaqSchema items={FAQ_ITEMS} />
+      <ServiceFaqSchema items={FAQ_ITEMS} />
 
       {/* Hero Section - BLUF Format */}
       <section className="bg-nero-marquina text-travertino pt-32 pb-20 md:pt-44 md:pb-28">

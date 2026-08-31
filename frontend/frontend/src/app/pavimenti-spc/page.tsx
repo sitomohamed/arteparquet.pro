@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, Phone, MessageCircle, Droplets, Shield, Zap, Volume2 } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { BreadcrumbSchema, ServiceSchema, FaqSchema } from '@/components/seo/json-ld'
+import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: 'Pavimenti SPC Impermeabili | Posa su Piastrelle',
@@ -55,7 +55,7 @@ export default function SpcPillarPage() {
         description="Installazione pavimenti SPC impermeabili. Effetto legno realistico per bagni e cucine. Posa su piastrelle senza demolire."
         url="https://arteparquet.pro/pavimenti-spc"
       />
-      <FaqSchema items={FAQ_ITEMS} />
+      <ServiceFaqSchema items={FAQ_ITEMS} />
 
       {/* Hero - BLUF */}
       <section className="bg-nero-marquina text-travertino pt-32 pb-20 md:pt-44 md:pb-28">

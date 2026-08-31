@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, Phone, MessageCircle, History, Shield, Hammer, Sparkles } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { BreadcrumbSchema, ServiceSchema, FaqSchema } from '@/components/seo/json-ld'
+import { BreadcrumbSchema, ServiceSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: 'Restauro Parquet Antico | Recupero Pavimenti Storici',
@@ -51,7 +51,7 @@ export default function RestauroPillarPage() {
         description="Restauro conservativo di parquet storici e antichi. Recupero listelli, trattamento antitarlo, finiture d'epoca."
         url="https://arteparquet.pro/restauro-parquet"
       />
-      <FaqSchema items={FAQ_ITEMS} />
+      <ServiceFaqSchema items={FAQ_ITEMS} />
 
       {/* Hero - BLUF */}
       <section className="bg-nero-marquina text-travertino pt-32 pb-20 md:pt-44 md:pb-28">

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Phone, MessageCircle, ArrowLeft, CheckCircle } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { BreadcrumbSchema, FaqSchema, ArticleSchema } from '@/components/seo/json-ld'
+import { BreadcrumbSchema, ServiceFaqSchema, ArticleSchema } from '@/components/seo/json-ld'
 
 // Knowledge Base Content - 23 Moduli
 const GUIDES: Record<string, {
@@ -206,7 +206,7 @@ export default async function GuidaPage({ params }: { params: Promise<{ slug: st
           { name: guide.title, url: `https://arteparquet.pro/guida/${slug}` },
         ]}
       />
-      {guide.faq.length > 0 && <FaqSchema items={guide.faq} />}
+      {guide.faq.length > 0 && <ServiceFaqSchema items={guide.faq} />}
       <ArticleSchema
         headline={guide.title}
         description={guide.metaDescription}

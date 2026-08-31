@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, Phone, MessageCircle, ArrowRight } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { BreadcrumbSchema, FaqSchema } from '@/components/seo/json-ld'
+import { BreadcrumbSchema, ServiceFaqSchema } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: 'Parquet: Guida Completa | Scelta, Posa, Manutenzione',
@@ -91,7 +91,7 @@ export default function ParquetPillarPage() {
           { name: 'Parquet', url: 'https://arteparquet.pro/parquet' },
         ]}
       />
-      <FaqSchema items={FAQ_ITEMS} />
+      <ServiceFaqSchema items={FAQ_ITEMS} />
 
       {/* Hero Hub */}
       <section className="bg-nero-marquina text-travertino pt-32 pb-20 md:pt-44 md:pb-28">

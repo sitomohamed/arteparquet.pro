@@ -54,7 +54,7 @@ export function trackZoneView(city: string) {
  * Track CTA clicks (primary conversion actions)
  */
 export function trackCtaClick(
-  ctaType: 'quote_request' | 'phone' | 'whatsapp' | 'contact_form' | 'service_cta',
+  ctaType: 'quote_request' | 'phone' | 'whatsapp' | 'contact_form' | 'service_cta' | 'quote_wizard_submit' | 'quote_wizard_step',
   location: string,
   additionalParams?: Record<string, string | number>
 ) {

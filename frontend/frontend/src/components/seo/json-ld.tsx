@@ -282,6 +282,93 @@ export function ServiceFaqSchema({ items }: { items: { q: string; a: string }[] 
   )
 }
 
+// ── Service schema (for pillar/service pages) ────────────────────────────
+export function ServiceSchema({
+  name,
+  description,
+  url,
+}: {
+  name: string
+  description: string
+  url: string
+}) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    description,
+    url,
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      '@id': 'https://arteparquet.pro/#business',
+      name: 'Arteparquet',
+      telephone: '+393892407827',
+    },
+    areaServed: {
+      '@type': 'State',
+      name: 'Lombardia',
+      addressCountry: 'IT',
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+// ── Article schema (for guide/knowledge pages) ───────────────────────────
+export function ArticleSchema({
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+}: {
+  headline: string
+  description: string
+  url: string
+  datePublished: string
+  dateModified?: string
+}) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    url,
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      '@type': 'Organization',
+      '@id': 'https://arteparquet.pro/#business',
+      name: 'Arteparquet',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://arteparquet.pro/#business',
+      name: 'Arteparquet',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://arteparquet.pro/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
 // ── Local Service schema (per-city pages) ────────────────────────────────
 export function LocalServiceSchema({
   city,
