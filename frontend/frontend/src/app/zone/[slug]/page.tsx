@@ -752,12 +752,12 @@ export default async function ZonePage({
 
           <FadeIn delay={0.1}>
             <div className="flex flex-wrap justify-center gap-2">
-              {Object.values(CITIES)
-                .filter((city) => city.display !== c.display)
-                .map((city) => (
+              {Object.entries(CITIES)
+                .filter(([, city]) => city.display !== c.display)
+                .map(([slug, city]) => (
                   <Link
-                    key={city.display}
-                    href={`/zone/parquet-${city.display.toLowerCase()}`}
+                    key={slug}
+                    href={`/zone/parquet-${slug}`}
                     className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-sm text-neutral-700 hover:border-rovere hover:text-rovere transition-colors"
                   >
                     Parquet {city.display}
