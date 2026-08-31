@@ -9,6 +9,7 @@ import { ZoneViewTracker } from '@/components/analytics/page-view-tracker'
 
 // ── Città supportate ─────────────────────────────────────────────────────
 const CITIES: Record<string, { display: string; region: string; province: string; lat: string; lng: string }> = {
+  // Capoluoghi di provincia
   milano:  { display: 'Milano',  region: 'Lombardia', province: 'MI', lat: '45.4642', lng: '9.1900' },
   bergamo: { display: 'Bergamo', region: 'Lombardia', province: 'BG', lat: '45.6983', lng: '9.6773' },
   brescia: { display: 'Brescia', region: 'Lombardia', province: 'BS', lat: '45.5416', lng: '10.2118' },
@@ -20,6 +21,22 @@ const CITIES: Record<string, { display: string; region: string; province: string
   pavia:   { display: 'Pavia',   region: 'Lombardia', province: 'PV', lat: '45.1844', lng: '9.1582' },
   cremona: { display: 'Cremona', region: 'Lombardia', province: 'CR', lat: '45.1332', lng: '10.0253' },
   mantova: { display: 'Mantova', region: 'Lombardia', province: 'MN', lat: '45.1564', lng: '10.7914' },
+  // Provincia di Bergamo - Comuni principali (hyper-local SEO)
+  seriate:     { display: 'Seriate',     region: 'Lombardia', province: 'BG', lat: '45.6842', lng: '9.7181' },
+  dalmine:     { display: 'Dalmine',     region: 'Lombardia', province: 'BG', lat: '45.6494', lng: '9.6031' },
+  treviglio:   { display: 'Treviglio',   region: 'Lombardia', province: 'BG', lat: '45.5214', lng: '9.5917' },
+  albino:      { display: 'Albino',      region: 'Lombardia', province: 'BG', lat: '45.7614', lng: '9.7978' },
+  zanica:      { display: 'Zanica',      region: 'Lombardia', province: 'BG', lat: '45.6406', lng: '9.6856' },
+  stezzano:    { display: 'Stezzano',    region: 'Lombardia', province: 'BG', lat: '45.6528', lng: '9.6522' },
+  curno:       { display: 'Curno',       region: 'Lombardia', province: 'BG', lat: '45.6856', lng: '9.6125' },
+  azzano:      { display: 'Azzano San Paolo', region: 'Lombardia', province: 'BG', lat: '45.6594', lng: '9.6819' },
+  gorle:       { display: 'Gorle',       region: 'Lombardia', province: 'BG', lat: '45.7022', lng: '9.7128' },
+  scanzorosciate: { display: 'Scanzorosciate', region: 'Lombardia', province: 'BG', lat: '45.7089', lng: '9.7433' },
+  lallio:      { display: 'Lallio',      region: 'Lombardia', province: 'BG', lat: '45.6675', lng: '9.6278' },
+  grassobbio:  { display: 'Grassobbio',  region: 'Lombardia', province: 'BG', lat: '45.6617', lng: '9.7275' },
+  orio:        { display: 'Orio al Serio', region: 'Lombardia', province: 'BG', lat: '45.6708', lng: '9.7003' },
+  romano:      { display: 'Romano di Lombardia', region: 'Lombardia', province: 'BG', lat: '45.5197', lng: '9.7525' },
+  clusone:     { display: 'Clusone',     region: 'Lombardia', province: 'BG', lat: '45.8878', lng: '9.9478' },
 }
 
 // ── Contenuto unico per città (prevenzione thin content) ─────────────────
@@ -192,6 +209,232 @@ const CITY_CONTENT: Record<string, {
       { q: 'Lavorate su edifici storici a Mantova?', a: 'Sì. Mantova è patrimonio UNESCO: interveniamo su parquet in contesti storici con cura per i materiali originali e, dove serve, con tecniche di restauro conservative.' },
       { q: 'Coprite Suzzara, Viadana e Castiglione?', a: 'Sì. Raggiungiamo Mantova, Suzzara, Guidizzolo, Viadana, Asola e Castiglione delle Stiviere con sopralluogo gratuito.' },
       { q: 'Quanto costa un sopralluogo a Mantova?', a: 'Il sopralluogo è gratuito. Il preventivo arriva entro 24 ore, senza impegno, con garanzia scritta sulla manodopera.' },
+    ],
+  },
+  // ── PROVINCIA DI BERGAMO - COMUNI ──────────────────────────────────────
+  seriate: {
+    intro: `Seriate è uno dei comuni più popolosi della provincia di Bergamo, a soli 5 km dal capoluogo. Operiamo quotidianamente a Seriate e nei comuni limitrofi (Pedrengo, Scanzorosciate, Gorle) con tempi di risposta rapidissimi. La vicinanza alla nostra sede di Bergamo ci permette sopralluoghi spesso in giornata.`,
+    highlights: [
+      'A 5 km dalla nostra sede di Bergamo',
+      'Sopralluogo spesso in giornata',
+      'Preventivo entro 24 ore',
+      'Copertura Seriate e comuni limitrofi',
+    ],
+    zones: ['Seriate centro', 'Pedrengo', 'Scanzorosciate', 'Gorle', 'Nembro'],
+    faq: [
+      { q: 'Quanto tempo per un sopralluogo a Seriate?', a: 'Spesso in giornata. Seriate è a 5 km dalla nostra sede di Bergamo, quindi i tempi di risposta sono rapidissimi.' },
+      { q: 'Fate levigatura parquet a Seriate?', a: 'Sì. Levigatura senza polvere con macchine ad aspirazione integrata. Preventivo gratuito entro 24 ore.' },
+      { q: 'Coprite anche Pedrengo e Scanzorosciate?', a: 'Sì. Operiamo a Seriate, Pedrengo, Scanzorosciate, Gorle e Nembro con sopralluogo gratuito.' },
+    ],
+  },
+  dalmine: {
+    intro: `Dalmine è un importante centro industriale e residenziale a ovest di Bergamo. La città ha conosciuto una forte espansione edilizia negli ultimi decenni, con molti condomini e villette dove il parquet è sempre più richiesto. Operiamo a Dalmine e nei comuni limitrofi (Stezzano, Osio Sopra, Osio Sotto, Verdello) con sopralluogo gratuito.`,
+    highlights: [
+      'Copertura Dalmine e Bassa Bergamasca',
+      'Esperienza condomini e villette moderne',
+      'Sopralluogo gratuito entro 24 ore',
+      'Posa, levigatura e restauro parquet',
+    ],
+    zones: ['Dalmine centro', 'Stezzano', 'Osio Sopra', 'Osio Sotto', 'Verdello', 'Boltiere'],
+    faq: [
+      { q: 'Operate a Dalmine e nella Bassa?', a: 'Sì. Copriamo Dalmine, Stezzano, Osio Sopra, Osio Sotto, Verdello e Boltiere con sopralluogo gratuito.' },
+      { q: 'Fate posa parquet in condominio a Dalmine?', a: 'Sì. Abbiamo esperienza con condomini e appartamenti: gestiamo tempi e rumori per minimizzare i disagi.' },
+      { q: 'Quanto costa la posa parquet a Dalmine?', a: 'Dipende da essenza, metratura e sottofondo. Sopralluogo gratuito e preventivo dettagliato entro 24 ore.' },
+    ],
+  },
+  treviglio: {
+    intro: `Treviglio è il secondo comune della provincia di Bergamo per popolazione, centro della Bassa Bergamasca. È una città dinamica con un mix di edifici storici nel centro e nuove costruzioni nelle zone residenziali. Operiamo a Treviglio e nei comuni della Gera d'Adda con sopralluogo gratuito e preventivo in 24 ore.`,
+    highlights: [
+      'Centro della Bassa Bergamasca',
+      'Esperienza edifici storici e nuove costruzioni',
+      'Sopralluogo gratuito Treviglio e dintorni',
+      'Preventivo dettagliato in 24 ore',
+    ],
+    zones: ['Treviglio centro', 'Caravaggio', 'Cassano d\'Adda', 'Rivolta d\'Adda', 'Fara Gera d\'Adda'],
+    faq: [
+      { q: 'Coprite Treviglio e la Bassa Bergamasca?', a: 'Sì. Operiamo a Treviglio, Caravaggio, Cassano d\'Adda, Rivolta e Fara Gera d\'Adda con sopralluogo gratuito.' },
+      { q: 'Fate restauro parquet negli edifici storici di Treviglio?', a: 'Sì. Il centro di Treviglio ha palazzi con parquet antico: valutiamo e restauriamo con tecniche conservative.' },
+      { q: 'Quanto tempo per arrivare a Treviglio?', a: 'Treviglio è a circa 20 km da Bergamo. Sopralluogo entro 24-48 ore dalla richiesta.' },
+    ],
+  },
+  albino: {
+    intro: `Albino è il centro principale della Val Seriana, la valle bergamasca che si estende verso nord-est. Il territorio montuoso e l'umidità della valle richiedono attenzione particolare nella scelta dei materiali e delle tecniche di posa. Operiamo ad Albino e in tutta la Val Seriana con esperienza specifica per ambienti di montagna.`,
+    highlights: [
+      'Centro della Val Seriana',
+      'Esperienza ambienti montani e umidi',
+      'Materiali adatti alle escursioni termiche',
+      'Sopralluogo gratuito in valle',
+    ],
+    zones: ['Albino', 'Nembro', 'Alzano Lombardo', 'Vertova', 'Cene', 'Gazzaniga'],
+    faq: [
+      { q: 'Il parquet in Val Seriana richiede accorgimenti?', a: 'Sì. L\'umidità e le escursioni termiche della valle richiedono essenze stabili e barriere al vapore specifiche. Lo valutiamo in sopralluogo.' },
+      { q: 'Coprite tutta la Val Seriana?', a: 'Sì. Operiamo ad Albino, Nembro, Alzano, Vertova, Cene e Gazzaniga con sopralluogo gratuito.' },
+      { q: 'Fate anche levigatura in montagna?', a: 'Sì. Levigatura senza polvere anche in Val Seriana. Trasportiamo le attrezzature ovunque nella valle.' },
+    ],
+  },
+  zanica: {
+    intro: `Zanica è un comune residenziale a sud di Bergamo, nella prima cintura urbana. La vicinanza al capoluogo e la natura prevalentemente residenziale del territorio rendono Zanica un comune dove interveniamo frequentemente per posa e levigatura parquet in villette e appartamenti.`,
+    highlights: [
+      'Prima cintura di Bergamo',
+      'Sopralluogo rapido dalla sede',
+      'Esperienza villette e appartamenti',
+      'Preventivo gratuito in 24 ore',
+    ],
+    zones: ['Zanica', 'Urgnano', 'Cologno al Serio', 'Spirano', 'Comun Nuovo'],
+    faq: [
+      { q: 'Quanto tempo per un sopralluogo a Zanica?', a: 'Zanica è nella prima cintura di Bergamo: spesso arriviamo in giornata o il giorno successivo.' },
+      { q: 'Coprite anche Urgnano e Cologno?', a: 'Sì. Operiamo a Zanica, Urgnano, Cologno al Serio, Spirano e Comun Nuovo con sopralluogo gratuito.' },
+      { q: 'Fate posa parquet in villette a Zanica?', a: 'Sì. Zanica ha molte villette dove posiamo massello, prefinito e SPC. Preventivo personalizzato in 24 ore.' },
+    ],
+  },
+  stezzano: {
+    intro: `Stezzano è un comune dinamico tra Bergamo e Dalmine, con una forte componente residenziale e commerciale. La vicinanza all'aeroporto di Orio al Serio ha portato sviluppo edilizio e una domanda costante di servizi per la casa, incluso il parquet. Operiamo a Stezzano con tempi di risposta rapidi.`,
+    highlights: [
+      'Tra Bergamo e Dalmine',
+      'Zona in forte sviluppo edilizio',
+      'Sopralluogo rapido',
+      'Posa, levigatura e SPC',
+    ],
+    zones: ['Stezzano', 'Orio al Serio', 'Grassobbio', 'Azzano San Paolo', 'Levate'],
+    faq: [
+      { q: 'Operate a Stezzano e zone aeroporto?', a: 'Sì. Copriamo Stezzano, Orio al Serio, Grassobbio, Azzano San Paolo e Levate con sopralluogo gratuito.' },
+      { q: 'Fate posa SPC a Stezzano?', a: 'Sì. L\'SPC impermeabile è molto richiesto nelle nuove costruzioni di Stezzano. Posa veloce su pavimento esistente.' },
+      { q: 'Quanto tempo per un preventivo a Stezzano?', a: 'Preventivo dettagliato entro 24 ore dal sopralluogo gratuito.' },
+    ],
+  },
+  curno: {
+    intro: `Curno è un comune residenziale a nord di Bergamo, noto per il centro commerciale ma anche per le molte abitazioni di qualità. Operiamo a Curno e nei comuni limitrofi (Mozzo, Ponte San Pietro, Treviolo) con la rapidità garantita dalla vicinanza alla nostra sede.`,
+    highlights: [
+      'Nord di Bergamo',
+      'Sopralluogo in giornata possibile',
+      'Villette e appartamenti',
+      'Preventivo gratuito 24 ore',
+    ],
+    zones: ['Curno', 'Mozzo', 'Ponte San Pietro', 'Treviolo', 'Bonate Sotto'],
+    faq: [
+      { q: 'Coprite Curno, Mozzo e Ponte San Pietro?', a: 'Sì. Operiamo a Curno, Mozzo, Ponte San Pietro, Treviolo e Bonate Sotto con sopralluogo gratuito.' },
+      { q: 'Fate levigatura a Curno?', a: 'Sì. Levigatura senza polvere con macchine professionali. Risultato impeccabile in 2 giorni.' },
+      { q: 'Quanto costa posare parquet a Curno?', a: 'Dipende da essenza e metratura. Sopralluogo gratuito e preventivo dettagliato senza impegno.' },
+    ],
+  },
+  azzano: {
+    intro: `Azzano San Paolo è un comune residenziale tra Bergamo e Stezzano, caratterizzato da villette e condomini di recente costruzione. La vicinanza alla nostra sede ci permette interventi rapidi per posa, levigatura e riparazione parquet.`,
+    highlights: [
+      'Tra Bergamo e Stezzano',
+      'Molte nuove costruzioni',
+      'Interventi rapidi dalla sede',
+      'Posa e levigatura parquet',
+    ],
+    zones: ['Azzano San Paolo', 'Stezzano', 'Zanica', 'Grassobbio'],
+    faq: [
+      { q: 'Operate ad Azzano San Paolo?', a: 'Sì. Azzano è vicinissimo alla nostra sede: sopralluogo spesso in giornata.' },
+      { q: 'Fate posa parquet nelle nuove costruzioni?', a: 'Sì. Molte villette nuove ad Azzano scelgono il parquet: posiamo massello, prefinito e SPC.' },
+      { q: 'Coprite anche Grassobbio e Zanica?', a: 'Sì. Operiamo ad Azzano, Stezzano, Zanica e Grassobbio con sopralluogo gratuito.' },
+    ],
+  },
+  gorle: {
+    intro: `Gorle è un piccolo comune residenziale a est di Bergamo, noto per la qualità della vita e le abitazioni di pregio. Operiamo a Gorle e nei comuni limitrofi della Valle Seriana inferiore con sopralluogo gratuito e tempi di risposta rapidi.`,
+    highlights: [
+      'Est di Bergamo',
+      'Abitazioni di pregio',
+      'Sopralluogo rapido',
+      'Posa e levigatura parquet',
+    ],
+    zones: ['Gorle', 'Pedrengo', 'Seriate', 'Scanzorosciate', 'Torre Boldone'],
+    faq: [
+      { q: 'Operate a Gorle?', a: 'Sì. Gorle è a pochi km dalla sede: sopralluogo rapido e preventivo in 24 ore.' },
+      { q: 'Fate restauro parquet a Gorle?', a: 'Sì. Gorle ha molte abitazioni di pregio con parquet da restaurare o levigare.' },
+      { q: 'Coprite Torre Boldone e Pedrengo?', a: 'Sì. Operiamo a Gorle, Pedrengo, Seriate, Scanzorosciate e Torre Boldone.' },
+    ],
+  },
+  scanzorosciate: {
+    intro: `Scanzorosciate è famosa per il Moscato di Scanzo, ma è anche un comune residenziale di qualità alle porte della Val Seriana. Operiamo a Scanzorosciate per posa e levigatura parquet, con attenzione alle caratteristiche degli edifici collinari.`,
+    highlights: [
+      'Alle porte della Val Seriana',
+      'Territorio collinare',
+      'Sopralluogo gratuito',
+      'Posa e levigatura',
+    ],
+    zones: ['Scanzorosciate', 'Pedrengo', 'Gorle', 'Nembro', 'Albino'],
+    faq: [
+      { q: 'Operate a Scanzorosciate?', a: 'Sì. Scanzorosciate è vicino alla nostra sede: sopralluogo rapido e preventivo in 24 ore.' },
+      { q: 'Il territorio collinare richiede accorgimenti?', a: 'In alcuni casi sì. Valutiamo umidità e ventilazione degli ambienti durante il sopralluogo gratuito.' },
+      { q: 'Fate levigatura senza polvere a Scanzorosciate?', a: 'Sì. Levigatura professionale con aspirazione integrata, risultato impeccabile.' },
+    ],
+  },
+  lallio: {
+    intro: `Lallio è un piccolo comune tra Bergamo e Stezzano, prevalentemente residenziale. La vicinanza alla nostra sede ci permette sopralluoghi rapidi e interventi tempestivi per qualsiasi esigenza legata al parquet.`,
+    highlights: [
+      'Tra Bergamo e Stezzano',
+      'Sopralluogo in giornata',
+      'Comune residenziale',
+      'Tutti i servizi parquet',
+    ],
+    zones: ['Lallio', 'Stezzano', 'Treviolo', 'Dalmine'],
+    faq: [
+      { q: 'Operate a Lallio?', a: 'Sì. Lallio è vicinissimo: sopralluogo spesso in giornata, preventivo in 24 ore.' },
+      { q: 'Fate posa e levigatura a Lallio?', a: 'Sì. Tutti i servizi parquet: posa massello e prefinito, levigatura, restauro, SPC.' },
+      { q: 'Il preventivo è gratuito?', a: 'Sì. Sopralluogo e preventivo gratuiti, senza impegno, con garanzia scritta.' },
+    ],
+  },
+  grassobbio: {
+    intro: `Grassobbio è un comune a sud-est di Bergamo, vicino all'aeroporto di Orio al Serio. È un territorio in sviluppo con nuove costruzioni residenziali dove il parquet è sempre più richiesto. Operiamo a Grassobbio con sopralluogo gratuito e tempi rapidi.`,
+    highlights: [
+      'Vicino all\'aeroporto',
+      'Zona in sviluppo',
+      'Nuove costruzioni',
+      'Sopralluogo rapido',
+    ],
+    zones: ['Grassobbio', 'Seriate', 'Orio al Serio', 'Azzano San Paolo'],
+    faq: [
+      { q: 'Operate a Grassobbio?', a: 'Sì. Grassobbio è vicino alla sede: sopralluogo rapido e preventivo in 24 ore.' },
+      { q: 'Fate posa nelle nuove costruzioni?', a: 'Sì. Molte nuove abitazioni a Grassobbio scelgono il parquet. Posiamo massello, prefinito e SPC.' },
+      { q: 'Coprite anche Orio al Serio?', a: 'Sì. Operiamo a Grassobbio, Seriate, Orio al Serio e Azzano San Paolo.' },
+    ],
+  },
+  orio: {
+    intro: `Orio al Serio è noto soprattutto per l'aeroporto, ma è anche un comune residenziale in crescita. Operiamo a Orio e nei comuni limitrofi per tutti i servizi parquet, con la rapidità garantita dalla vicinanza alla nostra sede di Bergamo.`,
+    highlights: [
+      'Zona aeroporto Bergamo',
+      'Comune in crescita',
+      'Sopralluogo rapido',
+      'Tutti i servizi parquet',
+    ],
+    zones: ['Orio al Serio', 'Grassobbio', 'Seriate', 'Azzano San Paolo', 'Stezzano'],
+    faq: [
+      { q: 'Operate a Orio al Serio?', a: 'Sì. Orio è vicino alla sede: sopralluogo rapido, preventivo in 24 ore.' },
+      { q: 'Fate posa SPC a Orio?', a: 'Sì. L\'SPC impermeabile è ideale per chi cerca praticità. Posa veloce su pavimento esistente.' },
+      { q: 'Coprite la zona aeroporto?', a: 'Sì. Operiamo a Orio, Grassobbio, Seriate, Azzano e Stezzano.' },
+    ],
+  },
+  romano: {
+    intro: `Romano di Lombardia è un importante centro della Bassa Bergamasca, con un bel centro storico e molte abitazioni dove il parquet è apprezzato. Operiamo a Romano e nei comuni della Bassa con sopralluogo gratuito e preventivo dettagliato.`,
+    highlights: [
+      'Centro della Bassa Bergamasca',
+      'Bel centro storico',
+      'Sopralluogo gratuito',
+      'Posa, levigatura, restauro',
+    ],
+    zones: ['Romano di Lombardia', 'Bariano', 'Martinengo', 'Covo', 'Fontanella'],
+    faq: [
+      { q: 'Operate a Romano di Lombardia?', a: 'Sì. Romano è un centro importante della Bassa: sopralluogo gratuito e preventivo in 24 ore.' },
+      { q: 'Fate restauro parquet nel centro storico?', a: 'Sì. Il centro di Romano ha edifici con parquet antico da restaurare con tecniche conservative.' },
+      { q: 'Coprite Martinengo e Bariano?', a: 'Sì. Operiamo a Romano, Bariano, Martinengo, Covo e Fontanella.' },
+    ],
+  },
+  clusone: {
+    intro: `Clusone è il centro principale dell'alta Val Seriana, a circa 35 km da Bergamo. Il territorio montano e il clima richiedono materiali e tecniche di posa specifici per resistere alle escursioni termiche e all'umidità. Operiamo a Clusone e in alta valle con esperienza specifica.`,
+    highlights: [
+      'Centro dell\'alta Val Seriana',
+      'Esperienza ambienti montani',
+      'Materiali per escursioni termiche',
+      'Sopralluogo gratuito in valle',
+    ],
+    zones: ['Clusone', 'Castione della Presolana', 'Rovetta', 'Songavazzo', 'Ponte Nossa'],
+    faq: [
+      { q: 'Operate in alta Val Seriana?', a: 'Sì. Raggiungiamo Clusone, Castione, Rovetta e l\'alta valle con sopralluogo gratuito.' },
+      { q: 'Il parquet in montagna richiede accorgimenti?', a: 'Sì. Escursioni termiche e umidità richiedono essenze stabili e tecniche di posa specifiche. Lo valutiamo in sopralluogo.' },
+      { q: 'Fate levigatura a Clusone?', a: 'Sì. Trasportiamo le attrezzature in alta valle per levigatura professionale senza polvere.' },
     ],
   },
 }

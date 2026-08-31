@@ -268,6 +268,292 @@ const GUIDES: Record<string, {
       { title: 'Manutenzione', href: '/guida/manutenzione-parquet' },
     ],
   },
+  'parquet-vs-laminato-vs-spc': {
+    title: 'Parquet vs Laminato vs SPC: Confronto Completo',
+    metaTitle: 'Parquet vs Laminato vs SPC | Quale Scegliere',
+    metaDescription: 'Confronto tra parquet vero, laminato e SPC: pro, contro, costi, durata. Guida per scegliere il pavimento giusto per ogni ambiente.',
+    bluf: 'Il parquet è legno vero (pregio massimo, levigabile, 50+ anni), il laminato è stampa su HDF (economico, non levigabile, 10-15 anni), l\'SPC è vinile rigido (impermeabile 100%, ideale bagni/cucine, 20-30 anni). Per pregio scegli parquet, per budget laminato, per ambienti umidi SPC.',
+    content: [
+      { heading: 'Parquet Vero (Massello e Prefinito)', text: 'Il parquet è l\'unico con legno vero in superficie. Il massello è legno pieno al 100%, il prefinito ha uno strato nobile di legno su supporto multistrato. Entrambi si levigano, durano decenni e aumentano il valore dell\'immobile. Costo più alto, ma investimento a lungo termine.' },
+      { heading: 'Laminato', text: 'Il laminato ha una stampa fotografica di legno su un supporto in HDF. Costa poco, si installa velocemente con sistema click, ma non è legno vero, non si leviga e dura 10-15 anni. Sensibile all\'umidità: l\'HDF si gonfia se bagnato. Adatto per budget limitati o seconde case.' },
+      { heading: 'SPC (Stone Polymer Composite)', text: 'L\'SPC è un pavimento vinilico rigido con nucleo in pietra polimerica. Impermeabile al 100%, resistente agli urti, con stampa realistica effetto legno. Non si leviga ma dura 20-30 anni. Ideale per bagni, cucine, lavanderie e chi cerca praticità senza rinunciare all\'estetica.' },
+      { heading: 'Quale Scegliere', text: 'Per il massimo pregio e valore immobiliare: parquet. Per budget limitato in ambienti asciutti: laminato. Per bagni, cucine e ambienti umidi: SPC. In soggiorno e camere da letto il parquet non ha rivali. Possiamo mostrarti i campioni durante il sopralluogo gratuito.' },
+    ],
+    faq: [
+      { q: 'Il laminato è parquet?', a: 'No. Il laminato è una stampa su HDF, non contiene legno vero in superficie. Solo massello e prefinito sono "parquet" nel senso proprio del termine.' },
+      { q: 'L\'SPC sembra finto?', a: 'I modelli di qualità hanno texture sincronizzata molto realistica. Al tatto e alla vista è difficile distinguerlo dal legno vero.' },
+      { q: 'Posso mettere laminato in bagno?', a: 'Sconsigliato. L\'HDF si gonfia con l\'umidità. Per il bagno scegli SPC impermeabile o piastrelle.' },
+    ],
+    relatedLinks: [
+      { title: 'Pavimenti SPC', href: '/pavimenti-spc' },
+      { title: 'Parquet Massello', href: '/servizi/parquet-massello' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
+  'essenze-legno-parquet': {
+    title: 'Essenze di Legno per Parquet: Guida alla Scelta',
+    metaTitle: 'Essenze Legno Parquet | Rovere, Noce, Frassino',
+    metaDescription: 'Quale essenza scegliere per il parquet? Rovere, noce, frassino, teak: caratteristiche, durezza, stabilità, colori. Guida completa alla scelta.',
+    bluf: 'Il rovere è l\'essenza più versatile: duro, stabile, adatto a tutti gli ambienti. Il noce è più scuro e pregiato. Il frassino ha venature chiare ed eleganti. Il teak è ideale per ambienti umidi. La scelta dipende da estetica, durezza richiesta e compatibilità con riscaldamento a pavimento.',
+    content: [
+      { heading: 'Rovere (Quercus)', text: 'Il rovere è l\'essenza più usata in Italia: durezza media-alta (1360 Janka), colore caldo che va dal miele al bruno, venature eleganti. Molto stabile, adatto anche a riscaldamento a pavimento. Disponibile in moltissime finiture: naturale, sbiancato, affumicato, spazzolato.' },
+      { heading: 'Noce (Juglans)', text: 'Il noce ha colore bruno scuro con venature marcate. Durezza media (1010 Janka), meno stabile del rovere. Molto pregiato ed elegante, ideale per ambienti classici e di rappresentanza. Richiede più attenzione con riscaldamento a pavimento.' },
+      { heading: 'Frassino (Fraxinus)', text: 'Il frassino è chiaro, quasi bianco, con venature lineari ed eleganti. Durezza alta (1320 Janka), buona stabilità. Perfetto per ambienti moderni e luminosi. Si presta bene a finiture sbiancate o grigie.' },
+      { heading: 'Teak (Tectona)', text: 'Il teak è naturalmente oleoso e resistente all\'umidità. Colore bruno dorato, durezza media (1070 Janka). Ideale per bagni (con le dovute precauzioni), cucine e ambienti esterni coperti. Molto stabile con riscaldamento a pavimento.' },
+    ],
+    faq: [
+      { q: 'Quale legno è più resistente ai graffi?', a: 'Le essenze più dure come rovere, frassino e bambù resistono meglio. Il noce è più tenero. Ma la finitura (vernice dura o olio) incide più dell\'essenza.' },
+      { q: 'Quale essenza per riscaldamento a pavimento?', a: 'Rovere e teak sono i più stabili. Evita faggio e acero che tendono a muoversi con le variazioni termiche.' },
+      { q: 'Posso scegliere il colore del parquet?', a: 'Sì. Ogni essenza può essere trattata con oli o vernici pigmentate per schiarire, scurire o cambiare tonalità. Ti mostriamo i campioni.' },
+    ],
+    relatedLinks: [
+      { title: 'Parquet Massello', href: '/servizi/parquet-massello' },
+      { title: 'Parquet Prefinito', href: '/servizi/parquet-prefinito' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
+  'finiture-parquet-olio-vernice': {
+    title: 'Finiture Parquet: Olio vs Vernice',
+    metaTitle: 'Finitura Parquet Olio o Vernice | Pro e Contro',
+    metaDescription: 'Meglio olio o vernice per il parquet? Confronto completo: aspetto, manutenzione, durata, riparabilità. Guida alla scelta della finitura giusta.',
+    bluf: 'L\'olio penetra nel legno esaltando le venature naturali, richiede manutenzione periodica ma permette ritocchi locali. La vernice forma un film protettivo più resistente all\'usura, ideale per alto traffico, ma in caso di danno richiede levigatura completa. Olio per look naturale, vernice per praticità.',
+    content: [
+      { heading: 'Finitura a Olio', text: 'L\'olio penetra nelle fibre del legno senza formare un film superficiale. Il risultato è un aspetto naturale e opaco che esalta le venature. Richiede rioliatura ogni 1-2 anni, ma i graffi e le macchie si riparano localmente senza levigare tutto il pavimento.' },
+      { heading: 'Finitura a Vernice', text: 'La vernice (poliuretanica o UV) forma un film protettivo sulla superficie. Resiste meglio all\'usura e all\'acqua, non richiede manutenzione particolare. Disponibile in opaco, satinato o lucido. In caso di danno profondo serve levigatura e riverniciatura completa.' },
+      { heading: 'Finiture Speciali', text: 'Esistono anche finiture miste (olio-cera), vernici naturali, e trattamenti UV che combinano vantaggi di entrambe. La cera d\'api è tradizionale ma richiede molta manutenzione. Le vernici all\'acqua sono più ecologiche.' },
+      { heading: 'Come Scegliere', text: 'Olio: per chi ama l\'aspetto naturale e non teme la manutenzione periodica. Vernice: per famiglie con bambini, alto traffico, chi cerca praticità. Ti consigliamo durante il sopralluogo in base al tuo stile di vita.' },
+    ],
+    faq: [
+      { q: 'La vernice lucida è superata?', a: 'Il lucido è meno di moda ma ha i suoi estimatori. Oggi si preferisce satinato o opaco per un effetto più naturale e contemporaneo.' },
+      { q: 'L\'olio macchia facilmente?', a: 'L\'olio è più sensibile alle macchie di liquidi, ma i danni si riparano localmente. La vernice protegge meglio ma un danno richiede interventi più estesi.' },
+      { q: 'Posso cambiare finitura?', a: 'Sì, durante la levigatura. Si rimuove la vecchia finitura e si applica quella nuova. Da olio a vernice o viceversa.' },
+    ],
+    relatedLinks: [
+      { title: 'Levigatura Parquet', href: '/levigatura-parquet' },
+      { title: 'Manutenzione', href: '/guida/manutenzione-parquet' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
+  'posa-parquet-incollata-flottante': {
+    title: 'Posa Incollata vs Flottante: Quale Scegliere',
+    metaTitle: 'Posa Parquet Incollata o Flottante | Differenze',
+    metaDescription: 'Meglio posa incollata o flottante per il parquet? Differenze, pro e contro, quando scegliere una o l\'altra. Guida tecnica alla posa.',
+    bluf: 'La posa incollata fissa il parquet al massetto con colla: massima stabilità, ideale per riscaldamento a pavimento, nessun rumore di calpestio. La posa flottante appoggia su materassino: più veloce, reversibile, ma meno stabile e può fare rumore. Per qualità preferisci incollata.',
+    content: [
+      { heading: 'Posa Incollata', text: 'Ogni listello viene fissato al massetto con colla elastica. Il parquet diventa un tutt\'uno con il sottofondo: massima stabilità, nessun movimento, nessun rumore. Obbligatoria per massello, raccomandata per prefinito su riscaldamento a pavimento. Richiede più tempo e manodopera.' },
+      { heading: 'Posa Flottante', text: 'I listelli si incastrano tra loro con sistema click e appoggiano su un materassino isolante. Il pavimento "galleggia" sul sottofondo. Installazione veloce (anche fai-da-te), reversibile, ma può fare rumore di calpestio e non è ideale con riscaldamento a pavimento.' },
+      { heading: 'Posa Inchiodata', text: 'Tradizionale per massello su magatelli di legno. Oggi poco usata: richiede un\'intercapedine che ruba altezza e non è compatibile con riscaldamento a pavimento. Ancora valida in alcuni contesti storici o su solai in legno.' },
+      { heading: 'Quando Scegliere', text: 'Incollata: riscaldamento a pavimento, massello, ambienti di pregio, silenziosità. Flottante: prefinito in affitto, installazione rapida, budget contenuto. Ti consigliamo la soluzione migliore durante il sopralluogo.' },
+    ],
+    faq: [
+      { q: 'La posa flottante si muove?', a: 'Può avere leggeri movimenti e fare rumore di calpestio, soprattutto con materassini economici. Un buon materassino riduce il problema ma non lo elimina del tutto.' },
+      { q: 'Posso incollare su piastrelle?', a: 'Sì, se le piastrelle sono stabili e livellate. In alternativa l\'SPC click si posa direttamente sopra senza colla.' },
+      { q: 'La posa incollata costa di più?', a: 'Sì, richiede più manodopera e colla. Ma il risultato è superiore: stabilità, silenziosità, durata maggiore.' },
+    ],
+    relatedLinks: [
+      { title: 'Posa Parquet', href: '/servizi/posa' },
+      { title: 'Parquet su Piastrelle', href: '/guida/parquet-su-piastrelle' },
+      { title: 'Riscaldamento', href: '/guida/parquet-riscaldamento-pavimento' },
+    ],
+  },
+  'parquet-su-piastrelle': {
+    title: 'Parquet su Piastrelle: Si Può Fare?',
+    metaTitle: 'Posare Parquet su Piastrelle | Guida Tecnica',
+    metaDescription: 'Si può posare parquet sopra le piastrelle esistenti? Quando sì, quando no, come preparare il fondo. Guida alla posa senza demolire.',
+    bluf: 'Sì, si può posare parquet su piastrelle esistenti se sono stabili, livellate e ben ancorate. L\'SPC click è l\'opzione più semplice: posa diretta senza colla. Il prefinito si incolla con primer specifico. Il massello richiede valutazione caso per caso. Niente demolizioni, niente polvere.',
+    content: [
+      { heading: 'Quando Si Può Fare', text: 'Si può posare su piastrelle quando: sono stabili (non si muovono), ben ancorate (non "suonano" vuote), livellate (dislivelli max 2-3mm), asciutte. Se le piastrelle sono instabili o hanno dislivelli importanti, meglio rimuoverle o livellare con autolivellante.' },
+      { heading: 'SPC su Piastrelle', text: 'L\'SPC click è la soluzione più semplice: si appoggia direttamente sulle piastrelle con un sottile materassino. Posa veloce, nessuna colla, nessuna preparazione se il fondo è livellato. Ideale per ristrutturazioni rapide.' },
+      { heading: 'Prefinito su Piastrelle', text: 'Il prefinito si incolla con colla elastica dopo aver applicato un primer aggrappante sulle piastrelle. Il primer garantisce l\'adesione della colla sulla superficie liscia della ceramica. Risultato stabile e duraturo.' },
+      { heading: 'Attenzione all\'Altezza', text: 'Posare sopra le piastrelle aggiunge spessore (8-15mm). Verifica che porte, soglie e dislivelli con altri ambienti siano gestibili. Spesso basta piallare le porte e adattare le soglie.' },
+    ],
+    faq: [
+      { q: 'Devo carteggiare le piastrelle?', a: 'Per la posa incollata è utile una leggera carteggiatura o l\'uso di primer aggrappante. Per SPC click non serve nulla.' },
+      { q: 'Le fughe delle piastrelle si vedono sotto?', a: 'No. Il materassino (per SPC) o la colla (per prefinito) colmano le fughe. Dopo la posa non si vedono.' },
+      { q: 'Posso posare massello su piastrelle?', a: 'È possibile ma va valutato caso per caso. Il massello è più rigido e pesante: servono piastrelle perfettamente stabili e colla ad alte prestazioni.' },
+    ],
+    relatedLinks: [
+      { title: 'Pavimenti SPC', href: '/pavimenti-spc' },
+      { title: 'Posa Incollata', href: '/guida/posa-parquet-incollata-flottante' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
+  'parquet-macchie-nere': {
+    title: 'Macchie Nere sul Parquet: Cause e Soluzioni',
+    metaTitle: 'Macchie Nere Parquet | Come Rimuoverle',
+    metaDescription: 'Macchie nere sul parquet: cause (umidità, tannini, muffa) e soluzioni. Quando si rimuovono con levigatura, quando serve sostituire il listello.',
+    bluf: 'Le macchie nere sono causate dalla reazione dei tannini del legno con l\'umidità (ossidazione). Compaiono dopo infiltrazioni, perdite o umidità prolungata. Se superficiali, si rimuovono con levigatura. Se penetrate in profondità, possono richiedere sbiancatura chimica o sostituzione del listello.',
+    content: [
+      { heading: 'Causa delle Macchie Nere', text: 'Il rovere e altre essenze contengono tannini che reagiscono con l\'umidità e il ferro. Il risultato è una colorazione nero-bluastra irreversibile. Le cause comuni: vasi senza sottovaso, infiltrazioni, perdite idriche, tappeti bagnati, pulizia con troppa acqua.' },
+      { heading: 'Macchie Superficiali', text: 'Se la macchia è limitata allo strato superiore, la levigatura la rimuove completamente. Il legno sotto è ancora chiaro. Dopo levigatura e finitura il parquet torna come nuovo.' },
+      { heading: 'Macchie Profonde', text: 'Se l\'umidità è rimasta a lungo, la macchia penetra in profondità. La levigatura non basta. Si può tentare una sbiancatura con acido ossalico (intervento delicato), oppure sostituire il listello con uno dello stesso legno e finitura.' },
+      { heading: 'Prevenzione', text: 'Evita acqua stagnante sul parquet, usa sottovasi, asciuga subito gli schizzi, non pulire con panni troppo bagnati. Se noti macchie scure che si allargano, chiama subito: prima si interviene, meglio è.' },
+    ],
+    faq: [
+      { q: 'Le macchie nere sono muffa?', a: 'Non sempre. Possono essere ossidazione dei tannini (più comune) o muffa (se c\'è odore e la macchia si allarga). In entrambi i casi serve un intervento professionale.' },
+      { q: 'Posso schiarirle con candeggina?', a: 'No. La candeggina danneggia il legno e la finitura. Per sbiancatura serve acido ossalico applicato da un professionista.' },
+      { q: 'Quanto costa rimuovere le macchie nere?', a: 'Dipende dall\'estensione. Una levigatura locale costa poco; una sostituzione di listelli o levigatura completa costa di più. Valutiamo gratuitamente.' },
+    ],
+    relatedLinks: [
+      { title: 'Levigatura', href: '/levigatura-parquet' },
+      { title: 'Danni da Acqua', href: '/guida/parquet-gonfiato-acqua' },
+      { title: 'Riparazione', href: '/riparazione-parquet' },
+    ],
+  },
+  'parquet-colore-pareti': {
+    title: 'Abbinare Parquet e Colore Pareti',
+    metaTitle: 'Abbinamento Parquet e Pareti | Guida Colori',
+    metaDescription: 'Come abbinare il colore del parquet alle pareti? Consigli pratici per arredare: parquet chiaro vs scuro, pareti bianche, grigie, colorate.',
+    bluf: 'Parquet chiaro (rovere naturale, frassino) si abbina a tutto: pareti bianche, grigie, colori vivaci. Parquet scuro (noce, wengé) richiede pareti chiare per non appesantire. Crea contrasto per valorizzare il legno: parquet chiaro + parete d\'accento scura, o parquet scuro + pareti luminose.',
+    content: [
+      { heading: 'Parquet Chiaro', text: 'Il parquet chiaro (rovere naturale, frassino, acero) è versatile. Si abbina a pareti bianche per un effetto scandinavo, a grigi per un look moderno, a colori vivaci per un tocco di personalità. Allarga visivamente gli spazi.' },
+      { heading: 'Parquet Scuro', text: 'Il parquet scuro (noce, wengé, rovere affumicato) è elegante ma dominante. Richiede pareti chiare (bianco, beige, grigio chiaro) per evitare ambienti cupi. Perfetto in soggiorni ampi e luminosi, rischioso in stanze piccole.' },
+      { heading: 'Parquet Medio', text: 'I toni medi (rovere miele, rovere oliato) sono i più facili da abbinare. Funzionano con pareti chiare, medie e scure. Sono la scelta più sicura se non sei certo del colore delle pareti futuro.' },
+      { heading: 'Regole Pratiche', text: 'Evita di abbinare parquet e pareti dello stesso tono: l\'ambiente risulta piatto. Crea contrasto moderato. Il battiscopa fa da transizione: bianco per staccare, legno per continuità. Nel dubbio, scegli parquet medio e pareti chiare.' },
+    ],
+    faq: [
+      { q: 'Parquet chiaro o scuro per stanze piccole?', a: 'Chiaro. Il parquet scuro in stanze piccole può farle sembrare ancora più piccole. Il chiaro riflette la luce e allarga visivamente lo spazio.' },
+      { q: 'Posso avere parquet diverso in ogni stanza?', a: 'Sconsigliato. Meglio un unico parquet in tutta la casa con lo stesso verso di posa. Crea continuità e fa sembrare gli spazi più ampi.' },
+      { q: 'Il parquet grigio è di moda?', a: 'Il grigio è stato molto di moda ma è un colore "datato" se non scelto con attenzione. I toni naturali del legno sono più senza tempo.' },
+    ],
+    relatedLinks: [
+      { title: 'Spina Italiana vs Francese', href: '/guida/spina-italiana-vs-francese' },
+      { title: 'Essenze Legno', href: '/guida/essenze-legno-parquet' },
+      { title: 'Finiture', href: '/guida/finiture-parquet-olio-vernice' },
+    ],
+  },
+  'preparare-stanza-levigatura': {
+    title: 'Come Preparare la Stanza per la Levigatura',
+    metaTitle: 'Preparare Stanza Levigatura Parquet | Guida',
+    metaDescription: 'Come prepararsi prima della levigatura parquet: mobili da spostare, protezioni, cosa aspettarsi. Guida pratica per il giorno dei lavori.',
+    bluf: 'La stanza deve essere completamente vuota di mobili. Togli quadri e tendaggi leggeri. Copri con teli ciò che non può uscire. Noi proteggiamo le altre stanze e usiamo macchine con aspirazione che riducono la polvere del 95%. Il resto della casa rimane abitabile.',
+    content: [
+      { heading: 'Svuotare la Stanza', text: 'La stanza da levigare deve essere completamente vuota: mobili, tappeti, oggetti. Possiamo aiutarti a spostare i mobili pesanti nelle stanze adiacenti. Togli anche quadri bassi e tendaggi leggeri che potrebbero impolvererai.' },
+      { heading: 'Cosa Non Spostare', text: 'Non devi smontare mobili a muro, librerie fisse o cucine. Proteggiamo noi i bordi con nastro e teli. Le prese e gli interruttori li copriamo. I battiscopa di solito non si tolgono, li lavoriamo con la bordatrice.' },
+      { heading: 'Polvere e Protezioni', text: 'Usiamo levigatrici con aspirazione integrata che riducono la polvere del 95%. Non serve sigillare le porte o coprire i mobili nelle altre stanze. A fine lavoro aspiriamo tutto e puliamo l\'ambiente.' },
+      { heading: 'Durante i Lavori', text: 'Il giorno della levigatura avrai rumore per 4-6 ore. Il giorno della finitura meno rumore ma odore di vernice (se scegli vernice). Dopo 12-24 ore puoi calpestare, dopo 48 ore rimettere i mobili.' },
+    ],
+    faq: [
+      { q: 'Devo svuotare tutta la casa?', a: 'No, solo la stanza da levigare. Il resto della casa rimane abitabile e non si impolvera grazie alle macchine con aspirazione.' },
+      { q: 'Quanto prima devo preparare?', a: 'La sera prima è sufficiente. Se hai bisogno di aiuto per mobili pesanti, lo diciamo durante il sopralluogo.' },
+      { q: 'Posso dormire in casa durante i lavori?', a: 'Sì. La stanza lavorata è off-limits per 12-24 ore, ma il resto della casa è agibile. L\'odore di vernice (se presente) si dissipa in 1-2 giorni con le finestre aperte.' },
+    ],
+    relatedLinks: [
+      { title: 'Levigatura Parquet', href: '/levigatura-parquet' },
+      { title: 'Costi Levigatura', href: '/guida/quanto-costa-levigatura' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
+  'tempi-posa-parquet': {
+    title: 'Tempi di Posa Parquet: Quanto Ci Vuole?',
+    metaTitle: 'Tempi Posa Parquet | Quanti Giorni Servono',
+    metaDescription: 'Quanto tempo serve per posare il parquet? Tempi per posa incollata, flottante, levigatura. Quando calpestare e rimettere i mobili.',
+    bluf: 'Per un appartamento medio (80-100 mq): posa incollata 2-3 giorni, posa flottante 1-2 giorni, levigatura e finitura 2 giorni. Il parquet è calpestabile dopo 24-48 ore dalla finitura. Mobili e tappeti dopo 48-72 ore. Tempi più lunghi per massello da levigare in cantiere.',
+    content: [
+      { heading: 'Posa Prefinito Incollata', text: 'Per 80-100 mq servono 2-3 giorni lavorativi: 1-2 giorni per la posa, 1 giorno per battiscopa e finiture. Il prefinito arriva già verniciato, quindi è calpestabile subito dopo la presa della colla (24 ore).' },
+      { heading: 'Posa Prefinito Flottante', text: 'La posa click è più veloce: 1-2 giorni per 80-100 mq. Non serve attendere la presa della colla, quindi è calpestabile immediatamente. Ideale per ristrutturazioni rapide.' },
+      { heading: 'Posa Massello (da Levigare)', text: 'Il massello si posa grezzo e poi si leviga e vernicia in cantiere. Servono 4-5 giorni: 2-3 per la posa, 2 per levigatura e finitura. Il risultato è superiore ma i tempi sono più lunghi.' },
+      { heading: 'Fattori che Allungano i Tempi', text: 'Scale, corridoi stretti, schemi complessi (spina di pesce), molte stanze piccole, sottofondo da preparare. Durante il sopralluogo ti diciamo i tempi esatti per il tuo caso.' },
+    ],
+    faq: [
+      { q: 'Posso calpestare subito dopo la posa?', a: 'Posa flottante: sì, subito. Posa incollata: dopo 24 ore. Dopo levigatura e vernice: 12-24 ore con calzini puliti, 48 ore normalmente.' },
+      { q: 'Quando rimetto i mobili?', a: 'Dopo 48-72 ore dalla finitura. Usa feltrini sotto le gambe per non graffiare. Per mobili pesantissimi aspetta 5-7 giorni.' },
+      { q: 'Posso accendere il riscaldamento subito?', a: 'No. Attendi almeno 7 giorni dopo la posa incollata, poi accendi gradualmente aumentando di 2-3°C al giorno.' },
+    ],
+    relatedLinks: [
+      { title: 'Posa Parquet', href: '/servizi/posa' },
+      { title: 'Posa Incollata vs Flottante', href: '/guida/posa-parquet-incollata-flottante' },
+      { title: 'Cura Dopo Posa', href: '/guida/cura-parquet-dopo-posa' },
+    ],
+  },
+  'cura-parquet-dopo-posa': {
+    title: 'Cura del Parquet nei Primi Giorni',
+    metaTitle: 'Cura Parquet Dopo Posa | Primi Giorni',
+    metaDescription: 'Come curare il parquet appena posato: quando calpestare, quando mettere mobili, quando accendere riscaldamento. Guida ai primi giorni.',
+    bluf: 'Nei primi giorni il parquet è vulnerabile. Calpesta con calzini puliti dopo 12-24 ore, evita scarpe per 48 ore, rimetti i mobili dopo 48-72 ore con feltrini. Non lavare per 7 giorni. Se hai riscaldamento a pavimento, accendilo gradualmente dopo 7 giorni dalla posa.',
+    content: [
+      { heading: 'Prime 24 Ore', text: 'Non calpestare la zona lavorata. La colla sta facendo presa e la finitura sta indurendo. Se devi passare per forza, usa tavole di legno appoggiate per distribuire il peso.' },
+      { heading: 'Dopo 24-48 Ore', text: 'Puoi calpestare con calzini puliti (no scarpe). Evita di trascinare oggetti. Il parquet è ancora sensibile: un graffio ora rimane per sempre. I bambini giocano in altre stanze.' },
+      { heading: 'Dopo 48-72 Ore', text: 'Puoi rimettere i mobili leggeri. Usa sempre feltrini sotto le gambe. I mobili pesantissimi (librerie, armadi) aspettano 5-7 giorni. Non trascinare mai: solleva e appoggia.' },
+      { heading: 'Prima Settimana', text: 'Non lavare con acqua per almeno 7 giorni (solo aspirapolvere con spazzola morbida). Se hai riscaldamento a pavimento, accendilo gradualmente dopo 7 giorni: +2-3°C al giorno fino a regime.' },
+    ],
+    faq: [
+      { q: 'Quando posso lavare il parquet?', a: 'Dopo 7 giorni dalla finitura. Usa un panno umido ben strizzato, mai bagnato. Aspetta 2-3 settimane per il primo lavaggio completo.' },
+      { q: 'Quando posso mettere i tappeti?', a: 'Dopo 2-3 settimane. I tappeti bloccano la traspirazione della finitura che continua a indurire nei primi tempi.' },
+      { q: 'Ho graffiato il parquet nuovo, cosa faccio?', a: 'Se il graffio è nella finitura fresca, potrebbe attenuarsi con l\'indurimento. Se è profondo, potrebbe restare. Chiamaci per una valutazione.' },
+    ],
+    relatedLinks: [
+      { title: 'Manutenzione', href: '/guida/manutenzione-parquet' },
+      { title: 'Graffi e Macchie', href: '/guida/parquet-graffi-macchie' },
+      { title: 'Tempi Posa', href: '/guida/tempi-posa-parquet' },
+    ],
+  },
+  'come-scegliere-posatore': {
+    title: 'Come Scegliere un Posatore di Parquet',
+    metaTitle: 'Scegliere Posatore Parquet | Consigli',
+    metaDescription: 'Come riconoscere un bravo posatore di parquet? Cosa chiedere, cosa controllare, segnali di allarme. Guida alla scelta del professionista giusto.',
+    bluf: 'Un bravo posatore: fa sopralluogo prima del preventivo, misura l\'umidità del massetto, spiega le opzioni, dà garanzia scritta, mostra lavori precedenti. Diffida di chi dà prezzi al telefono, non vuole vedere il cantiere, non parla di preparazione del fondo. L\'esperienza conta più del prezzo basso.',
+    content: [
+      { heading: 'Il Sopralluogo', text: 'Un professionista serio fa sempre un sopralluogo prima del preventivo. Deve vedere il massetto, misurare l\'umidità, valutare gli accessi, capire le tue esigenze. Chi dà prezzi al telefono senza vedere il cantiere sta improvvisando.' },
+      { heading: 'Domande da Fare', text: 'Chiedi: quanti anni di esperienza? Posso vedere foto di lavori precedenti? Che garanzia date sulla posa? Come preparate il massetto? Che colla usate? Un professionista risponde volentieri e con competenza.' },
+      { heading: 'Segnali di Allarme', text: 'Diffida di: prezzi molto più bassi della media, preventivi vaghi senza dettagli, fretta di iniziare senza preparazione, nessuna garanzia scritta, posa "a nero" senza fattura. Un lavoro mal fatto costa il doppio da rifare.' },
+      { heading: 'Garanzia e Assistenza', text: 'Pretendi garanzia scritta sulla manodopera (almeno 2 anni). Un professionista serio interviene se ci sono problemi. Controlla le recensioni online ma non fidarti ciecamente: contano i dettagli dei feedback.' },
+    ],
+    faq: [
+      { q: 'Il prezzo più basso è sempre sbagliato?', a: 'Non sempre, ma spesso. Un prezzo molto basso nasconde materiali scadenti, manodopera inesperta o lavoro "a nero" senza garanzie. Confronta preventivi dettagliati, non solo cifre.' },
+      { q: 'Posso posare il parquet da solo?', a: 'Il prefinito flottante click sì, con pazienza. Incollato e massello no: servono esperienza, attrezzature e conoscenza delle tecniche. Gli errori costano caro.' },
+      { q: 'Come verifico l\'esperienza del posatore?', a: 'Chiedi foto di lavori precedenti, referenze di clienti, anni di attività. Un professionista con 30 anni di esperienza ha visto ogni situazione possibile.' },
+    ],
+    relatedLinks: [
+      { title: 'Chi Siamo', href: '/chi-siamo' },
+      { title: 'Garanzia', href: '/guida/garanzia-parquet' },
+      { title: 'Contatti', href: '/contatti' },
+    ],
+  },
+  'garanzia-parquet': {
+    title: 'Garanzia sul Parquet: Cosa Copre',
+    metaTitle: 'Garanzia Parquet | Cosa È Coperto',
+    metaDescription: 'Cosa copre la garanzia sul parquet? Differenza tra garanzia materiale e manodopera. Quando vale e quando no. Guida ai tuoi diritti.',
+    bluf: 'La garanzia ha due componenti: materiale (dal produttore, 10-25 anni) e manodopera (dal posatore, 2-5 anni). La garanzia materiale copre difetti di fabbricazione. La garanzia manodopera copre errori di posa. Non sono coperti: danni da uso improprio, manutenzione errata, eventi accidentali.',
+    content: [
+      { heading: 'Garanzia Materiale', text: 'Il produttore garantisce il parquet contro difetti di fabbricazione: delaminazione, difetti di verniciatura, deformazioni non dovute all\'ambiente. Durata tipica: 10-25 anni per prefinito, lifetime per alcuni masselli. Conserva lo scontrino e la documentazione.' },
+      { heading: 'Garanzia Manodopera', text: 'Il posatore garantisce il proprio lavoro: la posa è stata eseguita a regola d\'arte. Copre: scricchiolii da posa errata, listelli che si staccano, difetti di finitura. Durata tipica: 2-5 anni. Noi diamo garanzia scritta su ogni lavoro.' },
+      { heading: 'Cosa Non È Coperto', text: 'Non sono coperti: graffi e urti da uso normale, danni da acqua per negligenza, deformazioni da umidità ambientale errata, usura normale, manutenzione non eseguita o errata. Leggi sempre le condizioni di garanzia.' },
+      { heading: 'Come Far Valere la Garanzia', text: 'Documenta il problema con foto. Contatta prima il posatore per problemi di posa, il rivenditore/produttore per difetti del materiale. Conserva fattura, documentazione tecnica e condizioni di garanzia.' },
+    ],
+    faq: [
+      { q: 'Gli scricchiolii sono coperti da garanzia?', a: 'Dipende. Se dovuti a posa errata, sì. Se dovuti ad assestamento normale o umidità ambientale, no. Valutiamo caso per caso.' },
+      { q: 'La garanzia decade se lavo male il parquet?', a: 'La garanzia materiale può decadere se dimostri di aver usato prodotti non idonei o acqua eccessiva. Segui le istruzioni di manutenzione.' },
+      { q: 'Arteparquet cosa garantisce?', a: 'Diamo garanzia scritta sulla manodopera. Se un difetto è imputabile alla nostra posa, interveniamo gratuitamente. Per i materiali vale la garanzia del produttore.' },
+    ],
+    relatedLinks: [
+      { title: 'Scegliere Posatore', href: '/guida/come-scegliere-posatore' },
+      { title: 'Contatti', href: '/contatti' },
+      { title: 'Chi Siamo', href: '/chi-siamo' },
+    ],
+  },
+  'miglior-parquet-casa': {
+    title: 'Miglior Parquet per Casa: Come Scegliere',
+    metaTitle: 'Miglior Parquet per Casa | Guida alla Scelta',
+    metaDescription: 'Qual è il miglior parquet per la tua casa? Dipende da budget, ambiente, stile di vita. Guida pratica per scegliere il pavimento giusto.',
+    bluf: 'Non esiste "il migliore" in assoluto: dipende dalle tue esigenze. Per pregio massimo: massello di rovere. Per praticità: prefinito click. Per bagni/cucine: SPC. Per budget contenuto: laminato di qualità. La scelta giusta considera ambiente, traffico, riscaldamento, budget e gusto estetico.',
+    content: [
+      { heading: 'Per il Soggiorno', text: 'Il soggiorno è l\'ambiente di rappresentanza: scegli il meglio che puoi permetterti. Il massello di rovere è senza tempo. Il prefinito di qualità è un\'ottima alternativa. Schemi a spina di pesce valorizzano gli ambienti ampi.' },
+      { heading: 'Per le Camere da Letto', text: 'Le camere hanno meno traffico: anche un prefinito con strato nobile più sottile funziona bene. Puoi osare con essenze più morbide (noce) se vuoi un look particolare. Il calore del legno è perfetto per i piedi nudi al mattino.' },
+      { heading: 'Per Bagni e Cucine', text: 'L\'SPC impermeabile è la scelta più sicura: effetto legno, zero rischi. Il parquet vero in cucina funziona con attenzione. In bagno, solo teak con finitura olio-cera e manutenzione scrupolosa, oppure SPC.' },
+      { heading: 'Con Bambini e Animali', text: 'Scegli essenze dure (rovere, frassino) e finiture resistenti (vernice UV). L\'SPC è praticamente indistruttibile. Evita legni teneri (noce, ciliegio) se hai cani grandi o bambini scatenati.' },
+    ],
+    faq: [
+      { q: 'Qual è il parquet più resistente?', a: 'Il massello di rovere con finitura a vernice UV è molto resistente. L\'SPC è praticamente indistruttibile. Il laminato AC5 resiste bene ma non è levigabile.' },
+      { q: 'Meglio spendere di più per il materiale o per la posa?', a: 'Entrambi contano. Un materiale eccellente posato male dà problemi. Un materiale medio posato perfettamente funziona bene. L\'ideale è non risparmiare su nessuno dei due.' },
+      { q: 'Posso avere parquet diversi in stanze diverse?', a: 'Sconsigliato. Meglio un unico parquet con lo stesso verso di posa in tutta la casa. Crea continuità e valorizza gli spazi.' },
+    ],
+    relatedLinks: [
+      { title: 'Massello vs Prefinito', href: '/guida/parquet-massello-vs-prefinito' },
+      { title: 'Essenze', href: '/guida/essenze-legno-parquet' },
+      { title: 'Preventivo', href: '/preventivo' },
+    ],
+  },
 }
 
 // Fallback for guides not yet written
@@ -287,16 +573,39 @@ const PLACEHOLDER_GUIDE = {
 
 export async function generateStaticParams() {
   const slugs = [
+    // Gruppo 1: Generali e Scelta
     'parquet-massello-vs-prefinito',
-    'quanto-costa-levigatura',
-    'parquet-riscaldamento-pavimento',
-    'manutenzione-parquet',
-    'parquet-bagno-cucina',
+    'parquet-vs-laminato-vs-spc',
+    'essenze-legno-parquet',
+    'finiture-parquet-olio-vernice',
+    // Gruppo 2: Posa e Preparazione
+    'posa-parquet-incollata-flottante',
     'umidita-massetto-posa',
+    'parquet-su-piastrelle',
+    // Gruppo 3: Levigatura e Manutenzione
+    'quanto-costa-levigatura',
+    'manutenzione-parquet',
     'parquet-graffi-macchie',
+    // Gruppo 4: Problemi e Riparazioni
     'parquet-scricchiola',
     'parquet-gonfiato-acqua',
+    'parquet-macchie-nere',
+    // Gruppo 5: Ambienti Specifici
+    'parquet-bagno-cucina',
+    'parquet-riscaldamento-pavimento',
+    // Gruppo 6: Estetica e Design
     'spina-italiana-vs-francese',
+    'parquet-colore-pareti',
+    // Gruppo 7: Preparazione Lavori
+    'preparare-stanza-levigatura',
+    'tempi-posa-parquet',
+    // Gruppo 8: Post-Intervento
+    'cura-parquet-dopo-posa',
+    // Gruppo 9: Commerciale
+    'come-scegliere-posatore',
+    'garanzia-parquet',
+    // Gruppo 10: AI Queries
+    'miglior-parquet-casa',
   ]
   return slugs.map((slug) => ({ slug }))
 }
