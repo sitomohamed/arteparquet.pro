@@ -8,11 +8,7 @@ export function WebSiteSchema() {
     name: 'Arteparquet',
     description: 'Posa, restauro e levigatura parquet in Lombardia dal 1996.',
     publisher: {
-      '@type': 'Organization',
       '@id': 'https://arteparquet.pro/#business',
-      name: 'Arteparquet',
-      url: 'https://arteparquet.pro',
-      logo: 'https://arteparquet.pro/icon.png',
     },
     potentialAction: {
       '@type': 'SearchAction',
@@ -46,6 +42,8 @@ export function LocalBusinessSchema() {
     url: 'https://arteparquet.pro',
     telephone: '+393892407827',
     email: 'info@arteparquet.pro',
+    priceRange: '€€',
+    openingHours: ['Mo-Fr 08:00-18:00', 'Sa 09:00-13:00'],
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
     address: {
@@ -105,9 +103,11 @@ export function LocalBusinessSchema() {
     ],
     founder: {
       '@type': 'Person',
+      '@id': 'https://arteparquet.pro/#founder',
       name: 'Mohamed Arabi',
+      url: 'https://arteparquet.pro/chi-siamo',
       jobTitle: 'Maestro Parquettista',
-      worksFor: { '@type': 'Organization', name: 'Arteparquet' },
+      worksFor: { '@id': 'https://arteparquet.pro/#business' },
     },
     knowsAbout: [
       'Posa Parquet',
@@ -138,12 +138,9 @@ export function PersonSchema() {
     '@type': 'Person',
     '@id': 'https://arteparquet.pro/#founder',
     name: 'Mohamed Arabi',
+    url: 'https://arteparquet.pro/chi-siamo',
     jobTitle: 'Maestro Parquettista',
-    worksFor: {
-      '@type': 'Organization',
-      '@id': 'https://arteparquet.pro/#business',
-      name: 'Arteparquet',
-    },
+    worksFor: { '@id': 'https://arteparquet.pro/#business' },
     knowsAbout: [
       'Posa Parquet',
       'Restauro Parquet',
@@ -353,18 +350,13 @@ export function ArticleSchema({
     url,
     datePublished,
     dateModified: dateModified || datePublished,
-    author: {
-      '@type': 'Organization',
-      '@id': 'https://arteparquet.pro/#business',
-      name: 'Arteparquet',
-    },
+    author: { '@id': 'https://arteparquet.pro/#business' },
     publisher: {
-      '@type': 'Organization',
       '@id': 'https://arteparquet.pro/#business',
       name: 'Arteparquet',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://arteparquet.pro/logo.png',
+        url: 'https://arteparquet.pro/icon.png',
       },
     },
     mainEntityOfPage: {

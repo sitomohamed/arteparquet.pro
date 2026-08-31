@@ -462,7 +462,7 @@ export async function generateMetadata({
   if (!cityKey) return {}
 
   const c = CITIES[cityKey]
-  const title = `Parquet ${c.display}`
+  const title = `Parquet ${c.display}: posa e restauro`
   const description = `Posa, restauro e levigatura parquet a ${c.display}. Sopralluogo gratuito. Preventivo in 24 ore, senza impegno.`
 
   return {

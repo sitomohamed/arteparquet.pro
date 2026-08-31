@@ -221,18 +221,20 @@ export function ContactForm() {
       <input
         {...register('website')}
         type="text"
+        id="hp-website"
+        aria-label="Non compilare"
         style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
         tabIndex={-1}
         autoComplete="off"
-        aria-hidden="true"
       />
       <input
         {...register('url')}
         type="email"
+        id="hp-url"
+        aria-label="Non compilare"
         style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
         tabIndex={-1}
         autoComplete="off"
-        aria-hidden="true"
       />
       <input {...register('csrfToken')} type="hidden" />
       <input {...register('timestamp')} type="hidden" />
@@ -332,29 +334,34 @@ export function ContactForm() {
             </h3>
             <div className="space-y-4 mb-6">
               <FormField
+                htmlFor="contact-city"
                 label="Città / Comune *"
                 error={errors.city?.message}
               >
                 <input
                   {...register('city')}
+                  id="contact-city"
                   placeholder="es. Milano"
                   className={inputClass(!!errors.city)}
                   autoFocus
                 />
               </FormField>
               <FormField
+                htmlFor="contact-area"
                 label="Superficie approssimativa (mq)"
                 hint="Approssimativo va bene"
               >
                 <input
                   {...register('area')}
+                  id="contact-area"
                   placeholder="es. 80 mq"
                   className={inputClass(false)}
                 />
               </FormField>
-              <FormField label="Note aggiuntive">
+              <FormField htmlFor="contact-message" label="Note aggiuntive">
                 <textarea
                   {...register('message')}
+                  id="contact-message"
                   placeholder="Descrivi il tuo progetto, i materiali preferiti, scadenze..."
                   rows={3}
                   className={cn(inputClass(false), 'resize-y min-h-[80px]')}
@@ -371,25 +378,28 @@ export function ContactForm() {
               Come possiamo contattarti?
             </h3>
             <div className="space-y-4 mb-6">
-              <FormField label="Il tuo nome *" error={errors.name?.message}>
+              <FormField htmlFor="contact-name" label="Il tuo nome *" error={errors.name?.message}>
                 <input
                   {...register('name')}
+                  id="contact-name"
                   placeholder="es. Mario Rossi"
                   className={inputClass(!!errors.name)}
                   autoFocus
                 />
               </FormField>
-              <FormField label="Telefono *" error={errors.phone?.message}>
+              <FormField htmlFor="contact-phone" label="Telefono *" error={errors.phone?.message}>
                 <input
                   {...register('phone')}
+                  id="contact-phone"
                   type="tel"
                   placeholder="es. +39 333 123 4567"
                   className={inputClass(!!errors.phone)}
                 />
               </FormField>
-              <FormField label="Email *" error={errors.email?.message}>
+              <FormField htmlFor="contact-email" label="Email *" error={errors.email?.message}>
                 <input
                   {...register('email')}
+                  id="contact-email"
                   type="email"
                   placeholder="es. mario@email.com"
                   className={inputClass(!!errors.email)}
@@ -479,15 +489,16 @@ function inputClass(hasError: boolean) {
 
 interface FormFieldProps {
   label: string
+  htmlFor?: string
   hint?: string
   error?: string
   children: React.ReactNode
 }
 
-function FormField({ label, hint, error, children }: FormFieldProps) {
+function FormField({ label, htmlFor, hint, error, children }: FormFieldProps) {
   return (
     <div>
-      <label className="block font-sans text-[13px] font-semibold text-legno-bruciato mb-1.5">
+      <label htmlFor={htmlFor} className="block font-sans text-[13px] font-semibold text-legno-bruciato mb-1.5">
         {label}
       </label>
       {children}
