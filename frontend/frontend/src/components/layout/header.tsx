@@ -44,7 +44,6 @@ const NAV_LINKS = [
   { label: 'Bergamo', href: '/bergamo-e-provincia' },
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Preventivo', href: '/preventivo' },
   { label: 'Contatti', href: '/contatti' },
 ]
 
@@ -57,6 +56,17 @@ export function Header() {
   const [serviziOpen, setServiziOpen] = useState(false)
   const [mobileServiziOpen, setMobileServiziOpen] = useState(false)
   const serviziRef = useRef<HTMLDivElement>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  function openServizi() {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setServiziOpen(true)
+  }
+
+  function closeServizi() {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setServiziOpen(false), 160)
+  }
 
   const { scrollY } = useScroll()
   const headerBg = useTransform(scrollY, [0, 100], ['rgba(249,248,246,0)', 'rgba(249,248,246,0.98)'])
@@ -111,16 +121,16 @@ export function Header() {
       <motion.header
         style={{ backgroundColor: headerBg, boxShadow: headerShadow }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-30 transition-all duration-400",
+          "fixed top-0 left-0 right-0 z-30 overflow-visible transition-all duration-400",
           scrolled && "backdrop-blur-xl border-b border-neutral-100/50"
         )}
         role="banner"
       >
-        <div className="container-wide">
-          <div className="flex items-center justify-between h-18 md:h-22">
+        <div className="container-wide relative" ref={serviziRef}>
+          <div className="flex items-center h-18 md:h-22 gap-8 xl:gap-12">
 
-            {/* ── Logo con premium animation ── */}
-            <Link href="/" className="group relative" aria-label="Arteparquet — Homepage">
+            {/* ── Logo ── */}
+            <Link href="/" className="group relative shrink-0" aria-label="Arteparquet — Homepage">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -135,111 +145,59 @@ export function Header() {
               </motion.div>
             </Link>
 
-            {/* ── Desktop nav con refined spacing ── */}
-            <nav className="hidden lg:flex items-center gap-8" aria-label="Navigazione principale">
-
-              {/* Servizi dropdown con premium styling */}
-              <div ref={serviziRef} className="relative">
-                <button
-                  onClick={() => setServiziOpen((v) => !v)}
-                  className={cn(
-                    'flex items-center gap-1.5 font-sans text-[14.5px] font-medium transition-all duration-300 relative group',
-                    textColor, hoverColor
-                  )}
-                  aria-expanded={serviziOpen}
-                  aria-haspopup="true"
+            {/* ── Desktop nav ── */}
+            <nav
+              className="hidden lg:flex flex-1 items-center min-w-0"
+              aria-label="Navigazione principale"
+            >
+              <div className="flex items-center gap-6 xl:gap-8">
+                <div
+                  className="relative"
+                  onMouseEnter={openServizi}
+                  onMouseLeave={closeServizi}
                 >
-                  <span className="relative">
-                    Servizi
-                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
-                  </span>
-                  <ChevronDown
-                    size={15}
-                    className={cn('transition-transform duration-300', serviziOpen && 'rotate-180')}
-                    aria-hidden="true"
-                  />
-                </button>
+                  <button
+                    onClick={() => setServiziOpen((v) => !v)}
+                    className={cn(
+                      'flex items-center gap-1.5 font-sans text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap',
+                      textColor, hoverColor
+                    )}
+                    aria-expanded={serviziOpen}
+                    aria-haspopup="true"
+                  >
+                    <span className="relative">
+                      Servizi
+                      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
+                    </span>
+                    <ChevronDown
+                      size={15}
+                      className={cn('transition-transform duration-300', serviziOpen && 'rotate-180')}
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
 
-                <AnimatePresence>
-                  {serviziOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 12, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 12, scale: 0.97 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[680px] bg-white/98 backdrop-blur-xl rounded-2xl shadow-[0_24px_64px_rgba(0,0,0,0.14)] border border-neutral-100/80 p-7 z-50"
-                      role="menu"
-                    >
-                      <div className="grid grid-cols-3 gap-7">
-                        {SERVIZI_MENU.map((col) => (
-                          <div key={col.heading}>
-                            <p className="font-sans text-[10.5px] font-semibold uppercase tracking-[0.16em] text-rovere mb-4 pb-2.5 border-b border-neutral-100">
-                              {col.heading}
-                            </p>
-                            <ul className="space-y-1.5" role="none">
-                              {col.items.map((item) => (
-                                <li key={item.href} role="none">
-                                  <Link
-                                    href={item.href}
-                                    role="menuitem"
-                                    onClick={() => setServiziOpen(false)}
-                                    className="group/item flex flex-col px-3.5 py-2.5 rounded-xl hover:bg-wood-50 transition-all duration-200"
-                                  >
-                                    <span className="font-sans text-[14.5px] font-semibold text-legno-bruciato group-hover/item:text-rovere transition-colors duration-200">
-                                      {item.label}
-                                    </span>
-                                    <span className="font-sans text-[11.5px] text-neutral-400 mt-0.5">
-                                      {item.desc}
-                                    </span>
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Premium bottom row */}
-                      <div className="mt-6 pt-5 border-t border-neutral-100 flex items-center justify-between">
-                        <Link
-                          href="/servizi"
-                          onClick={() => setServiziOpen(false)}
-                          className="font-sans text-[13.5px] font-semibold text-rovere hover:text-wood-600 transition-colors duration-200 inline-flex items-center gap-1.5 group/all"
-                        >
-                          Vedi tutti i servizi 
-                          <ArrowRight size={14} className="transition-transform duration-200 group-hover/all:translate-x-1" />
-                        </Link>
-                        <Link
-                          href="/contatti"
-                          onClick={() => setServiziOpen(false)}
-                          className="inline-flex items-center px-5 py-2.5 rounded-xl bg-rovere text-white font-sans text-[13.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.3)] active:scale-[0.97] transition-all duration-200"
-                        >
-                          Preventivo Gratuito
-                        </Link>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setServiziOpen(false)}
+                    className={cn('font-sans text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap', textColor, hoverColor)}
+                  >
+                    <span className="relative">
+                      {link.label}
+                      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
+                    </span>
+                  </Link>
+                ))}
               </div>
+            </nav>
 
-              {/* Other nav links con premium underline */}
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn('font-sans text-[14.5px] font-medium transition-all duration-300 relative group', textColor, hoverColor)}
-                >
-                  <span className="relative">
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-rovere group-hover:w-full transition-all duration-400 ease-out-expo" />
-                  </span>
-                </Link>
-              ))}
-
-              {/* Premium Phone badge */}
+            {/* ── Desktop actions ── */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-5 shrink-0">
               <a
                 href={`tel:${PHONE_CLEAN}`}
-                className={cn('hidden xl:flex items-center gap-2 font-sans text-[13.5px] transition-all duration-300 hover:text-rovere group',
+                className={cn('hidden xl:flex items-center gap-2 font-sans text-[13.5px] transition-all duration-300 hover:text-rovere group whitespace-nowrap',
                   scrolled ? 'text-neutral-600' : 'text-white/85'
                 )}
               >
@@ -249,22 +207,21 @@ export function Header() {
                 <span>{PHONE}</span>
               </a>
 
-              {/* Premium CTA button */}
               <Link
-                href="/contatti"
-                className="relative inline-flex items-center px-7 py-3 rounded-xl bg-rovere text-white font-sans text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group"
+                href="/preventivo"
+                className="relative inline-flex items-center px-6 xl:px-7 py-2.5 xl:py-3 rounded-xl bg-rovere text-white font-sans text-[14px] xl:text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group whitespace-nowrap"
               >
                 <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10">Preventivo Gratuito</span>
               </Link>
-            </nav>
+            </div>
 
-            {/* ── Mobile hamburger con premium interaction ── */}
+            {/* ── Mobile hamburger ── */}
             <motion.button
               onClick={() => setMobileOpen(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={cn('lg:hidden p-2.5 rounded-xl transition-all duration-300',
+              className={cn('lg:hidden ml-auto p-2.5 rounded-xl transition-all duration-300',
                 scrolled ? 'text-legno-bruciato hover:bg-neutral-100' : 'text-white hover:bg-white/10'
               )}
               aria-label="Apri menu"
@@ -273,6 +230,70 @@ export function Header() {
               <Menu size={24} aria-hidden="true" />
             </motion.button>
           </div>
+
+            <AnimatePresence>
+              {serviziOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  onMouseEnter={openServizi}
+                  onMouseLeave={closeServizi}
+                  className="hidden lg:block absolute left-0 right-0 top-full mt-1 z-50"
+                  role="menu"
+                >
+                  <div className="bg-white rounded-2xl shadow-[0_24px_64px_rgba(0,0,0,0.14)] border border-neutral-100/80 p-6 xl:p-8 overflow-hidden">
+                    <div className="grid grid-cols-3 gap-6 xl:gap-10">
+                      {SERVIZI_MENU.map((col) => (
+                        <div key={col.heading} className="min-w-0">
+                          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-rovere mb-3 pb-2 border-b border-neutral-100">
+                            {col.heading}
+                          </p>
+                          <ul className="space-y-0.5" role="none">
+                            {col.items.map((item) => (
+                              <li key={item.href} role="none">
+                                <Link
+                                  href={item.href}
+                                  role="menuitem"
+                                  onClick={() => setServiziOpen(false)}
+                                  className="group/item flex flex-col px-3 py-2 rounded-xl hover:bg-wood-50 transition-all duration-200"
+                                >
+                                  <span className="font-sans text-[14.5px] font-semibold text-legno-bruciato group-hover/item:text-rovere transition-colors duration-200">
+                                    {item.label}
+                                  </span>
+                                  <span className="font-sans text-[12px] text-neutral-400 mt-0.5 leading-snug">
+                                    {item.desc}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between gap-4">
+                      <Link
+                        href="/servizi"
+                        onClick={() => setServiziOpen(false)}
+                        className="font-sans text-[13.5px] font-semibold text-rovere hover:text-wood-600 transition-colors duration-200 inline-flex items-center gap-1.5 group/all"
+                      >
+                        Vedi tutti i servizi
+                        <ArrowRight size={14} className="transition-transform duration-200 group-hover/all:translate-x-1" />
+                      </Link>
+                      <Link
+                        href="/preventivo"
+                        onClick={() => setServiziOpen(false)}
+                        className="inline-flex items-center px-5 py-2.5 rounded-xl bg-rovere text-white font-sans text-[13.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.3)] active:scale-[0.97] transition-all duration-200"
+                      >
+                        Preventivo Gratuito
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
         </div>
       </motion.header>
 
@@ -364,6 +385,15 @@ export function Header() {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <Link
+                      href="/preventivo"
+                      onClick={() => setMobileOpen(false)}
+                      className="block px-3 py-3 rounded-xl font-sans text-[17px] font-semibold text-legno-bruciato hover:bg-white hover:text-rovere transition-colors"
+                    >
+                      Preventivo
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
