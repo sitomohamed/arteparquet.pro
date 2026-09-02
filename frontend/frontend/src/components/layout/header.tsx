@@ -42,10 +42,9 @@ const SERVIZI_MENU = [
 const NAV_LINKS = [
   { label: 'Guide', href: '/parquet' },
   { label: 'Bergamo', href: '/bergamo-e-provincia' },
-  { label: 'Per Architetti', href: '/per-architetti' },
+  { label: 'Architetti', href: '/per-architetti' },
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Contatti', href: '/contatti' },
 ]
 
 const PHONE = '+39 389 240 7827'
@@ -128,7 +127,7 @@ export function Header() {
         role="banner"
       >
         <div className="container-wide relative" ref={serviziRef}>
-          <div className="flex items-center h-18 md:h-22 gap-8 xl:gap-12">
+          <div className="flex items-center justify-between h-18 md:h-22 gap-4 xl:gap-8">
 
             {/* ── Logo ── */}
             <Link href="/" className="group relative shrink-0" aria-label="Arteparquet — Homepage">
@@ -148,10 +147,10 @@ export function Header() {
 
             {/* ── Desktop nav ── */}
             <nav
-              className="hidden lg:flex flex-1 items-center min-w-0"
+              className="hidden lg:flex flex-1 items-center justify-center min-w-0 overflow-hidden"
               aria-label="Navigazione principale"
             >
-              <div className="flex items-center gap-6 xl:gap-8">
+              <div className="flex items-center gap-3 xl:gap-5 2xl:gap-7">
                 <div
                   className="relative"
                   onMouseEnter={openServizi}
@@ -160,7 +159,7 @@ export function Header() {
                   <button
                     onClick={() => setServiziOpen((v) => !v)}
                     className={cn(
-                      'flex items-center gap-1.5 font-sans text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap',
+                      'flex items-center gap-1 font-sans text-[13px] xl:text-[14px] 2xl:text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap',
                       textColor, hoverColor
                     )}
                     aria-expanded={serviziOpen}
@@ -183,7 +182,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setServiziOpen(false)}
-                    className={cn('font-sans text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap', textColor, hoverColor)}
+                    className={cn('font-sans text-[13px] xl:text-[14px] 2xl:text-[14.5px] font-medium transition-all duration-300 relative group whitespace-nowrap', textColor, hoverColor)}
                   >
                     <span className="relative">
                       {link.label}
@@ -195,22 +194,22 @@ export function Header() {
             </nav>
 
             {/* ── Desktop actions ── */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-5 shrink-0">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
               <a
                 href={`tel:${PHONE_CLEAN}`}
-                className={cn('hidden xl:flex items-center gap-2 font-sans text-[13.5px] transition-all duration-300 hover:text-rovere group whitespace-nowrap',
+                className={cn('flex items-center gap-2 font-sans text-[13px] xl:text-[13.5px] transition-all duration-300 hover:text-rovere group whitespace-nowrap shrink-0',
                   scrolled ? 'text-neutral-600' : 'text-white/85'
                 )}
               >
-                <div className="w-7 h-7 rounded-full bg-rovere/15 group-hover:bg-rovere/25 flex items-center justify-center transition-all duration-300">
+                <div className="w-7 h-7 rounded-full bg-rovere/15 group-hover:bg-rovere/25 flex items-center justify-center transition-all duration-300 shrink-0">
                   <Phone size={13} className="text-rovere" aria-hidden="true" />
                 </div>
-                <span>{PHONE}</span>
+                <span className="tabular-nums tracking-wide">{PHONE}</span>
               </a>
 
               <Link
                 href="/preventivo"
-                className="relative inline-flex items-center px-6 xl:px-7 py-2.5 xl:py-3 rounded-xl bg-rovere text-white font-sans text-[14px] xl:text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group whitespace-nowrap"
+                className="relative inline-flex items-center px-4 xl:px-6 2xl:px-7 py-2.5 xl:py-3 rounded-xl bg-rovere text-white font-sans text-[13px] xl:text-[14px] 2xl:text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group whitespace-nowrap shrink-0"
               >
                 <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10">Preventivo Gratuito</span>
@@ -382,10 +381,19 @@ export function Header() {
                         onClick={() => setMobileOpen(false)}
                         className="block px-3 py-3 rounded-xl font-sans text-[17px] font-semibold text-legno-bruciato hover:bg-white hover:text-rovere transition-colors"
                       >
-                        {link.label}
+                        {link.label === 'Architetti' ? 'Per Architetti' : link.label}
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <Link
+                      href="/contatti"
+                      onClick={() => setMobileOpen(false)}
+                      className="block px-3 py-3 rounded-xl font-sans text-[17px] font-semibold text-legno-bruciato hover:bg-white hover:text-rovere transition-colors"
+                    >
+                      Contatti
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       href="/preventivo"
