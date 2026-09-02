@@ -68,13 +68,13 @@ const PROJECTS = [
     studio: 'Design d\'Interni Milano',
     project: 'Loft industriale — Wengè e acciaio',
     location: 'Porta Romana, Milano',
-    image: '/portfolio/google-spina-pesce-lucida-01.jpg',
+    image: '/portfolio/google-parquet-bordo-intarsio-01.jpg',
   },
   {
     studio: 'Architetto Indipendente',
     project: 'Restauro storico — Parquet originale 1920',
     location: 'Centro storico, Brescia',
-    image: '/portfolio/google-spina-pesce-lucida-01.jpg',
+    image: '/portfolio/google-levigatura-mosaico-01.jpg',
   },
 ]
 
