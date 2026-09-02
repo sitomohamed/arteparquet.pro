@@ -11,12 +11,14 @@ declare global {
 }
 
 function applyAnalyticsConsent() {
-  const granted = Boolean(loadConsent()?.analytics)
+  const consent = loadConsent()
+  const analytics = Boolean(consent?.analytics)
+  const marketing = Boolean(consent?.marketing)
   window.gtag?.('consent', 'update', {
-    analytics_storage: granted ? 'granted' : 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
+    analytics_storage: analytics ? 'granted' : 'denied',
+    ad_storage: marketing ? 'granted' : 'denied',
+    ad_user_data: marketing ? 'granted' : 'denied',
+    ad_personalization: marketing ? 'granted' : 'denied',
   })
 }
 

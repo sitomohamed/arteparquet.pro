@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ArrowLeft, Upload, Phone, MessageCircle, CheckCircle, Home, Ruler, MapPin, Camera, User } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
-import { trackCtaClick } from '@/lib/analytics'
+import { trackCtaClick, trackFormComplete } from '@/lib/analytics'
 
 type ServiceType = 'levigatura' | 'posa' | 'restauro' | 'riparazione' | 'spc' | ''
 type FloorCondition = 'buono' | 'graffiato' | 'danneggiato' | 'antico' | ''
@@ -82,6 +82,16 @@ export default function PreventivoPag() {
   const handleSubmit = async () => {
     setIsSubmitting(true)
     trackCtaClick('quote_wizard_submit', 'preventivo_page')
+    trackFormComplete({
+      projectType: formData.service || 'consulenza',
+      clientType: 'privato',
+      city: formData.city,
+      user: {
+        email: formData.email || undefined,
+        phone: formData.phone,
+        firstName: formData.name,
+      },
+    })
 
     // Build WhatsApp message
     const serviceLabel = SERVICES.find((s) => s.value === formData.service)?.label || formData.service

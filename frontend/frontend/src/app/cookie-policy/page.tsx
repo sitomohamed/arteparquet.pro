@@ -48,7 +48,7 @@ export default function CookiePolicyPage() {
                 },
                 {
                   title: 'Cookie Marketing (con consenso)',
-                  content: 'Usati per mostrare pubblicità pertinente su altri siti (Google Ads, Meta Pixel). Attivati solo con il tuo consenso esplicito.',
+                  content: 'Usati per mostrare pubblicità pertinente su altri siti (Google Ads, Meta Pixel ID 1083893604335183). Con lo stesso consenso inviamo a Meta anche eventi di conversione dal server (Conversions API). Titolare dei cookie Meta: Meta Platforms Ireland Ltd.',
                 },
                 {
                   title: 'Come gestire i Cookie',

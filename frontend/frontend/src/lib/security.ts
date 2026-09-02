@@ -15,11 +15,12 @@ export function checkRateLimit(
     maxRequests: number
     windowMs: number
     blockDurationMs?: number
+    namespace?: string
   }
 ): { allowed: boolean; remaining: number; resetTime: number } {
   const ip = getClientIP(request)
   const now = Date.now()
-  const key = `rate_${ip}`
+  const key = `rate_${options.namespace ?? 'global'}_${ip}`
 
   let entry = rateLimitStore.get(key)
 
@@ -120,6 +121,7 @@ export function getContentSecurityPolicy(): string {
     ...(IS_DEV ? ["'unsafe-eval'"] : []),
     'https://www.googletagmanager.com',
     'https://www.google-analytics.com',
+    'https://connect.facebook.net',
   ].join(' ')
 
   const connectSrc = [
@@ -131,6 +133,9 @@ export function getContentSecurityPolicy(): string {
     'https://www.googletagmanager.com',
     'https://www.google.com',
     'https://api.indexnow.org',
+    'https://www.facebook.com',
+    'https://connect.facebook.net',
+    'https://graph.facebook.com',
     ...(IS_DEV ? ['ws:', 'wss:'] : []),
   ].join(' ')
 
@@ -139,7 +144,7 @@ export function getContentSecurityPolicy(): string {
     `script-src ${scriptSrc}`,
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self' data:",
-    "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
+    "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com https://connect.facebook.net",
     `connect-src ${connectSrc}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",

@@ -1,12 +1,84 @@
+import { loadConsent } from '@/lib/cookie-consent'
+
 export const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_ID || 'G-CXJX669QNK'
+
+export const META_PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID || '1083893604335183'
 
 declare global {
   interface Window {
     dataLayer?: unknown[]
     gtag?: (...args: unknown[]) => void
+    fbq?: (...args: unknown[]) => void
   }
 }
+
+function newEventId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+  return `ev_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`
+}
+
+function readCookie(name: string): string | undefined {
+  if (typeof document === 'undefined') return undefined
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))
+  return match ? decodeURIComponent(match[1]) : undefined
+}
+
+function getFbc(): string | undefined {
+  const fromCookie = readCookie('_fbc')
+  if (fromCookie) return fromCookie
+  const fbclid = new URLSearchParams(window.location.search).get('fbclid')
+  if (!fbclid) return undefined
+  return `fb.1.${Date.now()}.${fbclid}`
+}
+
+type MetaUserPayload = {
+  email?: string
+  phone?: string
+  firstName?: string
+}
+
+function sendCapiFromBrowser(
+  eventName: string,
+  eventId: string,
+  params?: Record<string, string | number | boolean>,
+  user?: MetaUserPayload
+) {
+  fetch('/api/meta/capi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    keepalive: true,
+    body: JSON.stringify({
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: window.location.href,
+      fbp: readCookie('_fbp'),
+      fbc: getFbc(),
+      custom_data: params,
+      ...user,
+    }),
+  }).catch(() => {})
+}
+
+function trackMeta(
+  event: string,
+  params?: Record<string, string | number | boolean>,
+  options?: { eventID?: string; skipCapi?: boolean; user?: MetaUserPayload }
+) {
+  const eventID = options?.eventID || newEventId()
+  if (typeof window === 'undefined') return eventID
+  if (!loadConsent()?.marketing) return eventID
+  window.fbq?.('track', event, params, { eventID })
+  if (!options?.skipCapi) {
+    sendCapiFromBrowser(event, eventID, params, options?.user)
+  }
+  return eventID
+}
+
+export { newEventId, readCookie, getFbc }
 
 /**
  * Send a custom event to Google Analytics
@@ -72,6 +144,7 @@ export function trackPhoneClick(location: string) {
   trackCtaClick('phone', location, {
     phone_number: '+393892407827',
   })
+  trackMeta('Contact', { content_name: 'phone', content_category: location })
 }
 
 /**
@@ -81,6 +154,7 @@ export function trackWhatsAppClick(location: string, message?: string) {
   trackCtaClick('whatsapp', location, {
     has_message: message ? 'yes' : 'no',
   })
+  trackMeta('Contact', { content_name: 'whatsapp', content_category: location })
 }
 
 /**
@@ -104,6 +178,9 @@ export function trackFormComplete(data: {
   projectType: string
   clientType: string
   city?: string
+  eventID?: string
+  skipCapi?: boolean
+  user?: MetaUserPayload
 }) {
   trackEvent('form_submit', {
     form_name: 'contact_form',
@@ -111,14 +188,27 @@ export function trackFormComplete(data: {
     client_type: data.clientType,
     city: data.city || 'unknown',
   })
-  
-  // Also track as conversion
+
   trackEvent('generate_lead', {
     value: 1,
     currency: 'EUR',
     project_type: data.projectType,
     client_type: data.clientType,
   })
+  return trackMeta(
+    'Lead',
+    {
+      content_name: data.projectType,
+      content_category: data.clientType,
+      currency: 'EUR',
+      value: 1,
+    },
+    {
+      eventID: data.eventID,
+      skipCapi: data.skipCapi,
+      user: data.user,
+    }
+  )
 }
 
 export function trackFormError(step: number, errorField: string) {

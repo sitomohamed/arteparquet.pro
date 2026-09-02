@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { randomUUID } from 'crypto'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
 import { 
@@ -12,6 +13,7 @@ import {
   sanitizeEmailServer,
   sanitizePhoneServer
 } from '@/lib/security-server'
+import { capiUserFromRequest, sendMetaCapiEvent } from '@/lib/meta-capi'
 
 // ── Enhanced Validation ───────────────────────────────────────────────────
 const schema = z.object({
@@ -26,6 +28,10 @@ const schema = z.object({
   privacy: z.literal(true), // Must be true, not just boolean
   csrfToken: z.string().min(1),
   timestamp: z.string().optional(), // For bot detection
+  eventID: z.string().min(8).max(64).optional(),
+  fbp: z.string().max(128).optional(),
+  fbc: z.string().max(256).optional(),
+  marketingConsent: z.boolean().optional(),
 })
 
 const PROJECT_LABELS: Record<string, string> = {
@@ -122,6 +128,28 @@ export async function POST(request: NextRequest) {
     const transporter = createTransporter()
     const ownerEmail = process.env.OWNER_EMAIL ?? process.env.GMAIL_USER
 
+    const sendLeadToMeta = () => {
+      if (!data.marketingConsent) return Promise.resolve()
+      return sendMetaCapiEvent({
+        eventName: 'Lead',
+        eventId: data.eventID || randomUUID(),
+        eventSourceUrl: request.headers.get('referer') || 'https://arteparquet.pro/contatti',
+        customData: {
+          content_name: data.projectType,
+          content_category: data.clientType,
+          currency: 'EUR',
+          value: 1,
+        },
+        user: capiUserFromRequest(request, {
+          email: data.email,
+          phone: data.phone,
+          firstName: data.name,
+          fbp: data.fbp,
+          fbc: data.fbc,
+        }),
+      })
+    }
+
     // ── Dev fallback: no Gmail configured ────────────────────────────────
     if (!transporter || !ownerEmail) {
       console.log('\n📬 ─────────────────────────────────────────────────')
@@ -135,6 +163,7 @@ export async function POST(request: NextRequest) {
       if (data.area)    console.log(`   Area:     ${data.area} mq`)
       if (data.message) console.log(`   Note:     ${data.message}`)
       console.log('────────────────────────────────────────────────────\n')
+      await sendLeadToMeta()
       return NextResponse.json({ success: true, mode: 'dev' })
     }
 
@@ -156,6 +185,8 @@ export async function POST(request: NextRequest) {
       subject: `✓ Abbiamo ricevuto la tua richiesta, ${data.name}!`,
       html: clientEmailHtml(data),
     })
+
+    await sendLeadToMeta()
 
     return NextResponse.json({ success: true }, {
       status: 200,

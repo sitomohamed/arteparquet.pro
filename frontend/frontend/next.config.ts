@@ -10,12 +10,13 @@ const contentSecurityPolicy = [
     isDev ? "'unsafe-eval'" : null,
     'https://www.googletagmanager.com',
     'https://www.google-analytics.com',
+    'https://connect.facebook.net',
   ]
     .filter(Boolean)
     .join(' '),
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self' data:",
-  "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
+  "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com https://connect.facebook.net",
   [
     "connect-src 'self'",
     'https://www.google-analytics.com',
@@ -25,6 +26,9 @@ const contentSecurityPolicy = [
     'https://www.googletagmanager.com',
     'https://www.google.com',
     'https://api.indexnow.org',
+    'https://www.facebook.com',
+    'https://connect.facebook.net',
+    'https://graph.facebook.com',
     isDev ? 'ws: wss:' : null,
   ]
     .filter(Boolean)

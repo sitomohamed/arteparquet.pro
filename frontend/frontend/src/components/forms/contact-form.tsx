@@ -8,12 +8,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { loadConsent } from '@/lib/cookie-consent'
 import { 
   trackFormStart, 
   trackFormStep, 
   trackFormComplete, 
   trackFormError,
-  trackCtaClick
+  trackCtaClick,
+  newEventId,
+  readCookie,
+  getFbc,
 } from '@/lib/analytics'
 
 const schema = z.object({
@@ -114,6 +118,7 @@ export function ContactForm() {
     }
     
     try {
+      const eventID = newEventId()
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 
@@ -124,6 +129,10 @@ export function ContactForm() {
           ...data,
           csrfToken,
           timestamp: formStartTime.toString(),
+          eventID,
+          fbp: readCookie('_fbp'),
+          fbc: getFbc(),
+          marketingConsent: Boolean(loadConsent()?.marketing),
         }),
       })
       if (!res.ok) {
@@ -132,11 +141,13 @@ export function ContactForm() {
         throw new Error(json.error ?? 'Errore invio')
       }
       
-      // Track successful form completion
+      // Pixel Lead; CAPI Lead is sent by /api/contact with the same eventID
       trackFormComplete({
         projectType: data.projectType,
         clientType: data.clientType,
         city: data.city,
+        eventID,
+        skipCapi: true,
       })
       
       setSubmitted(true)
