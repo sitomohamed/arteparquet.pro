@@ -42,6 +42,7 @@ const SERVIZI_MENU = [
 const NAV_LINKS = [
   { label: 'Guide', href: '/parquet' },
   { label: 'Bergamo', href: '/bergamo-e-provincia' },
+  { label: 'Per Architetti', href: '/per-architetti' },
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Contatti', href: '/contatti' },

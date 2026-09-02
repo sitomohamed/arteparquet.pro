@@ -190,16 +190,23 @@ export function HeroSection() {
         <div className="max-w-2xl">
           <div
             ref={badgeRef}
-            className="inline-flex items-center gap-3 mb-8"
+            className="space-y-3 mb-8"
             style={{ opacity: 0 }}
           >
-            <span 
-              className="h-[1.5px] w-12 bg-rovere"
-              aria-hidden="true" 
-            />
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-rovere">
-              Bergamo · Milano · Lombardia
-            </span>
+            <div className="inline-flex items-center gap-3">
+              <span 
+                className="h-[1.5px] w-12 bg-rovere"
+                aria-hidden="true" 
+              />
+              <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-rovere">
+                L'Atelier del Parquet
+              </span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-rovere/10 border border-rovere/30 rounded-lg backdrop-blur-sm">
+              <span className="font-serif text-[11px] font-medium text-rovere/90 tracking-wide">
+                🏛️ Ex Teatro alla Scala Milano (2004)
+              </span>
+            </div>
           </div>
 
           <h1
@@ -212,9 +219,9 @@ export function HeroSection() {
               opacity: 0,
             }}
           >
-            Posa, Restauro e Levigatura<br />
-            Parquet a Bergamo<br />
-            <span className="text-rovere inline-block" style={{ textShadow: '0 2px 20px rgba(200,155,123,0.4)' }}>dal 1996</span>
+            L'eccellenza che ha vestito<br />
+            <span className="text-rovere inline-block" style={{ textShadow: '0 2px 20px rgba(200,155,123,0.4)' }}>la Scala di Milano</span>,<br />
+            oggi nella tua casa
           </h1>
 
           <p
@@ -227,8 +234,9 @@ export function HeroSection() {
               opacity: 0,
             }}
           >
-            Riportiamo il parquet alla sua bellezza originale e realizziamo nuovi
-            pavimenti su misura. Sopralluogo gratuito a Bergamo, Milano e in tutta la Lombardia.
+            Architettura e restauro del legno d'alta moda. Dal 1996, trasformiamo pavimenti 
+            in opere d'arte con la stessa maestria artigianale che ha curato il Teatro alla Scala. 
+            Sopralluogo gratuito a Bergamo, Milano e in tutta la Lombardia.
           </p>
 
           <div

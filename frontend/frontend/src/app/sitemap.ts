@@ -84,6 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/servizi`,   lastModified: D.services,  changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/portfolio`, lastModified: D.portfolio, changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${BASE}/contatti`,  lastModified: D.contatti,  changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/per-architetti`, lastModified: TODAY,  changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/chi-siamo`, lastModified: D.chiSiamo,  changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/faq`,       lastModified: D.faq,       changeFrequency: 'weekly',  priority: 0.85 },
     { url: `${BASE}/blog`,      lastModified: D.blog,      changeFrequency: 'weekly',  priority: 0.7 },
