@@ -25,4 +25,5 @@ export const BUSINESS = {
   },
   googleMapsUrl: 'https://maps.google.com/?q=Via+Vittorio+Alfieri+7+Bergamo+24100',
   googleReviewsUrl: 'https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo',
+  facebook: 'https://www.facebook.com/profile.php?id=61593688395747',
 } as const

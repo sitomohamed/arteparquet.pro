@@ -3,6 +3,7 @@ import { ContactForm } from '@/components/forms/contact-form'
 import { FadeIn } from '@/components/animations/fade-in'
 import { RelatedLinks } from '@/components/ui/related-links'
 import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
+import { FacebookIcon } from '@/components/brand/facebook-icon'
 
 export const metadata: Metadata = {
   title: 'Contatti | Sopralluogo Gratuito Parquet',
@@ -24,6 +25,7 @@ const EMAIL = 'info@arteparquet.pro'
 const WHATSAPP_URL = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(
   'Ciao! Vorrei fissare un sopralluogo gratuito.'
 )}`
+const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61593688395747'
 
 export default function ContattiPage() {
   return (
@@ -102,6 +104,22 @@ export default function ContattiPage() {
                     <div>
                       <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Email</p>
                       <p className="font-sans text-[16px] font-semibold text-legno-bruciato group-hover:text-rovere transition-colors">{EMAIL}</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={FACEBOOK_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 group"
+                    aria-label="Pagina Facebook Arteparquet"
+                  >
+                    <div className="w-11 h-11 rounded-2xl bg-wood-50 ring-1 ring-wood-100 group-hover:bg-[#1877F2] group-hover:ring-[#1877F2]/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                      <FacebookIcon size={17} className="text-rovere group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <p className="font-sans text-[12px] font-semibold uppercase tracking-wider text-neutral-400 mb-0.5">Facebook</p>
+                      <p className="font-sans text-[16px] font-semibold text-legno-bruciato group-hover:text-[#1877F2] transition-colors">Arteparquet</p>
                     </div>
                   </a>
 

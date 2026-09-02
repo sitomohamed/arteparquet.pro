@@ -6,6 +6,7 @@ import { Phone, Mail, MapPin, MessageCircle, ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/brand/logo'
+import { FacebookIcon } from '@/components/brand/facebook-icon'
 
 const PHONE = '+39 389 240 7827'
 const PHONE_CLEAN = '+393892407827'
@@ -13,6 +14,7 @@ const EMAIL = 'info@arteparquet.pro'
 const WHATSAPP_URL = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(
   'Ciao! Vorrei informazioni sui vostri servizi di parquet.'
 )}`
+const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61593688395747'
 
 const FOOTER_SECTIONS = [
   {
@@ -162,6 +164,17 @@ export function Footer() {
               <MessageCircle size={16} className="relative z-10" aria-hidden="true" />
               <span className="relative z-10">Scrivici su WhatsApp</span>
             </a>
+
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 font-sans text-[13px] text-white/50 hover:text-rovere transition-colors duration-300"
+              aria-label="Pagina Facebook Arteparquet"
+            >
+              <FacebookIcon size={16} />
+              Facebook
+            </a>
           </div>
 
           {/* ── Col 2 — Servizi ── */}
@@ -257,6 +270,17 @@ export function Footer() {
             © {year} Arteparquet di Arabi Mohamed — P.IVA 03326410168
           </p>
           <ul className="flex items-center gap-5" role="list">
+            <li>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-white/40 hover:text-white/70 transition-colors duration-300"
+                aria-label="Pagina Facebook Arteparquet"
+              >
+                <FacebookIcon size={16} />
+              </a>
+            </li>
             {LEGAL.map((item) => (
               <li key={item.href}>
                 <Link href={item.href}

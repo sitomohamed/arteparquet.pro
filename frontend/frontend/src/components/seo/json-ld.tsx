@@ -68,6 +68,7 @@ export function LocalBusinessSchema() {
     ],
     logo: 'https://arteparquet.pro/icon.png',
     image: 'https://arteparquet.pro/opengraph-image',
+    sameAs: ['https://www.facebook.com/profile.php?id=61593688395747'],
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+393892407827',
