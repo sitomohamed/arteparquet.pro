@@ -3,14 +3,14 @@ import nodemailer from 'nodemailer'
 import { z } from 'zod'
 import { 
   checkRateLimit, 
-  validateCSRFToken,
   detectHoneypot,
   getApiSecurityHeaders
 } from '@/lib/security'
 import {
   sanitizeInputServer,
   sanitizeEmailServer,
-  sanitizePhoneServer
+  sanitizePhoneServer,
+  validateCSRFTokenServer
 } from '@/lib/security-server'
 
 // ── Enhanced Validation ---
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     }
     
     // 4. CSRF validation
-    if (!validateCSRFToken(body.csrfToken)) {
+    if (!validateCSRFTokenServer(body.csrfToken)) {
       return NextResponse.json(
         { error: 'Token di sicurezza non valido. Ricarica la pagina.' },
         { status: 403, headers: securityHeaders }
