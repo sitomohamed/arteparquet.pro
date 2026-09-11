@@ -12,7 +12,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # SECURITY: Update system packages and install only necessary dependencies
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-        # Required for psycopg2
+        libpq5 \
         libpq-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

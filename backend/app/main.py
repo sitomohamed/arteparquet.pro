@@ -13,11 +13,9 @@ security_logger = logging.getLogger('security')
 
 # Application configuration
 APP_ENV = os.getenv("APP_ENV", "production")
-APP_DEBUG = os.getenv("APP_DEBUG", "false").lower() == "true"
-
-# SECURITY: Never enable debug mode in production
-if APP_ENV == "production" and APP_DEBUG:
-    raise RuntimeError("CRITICAL: APP_DEBUG must be false in production environment")
+_debug_raw = os.getenv("APP_DEBUG", "false").lower() == "true"
+# SECURITY: Never enable debug mode in production — ignore the flag instead of crashing.
+APP_DEBUG = False if APP_ENV == "production" else _debug_raw
 
 app = FastAPI(
     title="Arteparquet API",
@@ -29,18 +27,19 @@ app = FastAPI(
 
 # SECURITY: Strict CORS configuration
 # Never fall back to wildcard origins
+PRODUCTION_ORIGINS = [
+    "https://arteparquet.pro",
+    "https://www.arteparquet.pro",
+]
+DEVELOPMENT_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 cors_origins_raw = os.getenv("CORS_ORIGINS", "")
-if not cors_origins_raw or cors_origins_raw.strip() == "":
-    # SECURITY: In production, require explicit CORS origins
-    if APP_ENV == "production":
-        raise RuntimeError("CRITICAL: CORS_ORIGINS must be configured in production")
-    # Development fallback - localhost only
-    origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
-else:
-    origins = [origin.strip() for origin in cors_origins_raw.split(",") if origin.strip()]
-    # SECURITY: Reject wildcard in origins list
-    if "*" in origins:
-        raise RuntimeError("CRITICAL: Wildcard (*) is not allowed in CORS_ORIGINS")
+origins = [origin.strip() for origin in cors_origins_raw.split(",") if origin.strip() and origin.strip() != "*"]
+if not origins:
+    origins = PRODUCTION_ORIGINS if APP_ENV == "production" else DEVELOPMENT_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
