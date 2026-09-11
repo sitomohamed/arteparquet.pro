@@ -1,0 +1,141 @@
+version: '3.8'
+
+# ══════════════════════════════════════════════════════════════════════════════
+# PRODUCTION DOCKER COMPOSE - Arteparquet
+# ══════════════════════════════════════════════════════════════════════════════
+# Usage: docker-compose -f docker-compose.prod.yml up -d
+#
+# SECURITY REQUIREMENTS BEFORE DEPLOYMENT:
+# 1. Create .env.production with secure values (see .env.example)
+# 2. Generate strong passwords for DATABASE_PASSWORD
+# 3. Generate secure APP_SECRET_KEY and JWT_SECRET_KEY
+# 4. Configure proper SSL/TLS termination at reverse proxy level
+# 5. Set up proper backup strategy for postgres_data volume
+# ══════════════════════════════════════════════════════════════════════════════
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    # SECURITY: Only expose through reverse proxy in production
+    # ports:
+    #   - "3000:3000"
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    env_file:
+      - .env.production
+    depends_on:
+      - backend
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+    read_only: false
+    security_opt:
+      - no-new-privileges:true
+    # SECURITY: Drop all capabilities not needed
+    cap_drop:
+      - ALL
+    # SECURITY: Healthcheck
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    # SECURITY: Only expose through reverse proxy
+    expose:
+      - "8000"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+    env_file:
+      - .env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+        reservations:
+          memory: 128M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  db:
+    image: postgres:16-alpine
+    # SECURITY: NEVER expose database port in production
+    expose:
+      - "5432"
+    environment:
+      # SECURITY: Use secrets in production, not env vars
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      # SECURITY: Limit connections
+      - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # SECURITY: Custom PostgreSQL config for hardening
+      - ./config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+
+volumes:
+  postgres_data:
+    # SECURITY: Named volume with driver options if needed
+    driver: local
+
+networks:
+  default:
+    driver: bridge
+    # SECURITY: Internal network isolation
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "true"

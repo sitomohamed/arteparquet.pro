@@ -1,0 +1,137 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# GITIGNORE - ARTEPARQUET
+# Security-focused configuration to prevent secret/credential leakage
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Third-party local tools (nested clone + venv + secrets)
+tools/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SECURITY-CRITICAL: Environment files and secrets
+# ═══════════════════════════════════════════════════════════════════════════════
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+.env.staging
+*.env
+!.env.example
+!.env.*.example
+
+# Secret files
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+secrets/
+.secrets
+private/
+credentials/
+service-account*.json
+*-credentials.json
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.ppk
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Node.js / Next.js
+# ═══════════════════════════════════════════════════════════════════════════════
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Python / FastAPI
+# ═══════════════════════════════════════════════════════════════════════════════
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+ENV/
+env/
+.eggs/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Database
+# ═══════════════════════════════════════════════════════════════════════════════
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+dump.sql
+backup*.sql
+database_backup*/
+postgres_data/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Docker
+# ═══════════════════════════════════════════════════════════════════════════════
+docker-compose.override.yml
+.docker/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# IDE / Editor
+# ═══════════════════════════════════════════════════════════════════════════════
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Logs and debugging
+# ═══════════════════════════════════════════════════════════════════════════════
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+debug.log
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Testing
+# ═══════════════════════════════════════════════════════════════════════════════
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Temporary files
+# ═══════════════════════════════════════════════════════════════════════════════
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Security-sensitive uploads/data (if any local storage is used)
+# ═══════════════════════════════════════════════════════════════════════════════
+uploads/
+user-data/
+exported-data/

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/forms/contact-form'
 import { FadeIn } from '@/components/animations/fade-in'
-import { RelatedLinks } from '@/components/ui/related-links'
 import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -9,13 +8,6 @@ export const metadata: Metadata = {
   description:
     'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Rispondiamo entro 5 minuti su WhatsApp. ☎ +39 389 240 7827.',
   alternates: { canonical: 'https://arteparquet.pro/contatti' },
-  openGraph: {
-    title: 'Contatti | Sopralluogo e Preventivo Gratuito Parquet',
-    description: 'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Rispondiamo entro 5 minuti su WhatsApp. ☎ +39 389 240 7827.',
-    url: 'https://arteparquet.pro/contatti',
-    locale: 'it_IT',
-    type: 'website',
-  },
 }
 
 const PHONE = '+39 389 240 7827'
@@ -184,34 +176,6 @@ export default function ContattiPage() {
           </div>
         </div>
       </section>
-
-      {/* Related Links */}
-      <RelatedLinks
-        title="Scopri i Nostri Servizi"
-        links={[
-          {
-            title: 'Posa Parquet',
-            href: '/servizi',
-            description: 'Posa professionale di parquet massello, prefinito, SPC, PVC e laminato in tutta Italia.',
-          },
-          {
-            title: 'Levigatura Parquet',
-            href: '/servizi/levigatura',
-            description: 'Levigatura con macchine professionali a bassa emissione di polvere. Il tuo parquet torna come nuovo.',
-          },
-          {
-            title: 'Restauro Parquet',
-            href: '/servizi/restauro',
-            description: 'Diamo nuova vita al parquet antico con stuccatura, verniciatura e trattamenti speciali.',
-          },
-          {
-            title: 'Zone Servite',
-            href: '/zone/parquet-bergamo',
-            description: 'Operiamo a Bergamo, Milano, Brescia e in tutta la Lombardia. Sopralluogo gratuito.',
-          },
-        ]}
-        columns={4}
-      />
     </>
   )
 }

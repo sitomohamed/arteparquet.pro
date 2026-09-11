@@ -3,20 +3,11 @@ import Link from 'next/link'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import { FadeIn } from '@/components/animations/fade-in'
 import { CtaSection } from '@/components/sections/cta-section'
-import { RelatedLinks } from '@/components/ui/related-links'
 
 export const metadata: Metadata = {
   title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
   description:
     'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
-  alternates: { canonical: 'https://arteparquet.pro/servizi' },
-  openGraph: {
-    title: 'Servizi | Posa, Levigatura, Restauro, SPC, PVC, Laminato',
-    description: 'Tutti i servizi Arteparquet: posa parquet massello, prefinito, laminato, SPC, PVC, vinilico. Levigatura, restauro e riparazione parquet. Preventivo gratuito in tutta Italia.',
-    url: 'https://arteparquet.pro/servizi',
-    locale: 'it_IT',
-    type: 'website',
-  },
 }
 
 // ── Data ──────────────────────────────────────────────────────────────────
@@ -190,9 +181,7 @@ export default function ServiziPage() {
                         {type.badge}
                       </span>
                       <h2 className="font-serif font-semibold text-legno-bruciato text-[1.25rem] mb-2">
-                        <Link href={type.href} className="hover:text-rovere transition-colors">
-                          {type.title}
-                        </Link>
+                        {type.title}
                       </h2>
                       <p className="font-sans text-[13px] text-neutral-500 leading-[1.7] flex-1 pb-5">
                         {type.desc}
@@ -201,11 +190,11 @@ export default function ServiziPage() {
                     {/* Footer link */}
                     <div className="mt-auto px-5 py-4 border-t border-neutral-50">
                       <Link
-                        href={type.href}
+                        href="/contatti"
                         className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-rovere hover:text-wood-600 transition-colors group/link"
-                        aria-label={`Scopri ${type.title}`}
+                        aria-label={`Richiedi preventivo per ${type.title}`}
                       >
-                        Scopri il servizio
+                        Richiedi preventivo
                         <ArrowRight size={13} className="transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
                       </Link>
                     </div>
@@ -270,34 +259,6 @@ export default function ServiziPage() {
           </FadeIn>
         </div>
       </section>
-
-      {/* Related Zone Links */}
-      <RelatedLinks
-        title="Dove Operiamo"
-        links={[
-          {
-            title: 'Parquet Bergamo',
-            href: '/zone/parquet-bergamo',
-            description: 'Posa e restauro parquet a Bergamo e provincia. Sede operativa in città. Sopralluogo gratuito.',
-          },
-          {
-            title: 'Parquet Milano',
-            href: '/zone/parquet-milano',
-            description: 'Servizi parquet a Milano e hinterland. Ex team Teatro alla Scala. Preventivo entro 24h.',
-          },
-          {
-            title: 'Parquet Brescia',
-            href: '/zone/parquet-brescia',
-            description: 'Posa, levigatura e restauro parquet a Brescia e provincia. 30 anni di esperienza.',
-          },
-          {
-            title: 'Parquet Monza',
-            href: '/zone/parquet-monza',
-            description: 'Servizi parquet professionale a Monza e Brianza. Garanzia scritta sulla posa.',
-          },
-        ]}
-        columns={4}
-      />
 
       <CtaSection />
     </>

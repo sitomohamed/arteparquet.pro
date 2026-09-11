@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { ArrowRight, MapPin } from 'lucide-react'
-import { gsap, ScrollTrigger, EASE, DURATION, getReducedMotion } from '@/lib/gsap'
+import { FadeIn } from '@/components/animations/fade-in'
 
 const PROJECTS = [
   {
@@ -39,7 +39,7 @@ const PROJECTS = [
     category: 'Lavorazione Speciale',
     location: 'Bergamo',
     material: 'Intarsio geometrico a stella su parquet massello',
-    image: '/portfolio/intarsio-stella-01.jpg',
+    image: '/portfolio/google-parquet-bordo-intarsio-01.jpg',
     large: false,
   },
   {
@@ -65,313 +65,124 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ title, category, location, image, large, index }: ProjectCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const ctaRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!cardRef.current || getReducedMotion()) return
-
-    const card = cardRef.current
-    const img = imageRef.current
-    const overlay = overlayRef.current
-    const content = contentRef.current
-    const cta = ctaRef.current
-
-    const handleMouseEnter = () => {
-      if (img) {
-        gsap.to(img, {
-          scale: 1.1,
-          duration: DURATION.slow,
-          ease: EASE.expo,
-        })
-      }
-      if (overlay) {
-        gsap.to(overlay, {
-          opacity: 0.95,
-          duration: DURATION.fast,
-        })
-      }
-      if (content) {
-        gsap.to(content, {
-          y: -8,
-          duration: DURATION.fast,
-          ease: EASE.expo,
-        })
-      }
-      if (cta) {
-        gsap.to(cta, {
-          opacity: 1,
-          y: 0,
-          duration: DURATION.fast,
-          ease: EASE.expo,
-        })
-      }
-    }
-
-    const handleMouseLeave = () => {
-      if (img) {
-        gsap.to(img, {
-          scale: 1,
-          duration: DURATION.slow,
-          ease: EASE.expo,
-        })
-      }
-      if (overlay) {
-        gsap.to(overlay, {
-          opacity: 0.8,
-          duration: DURATION.fast,
-        })
-      }
-      if (content) {
-        gsap.to(content, {
-          y: 0,
-          duration: DURATION.fast,
-          ease: EASE.expo,
-        })
-      }
-      if (cta) {
-        gsap.to(cta, {
-          opacity: 0,
-          y: 12,
-          duration: DURATION.fast,
-          ease: EASE.power3,
-        })
-      }
-    }
-
-    gsap.set(cta, { opacity: 0, y: 12 })
-
-    card.addEventListener('mouseenter', handleMouseEnter)
-    card.addEventListener('mouseleave', handleMouseLeave)
-
-    return () => {
-      card.removeEventListener('mouseenter', handleMouseEnter)
-      card.removeEventListener('mouseleave', handleMouseLeave)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!imageRef.current || getReducedMotion()) return
-
-    const trigger = ScrollTrigger.create({
-      trigger: cardRef.current,
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: true,
-      onUpdate: (self) => {
-        if (imageRef.current) {
-          const yPercent = (self.progress - 0.5) * 15
-          gsap.set(imageRef.current, { yPercent })
-        }
-      },
-    })
-
-    return () => trigger.kill()
-  }, [])
-
   return (
-    <div className={large ? 'md:row-span-2' : ''}>
+    <FadeIn delay={index * 0.08} direction="up" className={large ? 'md:row-span-2' : ''}>
       <Link href="/portfolio" aria-label={`Vedi progetto: ${title}`} className="block h-full">
-        <div
-          ref={cardRef}
-          className="group relative overflow-hidden rounded-3xl cursor-pointer h-full"
-          style={{ height: large ? '100%' : '280px', minHeight: large ? '560px' : '280px' }}
+        <motion.div
+          className="group relative overflow-hidden rounded-2xl cursor-pointer h-full"
+          style={{ height: large ? '100%' : '240px', minHeight: large ? '480px' : '240px' }}
+          whileHover="hover"
         >
+          {/* Image */}
           <div
-            ref={imageRef}
-            className="absolute inset-0 will-change-transform"
-            style={{ transform: 'scale(1.15)' }}
-          >
-            <div
-              className="absolute inset-0 bg-wood-100 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${image})` }}
-              role="img"
-              aria-label={title}
-            />
-          </div>
-
-          <div 
-            ref={overlayRef}
-            className="absolute inset-0 bg-gradient-to-t from-nero-marquina/95 via-nero-marquina/30 to-transparent opacity-80"
+            className="absolute inset-0 bg-wood-100 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            style={{ backgroundImage: `url(${image})` }}
+            role="img"
+            aria-label={title}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-nero-marquina/40" />
 
-          <div className="absolute inset-0 flex flex-col justify-end p-7">
-            <div ref={contentRef} className="will-change-transform">
-              <span className="inline-block font-sans text-[10.5px] font-semibold uppercase tracking-[0.2em] text-rovere mb-3">
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-nero-marquina via-nero-marquina/25 to-transparent opacity-75 group-hover:opacity-95 transition-opacity duration-400" />
+
+          {/* Content */}
+          <div className="absolute inset-0 flex flex-col justify-end p-6">
+            <motion.div
+              variants={{
+                hover: { y: 0, opacity: 1 },
+              }}
+              initial={{ y: 0, opacity: 1 }}
+            >
+              <span className="inline-block font-sans text-[11px] font-semibold uppercase tracking-widest text-rovere mb-2">
                 {category}
               </span>
-              <h3 className="font-serif font-semibold text-white mb-2 leading-[1.15] text-balance"
-                style={{ 
-                  fontSize: large ? '1.75rem' : '1.25rem',
-                  letterSpacing: '-0.02em',
-                  textShadow: '0 2px 12px rgba(0,0,0,0.3)'
-                }}
+              <h3 className="font-serif font-semibold text-white mb-1 leading-tight"
+                style={{ fontSize: large ? '1.5rem' : '1.125rem' }}
               >
                 {title}
               </h3>
-              <div className="flex items-center gap-1.5 text-white/65">
-                <MapPin size={13} aria-hidden="true" />
-                <span className="font-sans text-[12.5px]">{location}</span>
+              <div className="flex items-center gap-1 text-white/60">
+                <MapPin size={12} aria-hidden="true" />
+                <span className="font-sans text-[12px]">{location}</span>
               </div>
-            </div>
+            </motion.div>
 
-            <div
-              ref={ctaRef}
-              className="mt-5 pt-4 border-t border-white/15 will-change-transform"
+            {/* Hover CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              variants={{ hover: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.2 }}
+              className="mt-4"
             >
-              <span className="inline-flex items-center gap-2 font-sans text-[13.5px] font-semibold text-white/90 group-hover:text-white transition-colors">
-                Vedi progetto 
-                <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 font-sans text-[13px] font-semibold text-white/90 group-hover:text-white transition-colors">
+                Vedi progetto <ArrowRight size={14} aria-hidden="true" />
               </span>
-            </div>
+            </motion.div>
           </div>
-
-          <div
-            className="absolute top-6 right-6 w-2 h-2 rounded-full bg-rovere shadow-[0_0_20px_rgba(200,155,123,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-            aria-hidden="true"
-          />
-        </div>
+        </motion.div>
       </Link>
-    </div>
+    </FadeIn>
   )
 }
 
 export function PortfolioPreview() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
-  const footerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!sectionRef.current) return
-    
-    if (getReducedMotion()) return
-
-    const ctx = gsap.context(() => {
-      if (headerRef.current) {
-        gsap.set(headerRef.current, { opacity: 0, y: 60 })
-        
-        ScrollTrigger.create({
-          trigger: headerRef.current,
-          start: 'top 85%',
-          once: true,
-          onEnter: () => {
-            gsap.to(headerRef.current, {
-              opacity: 1,
-              y: 0,
-              duration: DURATION.slow,
-              ease: EASE.expo,
-            })
-          },
-        })
-      }
-
-      if (gridRef.current) {
-        const cards = gridRef.current.querySelectorAll(':scope > div, :scope > div > div')
-        gsap.set(cards, { opacity: 0, y: 80, scale: 0.95 })
-        
-        ScrollTrigger.create({
-          trigger: gridRef.current,
-          start: 'top 80%',
-          once: true,
-          onEnter: () => {
-            gsap.to(cards, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: DURATION.slow,
-              stagger: 0.1,
-              ease: EASE.expo,
-            })
-          },
-        })
-      }
-
-      if (footerRef.current) {
-        gsap.set(footerRef.current, { opacity: 0, y: 40 })
-        
-        ScrollTrigger.create({
-          trigger: footerRef.current,
-          start: 'top 90%',
-          once: true,
-          onEnter: () => {
-            gsap.to(footerRef.current, {
-              opacity: 1,
-              y: 0,
-              duration: DURATION.base,
-              ease: EASE.expo,
-            })
-          },
-        })
-      }
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section ref={sectionRef} className="bg-white relative overflow-hidden" aria-labelledby="portfolio-heading">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(200,155,123,0.03),transparent_60%)]" aria-hidden="true" />
-      
-      <div className="relative container-wide py-28 md:py-36">
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-18 md:mb-20">
+    <section className="bg-white" aria-labelledby="portfolio-heading">
+      <div className="container-wide py-24 md:py-32">
+        {/* Header */}
+        <FadeIn direction="up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="block font-sans text-[10.5px] font-semibold uppercase tracking-[0.24em] text-rovere mb-5">
+            <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-rovere mb-4">
               Portfolio
             </span>
             <h2
               id="portfolio-heading"
               className="font-serif font-semibold text-legno-bruciato text-balance"
-              style={{ fontSize: 'clamp(2.25rem, 4.5vw, 3.5rem)', letterSpacing: '-0.025em' }}
+              style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
             >
               Ogni progetto è un'opera.
             </h2>
           </div>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2.5 font-sans text-[15px] font-semibold text-rovere hover:text-wood-600 transition-colors duration-300 flex-shrink-0 group"
+            className="inline-flex items-center gap-2 font-sans text-[14px] font-semibold text-rovere hover:text-wood-600 transition-colors flex-shrink-0 group"
             aria-label="Vedi tutti i progetti del portfolio"
           >
-            <span className="relative">
-              Vedi tutti i progetti
-              <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-rovere origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-300" />
-            </span>
+            Vedi tutti i progetti
             <ArrowRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-2"
+              size={15}
+              className="transition-transform duration-200 group-hover:translate-x-1"
               aria-hidden="true"
             />
           </Link>
-        </div>
+        </FadeIn>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {/* Large card — col 1, spans 2 rows */}
           <div className="lg:col-span-1 md:row-span-2">
             <ProjectCard {...PROJECTS[0]} index={0} />
           </div>
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {/* Smaller cards */}
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
             {PROJECTS.slice(1).map((p, i) => (
               <ProjectCard key={p.id} {...p} index={i + 1} />
             ))}
           </div>
         </div>
 
-        <div ref={footerRef} className="text-center mt-18">
-          <p className="font-sans text-[16px] text-neutral-500 mb-8 leading-[1.7]">
+        {/* Bottom CTA */}
+        <FadeIn direction="up" delay={0.3} className="text-center mt-14">
+          <p className="font-sans text-[15px] text-neutral-500 mb-6">
             Da ville private ad hotel di lusso, ogni spazio racconta una storia di trasformazione.
           </p>
           <Link
             href="/contatti"
-            className="group relative inline-flex items-center gap-2.5 px-10 py-4.5 rounded-xl bg-rovere text-white font-sans text-[15px] font-semibold hover:bg-wood-500 hover:shadow-[0_16px_48px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-400 overflow-hidden"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 active:scale-[0.98] transition-all duration-200"
           >
-            <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-            <span className="relative z-10">Vuoi un risultato simile?</span>
-            <ArrowRight size={17} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true" />
+            Vuoi un risultato simile?
+            <ArrowRight size={16} aria-hidden="true" />
           </Link>
-        </div>
+        </FadeIn>
       </div>
     </section>
   )

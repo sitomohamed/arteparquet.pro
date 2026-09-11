@@ -1,5 +1,11 @@
 version: '3.8'
 
+# ══════════════════════════════════════════════════════════════════════════════
+# SECURITY NOTICE: This is a DEVELOPMENT configuration.
+# DO NOT use this file directly in production.
+# Create a docker-compose.prod.yml with production-safe settings.
+# ══════════════════════════════════════════════════════════════════════════════
+
 services:
   frontend:
     build:
@@ -8,10 +14,23 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_API_URL=http://backend:8000
       - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+      - NODE_ENV=development
     depends_on:
       - backend
+    # SECURITY: Resource limits to prevent DoS
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+    # SECURITY: Read-only root filesystem where possible
+    read_only: false
+    # SECURITY: No new privileges
+    security_opt:
+      - no-new-privileges:true
 
   backend:
     build:
@@ -21,21 +40,41 @@ services:
       - "8000:8000"
     environment:
       - APP_ENV=development
-      - APP_DEBUG=true
+      # SECURITY: DEBUG disabled even in development compose
+      # Enable only when actively debugging
+      - APP_DEBUG=false
+      # SECURITY: Use env_file for sensitive values in production
       - DATABASE_URL=postgresql://arteparquet:arteparquet@db:5432/arteparquet?sslmode=disable
       - CORS_ORIGINS=http://localhost:3000
     depends_on:
       db:
         condition: service_healthy
+    # SECURITY: Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+    security_opt:
+      - no-new-privileges:true
 
   db:
     image: postgres:16-alpine
     environment:
+      # SECURITY WARNING: Change these credentials!
+      # In production, use secrets or env_file
       - POSTGRES_USER=arteparquet
       - POSTGRES_PASSWORD=arteparquet
       - POSTGRES_DB=arteparquet
-    ports:
-      - "5432:5432"
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SECURITY: Database port NOT exposed to host
+    # The database is only accessible from other containers in this network
+    # ═══════════════════════════════════════════════════════════════════════════
+    # ports:
+    #   - "5432:5432"  # REMOVED - Never expose DB port in production
+    expose:
+      - "5432"  # Internal network only
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -43,6 +82,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    # SECURITY: Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   postgres_data:

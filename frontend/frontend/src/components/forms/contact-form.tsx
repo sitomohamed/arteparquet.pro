@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -8,13 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { 
-  trackFormStart, 
-  trackFormStep, 
-  trackFormComplete, 
-  trackFormError,
-  trackCtaClick
-} from '@/lib/analytics'
 
 const schema = z.object({
   projectType: z.string().min(1, 'Seleziona un tipo di progetto'),
@@ -26,11 +19,6 @@ const schema = z.object({
   phone: z.string().min(8, 'Inserisci un numero valido'),
   email: z.string().email('Inserisci un\'email valida'),
   privacy: z.literal(true, { errorMap: () => ({ message: 'Devi accettare la privacy policy' }) }),
-  csrfToken: z.string().min(1),
-  timestamp: z.string(),
-  // Honeypot fields (should remain empty)
-  website: z.string().max(0).optional(),
-  url: z.string().max(0).optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -54,9 +42,6 @@ const STEPS = ['Progetto', 'Cliente', 'Dettagli', 'Contatti']
 export function ContactForm() {
   const [step, setStep] = useState(0)
   const [submitted, setSubmitted] = useState(false)
-  const [csrfToken, setCsrfToken] = useState('')
-  const [formStartTime] = useState(Date.now())
-  const [formStarted, setFormStarted] = useState(false)
 
   const {
     register,
@@ -67,29 +52,8 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { 
-      projectType: '', 
-      clientType: '', 
-      privacy: undefined,
-      csrfToken: '',
-      timestamp: formStartTime.toString(),
-      website: '',
-      url: '',
-    },
+    defaultValues: { projectType: '', clientType: '', privacy: undefined },
   })
-  
-  // Load CSRF token on component mount
-  useEffect(() => {
-    fetch('/api/csrf')
-      .then(res => res.json())
-      .then(data => {
-        if (data.csrfToken) {
-          setCsrfToken(data.csrfToken)
-          setValue('csrfToken', data.csrfToken)
-        }
-      })
-      .catch(err => console.error('Failed to load CSRF token:', err))
-  }, [setValue])
 
   const projectType = watch('projectType')
   const clientType = watch('clientType')
@@ -99,46 +63,16 @@ export function ContactForm() {
 
   async function onSubmit(data: FormData) {
     setSubmitError(null)
-    
-    // Security checks before submission
-    if (!csrfToken) {
-      setSubmitError('Errore di sicurezza. Ricarica la pagina.')
-      trackFormError(step, 'csrf_token')
-      return
-    }
-    
-    // Ensure honeypot fields are empty (bot check)
-    if (data.website || data.url) {
-      setSubmitError('Rilevata attività sospetta.')
-      return
-    }
-    
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          csrfToken,
-          timestamp: formStartTime.toString(),
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       })
       if (!res.ok) {
         const json = await res.json().catch(() => ({}))
-        trackFormError(step, json.error || 'submission_error')
         throw new Error(json.error ?? 'Errore invio')
       }
-      
-      // Track successful form completion
-      trackFormComplete({
-        projectType: data.projectType,
-        clientType: data.clientType,
-        city: data.city,
-      })
-      
       setSubmitted(true)
     } catch (err) {
       setSubmitError(
@@ -150,12 +84,6 @@ export function ContactForm() {
   }
 
   async function nextStep() {
-    // Track form start on first interaction
-    if (!formStarted) {
-      trackFormStart()
-      setFormStarted(true)
-    }
-
     const fields: (keyof FormData)[][] = [
       ['projectType'],
       ['clientType'],
@@ -163,18 +91,7 @@ export function ContactForm() {
       ['name', 'phone', 'email', 'privacy'],
     ]
     const valid = await trigger(fields[step])
-    
-    if (valid) {
-      // Track step completion
-      trackFormStep(step + 1, STEPS[step])
-      setStep((s) => s + 1)
-    } else {
-      // Track validation error
-      const firstError = Object.keys(errors)[0]
-      if (firstError) {
-        trackFormError(step, firstError)
-      }
-    }
+    if (valid) setStep((s) => s + 1)
   }
 
   if (submitted) {
@@ -196,7 +113,6 @@ export function ContactForm() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/portfolio"
-            onClick={() => trackCtaClick('service_cta', 'form_success_portfolio')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-rovere text-white font-sans text-[14px] font-semibold hover:bg-wood-500 transition-colors"
           >
             Esplora i nostri lavori
@@ -205,7 +121,6 @@ export function ContactForm() {
             href={`https://wa.me/393892407827?text=${encodeURIComponent('Ciao! Ho appena inviato il modulo di contatto.')}`}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackCtaClick('whatsapp', 'form_success')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-neutral-200 text-legno-bruciato font-sans text-[14px] font-medium hover:border-rovere transition-colors"
           >
             Scrivici su WhatsApp
@@ -217,25 +132,6 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      {/* Honeypot fields - hidden from users, bots may fill them */}
-      <input
-        {...register('website')}
-        type="text"
-        style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-      />
-      <input
-        {...register('url')}
-        type="email"
-        style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-      />
-      <input {...register('csrfToken')} type="hidden" />
-      <input {...register('timestamp')} type="hidden" />
       {/* Progress bar */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
@@ -471,7 +367,7 @@ function inputClass(hasError: boolean) {
   return cn(
     'w-full h-12 px-4 rounded-lg border font-sans text-[15px] text-legno-bruciato',
     'bg-neutral-50 focus:bg-white',
-    'placeholder:text-neutral-400 outline-none transition-all duration-200',
+    'placeholder:text-neutral-380 outline-none transition-all duration-200',
     'focus:ring-2 focus:ring-rovere/15 focus:border-rovere focus:shadow-[0_0_0_3px_rgba(200,155,123,0.08)]',
     hasError ? 'border-error bg-red-50/30' : 'border-neutral-200 hover:border-neutral-300'
   )

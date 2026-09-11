@@ -1,0 +1,13 @@
+---
+description: Install third-party tools inside this project, never on the Desktop
+alwaysApply: true
+---
+
+# Local tool installs
+
+Clone, download, and install third-party tools **inside this repo**, not on the Desktop and not as sibling folders.
+
+- Put them in `tools/<name>/` (already gitignored).
+- Examples: `tools/leadgen`, `tools/scouter`.
+- Do not `git clone` to `Desktop/` or next to `sito arteparquet`.
+- Do not commit cloned tools, venvs, or scraped lead lists.

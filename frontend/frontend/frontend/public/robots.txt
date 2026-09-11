@@ -1,0 +1,14 @@
+# Arteparquet robots.txt
+# https://arteparquet.pro/robots.txt
+
+User-agent: *
+Allow: /
+
+# SECURITY: Prevent indexing of API and internal paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin
+Disallow: /dashboard
+
+# Sitemap
+Sitemap: https://arteparquet.pro/sitemap.xml
