@@ -12,11 +12,11 @@ import { Footer } from './footer'
 import { MobileBottomBar } from './mobile-bottom-bar'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 
-const LP_PREFIXES = ['/lp']
+const BARE_PREFIXES = ['/lp', '/crm']
 
 export function MainLayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isLP = LP_PREFIXES.some((p) => pathname.startsWith(p))
+  const isLP = BARE_PREFIXES.some((p) => pathname.startsWith(p))
 
   return (
     <>

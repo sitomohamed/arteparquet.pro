@@ -1,18 +1,22 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { gsap, EASE } from '@/lib/gsap'
 import { cn } from '@/lib/utils'
 
 export function CustomCursor() {
+  const pathname = usePathname()
   const cursorRef = useRef<HTMLDivElement>(null)
   const cursorDotRef = useRef<HTMLDivElement>(null)
+  const disabled = pathname.startsWith('/crm') || pathname.startsWith('/lp')
   const [isVisible, setIsVisible] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
   const [cursorText, setCursorText] = useState('')
 
   useEffect(() => {
+    if (disabled) return
     if (typeof window === 'undefined') return
     if ('ontouchstart' in window) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -117,7 +121,7 @@ export function CustomCursor() {
         el.removeEventListener('mouseleave', handleElementLeave)
       })
     }
-  }, [isVisible])
+  }, [isVisible, disabled])
 
   useEffect(() => {
     if (isClicking) {
@@ -135,6 +139,7 @@ export function CustomCursor() {
     }
   }, [isClicking, isHovering])
 
+  if (disabled) return null
   if (typeof window !== 'undefined' && 'ontouchstart' in window) {
     return null
   }

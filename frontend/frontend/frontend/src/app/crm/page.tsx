@@ -64,7 +64,7 @@ export default function CrmPage() {
 
   if (!authed) {
     return (
-      <main className="min-h-screen bg-travertino flex items-center justify-center px-4">
+      <main className="crm-app min-h-screen bg-travertino flex items-center justify-center px-4 font-sans">
         <form onSubmit={login} className="w-full max-w-sm bg-white rounded-2xl p-8 border border-neutral-200">
           <h1 className="font-serif text-2xl text-legno-bruciato mb-2">CRM lead</h1>
           <p className="text-sm text-neutral-500 mb-6">Pagina riservata. Non è in Google.</p>
@@ -89,12 +89,30 @@ export default function CrmPage() {
   }
 
   return (
-    <main className="min-h-screen bg-travertino px-4 py-10">
+    <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-5xl mx-auto">
+        <p className="text-xs font-semibold uppercase tracking-widest text-rovere mb-3">
+          Area riservata
+        </p>
         <h1 className="font-serif text-3xl text-legno-bruciato mb-2">CRM lead</h1>
-        <p className="text-sm text-neutral-500 mb-8">{leads.length} richieste salvate. Pipeline: nuovo → contattato → preventivo → vinto / perso.</p>
+        <p className="text-sm text-neutral-500 mb-8">
+          {leads.length} richieste salvate. Pipeline: nuovo → contattato → preventivo → vinto / perso.
+        </p>
         {leads.length === 0 ? (
-          <p className="text-neutral-600">Ancora nessun lead. Arrivano dai form foto e preventivo.</p>
+          <div className="bg-white rounded-2xl border border-neutral-200 p-6 max-w-xl">
+            <p className="text-neutral-700 mb-3">
+              Ancora nessun lead. È normale: arrivano solo dopo un invio riuscito dal form.
+            </p>
+            <p className="text-sm text-neutral-500 mb-4">
+              Prova da una landing, poi torna qui e aggiorna la pagina.
+            </p>
+            <a
+              href="/lp/preventivo"
+              className="inline-flex bg-rovere text-white rounded-xl px-4 py-2.5 text-sm font-semibold"
+            >
+              Apri form di prova
+            </a>
+          </div>
         ) : (
           <div className="space-y-4">
             {leads.map((lead) => (

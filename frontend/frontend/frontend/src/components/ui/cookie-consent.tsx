@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react'
@@ -8,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { loadConsent, saveConsent } from '@/lib/cookie-consent'
 
 export function CookieConsent() {
+  const pathname = usePathname()
   const [visible, setVisible] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [analytics, setAnalytics] = useState(false)
@@ -37,6 +39,8 @@ export function CookieConsent() {
     saveConsent({ analytics, marketing, preferences })
     setVisible(false)
   }
+
+  if (pathname.startsWith('/crm')) return null
 
   return (
     <AnimatePresence>

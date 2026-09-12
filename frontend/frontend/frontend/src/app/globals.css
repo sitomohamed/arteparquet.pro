@@ -127,6 +127,17 @@ body {
   letter-spacing: -0.011em;
 }
 
+/* CRM board: no ligatures / tight tracking that can collapse spaces */
+.crm-app,
+.crm-app h1,
+.crm-app h2,
+.crm-app p {
+  font-feature-settings: normal;
+  letter-spacing: 0;
+  word-spacing: normal;
+  text-wrap: wrap;
+}
+
 /* Premium heading typography */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.022em;
