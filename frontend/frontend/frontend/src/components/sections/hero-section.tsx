@@ -270,7 +270,7 @@ export function HeroSection() {
             style={{ opacity: 0 }}
           >
             {[
-              { label: '4,9/5 su Google', accent: true },
+              { label: '4,7/5 su Google · 6 recensioni', accent: true },
               { label: 'Garanzia scritta' },
               { label: 'Risposta rapida' },
               { label: 'Sopralluogo gratuito' },

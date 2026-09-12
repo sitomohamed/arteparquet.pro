@@ -77,7 +77,7 @@ const included = [
 
 const trust = [
   { value: '1996', label: 'In attività dal', description: 'Trent\'anni di storia e migliaia di cantieri in Lombardia' },
-  { value: '4.9', label: 'Valutazione Google', description: 'Centinaia di recensioni verificate da clienti reali' },
+  { value: '4.7', label: 'Valutazione Google', description: '6 recensioni Google sulla scheda Arteparquet Di Arabi Mohamed' },
   { value: '100%', label: 'Garanzia scritta', description: 'Ogni lavoro è coperto da garanzia scritta sulla lavorazione' },
   { value: '0', label: 'Costi nascosti', description: 'Il preventivo include tutto: materiali, manodopera, finitura' },
 ]

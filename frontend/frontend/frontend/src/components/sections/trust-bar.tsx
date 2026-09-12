@@ -73,7 +73,7 @@ export function TrustBar() {
                     )}
                     {stat.type === 'rating' && (
                       <span className="flex items-center justify-center gap-1">
-                        <span>4,9</span>
+                        <span>4,7</span>
                         <span className="text-[1rem] text-neutral-400 font-sans font-normal">/5</span>
                       </span>
                     )}

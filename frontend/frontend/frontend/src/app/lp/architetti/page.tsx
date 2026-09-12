@@ -136,7 +136,7 @@ const trustPoints = [
   },
   {
     icon: <CheckCircle className="w-8 h-8 text-rovere" />,
-    title: '4.9/5 su Google',
+    title: '4,7/5 su Google',
     desc: 'Recensioni reali verificabili su Google Maps. La nostra reputazione è il nostro portfolio.',
   },
 ]

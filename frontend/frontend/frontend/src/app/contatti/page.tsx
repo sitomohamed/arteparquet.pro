@@ -162,7 +162,7 @@ export default function ContattiPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-sans text-[13px] text-rovere hover:text-wood-600 transition-colors font-semibold"
                 >
-                   4.9/5 - Leggi le recensioni Google →
+                   4,7/5 - Leggi le recensioni Google →
                 </a>
               </FadeIn>
             </div>

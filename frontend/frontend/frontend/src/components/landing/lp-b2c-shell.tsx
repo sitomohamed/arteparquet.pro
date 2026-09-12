@@ -337,7 +337,7 @@ export function LpB2cShell({ content }: { content: LpB2cContent }) {
                 <p className="text-travertino/70 leading-relaxed text-sm">{LP_TRUST_SCALA}</p>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-2xl p-7">
-                <h3 className="text-xl font-semibold text-travertino mb-3">4.9/5 su Google</h3>
+                <h3 className="text-xl font-semibold text-travertino mb-3">4,7/5 su Google</h3>
                 <p className="text-travertino/70 leading-relaxed text-sm">
                   Recensioni reali, senza solleciti. Puoi verificarle su Google Maps.
                 </p>

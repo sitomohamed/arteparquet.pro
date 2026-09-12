@@ -279,7 +279,7 @@ export default function InviaFotoPage() {
             {[
               {
                 icon: Star,
-                value: '4.9/5',
+                value: '4,7/5',
                 label: 'Recensioni Google',
                 sub: 'Clienti soddisfatti in tutta la Lombardia',
               },

@@ -60,10 +60,10 @@ export function LocalBusinessSchema() {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
+      ratingValue: '4.7',
       bestRating: '5',
       worstRating: '1',
-      ratingCount: '47',
+      ratingCount: '6',
     },
     areaServed: [
       { '@type': 'City', name: 'Bergamo', addressCountry: 'IT' },

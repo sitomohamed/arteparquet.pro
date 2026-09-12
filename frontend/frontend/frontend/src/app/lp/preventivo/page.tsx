@@ -553,7 +553,7 @@ export default function LpPreventivoPage() {
                   ⭐
                 </div>
                 <h3 className="text-xl font-semibold text-travertino mb-3">
-                  4.9/5 su Google
+                  4,7/5 su Google
                 </h3>
                 <p className="text-travertino/70 leading-relaxed text-sm">
                   Clienti soddisfatti che scrivono recensioni reali, senza
