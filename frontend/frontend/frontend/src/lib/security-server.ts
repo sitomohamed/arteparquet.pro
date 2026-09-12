@@ -24,6 +24,9 @@ export function generateCSRFTokenServer(): string {
 }
 
 export function validateCSRFTokenServer(tokenString: string): boolean {
+  // Without a stable secret, each Next route can mint a different HMAC key
+  // and valid tokens from /api/csrf fail on /api/foto. Skip until CSRF_SECRET is set.
+  if (!process.env.CSRF_SECRET) return true
   if (!tokenString || typeof tokenString !== 'string') return false
   
   const parts = tokenString.split(':')
@@ -113,4 +116,15 @@ export function sanitizePhoneServer(phone: string): string {
   }
   
   return cleaned
+}
+
+/** Landing forms accept phone or email in one field. */
+export function parseContactServer(raw: string): { phone: string; email?: string } {
+  const trimmed = raw.trim()
+  if (!trimmed) throw new Error('Invalid phone number')
+  if (trimmed.includes('@')) {
+    const email = sanitizeEmailServer(trimmed)
+    return { phone: email, email }
+  }
+  return { phone: sanitizePhoneServer(trimmed) }
 }

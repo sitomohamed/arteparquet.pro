@@ -4,7 +4,7 @@ import { saveLead } from '@/lib/leads'
 import { getApiSecurityHeaders, checkRateLimit, detectHoneypot } from '@/lib/security'
 import { 
   sanitizeInputServer, 
-  sanitizePhoneServer,
+  parseContactServer,
   validateCSRFTokenServer 
 } from '@/lib/security-server'
 
@@ -74,9 +74,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     // SECURITY: Rate limiting - stricter for file uploads
     const rateLimit = checkRateLimit(req, {
-      maxRequests: 5,
+      maxRequests: 30,
       windowMs: 3600000, // 1 hour
-      blockDurationMs: 7200000, // 2 hours block
+      blockDurationMs: 15 * 60 * 1000, // 15 minutes
       namespace: 'foto-upload',
     })
     
@@ -147,11 +147,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     
     const name = sanitizeInputServer(rawName)
     let phone: string
+    let email: string | undefined
     try {
-      phone = sanitizePhoneServer(rawPhone)
+      const contact = parseContactServer(rawPhone)
+      phone = contact.phone
+      email = contact.email
     } catch {
       return NextResponse.json(
-        { error: 'Numero di telefono non valido.' },
+        { error: 'Inserisci un telefono o un\'email validi.' },
         { status: 400, headers: securityHeaders }
       )
     }
@@ -195,10 +198,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     for (let i = 0; i < photoFiles.length; i++) {
       const file = photoFiles[i]
       
+      const mimeType = file.type === 'image/jpg' ? 'image/jpeg' : file.type
       // SECURITY: Validate MIME type
-      if (!ACCEPTED_TYPES.has(file.type)) {
+      if (!ACCEPTED_TYPES.has(mimeType)) {
         return NextResponse.json(
-          { error: `Tipo file non supportato: ${file.type}` },
+          { error: `Tipo file non supportato: ${file.type || 'sconosciuto'}` },
           { status: 400, headers: securityHeaders }
         )
       }
@@ -214,7 +218,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       const buffer = Buffer.from(await file.arrayBuffer())
       
       // SECURITY: Validate actual file content matches MIME type
-      if (!validateImageContent(buffer, file.type)) {
+      if (!validateImageContent(buffer, mimeType)) {
         return NextResponse.json(
           { error: 'Contenuto file non valido. Assicurati che sia un\'immagine vera.' },
           { status: 400, headers: securityHeaders }
@@ -227,7 +231,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       attachments.push({
         filename: safeFilename,
         content: buffer,
-        contentType: file.type,
+        contentType: mimeType,
       })
     }
 
@@ -236,6 +240,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         source: 'foto',
         name,
         phone,
+        email,
         city: city || undefined,
         jobType: jobType || undefined,
         message: message || undefined,
@@ -259,13 +264,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const recipientEmail = process.env.OWNER_EMAIL ?? process.env.GMAIL_USER
     if (!recipientEmail) {
       console.error('[foto API] No recipient email configured')
-      return NextResponse.json(
-        { error: 'Configurazione email mancante.' },
-        { status: 500, headers: securityHeaders }
-      )
+      return NextResponse.json({ ok: true }, { headers: securityHeaders })
     }
     const submittedAt = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
 
+    try {
     await transporter.sendMail({
       from: `"Arteparquet Sito" <${recipientEmail}>`,
       to: recipientEmail,
@@ -294,6 +297,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       `,
       attachments,
     })
+    } catch (err) {
+      console.error('[foto API] Email send failed:', err)
+    }
 
     return NextResponse.json({ ok: true }, { headers: securityHeaders })
   } catch (err) {

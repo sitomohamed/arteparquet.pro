@@ -205,7 +205,8 @@ export function LpPhotoForm({ variant, landingVariant, defaultJobType }: LpPhoto
       })
 
       const res = await fetch('/api/foto', { method: 'POST', body: fd })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = (await res.json().catch(() => null)) as { error?: string } | null
+      if (!res.ok) throw new Error(data?.error || `HTTP ${res.status}`)
 
       /* Analytics */
       trackEvent('form_submit', {
@@ -215,8 +216,8 @@ export function LpPhotoForm({ variant, landingVariant, defaultJobType }: LpPhoto
       })
       trackMetaLead(1)
       setSubmitted(true)
-    } catch {
-      setError('Errore nell\'invio. Riprova o contattaci su WhatsApp.')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Errore nell\'invio. Riprova o contattaci su WhatsApp.')
     } finally {
       setSubmitting(false)
     }
