@@ -64,27 +64,17 @@ export function checkRateLimit(
   }
 }
 
-// --- CSRF PROTECTION (format check; actual validation in security-server.ts) ---
-// This performs basic format validation on the client side
-// The actual HMAC signature verification happens server-side
+// --- CSRF PROTECTION (format check; tokens issued by Node runtime) ---
 export function validateCSRFToken(tokenString: string): boolean {
-  if (!tokenString || typeof tokenString !== 'string') return false
-  
-  const parts = tokenString.split(':')
-  if (parts.length !== 3) return false
-  
-  const [timestamp, nonce, signature] = parts
-  
-  // Validate format only (not the actual signature - that's server-side)
+  if (!tokenString || !tokenString.includes(':')) return false
+
+  const [sessionId, token] = tokenString.split(':')
   const hexPattern = /^[a-f0-9]+$/i
-  const base36Pattern = /^[a-z0-9]+$/i
-  
   return (
-    base36Pattern.test(timestamp) &&
-    hexPattern.test(nonce) &&
-    hexPattern.test(signature) &&
-    nonce.length === 32 &&
-    signature.length === 64
+    sessionId.length === 32 &&
+    token.length === 64 &&
+    hexPattern.test(sessionId) &&
+    hexPattern.test(token)
   )
 }
 
@@ -151,7 +141,7 @@ export function getContentSecurityPolicy(): string {
     `script-src ${scriptSrc}`,
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self' data:",
-    "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com",
+    "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com",
     `connect-src ${connectSrc}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",

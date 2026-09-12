@@ -16,6 +16,7 @@ const ARTICLES: Record<string, {
   date: string
   dateISO: string
   image: string
+  imageAlt: string
   metaTitle: string
   metaDescription: string
   keywords: string[]
@@ -36,7 +37,8 @@ const ARTICLES: Record<string, {
     readTime: '8 min',
     date: 'Luglio 2026',
     dateISO: '2026-07-15',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&q=80',
+    image: '/portfolio/google-spina-pesce-lucida-01.jpg',
+    imageAlt: 'Parquet a spina di pesce lucido, lavoro Arteparquet',
     metaTitle: 'Come Scegliere il Parquet: Guida Completa 2026 | Arteparquet',
     metaDescription: 'Come scegliere il parquet giusto per la tua casa? Massello, prefinito, SPC o laminato? Confronto completo con consigli da 30 anni di esperienza.',
     keywords: ['come scegliere parquet', 'parquet massello o prefinito', 'tipi di parquet', 'parquet migliore'],
@@ -121,7 +123,8 @@ const ARTICLES: Record<string, {
     readTime: '6 min',
     date: 'Giugno 2026',
     dateISO: '2026-06-10',
-    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=1200&q=80',
+    image: '/portfolio/google-mosaico-ristrutturazione-01.jpg',
+    imageAlt: 'Parquet mosaico in ristrutturazione, lavoro Arteparquet',
     metaTitle: 'Restauro Parquet: Quando Conviene? Guida 2026 | Arteparquet',
     metaDescription: 'Il tuo parquet è rovinato, graffiato o opaco? Scopri quando conviene restaurare il parquet e quando è meglio sostituirlo. Consigli da esperti.',
     keywords: ['restauro parquet', 'levigatura parquet', 'parquet rovinato', 'ripristino parquet'],
@@ -193,7 +196,8 @@ const ARTICLES: Record<string, {
     readTime: '5 min',
     date: 'Maggio 2026',
     dateISO: '2026-05-20',
-    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
+    image: '/portfolio/google-parquet-corridoio-01.jpg',
+    imageAlt: 'Posa parquet in corridoio, lavoro Arteparquet',
     metaTitle: 'SPC vs Parquet: Quale Scegliere? 2026 | Arteparquet',
     metaDescription: 'Confronto completo SPC vs parquet tradizionale. Prezzi, durata, aspetto, posa. Quale scegliere nel 2026? La guida degli esperti Arteparquet.',
     keywords: ['SPC vs parquet', 'pavimento SPC', 'PVC vs parquet', 'laminato o parquet'],
@@ -263,7 +267,8 @@ const ARTICLES: Record<string, {
     readTime: '7 min',
     date: 'Aprile 2026',
     dateISO: '2026-04-08',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&q=80',
+    image: '/portfolio/google-spina-pesce-finitura-01.jpg',
+    imageAlt: 'Parquet a spina di pesce, lavoro Arteparquet',
     metaTitle: 'Parquet a Spina di Pesce: Guida e Posa 2026 | Arteparquet',
     metaDescription: 'Come si posa il parquet a spina di pesce? Cos\'è il chevron? Guida completa con differenze, vantaggi e consigli per il tuo progetto in Lombardia.',
     keywords: ['parquet spina di pesce', 'posa spina di pesce', 'parquet chevron', 'parquet herringbone'],
@@ -331,7 +336,8 @@ const ARTICLES: Record<string, {
     readTime: '6 min',
     date: 'Marzo 2026',
     dateISO: '2026-03-15',
-    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=1200&q=80',
+    image: '/portfolio/google-levigatura-mosaico-01.jpg',
+    imageAlt: 'Levigatura parquet mosaico, lavoro Arteparquet',
     metaTitle: 'Levigatura Parquet: Guida Completa 2026 | Arteparquet',
     metaDescription: 'Levigatura parquet: come funziona, quando farla, quale finitura scegliere. Guida completa da esperti con 30 anni di esperienza in Lombardia.',
     keywords: ['levigatura parquet', 'levigare parquet', 'parquet levigato', 'rinnovare parquet'],
@@ -404,7 +410,8 @@ const ARTICLES: Record<string, {
     readTime: '7 min',
     date: 'Febbraio 2026',
     dateISO: '2026-02-22',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&q=80',
+    image: '/portfolio/google-posa-listoni-01.jpg',
+    imageAlt: 'Posa parquet a listoni, lavoro Arteparquet',
     metaTitle: 'Parquet Massello: Guida Completa 2026 | Arteparquet',
     metaDescription: 'Parquet massello: cos\'è, vantaggi, essenze, manutenzione e posa. Guida completa di esperti posatori con 30 anni di esperienza in Lombardia.',
     keywords: ['parquet massello', 'pavimento legno massello', 'parquet massello rovere', 'posa parquet massello'],
@@ -492,7 +499,7 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: article.dateISO,
       authors: ['Arteparquet - Arabi Mohamed'],
-      images: [{ url: article.image, width: 1200, height: 630, alt: article.title }],
+      images: [{ url: article.image, width: 1200, height: 630, alt: article.imageAlt }],
     },
   }
 }
@@ -509,7 +516,7 @@ export default async function BlogPostPage(
     '@type': 'Article',
     headline: article.title,
     description: article.excerpt,
-    image: article.image,
+    image: `https://arteparquet.pro${article.image}`,
     datePublished: article.dateISO,
     dateModified: article.dateISO,
     author: {
@@ -587,7 +594,7 @@ export default async function BlogPostPage(
             className="w-full aspect-[16/7] rounded-t-2xl bg-cover bg-center"
             style={{ backgroundImage: `url(${article.image})` }}
             role="img"
-            aria-label={article.title}
+            aria-label={article.imageAlt}
           />
         </div>
       </section>

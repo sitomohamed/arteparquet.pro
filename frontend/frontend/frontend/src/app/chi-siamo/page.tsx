@@ -38,7 +38,7 @@ export default function ChiSiamoPage() {
       <section className="relative bg-nero-marquina overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
         <div
           className="absolute inset-0 opacity-15 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=1400&q=60)' }}
+          style={{ backgroundImage: 'url(/portfolio/google-parquet-sala-archi-01.jpg)' }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-nero-marquina to-nero-marquina/80" aria-hidden="true" />

@@ -9,15 +9,17 @@
  *   3. Fires a GA4 "landing_view" event with variant + UTM data
  *   4. Fires Meta Pixel "PageView" (consent-gated via MetaPixel component)
  *
- * Usage: <LpTracker variant="b2c" /> or <LpTracker variant="b2b" />
+ * Usage: <LpTracker variant="b2c" /> or <LpTracker variant="levigatura" />
  */
 
 import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { trackEvent } from '@/lib/analytics'
 
+export type LpTrackerVariant = 'b2c' | 'b2b' | 'levigatura' | 'restauro' | 'spc'
+
 interface LpTrackerProps {
-  variant: 'b2c' | 'b2b'
+  variant: LpTrackerVariant
 }
 
 const SESSION_KEY = 'arteparquet_lp_context'

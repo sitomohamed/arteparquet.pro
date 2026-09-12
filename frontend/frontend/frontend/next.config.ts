@@ -17,7 +17,7 @@ const contentSecurityPolicy = [
     .join(' '),
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self' data:",
-  "img-src 'self' data: blob: https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com https://www.facebook.net",
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com https://www.facebook.net",
   [
     "connect-src 'self'",
     'https://www.google-analytics.com',
@@ -47,10 +47,6 @@ const nextConfig: NextConfig = {
 
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
       {
         protocol: 'https',
         hostname: 'api.arteparquet.pro',

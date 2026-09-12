@@ -29,7 +29,8 @@ const ARTICLES = [
     category: 'Guida',
     readTime: '8 min',
     date: 'Luglio 2026',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    image: '/portfolio/google-spina-pesce-lucida-01.jpg',
+    imageAlt: 'Parquet a spina di pesce lucido, lavoro Arteparquet',
     featured: true,
   },
   {
@@ -39,7 +40,8 @@ const ARTICLES = [
     category: 'Restauro',
     readTime: '6 min',
     date: 'Giugno 2026',
-    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=600&q=80',
+    image: '/portfolio/google-mosaico-ristrutturazione-01.jpg',
+    imageAlt: 'Parquet mosaico in ristrutturazione, lavoro Arteparquet',
     featured: false,
   },
   {
@@ -49,7 +51,8 @@ const ARTICLES = [
     category: 'Confronto',
     readTime: '5 min',
     date: 'Maggio 2026',
-    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80',
+    image: '/portfolio/google-parquet-corridoio-01.jpg',
+    imageAlt: 'Posa parquet in corridoio, lavoro Arteparquet',
     featured: false,
   },
   {
@@ -59,7 +62,8 @@ const ARTICLES = [
     category: 'Posa',
     readTime: '7 min',
     date: 'Aprile 2026',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    image: '/portfolio/google-spina-pesce-finitura-01.jpg',
+    imageAlt: 'Parquet a spina di pesce, lavoro Arteparquet',
     featured: false,
   },
   {
@@ -69,7 +73,8 @@ const ARTICLES = [
     category: 'Restauro',
     readTime: '6 min',
     date: 'Marzo 2026',
-    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=600&q=80',
+    image: '/portfolio/google-levigatura-mosaico-01.jpg',
+    imageAlt: 'Levigatura parquet mosaico, lavoro Arteparquet',
     featured: false,
   },
   {
@@ -79,7 +84,8 @@ const ARTICLES = [
     category: 'Materiali',
     readTime: '7 min',
     date: 'Febbraio 2026',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&q=80',
+    image: '/portfolio/google-posa-listoni-01.jpg',
+    imageAlt: 'Posa parquet a listoni, lavoro Arteparquet',
     featured: false,
   },
 ]
@@ -117,7 +123,7 @@ export default function BlogPage() {
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.04]"
                       style={{ backgroundImage: `url(${article.image})` }}
                       role="img"
-                      aria-label={article.title}
+                      aria-label={article.imageAlt}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                   </div>

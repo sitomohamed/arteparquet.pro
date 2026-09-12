@@ -93,9 +93,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
       <head>
-        {/* Preconnect + dns-prefetch for Unsplash images used in chi-siamo and blog */}
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         {/* Preload hero LCP background image for faster FCP/LCP */}
         <link
           rel="preload"

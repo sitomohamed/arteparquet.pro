@@ -78,6 +78,10 @@ This repository contains the full source code for the Arteparquet website. It is
    NEXT_PUBLIC_PHONE=+393892407827
    NEXT_PUBLIC_WHATSAPP=393892407827
    NEXT_PUBLIC_EMAIL=info@arteparquet.pro
+   NEXT_PUBLIC_META_PIXEL_ID=1083893604335183
+   GMAIL_USER=info@arteparquet.pro
+   GMAIL_APP_PASSWORD=generate_at_https://myaccount.google.com/apppasswords
+   OWNER_EMAIL=info@arteparquet.pro
    ```
 7. Go to the **Domains** tab:
    - Add domain: `arteparquet.pro`

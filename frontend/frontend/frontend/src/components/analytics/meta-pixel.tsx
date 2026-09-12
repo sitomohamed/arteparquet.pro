@@ -14,7 +14,7 @@ import { useEffect } from 'react'
 import { COOKIE_CONSENT_EVENT, loadConsent } from '@/lib/cookie-consent'
 
 export const META_PIXEL_ID =
-  process.env.NEXT_PUBLIC_META_PIXEL_ID || ''
+  process.env.NEXT_PUBLIC_META_PIXEL_ID || '1083893604335183'
 
 declare global {
   interface Window {

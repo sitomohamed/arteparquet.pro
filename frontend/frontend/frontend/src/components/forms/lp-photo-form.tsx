@@ -10,7 +10,7 @@
  * B2B fields: nome, azienda, ruolo, città cantiere, tipo intervento, tempistiche, contatto, foto (opzionale)
  */
 
-import { useState, useRef, useCallback, useId, useEffect } from 'react'
+import { useState, useRef, useCallback, useId } from 'react'
 import { Upload, X, CheckCircle, Loader2, Camera, MessageCircle, Phone, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { trackEvent } from '@/lib/analytics'
@@ -23,6 +23,10 @@ import { getLpContext } from '@/components/analytics/lp-tracker'
 
 export interface LpPhotoFormProps {
   variant: 'b2c' | 'b2b'
+  /** Distinct ads landing for GA4 / Pixel (e.g. levigatura). Defaults to variant. */
+  landingVariant?: string
+  /** Pre-select B2C job type without adding form fields. */
+  defaultJobType?: string
 }
 
 interface UploadedFile {
@@ -76,9 +80,10 @@ const B2B_TIMINGS = [
 /*  Component                                                            */
 /* ------------------------------------------------------------------ */
 
-export function LpPhotoForm({ variant }: LpPhotoFormProps) {
+export function LpPhotoForm({ variant, landingVariant, defaultJobType }: LpPhotoFormProps) {
   const formId = useId()
   const isB2B  = variant === 'b2b'
+  const analyticsVariant = landingVariant ?? variant
 
   /* State */
   const [files, setFiles] = useState<UploadedFile[]>([])
@@ -87,23 +92,12 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [formStarted, setFormStarted] = useState(false)
-  const [csrfToken, setCsrfToken] = useState('')
-
-  /* SECURITY: Load CSRF token on mount */
-  useEffect(() => {
-    fetch('/api/csrf')
-      .then(res => res.json())
-      .then(data => {
-        if (data.csrfToken) setCsrfToken(data.csrfToken)
-      })
-      .catch(() => { /* Token will be checked on submit */ })
-  }, [])
 
   /* B2C fields */
   const [nome, setNome]           = useState('')
   const [telefono, setTelefono]   = useState('')
   const [citta, setCitta]         = useState('')
-  const [tipoLavoro, setTipoLavoro] = useState('')
+  const [tipoLavoro, setTipoLavoro] = useState(defaultJobType ?? '')
   const [messaggio, setMessaggio] = useState('')
 
   /* B2B extra fields */
@@ -123,9 +117,9 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
   const handleFormStart = useCallback(() => {
     if (!formStarted) {
       setFormStarted(true)
-      trackEvent('form_start', { landing_variant: variant })
+      trackEvent('form_start', { landing_variant: analyticsVariant })
     }
-  }, [formStarted, variant])
+  }, [formStarted, analyticsVariant])
 
   /* ── File handling ── */
   const addFiles = useCallback((incoming: File[]) => {
@@ -144,9 +138,9 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
     }
     setFiles((prev) => [...prev, ...valid].slice(0, MAX_PHOTOS))
     if (valid.length > 0) {
-      trackEvent('photo_upload', { count: valid.length, landing_variant: variant })
+      trackEvent('photo_upload', { count: valid.length, landing_variant: analyticsVariant })
     }
-  }, [variant])
+  }, [analyticsVariant])
 
   const removeFile = (idx: number) => {
     setFiles((prev) => {
@@ -167,13 +161,6 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
   /* ── Submit ── */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // SECURITY: Require CSRF token
-    if (!csrfToken) {
-      setError('Errore di sicurezza. Ricarica la pagina e riprova.')
-      return
-    }
-    
     if (!privacyOk) {
       setError('Devi accettare la Privacy Policy per inviare il modulo.')
       return
@@ -183,24 +170,22 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
 
     try {
       const fd = new FormData()
-      // SECURITY: Include CSRF token
-      fd.append('csrfToken', csrfToken)
       fd.append('variant', variant)
-      fd.append('name', nome) // Use 'name' to match API expectation
-      fd.append('message', isB2B ? `Azienda: ${azienda}\nRuolo: ${ruolo}\nCittà cantiere: ${cittaCantiere}\nTipo intervento: ${tipoIntervento}\nTempistiche: ${tempistiche}\nContatto: ${contattoB2B}` : messaggio)
-      fd.append('phone', isB2B ? contattoB2B : telefono) // Use 'phone' to match API
+      fd.append('nome', nome)
+      fd.append('messaggio', isB2B ? `Azienda: ${azienda}\nRuolo: ${ruolo}\nCittà cantiere: ${cittaCantiere}\nTipo intervento: ${tipoIntervento}\nTempistiche: ${tempistiche}\nContatto: ${contattoB2B}` : messaggio)
+      fd.append('telefono', isB2B ? contattoB2B : telefono)
       fd.append('citta', isB2B ? cittaCantiere : citta)
       fd.append('tipoLavoro', isB2B ? tipoIntervento : tipoLavoro)
       const lpCtx = getLpContext()
       fd.append('lpContext', JSON.stringify(lpCtx))
-      files.forEach((f) => fd.append('photos', f.file)) // Use 'photos' to match API
+      files.forEach((f, i) => fd.append(`foto_${i}`, f.file))
 
       const res = await fetch('/api/foto', { method: 'POST', body: fd })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
       /* Analytics */
       trackEvent('form_submit', {
-        landing_variant: variant,
+        landing_variant: analyticsVariant,
         has_photos: files.length > 0,
         photo_count: files.length,
       })
@@ -235,7 +220,7 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-sans text-[14px] font-semibold px-5 py-3 rounded-lg transition-colors"
-            onClick={() => trackEvent('whatsapp_click', { context: 'form_thankyou', landing_variant: variant })}
+            onClick={() => trackEvent('whatsapp_click', { context: 'form_thankyou', landing_variant: analyticsVariant })}
           >
             <MessageCircle size={16} />
             Scrivi anche su WhatsApp
@@ -243,7 +228,7 @@ export function LpPhotoForm({ variant }: LpPhotoFormProps) {
           <a
             href="tel:+393892407827"
             className="inline-flex items-center gap-2 border border-white/20 text-travertino font-sans text-[14px] font-semibold px-5 py-3 rounded-lg hover:bg-white/5 transition-colors"
-            onClick={() => trackEvent('phone_click', { context: 'form_thankyou', landing_variant: variant })}
+            onClick={() => trackEvent('phone_click', { context: 'form_thankyou', landing_variant: analyticsVariant })}
           >
             <Phone size={16} />
             +39 389 240 7827

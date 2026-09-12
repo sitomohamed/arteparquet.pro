@@ -26,7 +26,7 @@ const CATEGORIES = [
     heading: 'Parquet',
     color: 'bg-wood-100',
     accent: 'text-wood-700',
-    image: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=700&q=80',
+    image: '/portfolio/google-spina-pesce-lucida-01.jpg',
     intro: 'Il legno nella sua forma più autentica. Dalla quercia al noce, dal rovere al frassino - ogni essenza racconta una storia unica per il tuo spazio.',
     types: [
       {
@@ -60,7 +60,7 @@ const CATEGORIES = [
     heading: 'Pavimenti Moderni',
     color: 'bg-neutral-100',
     accent: 'text-neutral-700',
-    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=80',
+    image: '/portfolio/google-parquet-corridoio-01.jpg',
     intro: 'Le soluzioni di nuova generazione: impermeabili, silenziose, adatte al riscaldamento a pavimento. Estetica del legno, performance superiori.',
     types: [
       {
@@ -88,7 +88,7 @@ const CATEGORIES = [
     heading: 'Servizi',
     color: 'bg-wood-50',
     accent: 'text-wood-600',
-    image: 'https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?w=700&q=80',
+    image: '/portfolio/google-levigatura-mosaico-01.jpg',
     intro: 'Dal sopralluogo alla consegna finale, gestiamo ogni fase del tuo progetto con la stessa cura di chi ha lavorato al Teatro alla Scala di Milano.',
     types: [
       {
