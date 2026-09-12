@@ -6,6 +6,7 @@ import { Menu, X, Phone, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/brand/logo'
+import { AbPrimaryCta } from '@/components/cta/ab-primary-cta'
 import { getLenis } from '@/components/animations/smooth-scroll'
 
 // ── Mega-menu data ---
@@ -206,13 +207,11 @@ export function Header() {
                           Vedi tutti i servizi 
                           <ArrowRight size={14} className="transition-transform duration-200 group-hover/all:translate-x-1" />
                         </Link>
-                        <Link
-                          href="/contatti"
-                          onClick={() => setServiziOpen(false)}
+                        <AbPrimaryCta
+                          location="header-mega"
+                          onNavigate={() => setServiziOpen(false)}
                           className="inline-flex items-center px-5 py-2.5 rounded-xl bg-rovere text-white font-sans text-[13.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.3)] active:scale-[0.97] transition-all duration-200"
-                        >
-                          Preventivo Gratuito
-                        </Link>
+                        />
                       </div>
                     </motion.div>
                   )}
@@ -246,14 +245,10 @@ export function Header() {
                 <span>{PHONE}</span>
               </a>
 
-              {/* Premium CTA button */}
-              <Link
-                href="/contatti"
-                className="relative inline-flex items-center px-7 py-3 rounded-xl bg-rovere text-white font-sans text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300 overflow-hidden group"
-              >
-                <span className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">Preventivo Gratuito</span>
-              </Link>
+              <AbPrimaryCta
+                location="header-desktop"
+                className="relative inline-flex items-center px-7 py-3 rounded-xl bg-rovere text-white font-sans text-[14.5px] font-semibold hover:bg-wood-500 hover:shadow-[0_8px_24px_rgba(200,155,123,0.35)] active:scale-[0.97] transition-all duration-300"
+              />
             </nav>
 
             {/* ── Mobile hamburger con premium interaction ── */}
@@ -366,13 +361,11 @@ export function Header() {
 
               {/* Bottom */}
               <div className="px-6 py-5 border-t border-neutral-200 space-y-3">
-                <Link
-                  href="/contatti"
-                  onClick={() => setMobileOpen(false)}
+                <AbPrimaryCta
+                  location="header-mobile"
+                  onNavigate={() => setMobileOpen(false)}
                   className="flex items-center justify-center w-full py-3.5 rounded-xl bg-rovere text-white font-sans text-[15px] font-semibold hover:bg-wood-500 transition-colors"
-                >
-                  Preventivo Gratuito
-                </Link>
+                />
                 <a
                   href={`tel:${PHONE_CLEAN}`}
                   className="flex items-center justify-center gap-2 w-full py-3 font-sans text-[14px] text-neutral-600 hover:text-rovere transition-colors"

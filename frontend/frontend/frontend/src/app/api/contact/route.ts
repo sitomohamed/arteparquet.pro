@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
+import { saveLead } from '@/lib/leads'
 import { 
   checkRateLimit, 
   detectHoneypot,
@@ -117,6 +118,21 @@ export async function POST(request: NextRequest) {
       message: rawData.message ? sanitizeInputServer(rawData.message) : undefined,
       email: sanitizeEmailServer(rawData.email),
       phone: sanitizePhoneServer(rawData.phone),
+    }
+
+    try {
+      await saveLead({
+        source: 'contact',
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        city: data.city,
+        jobType: PROJECT_LABELS[data.projectType] ?? data.projectType,
+        message: data.message,
+        photoCount: 0,
+      })
+    } catch (err) {
+      console.error('[contact API] CRM save failed:', err)
     }
 
     const transporter = createTransporter()

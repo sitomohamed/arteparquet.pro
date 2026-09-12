@@ -10,7 +10,7 @@
  * B2B fields: nome, azienda, ruolo, città cantiere, tipo intervento, tempistiche, contatto, foto (opzionale)
  */
 
-import { useState, useRef, useCallback, useId } from 'react'
+import { useState, useRef, useCallback, useId, useEffect } from 'react'
 import { Upload, X, CheckCircle, Loader2, Camera, MessageCircle, Phone, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { trackEvent } from '@/lib/analytics'
@@ -110,8 +110,18 @@ export function LpPhotoForm({ variant, landingVariant, defaultJobType }: LpPhoto
 
   /* Privacy */
   const [privacyOk, setPrivacyOk] = useState(false)
+  const [csrfToken, setCsrfToken] = useState('')
 
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    fetch('/api/csrf')
+      .then((res) => res.json())
+      .then((data: { csrfToken?: string }) => {
+        if (data.csrfToken) setCsrfToken(data.csrfToken)
+      })
+      .catch(() => { /* form still submits; API accepts missing token */ })
+  }, [])
 
   /* ── Form start tracking ── */
   const handleFormStart = useCallback(() => {
@@ -170,15 +180,29 @@ export function LpPhotoForm({ variant, landingVariant, defaultJobType }: LpPhoto
 
     try {
       const fd = new FormData()
-      fd.append('variant', variant)
+      if (csrfToken) fd.append('csrfToken', csrfToken)
+      fd.append('variant', analyticsVariant)
+      fd.append('name', nome)
       fd.append('nome', nome)
-      fd.append('messaggio', isB2B ? `Azienda: ${azienda}\nRuolo: ${ruolo}\nCittà cantiere: ${cittaCantiere}\nTipo intervento: ${tipoIntervento}\nTempistiche: ${tempistiche}\nContatto: ${contattoB2B}` : messaggio)
+      const msg = isB2B
+        ? `Azienda: ${azienda}\nRuolo: ${ruolo}\nCittà cantiere: ${cittaCantiere}\nTipo intervento: ${tipoIntervento}\nTempistiche: ${tempistiche}\nContatto: ${contattoB2B}`
+        : messaggio
+      fd.append('message', msg)
+      fd.append('messaggio', msg)
+      fd.append('phone', isB2B ? contattoB2B : telefono)
       fd.append('telefono', isB2B ? contattoB2B : telefono)
       fd.append('citta', isB2B ? cittaCantiere : citta)
       fd.append('tipoLavoro', isB2B ? tipoIntervento : tipoLavoro)
       const lpCtx = getLpContext()
+      const ctaMatch = typeof document !== 'undefined'
+        ? document.cookie.match(/(?:^|; )ap_cta_ab=([^;]*)/)
+        : null
+      if (ctaMatch?.[1]) lpCtx.cta_ab = ctaMatch[1]
       fd.append('lpContext', JSON.stringify(lpCtx))
-      files.forEach((f, i) => fd.append(`foto_${i}`, f.file))
+      files.forEach((f, i) => {
+        fd.append('photos', f.file)
+        fd.append(`foto_${i}`, f.file)
+      })
 
       const res = await fetch('/api/foto', { method: 'POST', body: fd })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)

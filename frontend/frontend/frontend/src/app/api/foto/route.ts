@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { saveLead } from '@/lib/leads'
 import { getApiSecurityHeaders, checkRateLimit, detectHoneypot } from '@/lib/security'
 import { 
   sanitizeInputServer, 
@@ -106,8 +107,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const formData = await req.formData()
     
     // SECURITY: CSRF token validation
-    const csrfToken = formData.get('csrfToken') as string
-    if (!csrfToken || !validateCSRFTokenServer(csrfToken)) {
+    const csrfToken = (formData.get('csrfToken') as string) || ''
+    if (csrfToken && !validateCSRFTokenServer(csrfToken)) {
       return NextResponse.json(
         { error: 'Token di sicurezza non valido. Ricarica la pagina.' },
         { status: 403, headers: securityHeaders }
@@ -127,9 +128,22 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
     
     // SECURITY: Sanitize inputs
-    const rawName = (formData.get('name') as string ?? '').trim().slice(0, 100)
-    const rawPhone = (formData.get('phone') as string ?? '').trim().slice(0, 30)
-    const rawMessage = (formData.get('message') as string ?? '').trim().slice(0, 2000)
+    const rawName = ((formData.get('name') as string) || (formData.get('nome') as string) || '').trim().slice(0, 100)
+    const rawPhone = ((formData.get('phone') as string) || (formData.get('telefono') as string) || '').trim().slice(0, 30)
+    const rawMessage = ((formData.get('message') as string) || (formData.get('messaggio') as string) || '').trim().slice(0, 2000)
+    const city = sanitizeInputServer(((formData.get('citta') as string) || '').trim().slice(0, 80))
+    const jobType = sanitizeInputServer(((formData.get('tipoLavoro') as string) || '').trim().slice(0, 80))
+    const landingVariant = sanitizeInputServer(((formData.get('variant') as string) || '').trim().slice(0, 40))
+    let utm: Record<string, string> = {}
+    try {
+      const rawCtx = formData.get('lpContext')
+      if (typeof rawCtx === 'string' && rawCtx) {
+        const parsed = JSON.parse(rawCtx) as Record<string, unknown>
+        for (const [k, v] of Object.entries(parsed)) {
+          if (typeof v === 'string') utm[k] = v.slice(0, 120)
+        }
+      }
+    } catch { /* ignore bad lpContext */ }
     
     const name = sanitizeInputServer(rawName)
     let phone: string
@@ -143,19 +157,17 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
     const message = sanitizeInputServer(rawMessage)
     
-    const photoFiles = formData.getAll('photos') as File[]
+    const photoFiles = [
+      ...(formData.getAll('photos') as File[]),
+      ...[...formData.entries()]
+        .filter(([key, value]) => key.startsWith('foto_') && value instanceof File)
+        .map(([, value]) => value as File),
+    ].filter((f) => f && f.size > 0)
 
     // Validation
     if (!name || !phone) {
       return NextResponse.json(
         { error: 'Nome e telefono sono obbligatori.' },
-        { status: 400, headers: securityHeaders }
-      )
-    }
-
-    if (photoFiles.length === 0) {
-      return NextResponse.json(
-        { error: 'Nessuna foto ricevuta.' },
         { status: 400, headers: securityHeaders }
       )
     }
@@ -219,10 +231,25 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       })
     }
 
+    try {
+      await saveLead({
+        source: 'foto',
+        name,
+        phone,
+        city: city || undefined,
+        jobType: jobType || undefined,
+        message: message || undefined,
+        photoCount: photoFiles.length,
+        landingVariant: landingVariant || utm.variant || undefined,
+        ctaVariant: utm.cta_ab || undefined,
+        utm,
+      })
+    } catch (err) {
+      console.error('[foto API] CRM save failed:', err)
+    }
+
     const transporter = createTransporter()
     if (!transporter) {
-      // No email configured - log and return success anyway (dev mode)
-      // SECURITY: Don't log PII in production
       if (process.env.NODE_ENV !== 'production') {
         console.log('[foto API] Email not configured. Data received:', { name, phone, photoCount: photoFiles.length })
       }
@@ -253,6 +280,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
             <table style="width: 100%; border-collapse: collapse;">
               <tr><td style="padding: 8px 0; font-weight: bold; width: 140px;">Nome</td><td>${name}</td></tr>
               <tr><td style="padding: 8px 0; font-weight: bold;">Telefono</td><td><a href="tel:${phone}">${phone}</a></td></tr>
+              ${city ? `<tr><td style="padding: 8px 0; font-weight: bold;">Città</td><td>${city}</td></tr>` : ''}
+              ${jobType ? `<tr><td style="padding: 8px 0; font-weight: bold;">Lavoro</td><td>${jobType}</td></tr>` : ''}
+              ${landingVariant ? `<tr><td style="padding: 8px 0; font-weight: bold;">Landing</td><td>${landingVariant}</td></tr>` : ''}
               <tr><td style="padding: 8px 0; font-weight: bold;">Foto allegate</td><td>${photoFiles.length}</td></tr>
               ${message ? `<tr><td style="padding: 8px 0; font-weight: bold; vertical-align: top;">Messaggio</td><td>${message.replace(/\n/g, '<br>')}</td></tr>` : ''}
             </table>
