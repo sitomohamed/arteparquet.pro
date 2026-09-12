@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from 'fs/promises'
+import { tmpdir } from 'os'
 import path from 'path'
 import { randomUUID } from 'crypto'
 
@@ -22,24 +23,56 @@ export type Lead = {
   utm?: Record<string, string>
 }
 
-function dataPath() {
-  return process.env.LEADS_DATA_PATH || path.join(process.cwd(), 'data', 'leads.json')
+/** Same Node process as the form API — keeps leads visible even if disk is read-only. */
+let memory: Lead[] | null = null
+let writableFile: string | null | undefined
+
+function candidates() {
+  return [
+    process.env.LEADS_DATA_PATH,
+    path.join(process.cwd(), 'data', 'leads.json'),
+    path.join(tmpdir(), 'arteparquet-leads.json'),
+  ].filter((p): p is string => Boolean(p))
+}
+
+async function loadFromDisk(): Promise<Lead[]> {
+  for (const file of candidates()) {
+    try {
+      const raw = await readFile(file, 'utf8')
+      const parsed = JSON.parse(raw) as Lead[]
+      if (Array.isArray(parsed)) return parsed
+    } catch {
+      /* try next path */
+    }
+  }
+  return []
 }
 
 async function readAll(): Promise<Lead[]> {
-  try {
-    const raw = await readFile(dataPath(), 'utf8')
-    const parsed = JSON.parse(raw) as Lead[]
-    return Array.isArray(parsed) ? parsed : []
-  } catch {
-    return []
+  if (memory) return memory
+  memory = await loadFromDisk()
+  return memory
+}
+
+async function resolveWritable(): Promise<string | null> {
+  if (writableFile !== undefined) return writableFile
+  for (const file of candidates()) {
+    try {
+      await mkdir(path.dirname(file), { recursive: true })
+      await writeFile(file, JSON.stringify(memory ?? [], null, 2), 'utf8')
+      writableFile = file
+      return file
+    } catch (err) {
+      console.error('[leads] cannot write', file, err)
+    }
   }
+  writableFile = null
+  return null
 }
 
 async function writeAll(leads: Lead[]) {
-  const file = dataPath()
-  await mkdir(path.dirname(file), { recursive: true })
-  await writeFile(file, JSON.stringify(leads, null, 2), 'utf8')
+  memory = leads
+  await resolveWritable()
 }
 
 export async function saveLead(input: Omit<Lead, 'id' | 'createdAt' | 'status'> & { status?: LeadStatus }) {

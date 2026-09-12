@@ -235,6 +235,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       })
     }
 
+    let crmSaved = false
     try {
       await saveLead({
         source: 'foto',
@@ -249,6 +250,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         ctaVariant: utm.cta_ab || undefined,
         utm,
       })
+      crmSaved = true
     } catch (err) {
       console.error('[foto API] CRM save failed:', err)
     }
@@ -258,13 +260,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       if (process.env.NODE_ENV !== 'production') {
         console.log('[foto API] Email not configured. Data received:', { name, phone, photoCount: photoFiles.length })
       }
-      return NextResponse.json({ ok: true }, { headers: securityHeaders })
+      return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
     }
 
     const recipientEmail = process.env.OWNER_EMAIL ?? process.env.GMAIL_USER
     if (!recipientEmail) {
       console.error('[foto API] No recipient email configured')
-      return NextResponse.json({ ok: true }, { headers: securityHeaders })
+      return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
     }
     const submittedAt = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
 
@@ -301,7 +303,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       console.error('[foto API] Email send failed:', err)
     }
 
-    return NextResponse.json({ ok: true }, { headers: securityHeaders })
+    return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
   } catch (err) {
     console.error('[foto API] Error:', err)
     return NextResponse.json(
