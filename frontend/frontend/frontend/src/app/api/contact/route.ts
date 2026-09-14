@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
 import { z } from 'zod'
-import { saveLead } from '@/lib/leads'
+import { saveLead, updateLead } from '@/lib/leads'
+import { sendMail, sendOwnerMail } from '@/lib/mailer'
 import { 
   checkRateLimit, 
   detectHoneypot,
@@ -41,19 +41,6 @@ const CLIENT_LABELS: Record<string, string> = {
   'architetto': 'Architetto / Designer',
   'impresa':    'Impresa / Costruttore',
   'hotel':      'Hotel / Ristorante',
-}
-
-// ── Mailer factory ---
-function createTransporter() {
-  const user = process.env.GMAIL_USER
-  const pass = process.env.GMAIL_APP_PASSWORD
-
-  if (!user || !pass) return null
-
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user, pass },
-  })
 }
 
 // ── POST handler ---
@@ -120,8 +107,9 @@ export async function POST(request: NextRequest) {
       phone: sanitizePhoneServer(rawData.phone),
     }
 
+    let leadId: string | undefined
     try {
-      await saveLead({
+      const lead = await saveLead({
         source: 'contact',
         name: data.name,
         phone: data.phone,
@@ -131,52 +119,44 @@ export async function POST(request: NextRequest) {
         message: data.message,
         photoCount: 0,
       })
+      leadId = lead.id
     } catch (err) {
       console.error('[contact API] CRM save failed:', err)
     }
 
-    const transporter = createTransporter()
-    const ownerEmail = process.env.OWNER_EMAIL ?? process.env.GMAIL_USER
-
-    // ── Dev fallback: no Gmail configured ---
-    if (!transporter || !ownerEmail) {
-      console.log('\n ---')
-      console.log('   NUOVO PREVENTIVO (Gmail non ancora configurata)')
-      console.log('---')
-      console.log(`   Nome:     ${data.name}`)
-      console.log(`   Telefono: ${data.phone}`)
-      console.log(`   Email:    ${data.email}`)
-      console.log(`   Progetto: ${PROJECT_LABELS[data.projectType] ?? data.projectType}`)
-      console.log(`   Città:    ${data.city}`)
-      if (data.area)    console.log(`   Area:     ${data.area} mq`)
-      if (data.message) console.log(`   Note:     ${data.message}`)
-      console.log('---\n')
-      return NextResponse.json({ success: true, mode: 'dev' })
-    }
-
     const whatsappNumber = data.phone.replace(/[\s+\-()]/g, '')
 
-    // ── 1. Email al titolare ---
-    await transporter.sendMail({
-      from: `"Arteparquet Sito" <${process.env.GMAIL_USER}>`,
-      to: ownerEmail,
+    const ownerMail = await sendOwnerMail({
       replyTo: data.email,
-      subject: ` Nuovo preventivo da ${data.name} - ${data.city}`,
+      subject: `Nuovo preventivo da ${data.name} - ${data.city}`,
       html: ownerEmailHtml(data, whatsappNumber),
     })
 
-    // ── 2. Conferma al cliente ---
-    await transporter.sendMail({
-      from: `"Arteparquet" <${process.env.GMAIL_USER}>`,
+    if (!ownerMail.sent) {
+      console.error('[contact API] owner email failed:', ownerMail.error)
+    }
+
+    const clientMail = await sendMail({
       to: data.email,
-      subject: ` Abbiamo ricevuto la tua richiesta, ${data.name}!`,
+      subject: `Abbiamo ricevuto la tua richiesta, ${data.name}!`,
       html: clientEmailHtml(data),
     })
 
-    return NextResponse.json({ success: true }, {
-      status: 200,
-      headers: securityHeaders
-    })
+    if (!clientMail.sent) {
+      console.error('[contact API] client email failed:', clientMail.error)
+    }
+
+    if (leadId) {
+      await updateLead(leadId, {
+        emailSent: ownerMail.sent,
+        emailError: ownerMail.error,
+      }).catch((err) => console.error('[contact API] email status save failed:', err))
+    }
+
+    return NextResponse.json(
+      { success: true, emailSent: ownerMail.sent },
+      { status: 200, headers: securityHeaders },
+    )
   } catch (err) {
     console.error('Contact API error:', err)
     

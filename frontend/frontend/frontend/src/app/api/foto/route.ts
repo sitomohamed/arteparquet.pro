@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
-import { saveLead } from '@/lib/leads'
+import { saveLead, updateLead } from '@/lib/leads'
+import { sendOwnerMail } from '@/lib/mailer'
 import { getApiSecurityHeaders, checkRateLimit, detectHoneypot } from '@/lib/security'
 import { 
   sanitizeInputServer, 
@@ -56,16 +56,6 @@ function sanitizeFilename(filename: string, index: number): string {
   }
   
   return sanitized
-}
-
-function createTransporter() {
-  const user = process.env.GMAIL_USER
-  const pass = process.env.GMAIL_APP_PASSWORD
-  if (!user || !pass) return null
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user, pass },
-  })
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -236,8 +226,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     let crmSaved = false
+    let leadId: string | undefined
     try {
-      await saveLead({
+      const lead = await saveLead({
         source: 'foto',
         name,
         phone,
@@ -250,31 +241,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         ctaVariant: utm.cta_ab || undefined,
         utm,
       })
+      leadId = lead.id
       crmSaved = true
     } catch (err) {
       console.error('[foto API] CRM save failed:', err)
     }
 
-    const transporter = createTransporter()
-    if (!transporter) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('[foto API] Email not configured. Data received:', { name, phone, photoCount: photoFiles.length })
-      }
-      return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
-    }
-
-    const recipientEmail = process.env.OWNER_EMAIL ?? process.env.GMAIL_USER
-    if (!recipientEmail) {
-      console.error('[foto API] No recipient email configured')
-      return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
-    }
     const submittedAt = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
-
-    try {
-    await transporter.sendMail({
-      from: `"Arteparquet Sito" <${recipientEmail}>`,
-      to: recipientEmail,
-      subject: ` Foto parquet da ${name} - ${photoFiles.length} immagini`,
+    const mail = await sendOwnerMail({
+      subject: `Foto parquet da ${name} - ${photoFiles.length} immagini`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; color: #2D2A27;">
           <div style="background: #2D2A27; color: #F9F8F6; padding: 24px; border-radius: 12px 12px 0 0;">
@@ -299,11 +274,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       `,
       attachments,
     })
-    } catch (err) {
-      console.error('[foto API] Email send failed:', err)
+    if (leadId) {
+      await updateLead(leadId, {
+        emailSent: mail.sent,
+        emailError: mail.error,
+      }).catch((err) => console.error('[foto API] email status save failed:', err))
     }
 
-    return NextResponse.json({ ok: true, crmSaved }, { headers: securityHeaders })
+    return NextResponse.json({ ok: true, crmSaved, emailSent: mail.sent }, { headers: securityHeaders })
   } catch (err) {
     console.error('[foto API] Error:', err)
     return NextResponse.json(
