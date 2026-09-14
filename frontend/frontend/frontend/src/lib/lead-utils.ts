@@ -5,6 +5,8 @@
 
 import { extractDomain, findLeadByDomain, findLeadByEmail } from './leads'
 
+export { extractDomain }
+
 /* ─────────────────────────────────────────────────────────────────────────────
    DOMAIN & EMAIL UTILITIES
 ───────────────────────────────────────────────────────────────────────────── */
