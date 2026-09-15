@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Award, Star, MapPin } from 'lucide-react'
 import { gsap, ScrollTrigger, EASE, DURATION, getReducedMotion } from '@/lib/gsap'
-import { BUSINESS } from '@/lib/constants'
 
 /* ═══════════════════════════════════════════════════════════════════════════
    HERITAGE SECTION — Dal 1996 + Teatro alla Scala
@@ -18,13 +17,11 @@ import { BUSINESS } from '@/lib/constants'
 export function HeritageSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const statsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (getReducedMotion()) return
 
     const ctx = gsap.context(() => {
-      // Content reveal
       const elements = contentRef.current?.querySelectorAll('.reveal-item')
       if (elements) {
         gsap.set(elements, { opacity: 0, y: 40 })
@@ -41,29 +38,6 @@ export function HeritageSection() {
               ease: EASE.expo,
             })
           },
-        })
-      }
-
-      // Stats counter animation
-      const statNumbers = statsRef.current?.querySelectorAll('.stat-number')
-      if (statNumbers) {
-        statNumbers.forEach((el) => {
-          const target = parseInt(el.getAttribute('data-value') || '0', 10)
-          gsap.set(el, { textContent: '0' })
-          
-          ScrollTrigger.create({
-            trigger: el,
-            start: 'top 85%',
-            once: true,
-            onEnter: () => {
-              gsap.to(el, {
-                textContent: target,
-                duration: 2,
-                ease: 'power2.out',
-                snap: { textContent: 1 },
-              })
-            },
-          })
         })
       }
     }, sectionRef)
@@ -160,13 +134,10 @@ export function HeritageSection() {
           </div>
 
           {/* Right - Stats */}
-          <div ref={statsRef} className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6">
             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
-              <p 
-                className="stat-number font-serif text-[56px] md:text-[72px] font-bold text-rovere leading-none" 
-                data-value="1996"
-              >
-                0
+              <p className="font-serif text-[56px] md:text-[72px] font-bold text-rovere leading-none">
+                1996
               </p>
               <p className="font-sans text-[13px] text-travertino/50 mt-2">
                 Anno di fondazione
@@ -174,11 +145,8 @@ export function HeritageSection() {
             </div>
 
             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
-              <p 
-                className="stat-number font-serif text-[56px] md:text-[72px] font-bold text-travertino leading-none" 
-                data-value="28"
-              >
-                0
+              <p className="font-serif text-[56px] md:text-[72px] font-bold text-travertino leading-none">
+                28+
               </p>
               <p className="font-sans text-[13px] text-travertino/50 mt-2">
                 Anni di esperienza
