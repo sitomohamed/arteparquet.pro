@@ -161,10 +161,8 @@ button:active, a:active, [role="button"]:active {
   transition-duration: 50ms;
 }
 
-/* Premium image rendering */
 img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
 }
 
 img, picture, video {

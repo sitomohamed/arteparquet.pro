@@ -19,31 +19,37 @@ const schemes = [
     name: 'Listone a correre',
     desc: 'Schema classico longitudinale, versatile',
     image: '/portfolio/google-posa-listoni-01.jpg',
+    position: 'center 70%',
   },
   {
     name: 'Spina di pesce 45°',
     desc: 'Elegante, richiesto, massello o prefinito',
-    image: '/portfolio/google-spina-pesce-finitura-01.jpg',
+    image: '/portfolio/parquet-spina-pesce-01.jpg',
+    position: 'center 78%',
   },
   {
     name: 'Punto d\'Ungheria',
     desc: 'Chevron simmetrico, forte impatto visivo',
     image: '/portfolio/google-spina-pesce-corridoio-01.jpg',
+    position: 'center 60%',
   },
   {
     name: 'Versailles',
     desc: 'Quadri intrecciati, alta complessità',
     image: '/portfolio/google-parquet-bordo-intarsio-01.jpg',
+    position: 'center 72%',
   },
   {
     name: 'Intarsi geometrici',
     desc: 'Bordi, stelle, fasce su disegno',
     image: '/portfolio/intarsio-stella-01.jpg',
+    position: 'center 62%',
   },
   {
     name: 'Schemi su misura',
     desc: 'Curve, scale, geometrie irregolari',
     image: '/portfolio/google-parquet-scala-01.jpg',
+    position: 'center 50%',
   },
 ]
 
@@ -147,7 +153,9 @@ export function SchemesSection() {
                 src={scheme.image}
                 alt={`${scheme.name} - schema di posa parquet`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                quality={90}
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                style={{ objectPosition: scheme.position }}
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
 

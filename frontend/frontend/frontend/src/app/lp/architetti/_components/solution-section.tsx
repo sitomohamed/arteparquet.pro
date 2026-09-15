@@ -110,8 +110,9 @@ export function SolutionSection() {
                   src="/portfolio/intarsio-stella-01.jpg"
                   alt="Dettaglio intarsio a stella - precisione artigianale"
                   fill
-                  className="object-cover"
-                  sizes="200px"
+                  quality={90}
+                  className="object-cover object-[center_62%]"
+                  sizes="280px"
                 />
               </div>
 
