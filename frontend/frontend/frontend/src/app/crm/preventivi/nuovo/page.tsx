@@ -121,8 +121,8 @@ export default function NuovoPreventivoPage() {
       }
       finalClientName = selectedLead.name
       finalClientPhone = selectedLead.phone
-      finalClientEmail = selectedLead.email
-      finalClientCity = selectedLead.city
+      finalClientEmail = selectedLead.email ?? ''
+      finalClientCity = selectedLead.city ?? ''
     }
 
     setSaving(true)
