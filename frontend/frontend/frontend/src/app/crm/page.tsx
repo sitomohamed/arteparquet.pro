@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
 import type { Lead, LeadStatus, CanReachSite } from '@/lib/leads'
 
 type DiscoveryStats = {
@@ -244,10 +245,28 @@ export default function CrmPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-rovere mb-3">
           Area riservata
         </p>
-        <h1 className="font-serif text-3xl text-legno-bruciato mb-2">CRM lead</h1>
-        <p className="text-sm text-neutral-500 mb-4">
-          {leads.length} richieste · {b2cCount} B2C · {b2bCount} B2B · {discoveryCount} da approvare
-        </p>
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <h1 className="font-serif text-3xl text-legno-bruciato mb-2">CRM lead</h1>
+            <p className="text-sm text-neutral-500">
+              {leads.length} richieste · {b2cCount} B2C · {b2bCount} B2B · {discoveryCount} da approvare
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <Link
+              href="/crm/preventivi"
+              className="bg-rovere text-white rounded-xl px-6 py-3 font-semibold hover:bg-opacity-90 transition-opacity"
+            >
+              📄 Preventivi
+            </Link>
+            <Link
+              href="/crm/lavori"
+              className="bg-white text-legno-bruciato border-2 border-rovere rounded-xl px-6 py-3 font-semibold hover:bg-rovere hover:text-white transition-colors"
+            >
+              🔨 Lavori
+            </Link>
+          </div>
+        </div>
         <div className="bg-white rounded-2xl border border-neutral-200 p-4 mb-8 max-w-xl">
           <p className="text-sm font-semibold text-legno-bruciato mb-3">Configurazione Gmail</p>
           <div className="grid grid-cols-1 gap-1.5 mb-4 text-sm">
