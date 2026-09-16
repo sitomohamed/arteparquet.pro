@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import type { Job, JobStatus } from '@/lib/jobs'
 import { formatMoney } from '@/lib/money'
+import { CrmShell } from '@/components/crm/crm-shell'
 
 const STATUS_LABELS: Record<JobStatus, string> = {
   scheduled: '📅 Programmato',
@@ -62,16 +63,19 @@ export default function LavoroDettaglioPage() {
 
   if (loading) {
     return (
+      <CrmShell>
       <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
         <div className="max-w-4xl mx-auto">
           <p className="text-neutral-500">Caricamento...</p>
         </div>
       </main>
+      </CrmShell>
     )
   }
 
   if (!job) {
     return (
+      <CrmShell>
       <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
         <div className="max-w-4xl mx-auto">
           <p className="text-red-600 mb-4">Lavoro non trovato.</p>
@@ -80,10 +84,12 @@ export default function LavoroDettaglioPage() {
           </Link>
         </div>
       </main>
+      </CrmShell>
     )
   }
 
   return (
+    <CrmShell>
     <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -240,5 +246,6 @@ export default function LavoroDettaglioPage() {
         </div>
       </div>
     </main>
+    </CrmShell>
   )
 }

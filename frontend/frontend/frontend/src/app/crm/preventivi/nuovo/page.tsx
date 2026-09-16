@@ -8,6 +8,7 @@ import type { QuoteLine } from '@/lib/quotes'
 import type { CatalogItem } from '@/lib/catalog'
 import { formatMoney, lineSubtotal, applyDiscount, calcTotal } from '@/lib/money'
 import CatalogSelector from './_components/catalog-selector'
+import { CrmShell } from '@/components/crm/crm-shell'
 
 export default function NuovoPreventivoPage() {
   const router = useRouter()
@@ -124,6 +125,7 @@ export default function NuovoPreventivoPage() {
   }
 
   return (
+    <CrmShell>
     <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -498,5 +500,6 @@ export default function NuovoPreventivoPage() {
         </div>
       </div>
     </main>
+    </CrmShell>
   )
 }

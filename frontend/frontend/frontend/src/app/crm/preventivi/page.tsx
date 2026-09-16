@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import type { Quote } from '@/lib/quotes'
 import { formatMoney } from '@/lib/money'
+import { CrmShell } from '@/components/crm/crm-shell'
 
 const STATUS_LABELS: Record<Quote['status'], string> = {
   draft: 'Bozza',
@@ -52,6 +53,7 @@ export default function PreventiviPage() {
   const accepted = quotes.filter((q) => q.status === 'accepted').length
 
   return (
+    <CrmShell>
     <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
@@ -191,5 +193,6 @@ export default function PreventiviPage() {
         </div>
       </div>
     </main>
+    </CrmShell>
   )
 }

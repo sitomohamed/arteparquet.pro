@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import type { Quote } from '@/lib/quotes'
 import { formatMoney } from '@/lib/money'
+import { CrmShell } from '@/components/crm/crm-shell'
 
 const STATUS_LABELS: Record<Quote['status'], string> = {
   draft: 'Bozza',
@@ -119,16 +120,19 @@ export default function PreventivDettaglioPage() {
 
   if (loading) {
     return (
+      <CrmShell>
       <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
         <div className="max-w-4xl mx-auto">
           <p className="text-neutral-500">Caricamento...</p>
         </div>
       </main>
+      </CrmShell>
     )
   }
 
   if (!quote) {
     return (
+      <CrmShell>
       <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
         <div className="max-w-4xl mx-auto">
           <p className="text-red-600 mb-4">Preventivo non trovato.</p>
@@ -137,12 +141,14 @@ export default function PreventivDettaglioPage() {
           </Link>
         </div>
       </main>
+      </CrmShell>
     )
   }
 
   const publicLink = `${typeof window !== 'undefined' ? window.location.origin : ''}/q/${quote.publicToken}`
 
   return (
+    <CrmShell>
     <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -368,5 +374,6 @@ export default function PreventivDettaglioPage() {
         )}
       </div>
     </main>
+    </CrmShell>
   )
 }

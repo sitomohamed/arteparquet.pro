@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import type { Job } from '@/lib/jobs'
 import { formatMoney } from '@/lib/money'
+import { CrmShell } from '@/components/crm/crm-shell'
 
 const STATUS_LABELS: Record<Job['status'], string> = {
   scheduled: '📅 Programmato',
@@ -52,6 +53,7 @@ export default function LavoriPage() {
   const invoiced = jobs.filter((j) => j.status === 'invoiced').length
 
   return (
+    <CrmShell>
     <main className="crm-app min-h-screen bg-travertino px-4 py-10 font-sans">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
@@ -183,5 +185,6 @@ export default function LavoriPage() {
         </div>
       </div>
     </main>
+    </CrmShell>
   )
 }
