@@ -17,12 +17,18 @@ export default function NuovoPreventivoPage() {
 
   // Form state
   const [clientId, setClientId] = useState('')
+  const [newClientMode, setNewClientMode] = useState(false)
+  const [newClientName, setNewClientName] = useState('')
+  const [newClientPhone, setNewClientPhone] = useState('')
+  const [newClientEmail, setNewClientEmail] = useState('')
+  const [newClientCity, setNewClientCity] = useState('')
   const [projectTitle, setProjectTitle] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
   const [projectAddress, setProjectAddress] = useState('')
   const [lines, setLines] = useState<QuoteLine[]>([])
   const [discountPercent, setDiscountPercent] = useState(0)
   const [taxPercent, setTaxPercent] = useState(22)
+  const [isRegimeForfettario, setIsRegimeForfettario] = useState(false)
   const [notes, setNotes] = useState('')
   const [terms, setTerms] = useState(
     'Offerta valida 30 giorni. Pagamento 50% acconto, 50% a saldo lavori.',
@@ -39,13 +45,16 @@ export default function NuovoPreventivoPage() {
   }, [])
 
   const selectedLead = leads.find((l) => l.id === clientId)
+  
+  // Se regime forfettario, IVA = 0
+  const effectiveTaxPercent = isRegimeForfettario ? 0 : taxPercent
 
   // Calcolo totali
   const subtotalCents = lines.reduce((acc, line) => {
     return acc + lineSubtotal(line.quantity, line.unitPriceCents)
   }, 0)
   const afterDiscountCents = applyDiscount(subtotalCents, discountPercent)
-  const totalCents = calcTotal(afterDiscountCents, taxPercent)
+  const totalCents = calcTotal(afterDiscountCents, effectiveTaxPercent)
   const taxCents = totalCents - afterDiscountCents
 
   function addLine() {
@@ -86,9 +95,34 @@ export default function NuovoPreventivoPage() {
   }
 
   async function saveDraft() {
-    if (!clientId || !selectedLead) {
-      alert('Seleziona un cliente')
-      return
+    // Determina cliente da usare
+    let finalClientId = clientId
+    let finalClientName = ''
+    let finalClientPhone = ''
+    let finalClientEmail = ''
+    let finalClientCity = ''
+
+    if (newClientMode) {
+      // Nuovo cliente al volo
+      if (!newClientName || !newClientPhone) {
+        alert('Nome e telefono cliente sono obbligatori')
+        return
+      }
+      finalClientId = 'new-' + Date.now()
+      finalClientName = newClientName
+      finalClientPhone = newClientPhone
+      finalClientEmail = newClientEmail
+      finalClientCity = newClientCity
+    } else {
+      // Cliente dal CRM
+      if (!clientId || !selectedLead) {
+        alert('Seleziona un cliente')
+        return
+      }
+      finalClientName = selectedLead.name
+      finalClientPhone = selectedLead.phone
+      finalClientEmail = selectedLead.email
+      finalClientCity = selectedLead.city
     }
 
     setSaving(true)
@@ -96,18 +130,18 @@ export default function NuovoPreventivoPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        clientId,
-        clientName: selectedLead.name,
-        clientPhone: selectedLead.phone,
-        clientEmail: selectedLead.email,
-        clientCity: selectedLead.city,
+        clientId: finalClientId,
+        clientName: finalClientName,
+        clientPhone: finalClientPhone,
+        clientEmail: finalClientEmail,
+        clientCity: finalClientCity,
         projectTitle,
         projectDescription,
         projectAddress,
         lines,
         subtotalCents,
         discountPercent,
-        taxPercent,
+        taxPercent: effectiveTaxPercent,
         totalCents,
         notes,
         terms,
@@ -155,35 +189,79 @@ export default function NuovoPreventivoPage() {
           <div className="space-y-6">
             {/* Cliente */}
             <section className="bg-white rounded-2xl border border-neutral-200 p-6">
-              <h2 className="font-semibold text-legno-bruciato mb-4">Cliente</h2>
-              <select
-                value={clientId}
-                onChange={(e) => setClientId(e.target.value)}
-                className="w-full border border-neutral-200 rounded-lg px-3 py-2 text-legno-bruciato"
-              >
-                <option value="">Seleziona cliente...</option>
-                {leads.map((lead) => (
-                  <option key={lead.id} value={lead.id}>
-                    {lead.name} · {lead.phone}
-                    {lead.city ? ` · ${lead.city}` : ''}
-                  </option>
-                ))}
-              </select>
-              {selectedLead && (
-                <div className="mt-3 text-sm text-neutral-600">
-                  <p>
-                    <strong>Tel:</strong> {selectedLead.phone}
-                  </p>
-                  {selectedLead.email && (
-                    <p>
-                      <strong>Email:</strong> {selectedLead.email}
-                    </p>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-semibold text-legno-bruciato">Cliente</h2>
+                <button
+                  onClick={() => setNewClientMode(!newClientMode)}
+                  className="text-sm font-semibold text-blue-600 hover:underline"
+                >
+                  {newClientMode ? '← Seleziona da CRM' : '+ Nuovo cliente'}
+                </button>
+              </div>
+
+              {!newClientMode ? (
+                <>
+                  <select
+                    value={clientId}
+                    onChange={(e) => setClientId(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-lg px-3 py-2 text-legno-bruciato"
+                  >
+                    <option value="">Seleziona cliente...</option>
+                    {leads.map((lead) => (
+                      <option key={lead.id} value={lead.id}>
+                        {lead.name} · {lead.phone}
+                        {lead.city ? ` · ${lead.city}` : ''}
+                      </option>
+                    ))}
+                  </select>
+                  {selectedLead && (
+                    <div className="mt-3 text-sm text-neutral-600">
+                      <p>
+                        <strong>Tel:</strong> {selectedLead.phone}
+                      </p>
+                      {selectedLead.email && (
+                        <p>
+                          <strong>Email:</strong> {selectedLead.email}
+                        </p>
+                      )}
+                      {selectedLead.city && (
+                        <p>
+                          <strong>Città:</strong> {selectedLead.city}
+                        </p>
+                      )}
+                    </div>
                   )}
-                  {selectedLead.city && (
-                    <p>
-                      <strong>Città:</strong> {selectedLead.city}
-                    </p>
-                  )}
+                </>
+              ) : (
+                <div className="space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Nome cliente *"
+                    value={newClientName}
+                    onChange={(e) => setNewClientName(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-lg px-3 py-2"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Telefono *"
+                    value={newClientPhone}
+                    onChange={(e) => setNewClientPhone(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-lg px-3 py-2"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email (opzionale)"
+                    value={newClientEmail}
+                    onChange={(e) => setNewClientEmail(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-lg px-3 py-2"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Città (opzionale)"
+                    value={newClientCity}
+                    onChange={(e) => setNewClientCity(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-lg px-3 py-2"
+                  />
                 </div>
               )}
             </section>
@@ -329,22 +407,31 @@ export default function NuovoPreventivoPage() {
                   <span className="text-neutral-600">Imponibile</span>
                   <span className="font-semibold">{formatMoney(afterDiscountCents)}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="text-neutral-600">IVA</span>
-                    <input
-                      type="number"
-                      value={taxPercent || ''}
-                      onChange={(e) => setTaxPercent(parseFloat(e.target.value) || 0)}
-                      className="w-16 border border-neutral-200 rounded px-2 py-0.5 text-xs"
-                      placeholder="22"
-                      min="0"
-                      max="100"
-                    />
-                    <span className="text-xs text-neutral-400">%</span>
+                {!isRegimeForfettario && (
+                  <div className="flex justify-between items-center text-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="text-neutral-600">IVA</span>
+                      <input
+                        type="number"
+                        value={taxPercent || ''}
+                        onChange={(e) => setTaxPercent(parseFloat(e.target.value) || 0)}
+                        className="w-16 border border-neutral-200 rounded px-2 py-0.5 text-xs"
+                        placeholder="22"
+                        min="0"
+                        max="100"
+                        disabled={isRegimeForfettario}
+                      />
+                      <span className="text-xs text-neutral-400">%</span>
+                    </div>
+                    <span className="font-semibold">{formatMoney(taxCents)}</span>
                   </div>
-                  <span className="font-semibold">{formatMoney(taxCents)}</span>
-                </div>
+                )}
+                {isRegimeForfettario && (
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-neutral-600">IVA</span>
+                    <span className="text-xs text-neutral-500">Non applicabile</span>
+                  </div>
+                )}
                 <div className="border-t-2 border-neutral-300 pt-3" />
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-legno-bruciato text-lg">TOTALE</span>
@@ -354,7 +441,20 @@ export default function NuovoPreventivoPage() {
                 </div>
               </div>
 
-              <h3 className="font-semibold text-legno-bruciato mb-2 mt-6">Condizioni</h3>
+              <h3 className="font-semibold text-legno-bruciato mb-2 mt-6">Regime fiscale</h3>
+              <label className="flex items-center gap-2 mb-4">
+                <input
+                  type="checkbox"
+                  checked={isRegimeForfettario}
+                  onChange={(e) => setIsRegimeForfettario(e.target.checked)}
+                  className="rounded border-neutral-300"
+                />
+                <span className="text-sm text-neutral-700">
+                  Regime forfettario (IVA non applicabile)
+                </span>
+              </label>
+
+              <h3 className="font-semibold text-legno-bruciato mb-2">Condizioni</h3>
               <textarea
                 value={terms}
                 onChange={(e) => setTerms(e.target.value)}
@@ -401,18 +501,26 @@ export default function NuovoPreventivoPage() {
               </div>
 
               {/* Cliente */}
-              {selectedLead && (
+              {(selectedLead || (newClientMode && newClientName)) && (
                 <div className="mb-6 pb-6 border-b border-neutral-200">
                   <p className="text-xs font-semibold uppercase text-neutral-400 mb-2">
                     Cliente
                   </p>
-                  <p className="font-semibold text-legno-bruciato">{selectedLead.name}</p>
-                  <p className="text-sm text-neutral-600">{selectedLead.phone}</p>
-                  {selectedLead.email && (
-                    <p className="text-sm text-neutral-600">{selectedLead.email}</p>
+                  <p className="font-semibold text-legno-bruciato">
+                    {newClientMode ? newClientName : selectedLead?.name}
+                  </p>
+                  <p className="text-sm text-neutral-600">
+                    {newClientMode ? newClientPhone : selectedLead?.phone}
+                  </p>
+                  {(newClientMode ? newClientEmail : selectedLead?.email) && (
+                    <p className="text-sm text-neutral-600">
+                      {newClientMode ? newClientEmail : selectedLead?.email}
+                    </p>
                   )}
-                  {selectedLead.city && (
-                    <p className="text-sm text-neutral-600">{selectedLead.city}</p>
+                  {(newClientMode ? newClientCity : selectedLead?.city) && (
+                    <p className="text-sm text-neutral-600">
+                      {newClientMode ? newClientCity : selectedLead?.city}
+                    </p>
                   )}
                 </div>
               )}
@@ -473,10 +581,18 @@ export default function NuovoPreventivoPage() {
                     </span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm">
-                  <span className="text-neutral-600">IVA ({taxPercent}%)</span>
-                  <span>{formatMoney(taxCents)}</span>
-                </div>
+                {!isRegimeForfettario && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-neutral-600">IVA ({effectiveTaxPercent}%)</span>
+                    <span>{formatMoney(taxCents)}</span>
+                  </div>
+                )}
+                {isRegimeForfettario && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-neutral-600">IVA</span>
+                    <span className="text-xs text-neutral-500">Non applicabile (regime forfettario)</span>
+                  </div>
+                )}
                 <div className="border-t-2 border-neutral-300 pt-3 mt-3" />
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-legno-bruciato text-lg">TOTALE</span>
