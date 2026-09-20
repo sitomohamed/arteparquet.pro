@@ -97,6 +97,12 @@ const guides = [
     category: 'Installazione',
     description: 'Quale parquet va con il riscaldamento a pavimento? I dettagli tecnici.',
   },
+  {
+    title: 'Come Scegliere un Posatore di Parquet',
+    href: '/guida/come-scegliere-posatore',
+    category: 'Guida all\'Acquisto',
+    description: 'Domande da fare, sopralluogo, garanzia scritta: come riconoscere un posatore serio.',
+  },
 ]
 
 const existingParquet = [

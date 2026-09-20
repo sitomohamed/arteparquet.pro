@@ -551,6 +551,98 @@ const GUIDES: Record<string, Guide> = {
       { title: 'Preventivo Gratuito', description: 'Sopralluogo gratuito e preventivo scritto senza impegno.', href: '/preventivo' },
     ],
   },
+
+  'come-scegliere-posatore': {
+    title: 'Come Scegliere un Posatore di Parquet: La Guida Completa',
+    description:
+      'Come scegliere il posatore di parquet giusto a Bergamo e in Lombardia. Esperienza sul campo, sopralluogo gratuito, garanzia scritta e le domande da fare prima di firmare.',
+    category: 'Guida all\'Acquisto',
+    readingTime: '6 min',
+    intro:
+      "Il parquet dura decenni solo se è posato bene. La scelta del posatore vale quanto la scelta del materiale: un listello pregiato posato male si muove, scricchiola e delude. In questa guida ti spieghiamo cosa valutare, quali domande fare e come riconoscere un artigiano serio — con lo sguardo di Arteparquet, l'impresa di Mohamed Arabi che posa parquet a Bergamo e in Lombardia dal 1996.",
+    sections: [
+      {
+        title: 'Perché il Posatore Conta Più del Listello',
+        content:
+          "Un parquet di qualità posato male è un problema che si vede dopo settimane o mesi: fessure, dislivelli, scricchiolii, battiscopa staccati, schema storto. Il legno lavora, il sottofondo non è mai perfetto, l'umidità del cantiere cambia. Serve un posatore che legge il massetto, acclimata il materiale, sceglie colla o incastro in base al caso e chiude il lavoro con una finitura coerente. Non basta 'saper mettere i listelli in fila': serve mestiere, pazienza e responsabilità su quello che resta in casa tua.",
+        list: [
+          'Il sottofondo decide metà del risultato: umidità, planarità, crepe',
+          'Lo schema di posa (correre, spina, punto d\'Ungheria) richiede precisione millimetrica',
+          'L\'acclimatazione del legno in cantiere evita fessure e movimenti successivi',
+          'Una posa affrettata si paga in riparazioni, non in un risparmio reale',
+        ],
+      },
+      {
+        title: 'Le Domande da Fare Prima di Scegliere',
+        content:
+          "Prima di firmare, fai parlare il posatore. Chi è serio risponde senza giri di parole e non ha paura di dirti quando un prodotto non è adatto al tuo ambiente. Chiedi da quanto tempo posa, se viene in sopralluogo, se il preventivo è scritto, cosa succede se dopo qualche mese qualcosa non torna. A Bergamo e in Lombardia il mercato è pieno di offerte al telefono: quelle basate solo sui metri quadri ignorano massetto, umidità, porte, riscaldamento a pavimento e schema di posa.",
+        list: [
+          'Da quanti anni posate parquet, e su quali tipologie (massello, prefinito, SPC)?',
+          'Venite in sopralluogo prima del preventivo, o mandate un prezzo a occhio?',
+          'Il preventivo è scritto e firma chi esegue il lavoro?',
+          'Cosa include: posa, battiscopa, soglie, protezione del cantiere, smaltimento?',
+          'C\'è una garanzia scritta sulla posa, e chi interviene se serve un ritocco?',
+        ],
+      },
+      {
+        title: 'Cosa Deve Includere un Sopralluogo Serio',
+        content:
+          "Il sopralluogo gratuito non è una cortesia commerciale: è il momento in cui si decide se il lavoro è fattibile e come. Si guarda il massetto, si valuta l'umidità, si misura l'ambiente, si capisce se c'è riscaldamento a pavimento, se le porte chiudono, se serve una barriera o un livellante. Arteparquet viene da te senza impegno: Mohamed Arabi valuta il cantiere di persona e ti lascia un preventivo scritto, non una cifra detta in corridoio. Se qualcuno ti fa un prezzo senza vedere casa, non sta posando il tuo parquet: sta indovinando.",
+        list: [
+          'Controllo visivo e tattile del sottofondo e delle soglie',
+          'Verifica di umidità, riscaldamento a pavimento e altezze residue',
+          'Scelta dello schema di posa in base alla luce e alla geometria delle stanze',
+          'Preventivo scritto, senza costi nascosti, dopo aver visto il cantiere',
+        ],
+      },
+      {
+        title: 'Esperienza sul Campo: Cosa Cercare Davvero',
+        content:
+          "L'esperienza non è uno slogan. Si vede nel modo in cui si parla di spina di pesce, di restauro, di levigatura, di un parquet storico che non si può sbagliare. Mohamed Arabi lavora nel parquet dal 1996. Nel 2004 ha fatto parte del team per il Teatro alla Scala di Milano: un cantiere che non ammette approssimazione. Oggi Arteparquet segue case, ristrutturazioni e professionisti in Bergamo, provincia e Lombardia. Non inventiamo titoli e non appendiamo attestati che non abbiamo: portiamo cantiere, metodo e un nome che risponde al telefono anche dopo la posa.",
+        list: [
+          'Anni di cantiere sul parquet, non solo vendita di listelli',
+          'Lavori visibili: portfolio, riferimenti, capacità di spiegare i dettagli',
+          'Presenza locale: Bergamo e Lombardia, con chi esegue il lavoro in prima persona',
+          'Trasparenza: se un materiale non è adatto, te lo diciamo prima di posarlo',
+        ],
+      },
+      {
+        title: 'Garanzia Scritta e Cosa Succede Dopo la Posa',
+        content:
+          "Un posatore serio lascia traccia scritta: cosa è stato posato, come, e cosa copre la garanzia sulla posa. La garanzia scritta non è un optional da sbandierare in pubblicità: è lo strumento con cui, se un listello si muove o un giunto non tiene, sai chi richiama e chi interviene. Dopo la posa servono anche le istruzioni di manutenzione e un referente reale. Arteparquet consegna garanzia scritta sulla posa e resta disponibile per i ritocchi e i dubbi. Il sopralluogo resta gratuito: vieni, valuta, decidi senza pressione.",
+        list: [
+          'Garanzia scritta sulla posa, non solo sulla merce del produttore',
+          'Indicazioni chiare su pulizia, umidità ambientale e tempi di calpestio',
+          'Un numero e un nome (Arteparquet / Mohamed Arabi) a cui rivolgersi dopo il collaudo',
+          'Nessun impegno nel sopralluogo: prima si vede, poi si decide',
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: 'Il sopralluogo del posatore è sempre gratuito?',
+        a: 'Da Arteparquet sì: il sopralluogo e il preventivo scritto sono gratuiti e senza impegno. Un posatore che chiede di firmare prima di vedere il massetto non sta lavorando nel tuo interesse.',
+      },
+      {
+        q: 'Come distinguo un posatore serio da uno improvvisato?',
+        a: 'Guarda tre cose: viene in sopralluogo, ti lascia un preventivo scritto con cosa è incluso, e offre una garanzia scritta sulla posa. Chiedi da quanti anni posa e se sa spiegarti sottofondo, acclimatazione e schema. Se parla solo di prezzo al metro, cambia interlocutore.',
+      },
+      {
+        q: 'Serve una garanzia scritta sulla posa?',
+        a: 'Sì. La garanzia del produttore copre il materiale, non la mano di chi lo posa. La garanzia scritta sulla posa è quello che ti protegge se un listello si muove, un giunto non tiene o lo schema non è stato eseguito come concordato.',
+      },
+      {
+        q: 'Arteparquet lavora solo a Bergamo?',
+        a: "Siamo di Bergamo e copriamo la provincia e la Lombardia. Mohamed Arabi posa parquet dal 1996; nel 2004 ha fatto parte del team per il Teatro alla Scala di Milano. Per capire se il tuo cantiere è nel nostro raggio, basta chiedere: il sopralluogo è gratuito.",
+      },
+    ],
+    related: [
+      { title: 'Posa Parquet', description: 'Posa professionale di tutti gli schemi di parquet.', href: '/servizi/posa' },
+      { title: 'Come Scegliere il Parquet', description: 'Guida completa alla scelta del parquet giusto.', href: '/guida/come-scegliere-parquet' },
+      { title: 'Chi Siamo', description: 'Mohamed Arabi e Arteparquet: Bergamo, dal 1996.', href: '/chi-siamo' },
+      { title: 'Preventivo Gratuito', description: 'Sopralluogo gratuito e preventivo scritto senza impegno.', href: '/preventivo' },
+    ],
+  },
 }
 
 // ---
@@ -568,21 +660,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const guide = GUIDES[params.slug]
+  const { slug } = await params
+  const guide = GUIDES[slug]
   if (!guide) return { title: 'Guida non trovata | Arteparquet' }
 
   return {
     title: guide.title + ' | Arteparquet',
     description: guide.description,
     alternates: {
-      canonical: `https://arteparquet.pro/guida/${params.slug}`,
+      canonical: `https://arteparquet.pro/guida/${slug}`,
     },
     openGraph: {
       title: guide.title,
       description: guide.description,
-      url: `https://arteparquet.pro/guida/${params.slug}`,
+      url: `https://arteparquet.pro/guida/${slug}`,
     },
   }
 }
@@ -591,8 +684,9 @@ export async function generateMetadata({
 // PAGE COMPONENT
 // ---
 
-export default function GuidaPage({ params }: { params: { slug: string } }) {
-  const guide = GUIDES[params.slug]
+export default async function GuidaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const guide = GUIDES[slug]
 
   if (!guide) {
     notFound()
@@ -606,7 +700,7 @@ export default function GuidaPage({ params }: { params: { slug: string } }) {
         items={[
           { name: 'Home', url: 'https://arteparquet.pro' },
           { name: 'Guide', url: 'https://arteparquet.pro/parquet' },
-          { name: guide.title, url: `https://arteparquet.pro/guida/${params.slug}` },
+          { name: guide.title, url: `https://arteparquet.pro/guida/${slug}` },
         ]}
       />
       <ServiceFaqSchema items={faqForSchema} />

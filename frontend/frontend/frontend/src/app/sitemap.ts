@@ -5,25 +5,25 @@ const BASE = 'https://arteparquet.pro'
 // Canonical last-modified dates per content category
 // Update these when content is significantly changed.
 const D = {
-  home:      '2026-08-31',
-  services:  '2026-08-31',
+  home: '2026-08-31',
+  services: '2026-08-31',
   portfolio: '2026-08-08',
-  chiSiamo:  '2026-08-01',
-  contatti:  '2026-08-31',
-  faq:       '2026-08-31',
-  blog:      '2026-08-08',
-  zone:      '2026-08-31',
-  guida:     '2026-08-31',
+  chiSiamo: '2026-08-01',
+  contatti: '2026-08-31',
+  faq: '2026-08-31',
+  blog: '2026-08-08',
+  zone: '2026-08-31',
+  guida: '2026-09-20',
 }
 
 // Blog article individual dates
 const BLOG_DATES: Record<string, string> = {
-  'come-scegliere-parquet':          '2026-07-15',
+  'come-scegliere-parquet': '2026-07-15',
   'restauro-parquet-quando-conviene': '2026-06-10',
-  'spc-vs-parquet':                   '2026-05-20',
-  'posa-parquet-spina-di-pesce':      '2026-04-08',
-  'levigatura-parquet-guida':         '2026-03-15',
-  'parquet-massello-guida':           '2026-02-22',
+  'spc-vs-parquet': '2026-05-20',
+  'posa-parquet-spina-di-pesce': '2026-04-08',
+  'levigatura-parquet-guida': '2026-03-15',
+  'parquet-massello-guida': '2026-02-22',
 }
 
 // Main Lombardy city landing pages
@@ -65,29 +65,30 @@ const GUIDA_SLUGS = [
   'levigatura-parquet-senza-polvere',
   'restauro-parquet-fai-da-te',
   'parquet-cucina',
+  'come-scegliere-posatore',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // ── Core static pages ---
   const staticPages: MetadataRoute.Sitemap = [
-    { url: BASE,                              lastModified: D.home },
-    { url: `${BASE}/servizi`,                 lastModified: D.services },
-    { url: `${BASE}/portfolio`,               lastModified: D.portfolio },
-    { url: `${BASE}/contatti`,                lastModified: D.contatti },
-    { url: `${BASE}/per-architetti`,          lastModified: D.services },
-    { url: `${BASE}/chi-siamo`,               lastModified: D.chiSiamo },
-    { url: `${BASE}/faq`,                     lastModified: D.faq },
-    { url: `${BASE}/blog`,                    lastModified: D.blog },
-    { url: `${BASE}/preventivo`,              lastModified: D.home },
-    { url: `${BASE}/bergamo-e-provincia`,     lastModified: D.zone },
+    { url: BASE, lastModified: D.home },
+    { url: `${BASE}/servizi`, lastModified: D.services },
+    { url: `${BASE}/portfolio`, lastModified: D.portfolio },
+    { url: `${BASE}/contatti`, lastModified: D.contatti },
+    { url: `${BASE}/per-architetti`, lastModified: D.services },
+    { url: `${BASE}/chi-siamo`, lastModified: D.chiSiamo },
+    { url: `${BASE}/faq`, lastModified: D.faq },
+    { url: `${BASE}/blog`, lastModified: D.blog },
+    { url: `${BASE}/preventivo`, lastModified: D.home },
+    { url: `${BASE}/bergamo-e-provincia`, lastModified: D.zone },
     // High-value standalone service pages (semantic URLs, link targets for ads)
-    { url: `${BASE}/parquet`,                 lastModified: D.services },
-    { url: `${BASE}/levigatura-parquet`,      lastModified: D.services },
-    { url: `${BASE}/restauro-parquet`,        lastModified: D.services },
-    { url: `${BASE}/riparazione-parquet`,     lastModified: D.services },
-    { url: `${BASE}/pavimenti-spc`,           lastModified: D.services },
+    { url: `${BASE}/parquet`, lastModified: D.services },
+    { url: `${BASE}/levigatura-parquet`, lastModified: D.services },
+    { url: `${BASE}/restauro-parquet`, lastModified: D.services },
+    { url: `${BASE}/riparazione-parquet`, lastModified: D.services },
+    { url: `${BASE}/pavimenti-spc`, lastModified: D.services },
     { url: `${BASE}/costo-levigatura-parquet`, lastModified: '2026-08-31' },
-    { url: `${BASE}/invia-foto`,              lastModified: D.home },
+    { url: `${BASE}/invia-foto`, lastModified: D.home },
   ]
 
   // ── /servizi/[slug] detail pages ---
@@ -105,7 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Special slug overrides for towns with spaces in name
   const TOWN_SLUG_MAP: Record<string, string> = {
     'azzano': 'parquet-azzano-san-paolo',
-    'orio':   'parquet-orio-al-serio',
+    'orio': 'parquet-orio-al-serio',
     'romano': 'parquet-romano-di-lombardia',
   }
   const townPages: MetadataRoute.Sitemap = BERGAMO_TOWNS.map((town) => ({
