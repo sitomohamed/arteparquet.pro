@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState, useRef } from 'react'
 import { Menu, X, Phone, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
@@ -49,7 +50,13 @@ const NAV_LINKS = [
 const PHONE = '+39 389 240 7827'
 const PHONE_CLEAN = '+393892407827'
 
+function hasLightHero(pathname: string) {
+  return pathname === '/parquet' || pathname.startsWith('/guida/')
+}
+
 export function Header() {
+  const pathname = usePathname()
+  const lightHero = hasLightHero(pathname)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [serviziOpen, setServiziOpen] = useState(false)
@@ -59,7 +66,7 @@ export function Header() {
   const { scrollY } = useScroll()
   const headerBg = useTransform(scrollY, [0, 100], ['rgba(249,248,246,0)', 'rgba(249,248,246,0.98)'])
   const headerShadow = useTransform(scrollY, [0, 100], ['0 0 0 rgba(0,0,0,0)', '0 1px 24px rgba(0,0,0,0.08)'])
-  const headerBlur = useTransform(scrollY, [0, 100], ['blur(0px)', 'blur(12px)'])
+  const onLight = scrolled || lightHero
 
   useEffect(() => {
     const unsub = scrollY.on('change', (v) => setScrolled(v > 50))
@@ -101,16 +108,19 @@ export function Header() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [mobileOpen])
 
-  const textColor = scrolled ? 'text-legno-bruciato' : 'text-white'
+  const textColor = onLight ? 'text-legno-bruciato' : 'text-white'
   const hoverColor = 'hover:text-rovere transition-colors duration-300'
 
   return (
     <>
       <motion.header
-        style={{ backgroundColor: headerBg, boxShadow: headerShadow }}
+        style={{
+          backgroundColor: lightHero ? 'rgba(249,248,246,0.98)' : headerBg,
+          boxShadow: headerShadow,
+        }}
         className={cn(
           "fixed top-0 left-0 right-0 z-30 transition-all duration-400",
-          scrolled && "backdrop-blur-xl border-b border-neutral-100/50"
+          onLight && "backdrop-blur-xl border-b border-neutral-100/50"
         )}
         role="banner"
       >
@@ -125,7 +135,7 @@ export function Header() {
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Logo
-                  variant={scrolled ? 'onLight' : 'onDark'}
+                  variant={onLight ? 'onLight' : 'onDark'}
                   markVariant="onLight"
                   size={42}
                   wordmarkClassName="hidden sm:flex"
@@ -236,7 +246,7 @@ export function Header() {
               <a
                 href={`tel:${PHONE_CLEAN}`}
                 className={cn('hidden xl:flex items-center gap-2 font-sans text-[13.5px] transition-all duration-300 hover:text-rovere group',
-                  scrolled ? 'text-neutral-600' : 'text-white/85'
+                  onLight ? 'text-neutral-600' : 'text-white/85'
                 )}
               >
                 <div className="w-7 h-7 rounded-full bg-rovere/15 group-hover:bg-rovere/25 flex items-center justify-center transition-all duration-300">
@@ -257,7 +267,7 @@ export function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={cn('lg:hidden p-2.5 rounded-xl transition-all duration-300',
-                scrolled ? 'text-legno-bruciato hover:bg-neutral-100' : 'text-white hover:bg-white/10'
+                onLight ? 'text-legno-bruciato hover:bg-neutral-100' : 'text-white hover:bg-white/10'
               )}
               aria-label="Apri menu"
               aria-expanded={mobileOpen}
