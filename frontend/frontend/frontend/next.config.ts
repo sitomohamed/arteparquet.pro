@@ -101,7 +101,17 @@ const nextConfig: NextConfig = {
       { source: '/lavori', destination: '/crm/lavori', permanent: false },
       { source: '/lavori/:path*', destination: '/crm/lavori/:path*', permanent: false },
       // Duplicate local landing pages: keep one URL per city
+      { source: '/zone/parquet-azzano', destination: '/zone/parquet-azzano-san-paolo', permanent: true },
+      { source: '/zone/parquet-orio', destination: '/zone/parquet-orio-al-serio', permanent: true },
+      { source: '/zone/parquet-romano', destination: '/zone/parquet-romano-di-lombardia', permanent: true },
+      { source: '/zone/posa-parquet-azzano', destination: '/zone/parquet-azzano-san-paolo', permanent: true },
+      { source: '/zone/posa-parquet-orio', destination: '/zone/parquet-orio-al-serio', permanent: true },
+      { source: '/zone/posa-parquet-romano', destination: '/zone/parquet-romano-di-lombardia', permanent: true },
       { source: '/zone/posa-parquet-:city', destination: '/zone/parquet-:city', permanent: true },
+      { source: '/zona/parquet-azzano', destination: '/zone/parquet-azzano-san-paolo', permanent: true },
+      { source: '/zona/parquet-orio', destination: '/zone/parquet-orio-al-serio', permanent: true },
+      { source: '/zona/parquet-romano', destination: '/zone/parquet-romano-di-lombardia', permanent: true },
+      { source: '/zona/:path*', destination: '/zone/:path*', permanent: true },
     ]
   },
 }

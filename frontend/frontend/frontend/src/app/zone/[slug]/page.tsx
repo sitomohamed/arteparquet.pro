@@ -328,27 +328,34 @@ const CITY_CONTENT: Record<string, {
   },
 }
 
-// Normalizza slug: "parquet-seriate" → "seriate", "parquet-azzano-san-paolo" → "azzano" etc.
+// Official URL slug → city key. Short leftovers (parquet-azzano) must 301, not render.
 const SLUG_MAP: Record<string, string> = {
   'parquet-azzano-san-paolo': 'azzano',
   'parquet-orio-al-serio': 'orio',
   'parquet-romano-di-lombardia': 'romano',
 }
 
+const SHORT_CITY_ALIASES = new Set(Object.values(SLUG_MAP))
+
+function officialSlug(cityKey: string): string {
+  const entry = Object.entries(SLUG_MAP).find(([, key]) => key === cityKey)
+  return entry ? entry[0] : `parquet-${cityKey}`
+}
+
 function extractCity(slug: string) {
-  // Explicit slug overrides
   if (SLUG_MAP[slug]) return SLUG_MAP[slug]
-  // Standard: "parquet-{city}"
   if (!slug.startsWith('parquet-')) return null
   const city = slug.slice('parquet-'.length)
+  if (SHORT_CITY_ALIASES.has(city)) return null
   return CITIES[city] ? city : null
 }
 
-// ── Static params ---
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const explicit = Object.entries(SLUG_MAP).map(([slug]) => ({ slug }))
   const standard = Object.keys(CITIES)
-    .filter((city) => !['azzano', 'orio', 'romano'].includes(city))
+    .filter((city) => !SHORT_CITY_ALIASES.has(city))
     .map((city) => ({ slug: `parquet-${city}` }))
   return [...standard, ...explicit]
 }
@@ -364,6 +371,7 @@ export async function generateMetadata({
   if (!cityKey) return {}
 
   const c = CITIES[cityKey]
+  const path = officialSlug(cityKey)
   const title = `Parquet ${c.display} | Posa, Restauro e Levigatura`
   const description = `Posa, restauro e levigatura parquet professionale a ${c.display} e provincia. Ex team Teatro alla Scala. 30 anni di esperienza dal 1996. Sopralluogo e preventivo gratuiti.  389 240 7827`
 
@@ -378,11 +386,11 @@ export async function generateMetadata({
       `posatore parquet ${c.display}`,
       `parquet ${c.province}`,
     ],
-    alternates: { canonical: `https://arteparquet.pro/zone/${slug}` },
+    alternates: { canonical: `https://arteparquet.pro/zone/${path}` },
     openGraph: {
       title,
       description,
-      url: `https://arteparquet.pro/zone/${slug}`,
+      url: `https://arteparquet.pro/zone/${path}`,
       locale: 'it_IT',
       images: [
         {
@@ -654,12 +662,12 @@ export default async function ZonePage({
 
           <FadeIn delay={0.1}>
             <div className="flex flex-wrap justify-center gap-2">
-              {Object.values(CITIES)
-                .filter((city) => city.display !== c.display)
-                .map((city) => (
+              {Object.entries(CITIES)
+                .filter(([, city]) => city.display !== c.display)
+                .map(([key, city]) => (
                   <Link
-                    key={city.display}
-                    href={`/zone/parquet-${city.display.toLowerCase()}`}
+                    key={key}
+                    href={`/zone/${officialSlug(key)}`}
                     className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-sm text-neutral-700 hover:border-rovere hover:text-rovere transition-colors"
                   >
                     Parquet {city.display}

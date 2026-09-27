@@ -104,12 +104,12 @@ const steps = [
 ]
 
 const zones = [
-  { name: 'Bergamo', href: '/zona/parquet-bergamo' },
-  { name: 'Milano', href: '/zona/parquet-milano' },
-  { name: 'Brescia', href: '/zona/parquet-brescia' },
-  { name: 'Como', href: '/zona/parquet-como' },
-  { name: 'Monza', href: '/zona/parquet-monza' },
-  { name: 'Lecco', href: '/zona/parquet-lecco' },
+  { name: 'Bergamo', href: '/zone/parquet-bergamo' },
+  { name: 'Milano', href: '/zone/parquet-milano' },
+  { name: 'Brescia', href: '/zone/parquet-brescia' },
+  { name: 'Como', href: '/zone/parquet-como' },
+  { name: 'Monza', href: '/zone/parquet-monza' },
+  { name: 'Lecco', href: '/zone/parquet-lecco' },
 ]
 
 export default function LeviaturaParquetPage() {
