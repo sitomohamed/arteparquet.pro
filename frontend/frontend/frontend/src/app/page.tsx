@@ -14,10 +14,10 @@ import { FaqSection } from '@/components/sections/faq-section'
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Parquettista Bergamo e Milano | Posa Restauro Levigatura',
+    absolute: 'Arteparquet | Parquettista Bergamo e Milano | Posa Restauro Levigatura',
   },
   description:
-    'Parquettista a Bergamo, Milano e in tutta la Lombardia dal 1996. Posa, restauro e levigatura parquet. Sopralluogo gratuito. Preventivo senza impegno. ',
+    'Parquettista a Bergamo, Milano e in tutta la Lombardia dal 1996. Posa, restauro e levigatura parquet. Sopralluogo gratuito. Preventivo senza impegno.',
   keywords: [
     'parquettista Bergamo',
     'parquettista Milano',

@@ -7,11 +7,11 @@ import { Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Contatti | Sopralluogo e Preventivo Gratuito Parquet',
   description:
-    'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Risposta rapida su WhatsApp.  +39 389 240 7827.',
+    'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Risposta rapida su WhatsApp. +39 389 240 7827.',
   alternates: { canonical: 'https://arteparquet.pro/contatti' },
   openGraph: {
     title: 'Contatti | Sopralluogo e Preventivo Gratuito Parquet',
-    description: 'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Risposta rapida su WhatsApp.  +39 389 240 7827.',
+    description: 'Richiedi un sopralluogo gratuito a Bergamo, Milano e in Lombardia. Posa e restauro parquet. Risposta rapida su WhatsApp. +39 389 240 7827.',
     url: 'https://arteparquet.pro/contatti',
     locale: 'it_IT',
     type: 'website',

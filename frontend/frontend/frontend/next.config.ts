@@ -104,6 +104,8 @@ const nextConfig: NextConfig = {
       { source: '/zone/parquet-azzano', destination: '/zone/parquet-azzano-san-paolo', permanent: true },
       { source: '/zone/parquet-orio', destination: '/zone/parquet-orio-al-serio', permanent: true },
       { source: '/zone/parquet-romano', destination: '/zone/parquet-romano-di-lombardia', permanent: true },
+      { source: '/zone/parquet-alzano', destination: '/zone/parquet-alzano-lombardo', permanent: true },
+      { source: '/zone/parquet-terno', destination: '/zone/parquet-terno-disola', permanent: true },
       { source: '/zone/posa-parquet-azzano', destination: '/zone/parquet-azzano-san-paolo', permanent: true },
       { source: '/zone/posa-parquet-orio', destination: '/zone/parquet-orio-al-serio', permanent: true },
       { source: '/zone/posa-parquet-romano', destination: '/zone/parquet-romano-di-lombardia', permanent: true },

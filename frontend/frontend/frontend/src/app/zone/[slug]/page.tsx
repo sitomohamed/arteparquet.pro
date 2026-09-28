@@ -37,6 +37,10 @@ const CITIES: Record<string, { display: string; region: string; province: string
   orio:           { display: 'Orio al Serio',  region: 'Lombardia', province: 'BG', lat: '45.670000', lng: '9.700000', isTown: true },
   romano:         { display: 'Romano di Lombardia', region: 'Lombardia', province: 'BG', lat: '45.518000', lng: '9.750000', isTown: true },
   clusone:        { display: 'Clusone',        region: 'Lombardia', province: 'BG', lat: '45.889000', lng: '9.943000', isTown: true },
+  'alzano-lombardo': { display: 'Alzano Lombardo', region: 'Lombardia', province: 'BG', lat: '45.731000', lng: '9.727000', isTown: true },
+  'terno-disola':    { display: "Terno d'Isola",   region: 'Lombardia', province: 'BG', lat: '45.691000', lng: '9.561000', isTown: true },
+  verdellino:        { display: 'Verdellino',       region: 'Lombardia', province: 'BG', lat: '45.623000', lng: '9.601000', isTown: true },
+  ciserano:          { display: 'Ciserano',         region: 'Lombardia', province: 'BG', lat: '45.609000', lng: '9.650000', isTown: true },
 }
 
 // ── Contenuto unico per città (prevenzione thin content) ---
@@ -326,6 +330,38 @@ const CITY_CONTENT: Record<string, {
       { q: 'Il parquet massello antico di Clusone è recuperabile?', a: 'Nella stragrande maggioranza dei casi sì. Valutiamo spessore residuo e stato delle assi durante il sopralluogo gratuito.' },
     ],
   },
+  'alzano-lombardo': {
+    intro: `Alzano Lombardo è uno dei principali comuni della Valle Seriana, a breve distanza da Bergamo. Zona residenziale consolidata con molti edifici degli anni '60-'90 dove il parquet originale merita recupero professionale. Raggiungiamo Alzano Lombardo con sopralluogo gratuito e preventivo entro 24 ore.`,
+    highlights: ['Vicinanza a Bergamo - sopralluogo rapido', 'Recupero parquet storico anni 60-90', 'Posa e levigatura professionale', 'Preventivo entro 24 ore'],
+    faq: [
+      { q: 'Fate posa e levigatura parquet ad Alzano Lombardo?', a: 'Sì. Alzano Lombardo è a pochi minuti da Bergamo: organizziamo il sopralluogo gratuito in tempi brevi, preventivo dettagliato entro 24 ore.' },
+      { q: 'Restaurate parquet vecchi ad Alzano?', a: 'Sì. Molti edifici di Alzano Lombardo hanno parquet anni \'60-\'90 recuperabile: valutiamo spessore residuo e stato generale in sopralluogo.' },
+    ],
+  },
+  'terno-disola': {
+    intro: `Terno d'Isola è un comune dell'Isola Bergamasca, territorio tra il Brembo e l'Adda noto per il tessuto residenziale compatto. Operiamo a Terno d'Isola per posa, restauro e levigatura parquet con sopralluogo gratuito direttamente dalla sede di Bergamo.`,
+    highlights: ["Copertura Isola Bergamasca", 'Sopralluogo gratuito dalla sede di Bergamo', 'Posa, restauro e levigatura', 'Preventivo in 24 ore'],
+    faq: [
+      { q: "Fate posa parquet a Terno d'Isola?", a: "Sì. Raggiungiamo Terno d'Isola con sopralluogo gratuito e preventivo entro 24 ore, senza impegno." },
+      { q: "Operate anche nei comuni vicini dell'Isola Bergamasca?", a: "Sì. Copriamo tutta l'Isola Bergamasca, inclusi Ponte San Pietro, Brembate e i comuni limitrofi." },
+    ],
+  },
+  verdellino: {
+    intro: `Verdellino è un comune della pianura bergamasca meridionale, in espansione residenziale. Nuove costruzioni e ristrutturazioni rendono Verdellino un mercato attivo per pavimenti in legno. Sopralluogo gratuito con risposta rapida dalla sede di Bergamo.`,
+    highlights: ['Zona in crescita residenziale', 'Nuove costruzioni e ristrutturazioni', 'Sopralluogo gratuito', 'Preventivo in 24 ore'],
+    faq: [
+      { q: 'Posate parquet a Verdellino?', a: 'Sì. Verdellino è nella pianura bergamasca: raggiungiamo il cantiere rapidamente per sopralluogo gratuito, preventivo entro 24 ore.' },
+      { q: 'Quale parquet consigliate per le nuove costruzioni a Verdellino?', a: 'Per nuovi massetti consigliamo massello o prefinito incollato previa verifica dell\'umidità residua, che valutiamo in sopralluogo.' },
+    ],
+  },
+  ciserano: {
+    intro: `Ciserano è un comune della bassa bergamasca, vicino ai principali assi stradali della provincia. Operiamo a Ciserano per posa, levigatura e restauro parquet in abitazioni private e spazi commerciali. Sopralluogo gratuito dalla sede di Bergamo.`,
+    highlights: ['Pianura bergamasca - raggiungibilità ottimale', 'Residenziale e commerciale', 'Sopralluogo gratuito', 'Preventivo entro 24 ore'],
+    faq: [
+      { q: 'Lavorate a Ciserano per la posa parquet?', a: 'Sì. Raggiungiamo Ciserano con sopralluogo gratuito. Preventivo dettagliato entro 24 ore, senza impegno.' },
+      { q: 'Installate anche SPC e PVC a Ciserano?', a: 'Sì. Oltre al parquet classico, installiamo SPC, PVC e laminato per ristrutturazioni rapide o ambienti con specifiche esigenze di umidità.' },
+    ],
+  },
 }
 
 // Official URL slug → city key. Short leftovers (parquet-azzano) must 301, not render.
@@ -333,6 +369,8 @@ const SLUG_MAP: Record<string, string> = {
   'parquet-azzano-san-paolo': 'azzano',
   'parquet-orio-al-serio': 'orio',
   'parquet-romano-di-lombardia': 'romano',
+  'parquet-alzano-lombardo': 'alzano-lombardo',
+  "parquet-terno-disola": 'terno-disola',
 }
 
 const SHORT_CITY_ALIASES = new Set(Object.values(SLUG_MAP))

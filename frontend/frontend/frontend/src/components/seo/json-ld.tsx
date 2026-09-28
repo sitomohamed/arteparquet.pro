@@ -11,14 +11,6 @@ export function WebSiteSchema() {
       '@type': 'Organization',
       '@id': 'https://arteparquet.pro/#business',
     },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://arteparquet.pro/blog?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
-    },
     inLanguage: 'it-IT',
   }
 
@@ -45,6 +37,12 @@ export function LocalBusinessSchema() {
     email: 'info@arteparquet.pro',
     currenciesAccepted: 'EUR',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+    priceRange: '€€',
+    image: 'https://arteparquet.pro/portfolio/google-spina-pesce-lucida-01.jpg',
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61593688395747',
+      'https://www.google.com/maps/search/Arteparquet+Di+Arabi+Mohamed+Bergamo',
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Via Vittorio Alfieri 7',
@@ -60,10 +58,10 @@ export function LocalBusinessSchema() {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      bestRating: '5',
-      worstRating: '1',
-      ratingCount: '6',
+      ratingValue: 4.7,
+      bestRating: 5,
+      worstRating: 1,
+      ratingCount: 6,
     },
     areaServed: [
       { '@type': 'City', name: 'Bergamo', addressCountry: 'IT' },

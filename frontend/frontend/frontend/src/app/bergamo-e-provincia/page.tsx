@@ -61,10 +61,10 @@ const zones = [
   { name: 'Orio al Serio', href: '/zone/parquet-orio-al-serio' },
   { name: 'Romano di Lombardia', href: '/zone/parquet-romano-di-lombardia' },
   { name: 'Clusone', href: '/zone/parquet-clusone' },
-  { name: 'Ciserano', href: '/zone/parquet-ciserano' },
+  { name: 'Alzano Lombardo', href: '/zone/parquet-alzano-lombardo' },
+  { name: 'Terno d\'Isola', href: '/zone/parquet-terno-disola' },
   { name: 'Verdellino', href: '/zone/parquet-verdellino' },
-  { name: 'Terno d\'Isola', href: '/zone/parquet-terno' },
-  { name: 'Alzano Lombardo', href: '/zone/parquet-alzano' },
+  { name: 'Ciserano', href: '/zone/parquet-ciserano' },
 ]
 
 const services = [

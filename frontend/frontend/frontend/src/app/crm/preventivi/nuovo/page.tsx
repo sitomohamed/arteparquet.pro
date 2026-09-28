@@ -176,7 +176,7 @@ export default function NuovoPreventivoPage() {
           <div className="flex gap-3">
             <button
               onClick={() => void saveDraft()}
-              disabled={saving || !clientId}
+              disabled={saving || (newClientMode ? (!newClientName || !newClientPhone) : !clientId)}
               className="bg-rovere text-white rounded-xl px-6 py-3 font-semibold disabled:opacity-50 hover:bg-opacity-90"
             >
               {saving ? 'Salvataggio...' : 'Salva bozza'}
