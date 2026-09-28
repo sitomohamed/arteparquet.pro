@@ -332,7 +332,8 @@ export default function LeviaturaParquetPage() {
           { title: 'Restauro Parquet', description: 'Recupero e restauro di parquet antichi e storici.', href: '/restauro-parquet' },
           { title: 'Riparazione Parquet', description: 'Interventi puntuali su scricchiolii e listelli rotti.', href: '/riparazione-parquet' },
           { title: 'Posa Parquet', description: 'Posa professionale di parquet massello, prefinito e SPC.', href: '/servizi/posa' },
-          { title: 'Contattaci', description: 'Richiedi un sopralluogo gratuito e senza impegno.', href: '/contatti' },
+          { title: 'Costo della levigatura', description: 'Da cosa dipende il prezzo e cosa include il preventivo.', href: '/guida/costo-levigatura-parquet' },
+          { title: 'Levigatura senza polvere', description: 'Come funziona l\'aspirazione e cosa puoi fare in casa durante i lavori.', href: '/guida/levigatura-parquet-senza-polvere' },
         ]}
       />
     </>

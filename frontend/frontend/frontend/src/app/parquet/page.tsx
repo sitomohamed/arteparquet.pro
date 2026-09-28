@@ -103,6 +103,30 @@ const guides = [
     category: 'Guida all\'Acquisto',
     description: 'Domande da fare, sopralluogo, garanzia scritta: come riconoscere un posatore serio.',
   },
+  {
+    title: 'Parquet in Bagno',
+    href: '/guida/parquet-bagno',
+    category: 'Ambienti Speciali',
+    description: 'Si può posare il parquet in bagno? Rischi del legno e quando scegliere l\'SPC.',
+  },
+  {
+    title: 'Parquet in Cucina',
+    href: '/guida/parquet-cucina',
+    category: 'Ambienti Speciali',
+    description: 'Umidità, spandimenti e prodotti giusti per avere l\'effetto legno in cucina.',
+  },
+  {
+    title: 'Levigatura Senza Polvere',
+    href: '/guida/levigatura-parquet-senza-polvere',
+    category: 'Tecnologia',
+    description: 'Come funziona l\'aspirazione integrata e cosa puoi fare in casa durante i lavori.',
+  },
+  {
+    title: 'Restauro Parquet Fai da Te',
+    href: '/guida/restauro-parquet-fai-da-te',
+    category: 'Fai da Te',
+    description: 'Cosa puoi fare da solo e quando la levigatura casalinga rovina il pavimento.',
+  },
 ]
 
 const existingParquet = [

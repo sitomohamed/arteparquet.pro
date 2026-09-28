@@ -341,7 +341,7 @@ export default function RestauroParquetPage() {
           { title: 'Levigatura Parquet', description: 'Ripristino del parquet con macchine senza polvere.', href: '/levigatura-parquet' },
           { title: 'Riparazione Parquet', description: 'Interventi puntuali su scricchiolii e listelli rotti.', href: '/riparazione-parquet' },
           { title: 'I Nostri Servizi', description: 'Tutti i servizi di parquetteria offerti da Arteparquet.', href: '/servizi' },
-          { title: 'Contattaci', description: 'Richiedi un sopralluogo gratuito e senza impegno.', href: '/contatti' },
+          { title: 'Restauro fai da te', description: 'Cosa puoi fare da solo e quando conviene chiamare un professionista.', href: '/guida/restauro-parquet-fai-da-te' },
         ]}
       />
     </>

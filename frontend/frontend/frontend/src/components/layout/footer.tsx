@@ -31,6 +31,7 @@ const FOOTER_SECTIONS = [
     links: [
       { label: "L'Atelier", href: '/chi-siamo' },
       { label: 'Portfolio',  href: '/portfolio' },
+      { label: 'Guide',      href: '/parquet' },
       { label: 'Blog',       href: '/blog' },
       { label: 'FAQ',        href: '/faq' },
       { label: 'Contatti',   href: '/contatti' },
@@ -224,6 +225,44 @@ export function Footer() {
               </Link>
             </div>
           </CollapsibleSection>
+        </div>
+      </div>
+
+      {/* Guide - crawl paths for in-depth articles */}
+      <div className="border-t border-white/[0.08]">
+        <div className="container-wide py-6">
+          <p className="font-sans text-[11px] font-semibold uppercase tracking-widest text-white/35 mb-3 text-center md:text-left">
+            Guide al parquet
+          </p>
+          <nav aria-label="Guide al parquet" className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2">
+            <Link
+              href="/parquet"
+              className="font-sans text-[12.5px] text-rovere/70 hover:text-rovere font-semibold transition-colors duration-300"
+            >
+              Tutte le guide
+            </Link>
+            {[
+              { label: 'Come scegliere', href: '/guida/come-scegliere-parquet' },
+              { label: 'Costo levigatura', href: '/guida/costo-levigatura-parquet' },
+              { label: 'Massello vs prefinito', href: '/guida/parquet-massello-vs-prefinito' },
+              { label: 'Spina di pesce', href: '/guida/parquet-spina-di-pesce' },
+              { label: 'Manutenzione', href: '/guida/manutenzione-parquet' },
+              { label: 'Riscaldamento a pavimento', href: '/guida/parquet-riscaldamento-pavimento' },
+              { label: 'Parquet in bagno', href: '/guida/parquet-bagno' },
+              { label: 'Parquet in cucina', href: '/guida/parquet-cucina' },
+              { label: 'Levigatura senza polvere', href: '/guida/levigatura-parquet-senza-polvere' },
+              { label: 'Restauro fai da te', href: '/guida/restauro-parquet-fai-da-te' },
+              { label: 'Scegliere il posatore', href: '/guida/come-scegliere-posatore' },
+            ].map((guide) => (
+              <Link
+                key={guide.href}
+                href={guide.href}
+                className="font-sans text-[12.5px] text-white/45 hover:text-rovere transition-colors duration-300"
+              >
+                {guide.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
 

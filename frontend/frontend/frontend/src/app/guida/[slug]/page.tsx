@@ -667,7 +667,7 @@ export async function generateMetadata({
   if (!guide) return { title: 'Guida non trovata | Arteparquet' }
 
   return {
-    title: guide.title + ' | Arteparquet',
+    title: guide.title,
     description: guide.description,
     alternates: {
       canonical: `https://arteparquet.pro/guida/${slug}`,

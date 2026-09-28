@@ -43,6 +43,7 @@ const SERVIZI_MENU = [
 const NAV_LINKS = [
   { label: "L'Atelier", href: '/chi-siamo' },
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Guide', href: '/parquet' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contatti', href: '/contatti' },
 ]

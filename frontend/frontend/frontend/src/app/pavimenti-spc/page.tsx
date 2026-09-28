@@ -276,7 +276,8 @@ export default function PavimentiSpcPage() {
           { title: 'I Nostri Servizi', description: 'Tutti i servizi di parquetteria offerti da Arteparquet.', href: '/servizi' },
           { title: 'Parquet Massello', description: 'Il massello in legno puro: duraturo e levigabile più volte.', href: '/servizi/parquet-massello' },
           { title: 'Preventivo Gratuito', description: 'Sopralluogo gratuito e preventivo scritto senza impegno.', href: '/preventivo' },
-          { title: 'Contattaci', description: 'Richiedi un sopralluogo gratuito e senza impegno.', href: '/contatti' },
+          { title: 'Parquet in bagno', description: 'Quando l\'SPC è la scelta giusta per un bagno con effetto legno.', href: '/guida/parquet-bagno' },
+          { title: 'Parquet in cucina', description: 'Prodotti e precauzioni per avere l\'effetto legno in cucina.', href: '/guida/parquet-cucina' },
         ]}
       />
     </>

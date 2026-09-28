@@ -266,7 +266,7 @@ export default function RiparazioneParquetPage() {
           { title: 'Levigatura Parquet', description: 'Ripristino del parquet con macchine senza polvere.', href: '/levigatura-parquet' },
           { title: 'Restauro Parquet', description: 'Recupero e restauro di parquet antichi e storici.', href: '/restauro-parquet' },
           { title: 'I Nostri Servizi', description: 'Tutti i servizi di parquetteria offerti da Arteparquet.', href: '/servizi' },
-          { title: 'Contattaci', description: 'Richiedi un sopralluogo gratuito e senza impegno.', href: '/contatti' },
+          { title: 'Manutenzione del parquet', description: 'Come pulire e proteggere il pavimento per farlo durare.', href: '/guida/manutenzione-parquet' },
         ]}
       />
     </>
