@@ -110,19 +110,60 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              var eeaUkCh = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
               gtag('consent', 'default', {
                 analytics_storage: 'denied',
                 ad_storage: 'denied',
                 ad_user_data: 'denied',
-                ad_personalization: 'denied'
+                ad_personalization: 'denied',
+                region: eeaUkCh
               });
+              gtag('consent', 'default', {
+                analytics_storage: 'granted',
+                ad_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted'
+              });
+              try {
+                var raw = localStorage.getItem('arteparquet_cookie_consent');
+                if (raw) {
+                  var saved = JSON.parse(raw);
+                  var ageDays = (Date.now() - saved.timestamp) / 86400000;
+                  if (ageDays <= 365) {
+                    var ads = saved.marketing ? 'granted' : 'denied';
+                    gtag('consent', 'update', {
+                      analytics_storage: saved.analytics ? 'granted' : 'denied',
+                      ad_storage: ads,
+                      ad_user_data: ads,
+                      ad_personalization: ads
+                    });
+                  }
+                }
+              } catch (e) {}
               gtag('js', new Date());
               gtag('config', '${GA_MEASUREMENT_ID}');
             `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MB87WRK3');`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-travertino text-legno-bruciato font-sans custom-cursor-enabled">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MB87WRK3"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <SmoothScroll />
         <CustomCursor />
         <a

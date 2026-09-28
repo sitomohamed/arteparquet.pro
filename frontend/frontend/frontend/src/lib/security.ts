@@ -143,6 +143,7 @@ export function getContentSecurityPolicy(): string {
     "font-src 'self' data:",
     "img-src 'self' data: blob: https://www.googletagmanager.com https://www.google-analytics.com",
     `connect-src ${connectSrc}`,
+    "frame-src https://www.googletagmanager.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
