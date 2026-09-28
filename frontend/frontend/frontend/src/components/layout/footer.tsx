@@ -34,6 +34,7 @@ const FOOTER_SECTIONS = [
       { label: 'Blog',       href: '/blog' },
       { label: 'FAQ',        href: '/faq' },
       { label: 'Contatti',   href: '/contatti' },
+      { label: 'Per Architetti', href: '/per-architetti' },
     ],
   },
 ]
@@ -233,6 +234,12 @@ export function Footer() {
             Posa parquet in Lombardia
           </p>
           <nav aria-label="Città servite" className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2">
+            <Link
+              href="/bergamo-e-provincia"
+              className="font-sans text-[12.5px] text-rovere/70 hover:text-rovere font-semibold capitalize transition-colors duration-300"
+            >
+              Bergamo e Provincia ★
+            </Link>
             {[
               'bergamo', 'milano', 'brescia', 'monza', 'como',
               'varese', 'lecco', 'lodi', 'pavia', 'cremona', 'mantova',
